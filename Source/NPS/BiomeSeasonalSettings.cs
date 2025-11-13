@@ -9,54 +9,52 @@ public class BiomeSeasonalSettings : DefModExtension
     //incident settings
     public List<ThingDef> bloomPlants;
     public bool diseaseCacheUpdated;
-    public List<BiomeDiseaseRecord> fallDiseases;
-    public List<TKKN_IncidentCommonalityRecord> fallEvents;
-    public List<WeatherCommonalityRecord> fallWeathers;
     public Season lastChanged;
     public Quadrum lastChangedQ;
 
     //spring settings
     public int maxSprings;
-    public bool plantCacheUpdated;
 
-    public bool plantsAdded;
     public List<PawnKindDef> specialHerds;
-
-    public List<BiomePlantRecord> specialPlants;
 
     //disease settings
     public List<BiomeDiseaseRecord> springDiseases;
+    public List<BiomeDiseaseRecord> summerDiseases;
+    public List<BiomeDiseaseRecord> fallDiseases;
+    public List<BiomeDiseaseRecord> winterDiseases;
+
     public List<TKKN_IncidentCommonalityRecord> springEvents;
+    public List<TKKN_IncidentCommonalityRecord> summerEvents;
+    public List<TKKN_IncidentCommonalityRecord> fallEvents;
+    public List<TKKN_IncidentCommonalityRecord> winterEvents;
     public float springSpawnChance;
-    public bool springsSurviveDrought;
-    public bool springsSurviveSummer;
+
 
     //weather settings
     public List<WeatherCommonalityRecord> springWeathers;
-    public List<BiomeDiseaseRecord> summerDiseases;
-    public List<TKKN_IncidentCommonalityRecord> summerEvents;
     public List<WeatherCommonalityRecord> summerWeathers;
-
-    //misc settings
-    public int wetPlantStart = 50;
-    public List<BiomeDiseaseRecord> winterDiseases;
-    public List<TKKN_IncidentCommonalityRecord> winterEvents;
+    public List<WeatherCommonalityRecord> fallWeathers;
     public List<WeatherCommonalityRecord> winterWeathers;
 
+    //unused settings
+    public bool springsSurviveDrought;
+    public bool springsSurviveSummer;
+    public int wetPlantStart = 50;
+    public bool plantCacheUpdated;
+    public bool plantsAdded;
+    public List<BiomePlantRecord> specialPlants;
 
-    public void setWeatherBySeason(Map map, Season season, Quadrum quadrum)
-    {
-        if (springWeathers == null || !springWeathers.Any() ||
-            summerWeathers == null || !summerWeathers?.Any() == false ||
-            fallWeathers == null || !fallWeathers?.Any() == false ||
-            winterWeathers == null || !winterWeathers?.Any() == false)
-        {
+
+    public void setWeatherBySeason(Map map, Season season, Quadrum quadrum) {
+        if (springWeathers.NullOrEmpty() ||
+            summerWeathers.NullOrEmpty() ||
+            fallWeathers.NullOrEmpty() ||
+            winterWeathers.NullOrEmpty()) {
             return;
         }
 
 
-        switch (season)
-        {
+        switch (season) {
             case Season.Spring:
                 map.Biome.baseWeatherCommonalities = springWeathers;
                 break;
@@ -69,10 +67,8 @@ public class BiomeSeasonalSettings : DefModExtension
             case Season.Winter:
                 map.Biome.baseWeatherCommonalities = winterWeathers;
                 break;
-            default:
-            {
-                switch (quadrum)
-                {
+            default: {
+                switch (quadrum) {
                     case Quadrum.Aprimay:
                         map.Biome.baseWeatherCommonalities = springWeathers;
                         break;
@@ -91,20 +87,16 @@ public class BiomeSeasonalSettings : DefModExtension
             }
         }
 
-        if (map.Biome.baseWeatherCommonalities?.Any() == false)
-        {
-            map.Biome.baseWeatherCommonalities =
-            [
+        if (map.Biome.baseWeatherCommonalities?.Any() == false) {
+            map.Biome.baseWeatherCommonalities = [
                 new WeatherCommonalityRecord { commonality = 1f, weather = WeatherDefOf.Clear }
             ];
         }
     }
 
-    public void setDiseaseBySeason(Season season, Quadrum quadrum)
-    {
+    public void setDiseaseBySeason(Season season, Quadrum quadrum) {
         var seasonalDiseases = new List<BiomeDiseaseRecord>();
-        switch (season)
-        {
+        switch (season) {
             case Season.Spring when springDiseases != null:
                 seasonalDiseases = springDiseases;
                 break;
@@ -117,10 +109,8 @@ public class BiomeSeasonalSettings : DefModExtension
             case Season.Winter when winterDiseases != null:
                 seasonalDiseases = winterDiseases;
                 break;
-            default:
-            {
-                switch (quadrum)
-                {
+            default: {
+                switch (quadrum) {
                     case Quadrum.Aprimay when springDiseases != null:
                         seasonalDiseases = springDiseases;
                         break;
@@ -139,8 +129,7 @@ public class BiomeSeasonalSettings : DefModExtension
             }
         }
 
-        foreach (var diseaseRec in seasonalDiseases)
-        {
+        foreach (var diseaseRec in seasonalDiseases) {
             var disease = diseaseRec.diseaseInc;
             disease.baseChance = diseaseRec.commonality;
         }
@@ -148,11 +137,9 @@ public class BiomeSeasonalSettings : DefModExtension
         diseaseCacheUpdated = false;
     }
 
-    public void setIncidentsBySeason(Season season, Quadrum quadrum)
-    {
+    public void setIncidentsBySeason(Season season, Quadrum quadrum) {
         var seasonalIncidents = new List<TKKN_IncidentCommonalityRecord>();
-        switch (season)
-        {
+        switch (season) {
             case Season.Spring when springEvents != null:
                 seasonalIncidents = springEvents;
                 break;
@@ -165,10 +152,8 @@ public class BiomeSeasonalSettings : DefModExtension
             case Season.Winter when winterEvents != null:
                 seasonalIncidents = winterEvents;
                 break;
-            default:
-            {
-                switch (quadrum)
-                {
+            default: {
+                switch (quadrum) {
                     case Quadrum.Aprimay when springEvents != null:
                         seasonalIncidents = springEvents;
                         break;
@@ -187,8 +172,7 @@ public class BiomeSeasonalSettings : DefModExtension
             }
         }
 
-        foreach (var incidentRate in seasonalIncidents)
-        {
+        foreach (var incidentRate in seasonalIncidents) {
             var incident = incidentRate.incident;
             incident.baseChance = incidentRate.commonality;
         }

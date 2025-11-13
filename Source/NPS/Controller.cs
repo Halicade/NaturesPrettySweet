@@ -1,5 +1,4 @@
-﻿using Mlie;
-using UnityEngine;
+﻿using UnityEngine;
 using Verse;
 
 namespace TKKN_NPS;
@@ -10,20 +9,15 @@ public class Controller : Mod
     public static string currentVersion;
 
     public Controller(ModContentPack content)
-        : base(content)
-    {
+        : base(content) {
         settings = GetSettings<Settings>();
-        currentVersion =
-            VersionFromManifest.GetVersionFromModMetaData(content.ModMetaData);
     }
 
-    public override void DoSettingsWindowContents(Rect inRect)
-    {
+    public override void DoSettingsWindowContents(Rect inRect) {
         Settings.DoWindowContents(inRect);
     }
 
-    public override string SettingsCategory()
-    {
+    public override string SettingsCategory() {
         return "Nature's Pretty Sweet";
     }
 }

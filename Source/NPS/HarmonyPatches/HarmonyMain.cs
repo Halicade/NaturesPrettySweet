@@ -10,30 +10,25 @@ internal class HarmonyMain
     public static readonly bool RimBrellasActive;
     public static readonly MethodInfo HasUmbrella;
 
-    static HarmonyMain()
-    {
+    static HarmonyMain() {
         new Harmony("com.github.tkkntkkn.Natures-Pretty-Sweet").PatchAll(Assembly.GetExecutingAssembly());
         TerrainTagUtil.intializeTerrainTags();
-        if (ModsConfig.OdysseyActive)
-        {
+        if (ModsConfig.OdysseyActive) {
             Settings.doIce = false;
             Settings.doTides = false;
             Settings.doFloods = false;
             Settings.leaveStuff = false;
-            Settings.allowPawnsToGetWet = false;
             Settings.allowPawnsSwim = false;
         }
 
         RimBrellasActive = ModLister.GetActiveModWithIdentifier("battlemage64.Rimbrellas", true) != null;
 
-        if (!RimBrellasActive)
-        {
+        if (!RimBrellasActive) {
             return;
         }
 
         HasUmbrella = AccessTools.Method("Umbrellas.UmbrellaDefMethods:HasUmbrella");
-        if (HasUmbrella != null)
-        {
+        if (HasUmbrella != null) {
             return;
         }
 

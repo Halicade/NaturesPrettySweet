@@ -11,70 +11,57 @@ public class Hediff_Wetness : HediffWithComps
     private int timeDrying;
     private float wetnessLevel;
 
-    public override void ExposeData()
-    {
+    public override void ExposeData() {
         base.ExposeData();
         Scribe_Values.Look(ref wetnessLevel, "wetnessLevel");
         Scribe_Values.Look(ref timeDrying, "timeDrying");
     }
 
-    public override void Tick()
-    {
+    public override void Tick() {
         base.Tick();
         position = pawn.Position;
 
-        if (!position.IsValid)
-        {
+        if (!position.IsValid) {
             return;
         }
 
         map = pawn.MapHeld;
-        if (map == null || !position.InBounds(map))
-        {
+        if (map == null || !position.InBounds(map)) {
             return;
         }
 
         var wetness = wetnessRate();
-        if (wetness > 0)
-        {
+        if (wetness > 0) {
             Severity += wetness / 1000;
             wetnessLevel += wetness;
-            if (wetnessLevel < 0)
-            {
+            if (wetnessLevel < 0) {
                 wetnessLevel = 0;
             }
 
-            if (!(Severity > .62) || ageTicks % 1000 != 0)
-            {
+            if (!(Severity > .62) || ageTicks % 1000 != 0) {
                 return;
             }
 
             FilthMaker.TryMakeFilth(position, map, ThingDefOf.TKKN_FilthPuddle);
             Severity -= .3f;
         }
-        else
-        {
+        else {
             Severity += wetness / 1000;
         }
     }
 
-    private float wetnessRate()
-    {
+    private float wetnessRate() {
         var rate = 0f;
         //check if the pawn is in water
         var terrain = position.GetTerrain(map);
-        if (terrain != null && TerrainTagUtil.TKKN_Wet.Contains(terrain))
-        {
+        if (terrain != null && TerrainTagUtil.TKKN_Wet.Contains(terrain)) {
             //deep water gets them soaked.
-            if (TerrainTagUtil.TKKN_Swim.Contains(terrain))
-            {
-                if (Severity < .65f)
-                {
+            if (TerrainTagUtil.TKKN_Swim.Contains(terrain)) {
+                if (Severity < .65f) {
                     Severity = .65f;
                 }
 
-                rate = .3f;
-                return rate;
+                return 0.3f;
             }
 
             rate = .05f;
@@ -82,35 +69,31 @@ public class Hediff_Wetness : HediffWithComps
 
 
         //check if the pawn is wet from the weather
-        var roofed = map.roofGrid.Roofed(position);
-        if (!roofed)
-        {
-            if (map.weatherManager.curWeather.rainRate > .001f)
-            {
-                rate = map.weatherManager.curWeather.rainRate / 10;
+        if (!map.roofGrid.Roofed(position)) {
+            var weatherManager = map.weatherManager.curWeather;
+            if (weatherManager.rainRate > .001f) {
+                rate = weatherManager.rainRate / 10;
             }
-            else if (map.weatherManager.curWeather.snowRate > .001f)
-            {
-                rate = map.weatherManager.curWeather.snowRate / 100;
+            else if (weatherManager.snowRate > .001f) {
+                rate = weatherManager.snowRate / 100;
             }
         }
 
-        if (rate == 0f)
-        {
-            timeDrying++;
-        }
-        else
-        {
+        if (rate != 0f) {
             timeDrying = 0;
             return rate;
         }
 
+        timeDrying++;
+
         //dry the pawn.
-        if (pawn.AmbientTemperature > 0)
-        {
-            rate -= pawn.AmbientTemperature / 200;
+        var ambientTemp = pawn.AmbientTemperature;
+        if (ambientTemp > 0) {
+            rate -= ambientTemp / 200;
         }
 
+        /*
+         This is such a niche case it really isn't worth calculating
         //check if the pawn is near a heat source
         foreach (var c in GenAdj.CellsAdjacentCardinal(pawn))
         {
@@ -128,10 +111,7 @@ public class Hediff_Wetness : HediffWithComps
                     rate -= heater.Props.heatPerSecond / 5000;
                 }
             }
-        }
-
-        rate -= (float)timeDrying / 250;
-//			Log.Warning(rate.ToString());
-        return rate;
+        }*/
+        return rate - (float)timeDrying / 250;
     }
 }

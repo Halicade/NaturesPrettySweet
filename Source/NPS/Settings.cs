@@ -21,18 +21,15 @@ public class Settings : ModSettings
     public static bool doTides = true;
     public static bool showDevReadout;
 
-    private static bool showUpdateNotes = true;
+    //private static bool showUpdateNotes = true;
     public static bool doFloods = true;
-    public static float weatherCellUpdateSpeed = 0.0006f;
+    public static float weatherCellUpdateSpeed = 0.0002f;
     public static bool doIce = showCold;
     public static bool doSprings = true;
 
-    static Settings()
-    {
-    }
+    static Settings() { }
 
-    public static void DoWindowContents(Rect inRect)
-    {
+    public static void DoWindowContents(Rect inRect) {
         var list = new Listing_Standard(GameFont.Small) { ColumnWidth = inRect.width / 2 };
         list.Begin(inRect);
 
@@ -41,8 +38,7 @@ public class Settings : ModSettings
             "TKKN_doWeather_title".Translate(),
             ref doWeather,
             "TKKN_doWeather_text".Translate());
-        if (doWeather)
-        {
+        if (doWeather) {
             weatherCellUpdateSpeed = list.SliderLabeled(
                 "TKKN_weatherCellUpdateSpeed_title".Translate(weatherCellUpdateSpeed * 10000),
                 weatherCellUpdateSpeed, 0.0001f, 0.002f, 0.5f, "TKKN_weatherCellUpdateSpeed_text".Translate());
@@ -56,8 +52,7 @@ public class Settings : ModSettings
             "TKKN_showCold_title".Translate(),
             ref showCold,
             "TKKN_showCold_text".Translate());
-        if (showCold && !ModsConfig.OdysseyActive)
-        {
+        if (showCold && !ModsConfig.OdysseyActive) {
             list.CheckboxLabeled(
                 "TKKN_doIce_title".Translate(),
                 ref doIce,
@@ -68,8 +63,7 @@ public class Settings : ModSettings
             "TKKN_showRain_title".Translate(),
             ref showRain,
             "TKKN_showRain_text".Translate());
-        if (!ModsConfig.OdysseyActive)
-        {
+        if (!ModsConfig.OdysseyActive) {
             list.CheckboxLabeled(
                 "TKKN_doTides_title".Translate(),
                 ref doTides,
@@ -111,12 +105,11 @@ public class Settings : ModSettings
             "TKKN_allowPlantEffects_title".Translate(),
             ref allowPlantEffects,
             "TKKN_allowPlantEffects_text".Translate());
-        if (!ModsConfig.OdysseyActive)
-        {
-            list.CheckboxLabeled(
-                "TKKN_allowPawnsToGetWet_title".Translate(),
-                ref allowPawnsToGetWet,
-                "TKKN_allowPawnsToGetWet_text".Translate());
+        list.CheckboxLabeled(
+            "TKKN_allowPawnsToGetWet_title".Translate(),
+            ref allowPawnsToGetWet,
+            "TKKN_allowPawnsToGetWet_text".Translate());
+        if (!ModsConfig.OdysseyActive) {
             list.CheckboxLabeled(
                 "TKKN_allowPawnsSwim_title".Translate(),
                 ref allowPawnsSwim,
@@ -127,10 +120,7 @@ public class Settings : ModSettings
         //Development stuff
         list.Gap(30f);
 
-        list.CheckboxLabeled(
-            "Show Update Notes?",
-            ref showUpdateNotes,
-            "");
+        //list.CheckboxLabeled("Show Update Notes?", ref showUpdateNotes, "");
         list.Gap(30f);
         list.CheckboxLabeled(
             "TKKN_regen_title".Translate(),
@@ -142,8 +132,7 @@ public class Settings : ModSettings
             ref showDevReadout,
             "TKKN_showTempReadout_text".Translate());
 
-        if (Controller.currentVersion != null)
-        {
+        if (Controller.currentVersion != null) {
             list.Gap();
             GUI.contentColor = Color.gray;
             list.Label("TKKN_CurrentModVersion_text".Translate(Controller.currentVersion));
@@ -153,8 +142,7 @@ public class Settings : ModSettings
         list.End();
     }
 
-    public override void ExposeData()
-    {
+    public override void ExposeData() {
         base.ExposeData();
 
         Scribe_Values.Look(ref doWeather, "doWeather", true, true);
@@ -175,6 +163,6 @@ public class Settings : ModSettings
         Scribe_Values.Look(ref spawnLavaOnlyInBiome, "spawnLavaOnlyInBiome", false, true);
         Scribe_Values.Look(ref allowLavaEruption, "allowLavaEruption", true, true);
         Scribe_Values.Look(ref regenCells, "regenCells", false, true);
-        Scribe_Values.Look(ref showUpdateNotes, "showUpdateNotes", true, true);
+        //Scribe_Values.Look(ref showUpdateNotes, "showUpdateNotes", true, true);
     }
 }

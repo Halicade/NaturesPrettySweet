@@ -69,7 +69,6 @@ public class cellData : IExposable
             baseTerrain = thisTerrain;
         }
         else if (baseTerrain != thisTerrain && !TerrainTagUtil.TerrainHasModExtension.Contains(baseTerrain)) {
-            //TODO replace hasModExtension with Hashes
             baseTerrain = thisTerrain;
         }
 

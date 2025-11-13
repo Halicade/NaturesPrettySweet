@@ -39,8 +39,7 @@ public class cellData : IExposable
     public TerrainDef currentTerrain => location.GetTerrain(map);
 
 
-    public void ExposeData()
-    {
+    public void ExposeData() {
         Scribe_Values.Look(ref tideLevel, "tideLevel", tideLevel, true);
         Scribe_Collections.Look(ref floodLevel, "floodLevel", LookMode.Value);
         Scribe_Values.Look(ref howPacked, "howPacked", howPacked, true);
@@ -62,26 +61,23 @@ public class cellData : IExposable
         Scribe_Defs.Look(ref originalTerrain, "originalTerrain");
     }
 
-    public void setTerrain(TerrainType type)
-    {
+    public void setTerrain(TerrainType type) {
         var thisTerrain = currentTerrain;
         //Make sure it hasn't been made a floor or a floor hasn't been removed.
-        if (!thisTerrain.HasModExtension<TerrainWeatherReactions>())
-        {
+
+        if (!TerrainTagUtil.TerrainHasModExtension.Contains(thisTerrain)) {
             baseTerrain = thisTerrain;
         }
-        else if (baseTerrain != thisTerrain && !baseTerrain.HasModExtension<TerrainWeatherReactions>())
-        {
+        else if (baseTerrain != thisTerrain && !TerrainTagUtil.TerrainHasModExtension.Contains(baseTerrain)) {
+            //TODO replace hasModExtension with Hashes
             baseTerrain = thisTerrain;
         }
 
-        if (weather == null)
-        {
+        if (weather == null) {
             return;
         }
 
-        switch (type)
-        {
+        switch (type) {
             //change the terrain
             case TerrainType.Frozen:
                 setFrozenTerrain(true);
@@ -109,42 +105,33 @@ public class cellData : IExposable
         overrideType = "";
     }
 
-    public void DoCellSteadyEffects()
-    {
-        if (howWetPlants < 0)
-        {
+    public void DoCellSteadyEffects() {
+        if (howWetPlants < 0) {
             howWetPlants = 0;
         }
     }
 
-    private void setWetTerrain()
-    {
-        if (!Settings.showRain)
-        {
+    private void setWetTerrain() {
+        if (!Settings.showRain) {
             return;
         }
 
         var thisTerrain = currentTerrain;
 
-        if (weather.wetTerrain != null && thisTerrain != weather.wetTerrain && howWet > weather.wetAt)
-        {
+        if (weather.wetTerrain != null && thisTerrain != weather.wetTerrain && howWet > weather.wetAt) {
             changeTerrain(weather.wetTerrain);
             isWet = true;
             rainSpawns();
         }
-        else
-        {
-            switch (howWet)
-            {
+        else {
+            switch (howWet) {
                 case 0 when thisTerrain != baseTerrain && isWet && !isFlooded:
                     changeTerrain(baseTerrain);
                     isWet = false;
                     howWet = -1;
                     break;
-                case -1 when weather.dryTerrain != null && !isFlooded:
-                {
-                    if (thisTerrain == weather.dryTerrain && baseTerrain == weather.dryTerrain)
-                    {
+                case -1 when weather.dryTerrain != null && !isFlooded: {
+                    if (thisTerrain == weather.dryTerrain && baseTerrain == weather.dryTerrain) {
                         return;
                     }
 
@@ -157,27 +144,21 @@ public class cellData : IExposable
         }
     }
 
-    private void setFrozenTerrain(bool frozen)
-    {
-        if (frozen)
-        {
-            if (!(temperature < 0) || !(temperature < weather.freezeAt) || weather.freezeTerrain == null)
-            {
+    private void setFrozenTerrain(bool frozen) {
+        if (frozen) {
+            if (!(temperature < 0) || !(temperature < weather.freezeAt) || weather.freezeTerrain == null) {
                 return;
             }
 
             var thisTerrain = currentTerrain;
 
-            if (isFlooded && weather.freezeTerrain != thisTerrain)
-            {
-                if (thisTerrain.HasModExtension<TerrainWeatherReactions>())
-                {
+            if (isFlooded && weather.freezeTerrain != thisTerrain) {
+                if (TerrainTagUtil.TerrainHasModExtension.Contains(thisTerrain)) {
                     var curWeather = thisTerrain.GetModExtension<TerrainWeatherReactions>();
                     changeTerrain(curWeather.freezeTerrain);
                 }
             }
-            else if (!isFrozen)
-            {
+            else if (!isFrozen) {
                 changeTerrain(weather.freezeTerrain);
             }
 
@@ -186,8 +167,7 @@ public class cellData : IExposable
             return;
         }
 
-        if (isThawed)
-        {
+        if (isThawed) {
             return;
         }
 
@@ -196,90 +176,73 @@ public class cellData : IExposable
         changeTerrain(baseTerrain);
     }
 
-    private void setFloodedTerrain()
-    {
-        if (!Settings.showRain || !Settings.doTides)
-        {
+    private void setFloodedTerrain() {
+        if (!Settings.showRain || !Settings.doTides) {
             return;
         }
 
         var thisTerrain = currentTerrain;
         var floodTerrain = weather.floodTerrain;
-        if (isFrozen)
-        {
+        if (isFrozen) {
             var currWeather = thisTerrain.GetModExtension<TerrainWeatherReactions>();
             var frozenTerrain = currWeather.freezeTerrain;
-            if (frozenTerrain != null)
-            {
+            if (frozenTerrain != null) {
                 changeTerrain(frozenTerrain);
             }
         }
-        else if (overrideType == "dry")
-        {
+        else if (overrideType == "dry") {
             howWetPlants = 100;
             floodTerrain = baseTerrain;
             changeTerrain(floodTerrain);
         }
-        else if (floodTerrain != null && thisTerrain != floodTerrain)
-        {
+        else if (floodTerrain != null && thisTerrain != floodTerrain) {
             changeTerrain(floodTerrain);
 
             isFlooded = true;
-            if (!floodTerrain.IsWater)
-            {
+            if (!floodTerrain.IsWater) {
                 isFlooded = false;
                 howWetPlants = 100;
                 leaveLoot();
             }
-            else
-            {
+            else {
                 clearLoot();
             }
         }
     }
 
-    private void setTidesTerrain()
-    {
-        if (!Settings.doTides)
-        {
+    private void setTidesTerrain() {
+        if (!Settings.doTides) {
             return;
         }
 
         var thisTerrain = currentTerrain;
-        switch (overrideType)
-        {
+        switch (overrideType) {
             case "dry":
                 changeTerrain(baseTerrain);
                 break;
             case "wet":
                 changeTerrain(weather.tideTerrain);
                 break;
-            default:
-            {
+            default: {
                 changeTerrain(thisTerrain != baseTerrain ? baseTerrain : weather.tideTerrain);
                 break;
             }
         }
 
-        if (weather.tideTerrain == null)
-        {
+        if (weather.tideTerrain == null) {
             return;
         }
 
-        if (TerrainTagUtil.TKKN_Wet.Contains(thisTerrain))
-        {
+        if (TerrainTagUtil.TKKN_Wet.Contains(thisTerrain)) {
             clearLoot();
         }
-        else
-        {
+        else {
             leaveLoot();
         }
     }
 
-    public void doFrostOverlay(string action)
-    {
-        if (!location.InBounds(map))
-        {
+    public void doFrostOverlay(string action) {
+        if (!location.InBounds(map)) {
             return;
         }
 
@@ -287,13 +250,11 @@ public class cellData : IExposable
         var overlayIce = (from t in location.GetThingList(map)
             where t.def == ThingDefOf.TKKN_IceOverlay
             select t).FirstOrDefault();
-        if (overlayIce == null)
-        {
+        if (overlayIce == null) {
             return;
         }
 
-        if (isFrozen)
-        {
+        if (isFrozen) {
             isMelt = true;
         }
 
@@ -301,80 +262,65 @@ public class cellData : IExposable
     }
 
 
-    public void unpack()
-    {
+    public void unpack() {
         var thisTerrain = currentTerrain;
-        if (!Settings.doDirtPath)
-        {
-            if (thisTerrain == TerrainDefOf.TKKN_DirtPath)
-            {
+        if (!Settings.doDirtPath) {
+            if (thisTerrain == TerrainDefOf.TKKN_DirtPath) {
                 changeTerrain(RimWorld.TerrainDefOf.Soil);
             }
 
-            if (thisTerrain == TerrainDefOf.TKKN_SandPath)
-            {
+            if (thisTerrain == TerrainDefOf.TKKN_SandPath) {
                 changeTerrain(RimWorld.TerrainDefOf.Sand);
             }
 
             return;
         }
 
-        if (howPacked > packAt)
-        {
+        if (howPacked > packAt) {
             howPacked = packAt;
         }
 
-        if (howPacked > 0)
-        {
+        if (howPacked > 0) {
             howPacked--;
         }
-        else if (howPacked <= packAt / 2 && thisTerrain == TerrainDefOf.TKKN_DirtPath)
-        {
+        else if (howPacked <= packAt / 2 && thisTerrain == TerrainDefOf.TKKN_DirtPath) {
             changeTerrain(RimWorld.TerrainDefOf.Soil);
         }
-        else if (howPacked <= packAt / 2 && thisTerrain == TerrainDefOf.TKKN_SandPath)
-        {
+        else if (howPacked <= packAt / 2 && thisTerrain == TerrainDefOf.TKKN_SandPath) {
             changeTerrain(RimWorld.TerrainDefOf.Sand);
         }
     }
 
-    public void doPack()
-    {
+    public void doPack() {
         var thisTerrain = currentTerrain;
         if (map.zoneManager.ZoneAt(location) is Zone_Growing &&
             thisTerrain != TerrainDefOf.TKKN_DirtPath &&
-            thisTerrain != TerrainDefOf.TKKN_SandPath)
-        {
+            thisTerrain != TerrainDefOf.TKKN_SandPath) {
             return;
         }
 
         //don't pack if there's a growing zone.
         if (baseTerrain == RimWorld.TerrainDefOf.Soil
             || baseTerrain == RimWorld.TerrainDefOf.Sand
-            || baseTerrain.texturePath == "Terrain/Surfaces/RoughStone")
-        {
+            || baseTerrain.texturePath == "Terrain/Surfaces/RoughStone") {
             howPacked++;
         }
 
-        if (howPacked > packAt)
-        {
-            if (baseTerrain == RimWorld.TerrainDefOf.Soil)
-            {
+        if (howPacked > packAt) {
+            if (baseTerrain == RimWorld.TerrainDefOf.Soil) {
                 var packed = TerrainDefOf.TKKN_DirtPath;
                 changeTerrain(packed);
                 baseTerrain = packed;
             }
 
-            if (baseTerrain == RimWorld.TerrainDefOf.Sand)
-            {
+            if (baseTerrain == RimWorld.TerrainDefOf.Sand) {
                 var packed = TerrainDefOf.TKKN_SandPath;
                 changeTerrain(packed);
                 baseTerrain = packed;
             }
         }
 
-        if (baseTerrain.texturePath != "Terrain/Surfaces/RoughStone" || howPacked <= packAt * 10)
-        {
+        if (baseTerrain.texturePath != "Terrain/Surfaces/RoughStone" || howPacked <= packAt * 10) {
             return;
         }
 
@@ -385,61 +331,46 @@ public class cellData : IExposable
         baseTerrain = terrain;
     }
 
-    private void changeTerrain(TerrainDef terrain)
-    {
-        if (terrain != null && terrain != currentTerrain)
-        {
+    private void changeTerrain(TerrainDef terrain) {
+        if (terrain != null && terrain != currentTerrain) {
             map.terrainGrid.SetTerrain(location, terrain);
         }
     }
 
-    private void rainSpawns()
-    {
+    private void rainSpawns() {
         //spawn special things when it rains.
-        if (Rand.Value < .009)
-        {
-            if (baseTerrain == TerrainDefOf.TKKN_Lava)
-            {
+        if (Rand.Value < .009) {
+            if (baseTerrain == TerrainDefOf.TKKN_Lava) {
                 GenSpawn.Spawn(ThingMaker.MakeThing(ThingDefOf.TKKN_LavaRock), location, map);
             }
-            else if (baseTerrain == TerrainDefOf.TKKN_SandBeachWetSalt)
-            {
+            else if (baseTerrain == TerrainDefOf.TKKN_SandBeachWetSalt) {
                 GenSpawn.Spawn(ThingMaker.MakeThing(ThingDefOf.TKKN_crab), location, map);
             }
-            else
-            {
-                if (TerrainTagUtil.TKKN_Wet.Contains(currentTerrain))
-                {
+            else {
+                if (TerrainTagUtil.TKKN_Wet.Contains(currentTerrain)) {
                     FleckMaker.WaterSplash(location.ToVector3(), map, 1, 1);
                 }
             }
         }
-        else if (Rand.Value < .04 && TerrainTagUtil.Lava.Contains(currentTerrain))
-        {
+        else if (Rand.Value < .04 && TerrainTagUtil.Lava.Contains(currentTerrain)) {
             FleckMaker.ThrowSmoke(location.ToVector3(), map, 5);
         }
     }
 
-    private void leaveLoot()
-    {
-        if (!Settings.leaveStuff)
-        {
+    private void leaveLoot() {
+        if (!Settings.leaveStuff) {
             return;
         }
 
         var leaveSomething = Rand.Value;
-        switch (leaveSomething)
-        {
-            case < 0.001f:
-            {
+        switch (leaveSomething) {
+            case < 0.001f: {
                 var leaveWhat = Rand.Value;
                 var allowed = new List<string>();
-                switch (leaveWhat)
-                {
+                switch (leaveWhat) {
                     case > 0.1f:
                         //leave trash;
-                        allowed =
-                        [
+                        allowed = [
                             "Filth_Slime",
                             "TKKN_FilthShells",
                             "TKKN_FilthPuddle",
@@ -453,8 +384,7 @@ public class cellData : IExposable
                         break;
                     case > 0.05f:
                         //leave resource;
-                        allowed =
-                        [
+                        allowed = [
                             "Steel",
                             "Cloth",
                             "WoodLog",
@@ -470,11 +400,9 @@ public class cellData : IExposable
                             "Pemmican"
                         ];
                         break;
-                    case > 0.03f:
-                    {
+                    case > 0.03f: {
                         // leave treasure.
-                        allowed =
-                        [
+                        allowed = [
                             "Silver",
                             "Plasteel",
                             "Gold",
@@ -491,11 +419,9 @@ public class cellData : IExposable
                         Messages.Message(text, MessageTypeDefOf.NeutralEvent);
                         break;
                     }
-                    case > 0.02f:
-                    {
+                    case > 0.02f: {
                         //leave ultrarare
-                        allowed =
-                        [
+                        allowed = [
                             "AIPersonaCore",
                             "MechSerumHealer",
                             "MechSerumNeurotrainer",
@@ -509,45 +435,38 @@ public class cellData : IExposable
                     }
                 }
 
-                if (allowed.Count <= 0)
-                {
+                if (allowed.Count <= 0) {
                     return;
                 }
 
                 var leaveWhat2 = Rand.Range(1, allowed.Count) - 1;
                 var loot = ThingMaker.MakeThing(ThingDef.Named(allowed[leaveWhat2]));
-                if (loot != null)
-                {
+                if (loot != null) {
                     GenSpawn.Spawn(loot, location, map);
                 }
 
                 break;
             }
             //grow water and shore plants:
-            case < 0.002f when location.GetPlant(map) == null && location.GetCover(map) == null:
-            {
+            case < 0.002f when location.GetPlant(map) == null && location.GetCover(map) == null: {
                 var plants = map.Biome.AllWildPlants;
-                for (var i = plants.Count - 1; i >= 0; i--)
-                {
+                for (var i = plants.Count - 1; i >= 0; i--) {
                     //spawn some water plants:
                     var plantDef = plants[i];
-                    if (!plantDef.HasModExtension<ThingWeatherReaction>())
-                    {
+                    if (!plantDef.HasModExtension<ThingWeatherReaction>()) {
                         continue;
                     }
 
                     //_ = currentTerrain;
                     var thingWeather = plantDef.GetModExtension<ThingWeatherReaction>();
                     var okTerrains = thingWeather.allowedTerrains;
-                    if (okTerrains == null || !okTerrains.Contains<TerrainDef>(currentTerrain))
-                    {
+                    if (okTerrains == null || !okTerrains.Contains<TerrainDef>(currentTerrain)) {
                         continue;
                     }
 
                     var plant = (Plant)ThingMaker.MakeThing(plantDef);
                     plant.Growth = Rand.Range(0.07f, 1f);
-                    if (plant.def.plant.LimitedLifespan)
-                    {
+                    if (plant.def.plant.LimitedLifespan) {
                         plant.Age = Rand.Range(0, Mathf.Max(plant.def.plant.LifespanTicks - 50, 0));
                     }
 
@@ -560,16 +479,13 @@ public class cellData : IExposable
         }
     }
 
-    private void clearLoot()
-    {
-        if (!location.IsValid)
-        {
+    private void clearLoot() {
+        if (!location.IsValid) {
             return;
         }
 
         var things = location.GetThingList(map);
-        var remove = new List<string>
-        {
+        var remove = new List<string> {
             "FilthSlime",
             "TKKN_FilthShells",
             "TKKN_FilthPuddle",
@@ -608,36 +524,30 @@ public class cellData : IExposable
             "ThrumboHorn"
         };
 
-        for (var i = things.Count - 1; i >= 0; i--)
-        {
-            if (remove.Contains(things[i].def.defName))
-            {
+        for (var i = things.Count - 1; i >= 0; i--) {
+            if (remove.Contains(things[i].def.defName)) {
                 things[i].Destroy();
                 continue;
             }
 
             //remove any plants that might've grown:
 
-            if (things[i] is not Plant plant)
-            {
+            if (things[i] is not Plant plant) {
                 continue;
             }
 
-            if (plant.def.HasModExtension<ThingWeatherReaction>())
-            {
+            if (plant.def.HasModExtension<ThingWeatherReaction>()) {
                 //_ = currentTerrain;
                 var thingWeather = plant.def.GetModExtension<ThingWeatherReaction>();
                 var okTerrains = thingWeather.allowedTerrains;
-                if (okTerrains.Contains<TerrainDef>(currentTerrain))
-                {
+                if (okTerrains.Contains<TerrainDef>(currentTerrain)) {
                     continue;
                 }
 
                 Log.Warning($"Destroying {plant.def.defName} at {location} on {currentTerrain.defName}");
                 plant.Destroy();
             }
-            else
-            {
+            else {
                 plant.Destroy();
             }
         }

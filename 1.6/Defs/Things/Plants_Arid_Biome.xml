@@ -15,6 +15,7 @@
     <selectable>true</selectable>
     <pathCost>12</pathCost>
     <ingestible />
+      <neverMultiSelect>false</neverMultiSelect>
     <plant>
       <fertilitySensitivity>.7</fertilitySensitivity>
       <dieIfLeafless>true</dieIfLeafless>

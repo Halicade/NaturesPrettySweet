@@ -85,6 +85,7 @@
         <min>1</min>
         <max>3</max>
       </mineableScatterLumpSizeRange>
+        <veinMineable>true</veinMineable>
     </building>
   </ThingDef>
   <ThingDef ParentName="ResourceBase">
@@ -156,6 +157,7 @@
         <min>1</min>
         <max>3</max>
       </mineableScatterLumpSizeRange>
+        <veinMineable>true</veinMineable>
     </building>
   </ThingDef>
   <ThingDef ParentName="ResourceBase">
@@ -323,7 +325,7 @@
   <ThingDef ParentName="PlantFoodRawBase">
     <defName>TKKN_WildGreens</defName>
     <label>wild greens</label>
-    <description>Bitter, leavy greens and flowers harvested from wild plants.</description>
+      <description>Bitter, leafy greens and flowers harvested from wild plants.</description>
     <graphicData>
       <texPath>TKKN_NPS/Things/Food/WildGreens</texPath>
       <graphicClass>Graphic_StackCount</graphicClass>

@@ -188,7 +188,7 @@
     </statBases>
     <generatedFilth>Filth_Dirt</generatedFilth>
     <filthAcceptanceMask />
-    <fertility>1.8</fertility>
+      <fertility>1.25</fertility>
     <takeFootprints>True</takeFootprints>
     <avoidWander>True</avoidWander>
     <driesTo>Soil</driesTo>
@@ -217,7 +217,7 @@
     </statBases>
     <generatedFilth>Filth_Dirt</generatedFilth>
     <filthAcceptanceMask />
-    <fertility>2.2</fertility>
+      <fertility>1.5</fertility>
     <takeFootprints>True</takeFootprints>
     <avoidWander>True</avoidWander>
     <driesTo>SoilRich</driesTo>
@@ -247,7 +247,7 @@
     </tags>
     <generatedFilth>Filth_Sand</generatedFilth>
     <filthAcceptanceMask />
-    <fertility>2</fertility>
+      <fertility>.10</fertility>
     <takeFootprints>True</takeFootprints>
     <avoidWander>True</avoidWander>
     <driesTo>Sand</driesTo>
@@ -339,7 +339,7 @@
     </affordances>
     <generatedFilth>Filth_Dirt</generatedFilth>
     <filthAcceptanceMask />
-    <fertility>1.8</fertility>
+      <fertility>1.35</fertility>
     <takeFootprints>True</takeFootprints>
     <avoidWander>true</avoidWander>
     <driesTo>MossyTerrain</driesTo>
@@ -369,7 +369,7 @@
     </affordances>
     <generatedFilth>Filth_Dirt</generatedFilth>
     <filthAcceptanceMask />
-    <fertility>2</fertility>
+      <fertility>1.3</fertility>
     <takeFootprints>True</takeFootprints>
     <avoidWander>true</avoidWander>
     <driesTo>SoilRich</driesTo>

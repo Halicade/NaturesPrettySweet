@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Patch>
   <Operation Class="PatchOperationAdd">
-    <xpath>/Defs/IncidentDef[defName = "HerdMigration"]/allowedBiomes</xpath>
+      <xpath>Defs/IncidentDef[defName = "HerdMigration"]/allowedBiomes</xpath>
     <value>
       <li>TKKN_Grasslands</li>
       <li>TKKN_Oasis</li>

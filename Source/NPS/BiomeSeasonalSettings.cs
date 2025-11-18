@@ -10,7 +10,7 @@ public class BiomeSeasonalSettings : DefModExtension
     public List<ThingDef> bloomPlants;
     public bool diseaseCacheUpdated;
     public Season lastChanged;
-    public Quadrum lastChangedQ;
+    public Quadrum lastChangedQ = Quadrum.Undefined;
 
     //spring settings
     public int maxSprings;
@@ -52,7 +52,8 @@ public class BiomeSeasonalSettings : DefModExtension
             winterWeathers.NullOrEmpty()) {
             return;
         }
-
+        // Quadrum is used if we're on a permanent summer/winter map.
+        // This helps give the illusion of changing seasons
 
         switch (season) {
             case Season.Spring:
@@ -67,6 +68,9 @@ public class BiomeSeasonalSettings : DefModExtension
             case Season.Winter:
                 map.Biome.baseWeatherCommonalities = winterWeathers;
                 break;
+            case Season.Undefined:
+            case Season.PermanentSummer:
+            case Season.PermanentWinter:
             default: {
                 switch (quadrum) {
                     case Quadrum.Aprimay:
@@ -80,6 +84,10 @@ public class BiomeSeasonalSettings : DefModExtension
                         break;
                     case Quadrum.Septober:
                         map.Biome.baseWeatherCommonalities = summerWeathers;
+                        break;
+                    case Quadrum.Undefined:
+                        Log.ErrorOnce("Could not find an appropriate weather settings for biome " + map.Biome,
+                            map.Biome.GetHashCode());
                         break;
                 }
 

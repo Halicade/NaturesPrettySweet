@@ -448,18 +448,16 @@ public class cellData : IExposable
             }
             //grow water and shore plants:
             case < 0.002f when location.GetPlant(map) == null && location.GetCover(map) == null: {
-                var plants = map.Biome.AllWildPlants;
+                List<ThingDef> plants = map.Biome.AllWildPlants;
                 for (var i = plants.Count - 1; i >= 0; i--) {
                     //spawn some water plants:
                     var plantDef = plants[i];
-                    if (!plantDef.HasModExtension<ThingWeatherReaction>()) {
+                    if (!PlantReactionUtil.AllowedTerrains.TryGetValue(plantDef,
+                            out List<TerrainDef> allowedTerrains)) {
                         continue;
                     }
 
-                    //_ = currentTerrain;
-                    var thingWeather = plantDef.GetModExtension<ThingWeatherReaction>();
-                    var okTerrains = thingWeather.allowedTerrains;
-                    if (okTerrains == null || !okTerrains.Contains<TerrainDef>(currentTerrain)) {
+                    if (!allowedTerrains.Contains<TerrainDef>(currentTerrain)) {
                         continue;
                     }
 
@@ -483,7 +481,7 @@ public class cellData : IExposable
             return;
         }
 
-        var things = location.GetThingList(map);
+        List<Thing> things = location.GetThingList(map);
         var remove = new List<string> {
             "FilthSlime",
             "TKKN_FilthShells",
@@ -535,11 +533,8 @@ public class cellData : IExposable
                 continue;
             }
 
-            if (plant.def.HasModExtension<ThingWeatherReaction>()) {
-                //_ = currentTerrain;
-                var thingWeather = plant.def.GetModExtension<ThingWeatherReaction>();
-                var okTerrains = thingWeather.allowedTerrains;
-                if (okTerrains.Contains<TerrainDef>(currentTerrain)) {
+            if (PlantReactionUtil.AllowedTerrains.TryGetValue(plant.def, out var thingWeather)) {
+                if (thingWeather.Contains(currentTerrain)) {
                     continue;
                 }
 

@@ -11,12 +11,12 @@ public static class TerrainTagUtil
     public static readonly HashSet<TerrainDef> TKKN_SwimOrLava = [];
     public static readonly HashSet<TerrainDef> TerrainHasModExtension = [];
     public static readonly HashSet<TerrainDef> HoldsFrost = [];
-    public static Dictionary<TerrainDef, float> AmbientTempReaction = [];
-    public static Dictionary<TerrainDef, TerrainDef> dryTerrain = [];
+    public static readonly Dictionary<TerrainDef, float> AmbientTempReaction = [];
+    public static readonly Dictionary<TerrainDef, TerrainDef> DryTerrain = [];
 
 
-    public static void intializeTerrainTags() {
-        var allTerrains = DefDatabase<TerrainDef>.AllDefsListForReading;
+    public static void IntializeTerrainTags() {
+        List<TerrainDef> allTerrains = DefDatabase<TerrainDef>.AllDefsListForReading;
 
         foreach (var terrain in allTerrains) {
             if (terrain.HasTag("TKKN_Wet")) {
@@ -46,7 +46,7 @@ public static class TerrainTagUtil
                 }
 
                 if (weatherExtension.dryTerrain != null) {
-                    dryTerrain.Add(terrain, weatherExtension.dryTerrain);
+                    DryTerrain.Add(terrain, weatherExtension.dryTerrain);
                 }
             }
         }

@@ -12,7 +12,10 @@ internal class HarmonyMain
 
     static HarmonyMain() {
         new Harmony("com.github.tkkntkkn.Natures-Pretty-Sweet").PatchAll(Assembly.GetExecutingAssembly());
-        TerrainTagUtil.intializeTerrainTags();
+        TerrainTagUtil.IntializeTerrainTags();
+        PlantReactionUtil.InitializePlantGraphics();
+        BiomeUtil.InitializeDefaults();
+
         if (ModsConfig.OdysseyActive) {
             Settings.doIce = false;
             Settings.doTides = false;

@@ -15,134 +15,77 @@ public static class Plant_Graphic
     private static Vector2 location;
     private static Season season;
 
-    public static void Postfix(Plant __instance, ref Graphic __result)
-    {
-        var mod = __instance.def.GetModExtension<ThingWeatherReaction>();
-        if (mod == null)
-        {
-            return;
-        }
-
-        if (cachedMap != __instance.Map)
-        {
+    public static void Postfix(Plant __instance, ref Graphic __result) {
+        if (cachedMap != __instance.Map) {
             cachedMap = __instance.Map;
             watcher = cachedMap.GetComponent<Watcher>();
         }
 
-        var id = __instance.def.defName;
+        if (watcher == null) {
+            return;
+        }
 
-        var path = "";
+        if (!PlantReactionUtil.HasGraphic.TryGetValue(__instance.def, out ThingWeatherReaction graphics)) {
+            return;
+        }
 
 
         //get flowering or drought graphic if it's over 70
-        if (__instance.AmbientTemperature > 21)
-        {
-            if (watcher.cellWeatherAffects.TryGetValue(__instance.Position, out var cell))
-            {
-                if (cachedTicks != Find.TickManager.TicksAbs)
-                {
+        if (__instance.AmbientTemperature > 21) {
+            if (watcher.cellWeatherAffects.TryGetValue(__instance.Position, out var cell)) {
+                if (cachedTicks != Find.TickManager.TicksAbs) {
                     cachedTicks = Find.TickManager.TicksAbs;
                     location = Find.WorldGrid.LongLatOf(__instance.MapHeld.Tile);
                     season = GenDate.Season(Find.TickManager.TicksAbs, location);
                 }
 
-                if (!string.IsNullOrEmpty(mod.floweringGraphicPath) &&
-                    (cell.howWetPlants > 60 && cachedMap.weatherManager.RainRate <= .001f || season == Season.Spring))
-                {
-                    id += "flowering";
-                    path = mod.floweringGraphicPath;
+                if (cell.howWetPlants > 60 && cachedMap.weatherManager.RainRate <= .001f || season == Season.Spring) {
+                    if (!graphics.floweringGraphicPath.NullOrEmpty()) {
+                        __result = graphics.floweringGraphic;
+                        return;
+                    }
                 }
 
-                if (!string.IsNullOrEmpty(mod.droughtGraphicPath) && cell.howWetPlants < 20)
-                {
-                    id += "drought";
-                    path = mod.droughtGraphicPath;
+                if (cell.howWetPlants < 20) {
+                    if (!graphics.droughtGraphicPath.NullOrEmpty()) {
+                        __result = graphics.droughtGraphic;
+                        return;
+                    }
                 }
-                else if (__instance.def.plant.leaflessGraphic != null && cell.howWetPlants < 20)
-                {
-                    id += "drought";
-                    path = __instance.def.plant.leaflessGraphic.path;
+                else if (__instance.def.plant.leaflessGraphic != null && cell.howWetPlants < 20) {
+                    __result = __instance.def.plant.leaflessGraphic;
+                    return;
                 }
             }
         }
 
-        if (path != "")
-        {
-            if (!watcher.graphicHolder.ContainsKey(id))
-            {
-                //only load the image once.
-                watcher.graphicHolder.Add(id,
-                    GraphicDatabase.Get(__instance.def.graphicData.graphicClass, path,
-                        __instance.def.graphic.Shader, __instance.def.graphicData.drawSize,
-                        __instance.def.graphicData.color, __instance.def.graphicData.colorTwo));
-            }
-
-            if (watcher.graphicHolder.TryGetValue(id, out var value))
-            {
-                __result = value;
-            }
-
-            return;
-        }
-
-        if (Settings.showCold)
-        {
+        if (Settings.showCold) {
             //get snow graphic
-            if (cachedMap.snowGrid.GetDepth(__instance.Position) >= 0.5f)
-            {
-                if (!string.IsNullOrEmpty(mod.snowGraphicPath))
-                {
-                    id += "snow";
-                    path = mod.snowGraphicPath;
-                }
-            }
-            else if (watcher.frostGridComponent.GetDepth(__instance.Position) >= 0.6f)
-            {
-                if (!string.IsNullOrEmpty(mod.frostGraphicPath))
-                {
-                    id += "frost";
-                    path = mod.frostGraphicPath;
+            if (cachedMap.snowGrid.GetDepth(__instance.Position) >= 0.5f) {
+                if (!graphics.snowGraphicPath.NullOrEmpty()) {
+                    __result = graphics.snowGraphic;
+                    return;
                 }
             }
 
-            if (string.IsNullOrEmpty(path))
-            {
-                return;
+            if (watcher.frostGridComponent.GetDepth(__instance.Position) >= 0.6f) {
+                if (!graphics.frostGraphicPath.NullOrEmpty()) {
+                    __result = graphics.frostGraphic;
+                    return;
+                }
             }
 
             //if it's leafless
-            if (__instance.def.plant.leaflessGraphic == __result)
-            {
-                id += "leafless";
-                path = path.Replace("Frosted", "Frosted/Leafless");
-                path = path.Replace("Snow", "Snow/Leafless");
-                path += "_Leafless";
-            }
-            else if (__instance.def.blockWind)
-            {
+            if (__instance.def.plant.leaflessGraphic == __result) {
+                if (!graphics.frostLeaflessGraphicPath.NullOrEmpty()) {
+                    __result = graphics.frostLeaflessGraphic;
+                    return;
+                }
+            } //TODO move this somewhere else probably
+            else if (__instance.def.blockWind) {
                 //make it so snow doesn't fall under the tree until it's leafless.
-                //	map.snowGrid.AddDepth(__instance.Position, -.05f);
+                cachedMap.snowGrid.AddDepth(__instance.Position, -.05f);
             }
-        }
-
-
-        if (string.IsNullOrEmpty(path))
-        {
-            return;
-        }
-
-        if (!watcher.graphicHolder.ContainsKey(id))
-        {
-            //only load the image once.
-            watcher.graphicHolder.Add(id,
-                GraphicDatabase.Get(__instance.def.graphicData.graphicClass, path, __instance.def.graphic.Shader,
-                    __instance.def.graphicData.drawSize, __instance.def.graphicData.color,
-                    __instance.def.graphicData.colorTwo));
-        }
-
-        if (watcher.graphicHolder.TryGetValue(id, out var value1))
-        {
-            __result = value1;
         }
     }
 }

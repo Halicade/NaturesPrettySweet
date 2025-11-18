@@ -150,7 +150,7 @@ public static class Pawn_Tick
         }
 
         //damage plants and remove snow/frost where they are. This will hopefully generate paths as pawns walk :)
-        if (watcher.checkIfCold(pawn.Position)) {
+        if (watcher.CheckIfCold(pawn.Position)) {
             watcher.frostGridComponent.AddDepth(pawn.Position, (float)-.05);
             cachedMap.snowGrid.AddDepth(pawn.Position, (float)-.05);
         }
@@ -172,7 +172,7 @@ public static class Pawn_Tick
             return;
         }
 
-        var isCold = watcher.checkIfCold(pawn.Position);
+        var isCold = watcher.CheckIfCold(pawn.Position);
         if (!isCold) {
             return;
         }

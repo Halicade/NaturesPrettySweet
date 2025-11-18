@@ -5,17 +5,18 @@ using Verse;
 namespace TKKN_NPS;
 
 //load the extra plant graphics
+/*
+ This doesn't seem to do anything
 [HarmonyPatch(typeof(PlantProperties), nameof(PlantProperties.PostLoadSpecial))]
 public static class PlantProperties_PostLoadSpecial
 {
     public static void Postfix(Plant __instance)
     {
-        if (!__instance.def.HasModExtension<ThingWeatherReaction>())
-        {
-            return;
-        }
 
         var mod = __instance.def.GetModExtension<ThingWeatherReaction>();
+        if (mod == null) {
+            return;
+        }
 
         string id;
         if (!mod.frostGraphicPath.NullOrEmpty())
@@ -58,4 +59,4 @@ public static class PlantProperties_PostLoadSpecial
                     __instance.def.graphicData.color, __instance.def.graphicData.colorTwo));
         });
     }
-}
+}*/

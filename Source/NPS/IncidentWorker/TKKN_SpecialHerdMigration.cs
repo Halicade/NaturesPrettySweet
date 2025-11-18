@@ -11,20 +11,13 @@ public class TKKN_SpecialHerdMigration : IncidentWorker
 {
     private static readonly IntRange AnimalsCount = new(50, 70);
     public Map map;
-    private BiomeSeasonalSettings mod;
+    private List<PawnKindDef> specialHerds;
 
-    protected override bool CanFireNowSub(IncidentParms parms)
-    {
+    protected override bool CanFireNowSub(IncidentParms parms) {
         var target = parms.target;
         var map1 = (Map)target;
-        if (!map1.Biome.HasModExtension<BiomeSeasonalSettings>())
-        {
-            return false;
-        }
 
-        mod = map1.Biome.GetModExtension<BiomeSeasonalSettings>();
-        if (mod.specialHerds == null)
-        {
+        if (!BiomeUtil.SpecialHerds.TryGetValue(map1.Biome, out specialHerds)) {
             return false;
         }
 
@@ -32,15 +25,12 @@ public class TKKN_SpecialHerdMigration : IncidentWorker
                tryFindStartAndEndCells(map1, out _, out _);
     }
 
-    private bool tryFindAnimalKind(int tile, out PawnKindDef animalKind)
-    {
-        var specialHerds = mod.specialHerds;
+    private bool tryFindAnimalKind(int tile, out PawnKindDef animalKind) {
         var possibleAnimals = from k in DefDatabase<PawnKindDef>.AllDefs
             where specialHerds.Contains(k) && k.RaceProps.CanDoHerdMigration &&
                   Find.World.tileTemperatures.SeasonAndOutdoorTemperatureAcceptableFor(tile, k.race)
             select k;
-        if (possibleAnimals.Any())
-        {
+        if (possibleAnimals.Any()) {
             return possibleAnimals.TryRandomElementByWeight(x => x.race.GetStatValueAbstract(StatDefOf.Wildness),
                 out animalKind);
         }
@@ -49,23 +39,19 @@ public class TKKN_SpecialHerdMigration : IncidentWorker
         return false;
     }
 
-    protected override bool TryExecuteWorker(IncidentParms parms)
-    {
+    protected override bool TryExecuteWorker(IncidentParms parms) {
         var parmsTarget = (Map)parms.target;
-        if (!tryFindAnimalKind(parmsTarget.Tile, out var pawnKindDef))
-        {
+        if (!tryFindAnimalKind(parmsTarget.Tile, out var pawnKindDef)) {
             return false;
         }
 
-        if (!tryFindStartAndEndCells(parmsTarget, out var intVec, out var near))
-        {
+        if (!tryFindStartAndEndCells(parmsTarget, out var intVec, out var near)) {
             return false;
         }
 
         var rot = Rot4.FromAngleFlat((parmsTarget.Center - intVec).AngleFlat);
         var list = generateAnimals(pawnKindDef, parmsTarget.Tile);
-        foreach (var newThing in list)
-        {
+        foreach (var newThing in list) {
             var loc = CellFinder.RandomClosewalkCellNear(intVec, parmsTarget, 10);
             GenSpawn.Spawn(newThing, loc, parmsTarget, rot);
         }
@@ -77,28 +63,23 @@ public class TKKN_SpecialHerdMigration : IncidentWorker
         return true;
     }
 
-    private static bool tryFindStartAndEndCells(Map localMap, out IntVec3 start, out IntVec3 end)
-    {
-        if (!RCellFinder.TryFindRandomPawnEntryCell(out start, localMap, CellFinder.EdgeRoadChance_Animal))
-        {
+    private static bool tryFindStartAndEndCells(Map localMap, out IntVec3 start, out IntVec3 end) {
+        if (!RCellFinder.TryFindRandomPawnEntryCell(out start, localMap, CellFinder.EdgeRoadChance_Animal)) {
             end = IntVec3.Invalid;
             return false;
         }
 
         end = IntVec3.Invalid;
-        for (var i = 0; i < 8; i++)
-        {
+        for (var i = 0; i < 8; i++) {
             var startLocal = start;
             if (!CellFinder.TryFindRandomEdgeCellWith(
                     x => localMap.reachability.CanReach(startLocal, x, PathEndMode.OnCell,
                         TraverseMode.NoPassClosedDoors,
-                        Danger.Deadly), localMap, CellFinder.EdgeRoadChance_Ignore, out var intVec))
-            {
+                        Danger.Deadly), localMap, CellFinder.EdgeRoadChance_Ignore, out var intVec)) {
                 break;
             }
 
-            if (!end.IsValid || intVec.DistanceToSquared(start) > end.DistanceToSquared(start))
-            {
+            if (!end.IsValid || intVec.DistanceToSquared(start) > end.DistanceToSquared(start)) {
                 end = intVec;
             }
         }
@@ -106,12 +87,10 @@ public class TKKN_SpecialHerdMigration : IncidentWorker
         return end.IsValid;
     }
 
-    private static List<Pawn> generateAnimals(PawnKindDef animalKind, int tile)
-    {
+    private static List<Pawn> generateAnimals(PawnKindDef animalKind, int tile) {
         var randomInRange = AnimalsCount.RandomInRange;
         var list = new List<Pawn>();
-        for (var i = 0; i < randomInRange; i++)
-        {
+        for (var i = 0; i < randomInRange; i++) {
             var request = new PawnGenerationRequest(animalKind, null, PawnGenerationContext.NonPlayer, tile, false,
                 false, false, false, true, 1f, false, true, true, false);
             var item = PawnGenerator.GeneratePawn(request);

@@ -10,12 +10,11 @@ namespace TKKN_NPS;
 
 public class Watcher(Map map) : MapComponent(map)
 {
-    public readonly Dictionary<string, Graphic> graphicHolder = new();
-    private readonly int howManyFloodSteps = 5;
+    private const int HowManyFloodSteps = 5;
 
-    private readonly int howManyTideSteps = 13;
+    private const int HowManyTideSteps = 13;
 
-    private readonly int MaxPuddles = 50;
+    private const int MaxPuddles = 50;
 
     //used to save data about active springs.
     public Dictionary<int, springData> activeSprings = new();
@@ -56,7 +55,10 @@ public class Watcher(Map map) : MapComponent(map)
 
     private float wetPlantsValue;
 
-    private bool dontRunAnything = false;
+    private bool dontRunAnything;
+    private bool lavaTerrain;
+    private bool doUnpacking;
+    private bool noHurtPlants;
 
     /* STANDARD STUFF */
 
@@ -79,18 +81,21 @@ public class Watcher(Map map) : MapComponent(map)
                 (1 + map.weatherManager.curWeather.rainRate) * (1 + outdoorTemp);
             humidity = ((baseHumidity + currentHumidity) / 1000) + 18;
             wetPlantsValue = -1 * (outdoorTemp / humidity / 10);
-
-            doTides();
-            doFloods();
+            noHurtPlants = !Settings.allowPlantEffects || ticks % 150 != 0;
+            doUnpacking = ticks % 2 == 0;
+            DoTides();
+            DoFloods();
             var num = Mathf.RoundToInt(map.Area * Settings.weatherCellUpdateSpeed / 2);
             var area = map.Area;
+
+
             for (var i = 0; i < num; i++) {
                 if (cycleIndex >= area) {
                     cycleIndex = 0;
                 }
 
                 var c = map.cellsInRandomOrder.Get(cycleIndex);
-                doCellEnvironment(c);
+                DoCellEnvironment(c);
                 cycleIndex++;
             }
         }
@@ -103,7 +108,7 @@ public class Watcher(Map map) : MapComponent(map)
             }
         }
 
-        updateBiomeSettings();
+        UpdateBiomeSettings();
     }
 
     public override void ExposeData() {
@@ -132,19 +137,19 @@ public class Watcher(Map map) : MapComponent(map)
         biomeSettings = map.Biome.GetModExtension<BiomeSeasonalSettings>();
         frostGridComponent = map.GetComponent<FrostGrid>();
         location = Find.WorldGrid.LongLatOf(map.Tile);
-        updateBiomeSettings(true);
+        UpdateBiomeSettings(true);
 
         frostNoise = new Perlin(0.039999999105930328, 2.0, 0.5, 5,
             Rand.Range(0, 651431), QualityMode.Medium);
 
-        rebuildCellLists();
+        RebuildCellLists();
         if (TKKN_Holder.modsPatched.Count > 0) {
             Log.Message($"TKKN NPS: Loaded patches for: {string.Join(", ", TKKN_Holder.modsPatched.ToArray())}");
         }
     }
 
 
-    private void rebuildCellLists() {
+    private void RebuildCellLists() {
         if (Settings.regenCells) {
             regenCellLists = Settings.regenCells;
         }
@@ -160,18 +165,23 @@ public class Watcher(Map map) : MapComponent(map)
 
         if (regenCellLists) {
             //spawn oasis. Do before cell list building, so it's stored correctly.
-            spawnOasis();
-            fixLava();
+            SpawnOasis();
+            FixLava();
 
-            var rot = Find.World.CoastDirectionAt(map.Tile);
+            Rot4 rot = Find.World.CoastDirectionAt(map.Tile);
 
-            var tmpTerrain = map.AllCells.InRandomOrder(); //random so we can spawn plants and stuff in this step.
+            IEnumerable<IntVec3>
+                tmpTerrain = map.AllCells.InRandomOrder(); //random so we can spawn plants and stuff in this step.
             cellWeatherAffects = new Dictionary<IntVec3, cellData>();
             foreach (var c in tmpTerrain) {
                 var terrain = c.GetTerrain(map);
 
                 if (!c.InBounds(map)) {
                     continue;
+                }
+
+                if (terrain == TerrainDefOf.TKKN_Lava || terrain == TerrainDefOf.TKKN_LavaRock_RoughHewn) {
+                    lavaTerrain = true;
                 }
 
                 var cell = new cellData { location = c, baseTerrain = terrain, howWetPlants = 70 };
@@ -204,8 +214,8 @@ public class Watcher(Map map) : MapComponent(map)
                 else if (rot.IsValid && terrain == RimWorld.TerrainDefOf.Sand ||
                          terrain == TerrainDefOf.TKKN_SandBeachWetSalt) {
                     //get all the sand pieces that are touching water.
-                    for (var j = 0; j < howManyTideSteps; j++) {
-                        var waterCheck = adjustForRotation(rot, c, j);
+                    for (var j = 0; j < HowManyTideSteps; j++) {
+                        var waterCheck = AdjustForRotation(rot, c, j);
                         if (!waterCheck.InBounds(map) ||
                             waterCheck.GetTerrain(map) != RimWorld.TerrainDefOf.WaterOceanShallow) {
                             continue;
@@ -219,7 +229,7 @@ public class Watcher(Map map) : MapComponent(map)
                 else if (terrain != RimWorld.TerrainDefOf.WaterOceanShallow &&
                          terrain != RimWorld.TerrainDefOf.WaterOceanDeep &&
                          TerrainTagUtil.TKKN_Wet.Contains(terrain)) {
-                    for (var j = 0; j < howManyFloodSteps; j++) {
+                    for (var j = 0; j < HowManyFloodSteps; j++) {
                         var num = GenRadial.NumCellsInRadius(j);
                         for (var i = 0; i < num; i++) {
                             var bankCheck = c + GenRadial.RadialPattern[i];
@@ -244,8 +254,8 @@ public class Watcher(Map map) : MapComponent(map)
                 }
 
                 //Spawn special elements:
-                spawnSpecialElements(c);
-                spawnSpecialPlants(c);
+                SpawnSpecialElements(c);
+                SpawnSpecialPlants(c);
 
                 cellWeatherAffects[c] = cell;
             }
@@ -257,33 +267,33 @@ public class Watcher(Map map) : MapComponent(map)
         tideCellsList = [];
         floodCellsList = [];
 
-        for (var k = 0; k < howManyTideSteps; k++) {
+        for (var k = 0; k < HowManyTideSteps; k++) {
             tideCellsList.Add([]);
         }
 
-        for (var k = 0; k < howManyFloodSteps; k++) {
+        for (var k = 0; k < HowManyFloodSteps; k++) {
             floodCellsList.Add([]);
         }
 
-        foreach (var thiscell in cellWeatherAffects) {
-            cellWeatherAffects[thiscell.Key].map = map;
+        foreach (KeyValuePair<IntVec3, cellData> thisCell in cellWeatherAffects) {
+            cellWeatherAffects[thisCell.Key].map = map;
             if (!bugFixFrostIsRemoved) {
-                thiscell.Value.doFrostOverlay("remove");
+                thisCell.Value.doFrostOverlay("remove");
             }
 
-            frostGridComponent.SetDepth(thiscell.Value.location, thiscell.Value.frostLevel);
-            if (thiscell.Value.tideLevel > -1) {
-                tideCellsList[thiscell.Value.tideLevel].Add(thiscell.Key);
+            frostGridComponent.SetDepth(thisCell.Value.location, thisCell.Value.frostLevel);
+            if (thisCell.Value.tideLevel > -1) {
+                tideCellsList[thisCell.Value.tideLevel].Add(thisCell.Key);
             }
 
-            if (thiscell.Value.floodLevel.Count != 0) {
-                foreach (var level in thiscell.Value.floodLevel) {
-                    floodCellsList[level].Add(thiscell.Key);
+            if (thisCell.Value.floodLevel.Count != 0) {
+                foreach (var level in thisCell.Value.floodLevel) {
+                    floodCellsList[level].Add(thisCell.Key);
                 }
             }
 
-            if (TerrainTagUtil.TKKN_Swim.Contains(thiscell.Value.baseTerrain)) {
-                swimmingCellsList.Add(thiscell.Key);
+            if (TerrainTagUtil.TKKN_Swim.Contains(thisCell.Value.baseTerrain)) {
+                swimmingCellsList.Add(thisCell.Key);
             }
         }
 
@@ -293,11 +303,11 @@ public class Watcher(Map map) : MapComponent(map)
             return;
         }
 
-        setUpTidesBanks();
+        SetUpTidesBanks();
         regenCellLists = false;
     }
 
-    private void spawnSpecialPlants(IntVec3 c) {
+    private void SpawnSpecialPlants(IntVec3 c) {
         //salt crystals:
         var terrain = c.GetTerrain(map);
         if (terrain == TerrainDefOf.TKKN_SaltField || terrain == TerrainDefOf.TKKN_SandBeachWetSalt) {
@@ -330,7 +340,7 @@ public class Watcher(Map map) : MapComponent(map)
         GenSpawn.Spawn(barnaclePlant, c, map);
     }
 
-    private void spawnSpecialElements(IntVec3 c) {
+    private void SpawnSpecialElements(IntVec3 c) {
         var terrain = c.GetTerrain(map);
 
 
@@ -413,20 +423,26 @@ public class Watcher(Map map) : MapComponent(map)
         }
     }
 
-    private void spawnOasis() {
-        if (map.Biome == BiomeDefOf.TKKN_Oasis) {
+    private void SpawnOasis() {
+        if (map.Biome != BiomeDefOf.TKKN_Oasis) {
+            return;
+        }
+
+        while (true) {
             //spawn a big ol cold spring
             var springSpot = CellFinderLoose.TryFindCentralCell(map, 10, 15, x => !x.Roofed(map));
             var spring = (Spring)ThingMaker.MakeThing(ThingDefOf.TKKN_OasisSpring);
             GenSpawn.Spawn(spring, springSpot, map);
-        }
 
-        if (Rand.Value < .001f) {
-            spawnOasis();
+            if (Rand.Value < .001f) {
+                continue;
+            }
+
+            break;
         }
     }
 
-    private void fixLava() {
+    private void FixLava() {
         //set so the area people land in will most likely not be lava.
         if (map.Biome != BiomeDefOf.TKKN_VolcanicFlow) {
             return;
@@ -440,7 +456,7 @@ public class Watcher(Map map) : MapComponent(map)
         }
     }
 
-    private static IntVec3 adjustForRotation(Rot4 rot, IntVec3 cell, int j) {
+    private static IntVec3 AdjustForRotation(Rot4 rot, IntVec3 cell, int j) {
         var newDirection = new IntVec3(cell.x, cell.y, cell.z);
         if (rot == Rot4.North) {
             newDirection.z += j + 1;
@@ -458,14 +474,14 @@ public class Watcher(Map map) : MapComponent(map)
         return newDirection;
     }
 
-    private void setUpTidesBanks() {
+    private void SetUpTidesBanks() {
         //set up tides and river banks for the first time:
         if (doCoast) {
             //set up for low tide
             tideLevel = 0;
 
-            for (var i = 0; i < howManyTideSteps; i++) {
-                var makeSand = tideCellsList[i];
+            for (var i = 0; i < HowManyTideSteps; i++) {
+                List<IntVec3> makeSand = tideCellsList[i];
                 foreach (var c in makeSand) {
                     if (!cellWeatherAffects.TryGetValue(c, out var cell)) {
                         continue;
@@ -477,14 +493,14 @@ public class Watcher(Map map) : MapComponent(map)
             }
 
             //bring to current tide levels
-            var level = getTideLevel();
+            var level = GetTideLevel();
             var max = 0;
             switch (level) {
                 case FloodType.Normal:
-                    max = (int)Math.Floor((howManyTideSteps - 1) / 2M);
+                    max = (int)Math.Floor((HowManyTideSteps - 1) / 2M);
                     break;
                 case FloodType.High:
-                    max = howManyTideSteps - 1;
+                    max = HowManyTideSteps - 1;
                     break;
             }
 
@@ -502,9 +518,9 @@ public class Watcher(Map map) : MapComponent(map)
             tideLevel = max;
         }
 
-        var flood = getFloodType();
+        FloodType flood = GetFloodType();
 
-        for (var i = 0; i < howManyFloodSteps; i++) {
+        for (var i = 0; i < HowManyFloodSteps; i++) {
             var makeWater = floodCellsList[i];
             foreach (var c in makeWater) {
                 if (!cellWeatherAffects.TryGetValue(c, out var cell)) {
@@ -522,7 +538,7 @@ public class Watcher(Map map) : MapComponent(map)
                         cell.overrideType = "dry";
                         break;
                     default: {
-                        if (i >= howManyFloodSteps / 2) {
+                        if (i >= HowManyFloodSteps / 2) {
                             cell.overrideType = "dry";
                         }
 
@@ -535,28 +551,40 @@ public class Watcher(Map map) : MapComponent(map)
         }
     }
 
-    private void updateBiomeSettings(bool force = false) {
+    private Season season;
+    private Quadrum quadrum;
+
+
+    private void UpdateBiomeSettings(bool force = false) {
         if (biomeSettings == null) {
             return;
         }
 
-        var season = GenDate.Season(Find.TickManager.TicksAbs, location);
-        var quadrum = GenDate.Quadrum(Find.TickManager.TicksAbs, location.x);
+        if (force) {
+            quadrum = GenDate.Quadrum(Find.TickManager.TicksAbs, location.x);
+        }
+        else {
+            if (Find.TickManager.TicksAbs % 30000 != 0) {
+                return;
+            }
 
-        if (!force && (biomeSettings.lastChanged == season || biomeSettings.lastChangedQ == quadrum)) {
-            return;
+            quadrum = GenDate.Quadrum(Find.TickManager.TicksAbs, location.x);
+
+            if (biomeSettings.lastChangedQ == quadrum) {
+                return;
+            }
         }
 
-        //Log.Message("[NPS]: Updating seasonal settings");
+        season = GenDate.Season(Find.TickManager.TicksAbs, location);
+
         biomeSettings.setWeatherBySeason(map, season, quadrum);
         biomeSettings.setDiseaseBySeason(season, quadrum);
         biomeSettings.setIncidentsBySeason(season, quadrum);
         biomeSettings.lastChanged = season;
-        biomeSettings.lastChangedQ = quadrum;
     }
 
 
-    private void doCellEnvironment(IntVec3 c) {
+    private void DoCellEnvironment(IntVec3 c) {
         if (!cellWeatherAffects.TryGetValue(c, out var cell)) {
             return;
         }
@@ -564,7 +592,7 @@ public class Watcher(Map map) : MapComponent(map)
         //This sets cell.howwetplants to 0. But that is apparently never even a possibility
         //cell.DoCellSteadyEffects();
 
-        if (ticks % 2 == 0) {
+        if (doUnpacking) {
             cell.unpack();
         }
 
@@ -580,21 +608,7 @@ public class Watcher(Map map) : MapComponent(map)
         }
 
         //spawn special things
-        if (Rand.Value < .0001f) {
-            if (c.InBounds(map)) {
-                if (currentTerrain == TerrainDefOf.TKKN_Lava) {
-                    var thing = ThingMaker.MakeThing(ThingDefOf.TKKN_LavaRock);
-                    GenSpawn.Spawn(thing, c, map);
-                }
-                else if (currentTerrain == TerrainDefOf.TKKN_LavaRock_RoughHewn &&
-                         map.Biome == BiomeDefOf.TKKN_VolcanicFlow &&
-                         map.listerThings.ThingsOfDef(ThingDefOf.TKKN_SteamVent).Count < 10) {
-                    var thing = ThingMaker.MakeThing(ThingDefOf.TKKN_SteamVent);
-                    GenSpawn.Spawn(thing, c, map);
-                }
-            }
-        }
-
+        LavaRockSpecials(c, currentTerrain);
 
         if (Settings.showRain && !TerrainTagUtil.TKKN_Wet.Contains(cell.currentTerrain)) {
             switch (roofed) {
@@ -626,7 +640,7 @@ public class Watcher(Map map) : MapComponent(map)
             }
         }
 
-        var isCold = checkIfCold(c);
+        var isCold = CheckIfCold(c);
 
         if (isCold) {
             if (Settings.doIce) {
@@ -638,20 +652,13 @@ public class Watcher(Map map) : MapComponent(map)
                 frostGridComponent.AddDepth(c, map.weatherManager.SnowRate * -.01f);
             }
             else {
-                creepFrostAt(c, 0.46f * .3f);
+                CreepFrostAt(c, 0.46f * .3f);
             }
         }
         else {
             cell.setTerrain(TerrainType.Thaw);
             var frosty = cell.temperature * -.025f;
-            //float frosty = this.map.mapTemperature.OutdoorTemp * -.03f;
             frostGridComponent.AddDepth(c, frosty);
-            /*
-            if (map.GetComponent<FrostGrid>().GetDepth(c) > .3f)
-            {
-                // cell.isMelt = true;
-            }
-            */
         }
 
 
@@ -672,12 +679,12 @@ public class Watcher(Map map) : MapComponent(map)
                 cell.howWetPlants += wetPlantsValue;
                 if (cell.howWetPlants <= 0) {
                     if (TerrainTagUtil.TerrainHasModExtension.Contains(cell.currentTerrain)) {
-                        if (!TerrainTagUtil.dryTerrain.ContainsKey(cell.currentTerrain)) {
-                            hurtPlants(c, false, true);
+                        if (!TerrainTagUtil.DryTerrain.ContainsKey(cell.currentTerrain)) {
+                            HurtPlants(c, false, true);
                         }
                     }
                     else {
-                        hurtPlants(c, false, true);
+                        HurtPlants(c, false, true);
                     }
                 }
             }
@@ -694,7 +701,9 @@ public class Watcher(Map map) : MapComponent(map)
 
         //PUDDLES
         Thing puddle = null;
-        foreach (Thing t in c.GetThingList(map)) {
+        List<Thing> ts = c.GetThingList(map);
+        for (int index = 0; index < ts.Count; index++) {
+            Thing t = ts[index];
             if (t.def == ThingDefOf.TKKN_FilthPuddle) {
                 puddle = t;
                 break;
@@ -719,10 +728,29 @@ public class Watcher(Map map) : MapComponent(map)
 
         cell.isMelt = false;
 
-        cellWeatherAffects[c] = cell;
+        //cellWeatherAffects[c] = cell;
     }
 
-    public bool checkIfCold(IntVec3 c) {
+    private void LavaRockSpecials(IntVec3 c, TerrainDef currentTerrain) {
+        if (!lavaTerrain) return;
+
+        if (Rand.Value < .0001f) {
+            if (c.InBounds(map)) {
+                if (currentTerrain == TerrainDefOf.TKKN_Lava) {
+                    var thing = ThingMaker.MakeThing(ThingDefOf.TKKN_LavaRock);
+                    GenSpawn.Spawn(thing, c, map);
+                }
+                else if (currentTerrain == TerrainDefOf.TKKN_LavaRock_RoughHewn &&
+                         map.Biome == BiomeDefOf.TKKN_VolcanicFlow &&
+                         map.listerThings.ThingsOfDef(ThingDefOf.TKKN_SteamVent).Count < 10) {
+                    var thing = ThingMaker.MakeThing(ThingDefOf.TKKN_SteamVent);
+                    GenSpawn.Spawn(thing, c, map);
+                }
+            }
+        }
+    }
+
+    public bool CheckIfCold(IntVec3 c) {
         bool cellAffected = cellWeatherAffects.TryGetValue(c, out cellData cell);
         if (!Settings.showCold) {
             if (cellAffected && cell.temperature < -998) {
@@ -747,7 +775,7 @@ public class Watcher(Map map) : MapComponent(map)
         return cell.temperature < 0f;
     }
 
-    private void creepFrostAt(IntVec3 c, float baseAmount) {
+    private void CreepFrostAt(IntVec3 c, float baseAmount) {
         var num = frostNoise.GetValue(c);
         num += 1f;
         num *= 0.5f;
@@ -760,9 +788,8 @@ public class Watcher(Map map) : MapComponent(map)
         frostGridComponent.AddDepth(c, depthToAdd);
     }
 
-    private FloodType getFloodType() {
+    private FloodType GetFloodType() {
         var flood = FloodType.Normal;
-        var season = GenLocalDate.Season(map);
         if (floodThreat > 1000000 || season == Season.Spring) {
             flood = FloodType.High;
         }
@@ -778,45 +805,33 @@ public class Watcher(Map map) : MapComponent(map)
         return flood;
     }
 
-    private void doFloods() {
+    private void DoFloods() {
         if (!Settings.doFloods || ticks % 300 != 0) {
             return;
         }
 
-        var half = (int)Math.Round((howManyFloodSteps - 1M) / 2);
-        var max = howManyFloodSteps - 1;
+        var half = (int)Math.Round((HowManyFloodSteps - 1M) / 2);
+        const int max = HowManyFloodSteps - 1;
 
 
-        var flood = getFloodType();
+        FloodType flood = GetFloodType();
 
-        TerrainType? overrideType = null;
+        TerrainType? overrideType = flood switch {
+            FloodType.High when floodLevel < max => TerrainType.Wet,
+            FloodType.Low when floodLevel > 0 => TerrainType.Dry,
+            FloodType.Normal when floodLevel < half => TerrainType.Wet,
+            FloodType.Normal when floodLevel > half => TerrainType.Dry,
+            _ => null
+        };
 
-        if (floodLevel < max && flood == FloodType.High) {
-            overrideType = TerrainType.Wet;
-        }
-        else if (floodLevel > 0 && flood == FloodType.Low) {
-            overrideType = TerrainType.Dry;
-        }
-        else if (floodLevel < half && flood == FloodType.Normal) {
-            overrideType = TerrainType.Wet;
-        }
-        else if (floodLevel > half && flood == FloodType.Normal) {
-            overrideType = TerrainType.Dry;
-        }
-
-        if (floodLevel == howManyFloodSteps && flood == FloodType.High) {
-            return;
+        switch (flood) {
+            case FloodType.High when floodLevel == HowManyFloodSteps:
+            case FloodType.Low when floodLevel == 0:
+            case FloodType.Normal when floodLevel == half:
+                return;
         }
 
-        if (floodLevel == 0 && flood == FloodType.Low) {
-            return;
-        }
-
-        if (floodLevel == half && flood == FloodType.Normal) {
-            return;
-        }
-
-        var cellsToChange = floodCellsList[floodLevel];
+        List<IntVec3> cellsToChange = floodCellsList[floodLevel];
         foreach (var c in cellsToChange) {
             if (!cellWeatherAffects.TryGetValue(c, out var cell)) {
                 continue;
@@ -829,45 +844,43 @@ public class Watcher(Map map) : MapComponent(map)
             cell.setTerrain(TerrainType.Flooded);
         }
 
-        if (floodLevel < max && flood == FloodType.High) {
-            floodLevel++;
-        }
-        else if (floodLevel > 0 && flood == FloodType.Low) {
-            floodLevel--;
-        }
-        else if (floodLevel < half && flood == FloodType.Normal) {
-            floodLevel++;
-        }
-        else if (floodLevel > half && flood == FloodType.Normal) {
-            floodLevel--;
+        switch (flood) {
+            case FloodType.High when floodLevel < max:
+                floodLevel++;
+                break;
+            case FloodType.Low when floodLevel > 0:
+                floodLevel--;
+                break;
+            case FloodType.Normal when floodLevel < half:
+                floodLevel++;
+                break;
+            case FloodType.Normal when floodLevel > half:
+                floodLevel--;
+                break;
         }
     }
 
-    private FloodType getTideLevel() {
+    private FloodType GetTideLevel() {
         if (map.gameConditionManager.ConditionIsActive(GameConditionDefOf.Eclipse)) {
             return FloodType.High;
         }
 
-        if (GenLocalDate.HourOfDay(map) > 4 && GenLocalDate.HourOfDay(map) < 8) {
-            return FloodType.Low;
-        }
-
-        if (GenLocalDate.HourOfDay(map) > 15 && GenLocalDate.HourOfDay(map) < 20) {
-            return FloodType.High;
-        }
-
-        return FloodType.Normal;
+        return GenLocalDate.HourOfDay(map) switch {
+            > 4 and < 8 => FloodType.Low,
+            > 15 and < 20 => FloodType.High,
+            _ => FloodType.Normal
+        };
     }
 
-    private void doTides() {
+    private void DoTides() {
         //notes to future me: use this.howManyTideSteps - 1, so we always have a little bit of wet sand, or else it looks stupid.
         if (!doCoast || !Settings.doTides || ticks % 100 != 0) {
             return;
         }
 
-        var tideType = getTideLevel();
-        var half = (int)Math.Round((howManyTideSteps - 1M) / 2);
-        var max = howManyTideSteps - 1;
+        var tideType = GetTideLevel();
+        var half = (int)Math.Round((HowManyTideSteps - 1M) / 2);
+        var max = HowManyTideSteps - 1;
 
         switch (tideType) {
             case FloodType.Normal when tideLevel == half:
@@ -879,7 +892,7 @@ public class Watcher(Map map) : MapComponent(map)
                 return;
         }
 
-        var cellsToChange = tideCellsList[tideLevel];
+        List<IntVec3> cellsToChange = tideCellsList[tideLevel];
         foreach (var c in cellsToChange) {
             if (!cellWeatherAffects.TryGetValue(c, out var cell)) {
                 continue;
@@ -925,8 +938,8 @@ public class Watcher(Map map) : MapComponent(map)
         }
     }
 
-    private void hurtPlants(IntVec3 c, bool onlyLow, bool saveHarvest) {
-        if (!Settings.allowPlantEffects || ticks % 150 != 0) {
+    private void HurtPlants(IntVec3 c, bool onlyLow, bool saveHarvest) {
+        if (noHurtPlants) {
             return;
         }
 
@@ -935,7 +948,7 @@ public class Watcher(Map map) : MapComponent(map)
             return;
         }
 
-        var things = c.GetThingList(map);
+        List<Thing> things = c.GetThingList(map);
         foreach (var thing in things.ToList()) {
             if (thing is not Plant) {
                 continue;

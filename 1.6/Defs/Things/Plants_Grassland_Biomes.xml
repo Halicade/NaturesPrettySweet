@@ -31,7 +31,7 @@
   <ThingDef ParentName="TreeBase">
     <defName>TKKN_PlantTreeBaobab</defName>
     <label>baobab tree</label>
-    <description>Long lived tree that store water in their trunks.</description>
+      <description>A long-lived tree that stores water in its trunks.</description>
     <graphicData>
       <texPath>TKKN_NPS/Things/Plant/TreeBaobab</texPath>
       <graphicClass>Graphic_Random</graphicClass>

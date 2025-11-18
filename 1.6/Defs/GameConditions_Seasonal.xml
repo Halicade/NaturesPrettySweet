@@ -26,7 +26,8 @@
       <li>ToxicFallout</li>
     </exclusiveConditions>
   </GameConditionDef>
-  <GameConditionDef>
+
+    <GameConditionDef>
     <defName>TKKN_Drought</defName>
     <conditionClass>TKKN_NPS.GameCondition_Drought</conditionClass>
     <label>drought</label>

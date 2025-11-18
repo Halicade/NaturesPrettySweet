@@ -400,7 +400,7 @@
   <ThingDef ParentName="EggFertBase">
     <defName>EggSnailFertilized</defName>
     <label>snail egg (fert.)</label>
-    <description>Fertilized snail egg. If all goes Plant_Grass, it should hatch into a giant snail. A delicacy.</description>
+      <description>Fertilized snail egg. If all goes well, it should hatch into a giant snail. A delicacy.</description>
     <graphicData>
       <texPath>TKKN_NPS/Things/snailEgg</texPath>
       <graphicClass>Graphic_Single</graphicClass>
@@ -430,7 +430,7 @@
   <ThingDef ParentName="EggFertBase">
     <defName>EggRoeFertilized</defName>
     <label>roe (fert.)</label>
-    <description>Fertilized  eggs from a sea animal. If all goes Plant_Grass, it should hatch.</description>
+      <description>Fertilized eggs from a sea animal. If all goes well, it should hatch into a crab.</description>
     <graphicData>
       <texPath>TKKN_NPS/Things/Roe</texPath>
       <graphicClass>Graphic_Single</graphicClass>

@@ -17,11 +17,11 @@ public static class Pawn_Tick
         cachedMap = map;
 
         var terrain = __instance.Position.GetTerrain(__instance.MapHeld);
-
-        makePaths(__instance, watcher);
+        bool isHumanlike = __instance.RaceProps.Humanlike;
+        makePaths(__instance, watcher, isHumanlike);
         makeBreath(__instance, watcher);
-        makeWet(__instance, terrain, isRaining);
-        dyingCheck(__instance, terrain);
+        makeWet(__instance, terrain, isRaining, isHumanlike);
+        dyingCheck(__instance, terrain, isHumanlike);
 
         if (__instance.needs == null) {
             return;
@@ -43,6 +43,15 @@ public static class Pawn_Tick
         }
         else if (terrain == TerrainDefOf.TKKN_ColdSpringsWater) {
             __instance.needs.rest?.TickResting(.05f);
+
+            if (Find.TickManager.TicksAbs % 300 == 0) {
+                //Remove heatstroke if pawn is in cold spring
+                Hediff heatstroke = __instance.health.hediffSet.GetFirstHediffOfDef(RimWorld.HediffDefOf.Heatstroke);
+                if (heatstroke != null) {
+                    __instance.health.RemoveHediff(heatstroke);
+                }
+            }
+
             var hediffDef = HediffDefOf.TKKN_coldspring_chill_out;
             if (__instance.health.hediffSet.GetFirstHediffOfDef(hediffDef) != null) {
                 return;
@@ -53,9 +62,9 @@ public static class Pawn_Tick
         }
     }
 
-    private static void dyingCheck(Pawn pawn, TerrainDef terrain) {
+    private static void dyingCheck(Pawn pawn, TerrainDef terrain, bool isHumanLike) {
         //drowning == immobile and in water
-        if (!pawn.RaceProps.Humanlike) {
+        if (!isHumanLike) {
             return;
         }
 
@@ -98,13 +107,13 @@ public static class Pawn_Tick
         }
     }
 
-    private static void makeWet(Pawn pawn, TerrainDef currentTerrain, bool isRaining) {
+    private static void makeWet(Pawn pawn, TerrainDef currentTerrain, bool isRaining, bool isHumanLike) {
         if (!Settings.allowPawnsToGetWet) {
             return;
         }
 
         var hediffDef = HediffDefOf.TKKN_Wetness;
-        if (!pawn.RaceProps.Humanlike || pawn.health.hediffSet.GetFirstHediffOfDef(hediffDef) != null) {
+        if (!isHumanLike || pawn.health.hediffSet.GetFirstHediffOfDef(hediffDef) != null) {
             return;
         }
 
@@ -140,12 +149,12 @@ public static class Pawn_Tick
     }
 
 
-    private static void makePaths(Pawn pawn, Watcher watcher) {
+    private static void makePaths(Pawn pawn, Watcher watcher, bool isHumanLike) {
         if (!Settings.doDirtPath) {
             return;
         }
 
-        if (!pawn.RaceProps.Humanlike || !pawn.Position.InBounds(cachedMap)) {
+        if (!isHumanLike || !pawn.Position.InBounds(cachedMap)) {
             return;
         }
 

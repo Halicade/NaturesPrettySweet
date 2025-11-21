@@ -103,9 +103,7 @@ public class Watcher(Map map) : MapComponent(map)
         var isRaining = map.weatherManager.curWeather.rainRate > 0;
         IReadOnlyList<Pawn> allPawnsSpawned = map.mapPawns.AllPawnsSpawned;
         for (int i = 0; i < allPawnsSpawned.Count; i++) {
-            if (allPawnsSpawned[i].RaceProps.Humanlike) {
-                Pawn_Tick.Postfix(allPawnsSpawned[i], map, this, isRaining);
-            }
+            Pawn_Tick.Postfix(allPawnsSpawned[i], map, this, isRaining);
         }
 
         UpdateBiomeSettings();
@@ -528,7 +526,7 @@ public class Watcher(Map map) : MapComponent(map)
                 }
 
                 if (!TerrainTagUtil.TKKN_Wet.Contains(cell.baseTerrain)) {
-                    cell.baseTerrain = TerrainDefOf.TKKN_RiverDeposit;
+                    cell.baseTerrain = RimWorld.TerrainDefOf.Riverbank;
                 }
 
                 switch (flood) {

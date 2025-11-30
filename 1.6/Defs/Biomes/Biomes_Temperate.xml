@@ -129,7 +129,7 @@
       <TKKN_OldGrowth_PlantTreeHazelnut>0.05</TKKN_OldGrowth_PlantTreeHazelnut>
       <TKKN_PlantTreeRedwood>0.02</TKKN_PlantTreeRedwood>
       <Plant_Berry>0.1</Plant_Berry>
-      <Plant_Healroot>0.05</Plant_Healroot>
+        <Plant_HealrootWild>0.05</Plant_HealrootWild>
       <TKKN_SaltCrystal>2</TKKN_SaltCrystal>
       <TKKN_PlantBarnacles>0.1</TKKN_PlantBarnacles>
     </wildPlants>

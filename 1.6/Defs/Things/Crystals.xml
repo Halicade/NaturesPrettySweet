@@ -17,10 +17,16 @@
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
     <selectable>true</selectable>
+      <neverMultiSelect>false</neverMultiSelect>
     <pathCost>10</pathCost>
     <plant>
       <leaflessGraphicPath>TKKN_NPS/Things/Plant/saltCrystalDead</leaflessGraphicPath>
       <immatureGraphicPath>TKKN_NPS/Things/Plant/saltCrystalBaby</immatureGraphicPath>
+        <!--
+        TODO set to grow maybe. Set lower appearance rate
+        Salt currently has no purpose.
+        Need to set up so it can be used for preserved meat
+        -->
       <fertilityMin>100</fertilityMin>
       <fertilitySensitivity>1</fertilitySensitivity>
       <growDays>6.5</growDays>

@@ -15,12 +15,11 @@ internal class JobGiver_SeekSafeTemperature_TryGiveJob
             return;
         }
 
-        if (Find.CurrentMap.GetComponent<Watcher>().activeSprings.Count == 0) {
+        if (pawn == null) {
             return;
         }
 
-
-        if (pawn == null) {
+        if (Find.CurrentMap.GetComponent<Watcher>()?.activeSprings?.Count == 0) {
             return;
         }
 

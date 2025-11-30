@@ -183,7 +183,7 @@
     <comps>
       <li Class="TKKN_NPS.CompProperties_SpringWater">
         <radius>15</radius>
-        <dryTile>TKKN_RiverDeposit</dryTile>
+          <dryTile>Riverbank</dryTile>
         <wetTile>TKKN_ColdSpringsWater</wetTile>
         <deepTile>WaterDeep</deepTile>
         <temperature>-20</temperature>
@@ -228,7 +228,7 @@
     <comps>
       <li Class="TKKN_NPS.CompProperties_SpringWater">
         <radius>3</radius>
-        <dryTile>TKKN_RiverDeposit</dryTile>
+          <dryTile>Riverbank</dryTile>
         <wetTile>TKKN_HotSpringsWater</wetTile>
         <deepTile>WaterDeep</deepTile>
         <spawnProp>Plant_Healroot</spawnProp>

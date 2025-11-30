@@ -1,9 +1,7 @@
 <Solution>
+    <Configurations/>
   <Folder Name="/.github/">
     <File Path="../.github/copilot-instructions.md" />
   </Folder>
-  <Configurations>
-    <BuildType Name="Release" />
-  </Configurations>
   <Project Path="NPS/NPS.csproj" />
 </Solution>

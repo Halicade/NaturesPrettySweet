@@ -34,6 +34,7 @@
         <allowedTerrains>
           <li>TKKN_ColdSpringsWater</li>
           <li>TKKN_RiverDeposit</li>
+            <li>Riverbank</li>
           <li>Marsh</li>
           <li>WaterShallow</li>
           <li>WaterMovingShallow</li>
@@ -49,6 +50,7 @@
         <allowedTerrains>
           <li>TKKN_ColdSpringsWater</li>
           <li>TKKN_RiverDeposit</li>
+            <li>Riverbank</li>
           <li>Marsh</li>
           <li>WaterShallow</li>
           <li>WaterMovingShallow</li>

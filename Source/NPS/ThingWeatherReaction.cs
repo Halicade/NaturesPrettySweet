@@ -20,8 +20,9 @@ public class ThingWeatherReaction : DefModExtension
     public Graphic snowGraphic;
     public Graphic snowLeaflessGraphic;
 
+    public bool hasGraphic;
+
     public bool initializeGraphics(ThingDef plant) {
-        bool hasGraphic = false;
         if (!droughtGraphicPath.NullOrEmpty()) {
             droughtGraphic = GraphicDatabase.Get(plant.graphicData.graphicClass, droughtGraphicPath,
                 plant.graphic.Shader,

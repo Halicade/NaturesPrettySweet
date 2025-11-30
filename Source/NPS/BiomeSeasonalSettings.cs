@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using RimWorld;
 using Verse;
 
@@ -57,16 +58,16 @@ public class BiomeSeasonalSettings : DefModExtension
 
         switch (season) {
             case Season.Spring:
-                map.Biome.baseWeatherCommonalities = springWeathers;
+                setWeatherCommonalities(map.Biome.baseWeatherCommonalities, map.Biome, springWeathers);
                 break;
             case Season.Summer:
-                map.Biome.baseWeatherCommonalities = summerWeathers;
+                setWeatherCommonalities(map.Biome.baseWeatherCommonalities, map.Biome, summerWeathers);
                 break;
             case Season.Fall:
-                map.Biome.baseWeatherCommonalities = fallWeathers;
+                setWeatherCommonalities(map.Biome.baseWeatherCommonalities, map.Biome, fallWeathers);
                 break;
             case Season.Winter:
-                map.Biome.baseWeatherCommonalities = winterWeathers;
+                setWeatherCommonalities(map.Biome.baseWeatherCommonalities, map.Biome, winterWeathers);
                 break;
             case Season.Undefined:
             case Season.PermanentSummer:
@@ -74,18 +75,19 @@ public class BiomeSeasonalSettings : DefModExtension
             default: {
                 switch (quadrum) {
                     case Quadrum.Aprimay:
-                        map.Biome.baseWeatherCommonalities = springWeathers;
+                        setWeatherCommonalities(map.Biome.baseWeatherCommonalities, map.Biome, springWeathers);
                         break;
                     case Quadrum.Decembary:
-                        map.Biome.baseWeatherCommonalities = winterWeathers;
+                        setWeatherCommonalities(map.Biome.baseWeatherCommonalities, map.Biome, winterWeathers);
                         break;
                     case Quadrum.Jugust:
-                        map.Biome.baseWeatherCommonalities = fallWeathers;
+                        setWeatherCommonalities(map.Biome.baseWeatherCommonalities, map.Biome, fallWeathers);
                         break;
                     case Quadrum.Septober:
-                        map.Biome.baseWeatherCommonalities = summerWeathers;
+                        setWeatherCommonalities(map.Biome.baseWeatherCommonalities, map.Biome, summerWeathers);
                         break;
                     case Quadrum.Undefined:
+                    default:
                         Log.ErrorOnce("Could not find an appropriate weather settings for biome " + map.Biome,
                             map.Biome.GetHashCode());
                         break;
@@ -99,6 +101,24 @@ public class BiomeSeasonalSettings : DefModExtension
             map.Biome.baseWeatherCommonalities = [
                 new WeatherCommonalityRecord { commonality = 1f, weather = WeatherDefOf.Clear }
             ];
+        }
+    }
+
+    /// <summary>
+    /// Set weather commonality without overriding any weathers that are patched in or otherwise originally available
+    /// </summary>
+    private static void setWeatherCommonalities(List<WeatherCommonalityRecord> baseWeatherCommonalities, BiomeDef biome,
+        List<WeatherCommonalityRecord> newCommonalities) {
+        if (!BiomeUtil.OriginalBiomeWeather.TryGetValue(biome, out List<WeatherCommonalityRecord> originalRecords))
+            return;
+        originalRecords.CopyToList(baseWeatherCommonalities);
+        foreach (WeatherCommonalityRecord record in baseWeatherCommonalities) {
+            foreach (WeatherCommonalityRecord newWeathers in newCommonalities) {
+                if (record.weather == newWeathers.weather) {
+                    record.commonality = newWeathers.commonality;
+                    break;
+                }
+            }
         }
     }
 

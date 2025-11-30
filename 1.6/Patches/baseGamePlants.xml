@@ -20,11 +20,11 @@
 
     <Operation Class="PatchOperationReplace">
         <xpath>Defs/ThingDef[defName = "Plant_Dandelion"]/description</xpath>
+        <!-- @formatter:off-->
         <value>
-            <description>A tiny, edible yellow flower which grows in large clusters. Though it is often considered a
-                weed, dandelions in bloom are quite beautiful.
-            </description>
+            <description>A tiny, edible yellow flower which grows in large clusters. Though it is often considered a weed, dandelions in bloom are quite beautiful.</description>
         </value>
+        <!-- @formatter:on-->
     </Operation>
 
     <Operation Class="PatchOperationAdd">

@@ -10,8 +10,10 @@ public class Settings : ModSettings
     public static bool spawnLavaOnlyInBiome = true;
     public static bool allowLavaEruption = true;
     public static bool allowPlantEffects = true;
+
     public static bool showCold = true;
-    private static bool showHot = true;
+
+    //private static bool showHot = true;
     public static bool allowPawnsToGetWet = true;
     public static bool allowPawnsSwim = true;
     public static bool showRain = true;
@@ -44,10 +46,13 @@ public class Settings : ModSettings
                 weatherCellUpdateSpeed, 0.0001f, 0.002f, 0.5f, "TKKN_weatherCellUpdateSpeed_text".Translate());
         }
 
+        /*
+         Setting doesn't do anything
         list.CheckboxLabeled(
             "TKKN_showHot_title".Translate(),
             ref showHot,
             "TKKN_showHot_text".Translate());
+            */
         list.CheckboxLabeled(
             "TKKN_showCold_title".Translate(),
             ref showCold,
@@ -148,7 +153,7 @@ public class Settings : ModSettings
         Scribe_Values.Look(ref doWeather, "doWeather", true, true);
         Scribe_Values.Look(ref weatherCellUpdateSpeed, "weatherCellUpdateSpeed", 0.0006f, true);
         Scribe_Values.Look(ref doDirtPath, "doDirtPath", true, true);
-        Scribe_Values.Look(ref showHot, "showHot", true, true);
+        //Scribe_Values.Look(ref showHot, "showHot", true, true);
         Scribe_Values.Look(ref showCold, "showCold", true, true);
         Scribe_Values.Look(ref allowPlantEffects, "allowPlantEffects", true, true);
         Scribe_Values.Look(ref showRain, "showRain", true, true);

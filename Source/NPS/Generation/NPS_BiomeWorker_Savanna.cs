@@ -3,7 +3,7 @@ using RimWorld.Planet;
 
 namespace TKKN_NPS;
 
-internal class NPS_BiomeWorker_Savanna : BiomeWorker_TemperateForest
+internal class NPS_BiomeWorker_Savanna : BiomeWorker
 {
     public override float GetScore(BiomeDef biome, Tile tile, PlanetTile planetTile)
     {

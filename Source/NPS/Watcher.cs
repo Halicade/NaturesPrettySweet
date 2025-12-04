@@ -59,6 +59,7 @@ public class Watcher(Map map) : MapComponent(map)
     private bool lavaTerrain;
     private bool doUnpacking;
     private bool noHurtPlants;
+    private readonly Dictionary<Pawn, bool> validPawns = [];
 
     /* STANDARD STUFF */
 
@@ -102,11 +103,32 @@ public class Watcher(Map map) : MapComponent(map)
 
         var isRaining = map.weatherManager.curWeather.rainRate > 0;
         IReadOnlyList<Pawn> allPawnsSpawned = map.mapPawns.AllPawnsSpawned;
+
+        //Clear the list of valid pawns if it gets too large
+        if (allPawnsSpawned.Count < (validPawns.Count - 100)) {
+            validPawns.Clear();
+        }
+
         for (int i = 0; i < allPawnsSpawned.Count; i++) {
-            Pawn_Tick.Postfix(allPawnsSpawned[i], map, this, isRaining);
+            if (checkPawnHuman(allPawnsSpawned[i]))
+                Pawn_Tick.Postfix(allPawnsSpawned[i], map, this, isRaining);
         }
 
         UpdateBiomeSettings();
+    }
+
+    private bool checkPawnHuman(Pawn pawn) {
+        if (validPawns.TryGetValue(pawn, out var result)) {
+            return result;
+        }
+
+        if (!pawn.RaceProps.Humanlike || pawn.IsShambler || pawn.IsMutant) {
+            validPawns.Add(pawn, false);
+            return false;
+        }
+
+        validPawns.Add(pawn, true);
+        return true;
     }
 
     public override void ExposeData() {
@@ -128,6 +150,12 @@ public class Watcher(Map map) : MapComponent(map)
         base.FinalizeInit();
         if (map.IsPocketMap) {
             Log.Message("This is a pocket map. Nothing is running");
+            dontRunAnything = true;
+            return;
+        }
+
+        if (map.Biome.inVacuum) {
+            Log.Message("In the vacuum of space. Not running");
             dontRunAnything = true;
             return;
         }
@@ -357,62 +385,28 @@ public class Watcher(Map map) : MapComponent(map)
         }
 
         foreach (var element in DefDatabase<ElementSpawnDef>.AllDefs) {
-            var canSpawn = true;
             var isSpring = element.thingDef.defName.Contains("Spring");
 
             if (isSpring && maxSprings <= totalSprings) {
-                canSpawn = false;
+                continue;
             }
 
-            foreach (var biome in element.forbiddenBiomes) {
-                if (map.Biome.defName != biome) {
-                    continue;
-                }
-
-                canSpawn = false;
-                break;
+            if (element.forbiddenBiomes.Contains(map.Biome)) {
+                continue;
             }
 
-
-            foreach (var biome in element.allowedBiomes) {
-                if (map.Biome.defName == biome) {
-                    continue;
-                }
-
-                canSpawn = false;
-                break;
-            }
-
-            if (!canSpawn) {
+            if (!element.allowedBiomes.Contains(map.Biome)) {
                 continue;
             }
 
 
-            foreach (var allowed in element.terrainValidationAllowed) {
-                if (terrain.defName == allowed) {
-                    canSpawn = true;
-                    break;
-                }
-
-                canSpawn = false;
-            }
-
-            foreach (var notAllowed in element.terrainValidationDisallowed) {
-                if (!terrain.HasTag(notAllowed)) {
-                    continue;
-                }
-
-                canSpawn = false;
-                break;
-            }
-
-            if (isSpring && canSpawn && Rand.Value < springSpawnChance) {
+            if (isSpring && Rand.Value < springSpawnChance) {
                 var thing = ThingMaker.MakeThing(element.thingDef);
                 GenSpawn.Spawn(thing, c, map);
                 totalSprings++;
             }
 
-            if (isSpring || !canSpawn || !(Rand.Value < .0001f)) {
+            if (isSpring || !(Rand.Value < .0001f)) {
                 continue;
             }
 

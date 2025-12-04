@@ -364,86 +364,15 @@ public class cellData : IExposable
         var leaveSomething = Rand.Value;
         switch (leaveSomething) {
             case < 0.001f: {
-                var leaveWhat = Rand.Value;
-                var allowed = new List<string>();
-                switch (leaveWhat) {
-                    case > 0.1f:
-                        //leave trash;
-                        allowed = [
-                            "Filth_Slime",
-                            "TKKN_FilthShells",
-                            "TKKN_FilthPuddle",
-                            "TKKN_FilthSeaweed",
-                            "TKKN_FilthDriftwood",
-                            "TKKN_Sculpture_Shell",
-                            "Kibble",
-                            "EggRoeFertilized",
-                            "EggRoeUnfertilized"
-                        ];
-                        break;
-                    case > 0.05f:
-                        //leave resource;
-                        allowed = [
-                            "Steel",
-                            "Cloth",
-                            "WoodLog",
-                            "Synthread",
-                            "Hyperweave",
-                            "Kibble",
-                            "SimpleProstheticLeg",
-                            "MedicineIndustrial",
-                            "ComponentIndustrial",
-                            "Neutroamine",
-                            "Chemfuel",
-                            "MealSurvivalPack",
-                            "Pemmican"
-                        ];
-                        break;
-                    case > 0.03f: {
-                        // leave treasure.
-                        allowed = [
-                            "Silver",
-                            "Plasteel",
-                            "Gold",
-                            "Uranium",
-                            "Jade",
-                            "Heart",
-                            "Lung",
-                            "BionicEye",
-                            "ScytherBlade",
-                            "ElephantTusk"
-                        ];
-
-                        string text = "TKKN_NPS_TreasureWashedUpText".Translate();
-                        Messages.Message(text, MessageTypeDefOf.NeutralEvent);
-                        break;
-                    }
-                    case > 0.02f: {
-                        //leave ultrarare
-                        allowed = [
-                            "AIPersonaCore",
-                            "MechSerumHealer",
-                            "MechSerumNeurotrainer",
-                            "ComponentSpacer",
-                            "MedicineUltratech",
-                            "ThrumboHorn"
-                        ];
-                        string text = "TKKN_NPS_UltraRareWashedUpText".Translate();
-                        Messages.Message(text, MessageTypeDefOf.NeutralEvent);
-                        break;
-                    }
-                }
-
-                if (allowed.Count <= 0) {
+                List<Thing> allowed=ThingSetMakerDefOf.TKKN_TidalLoot.root.Generate();
+                
+                if (allowed == null) {
                     return;
                 }
-
-                var leaveWhat2 = Rand.Range(1, allowed.Count) - 1;
-                var loot = ThingMaker.MakeThing(ThingDef.Named(allowed[leaveWhat2]));
-                if (loot != null) {
-                    GenSpawn.Spawn(loot, location, map);
+                
+                for (int i = 0; i < allowed.Count; i++) {
+                    GenSpawn.Spawn(allowed[i], location, map);
                 }
-
                 break;
             }
             //grow water and shore plants:
@@ -482,67 +411,29 @@ public class cellData : IExposable
         }
 
         List<Thing> things = location.GetThingList(map);
-        var remove = new List<string> {
-            "FilthSlime",
-            "TKKN_FilthShells",
-            "TKKN_FilthPuddle",
-            "TKKN_FilthSeaweed",
-            "TKKN_FilthDriftwood",
-            "TKKN_Sculpture_Shell",
-            "Kibble",
-            "Steel",
-            "Cloth",
-            "WoodLog",
-            "Synthread",
-            "Hyperweave",
-            "Kibble",
-            "SimpleProstheticLeg",
-            "MedicineIndustrial",
-            "ComponentIndustrial",
-            "Neutroamine",
-            "Chemfuel",
-            "MealSurvivalPack",
-            "Pemmican",
-            "Silver",
-            "Plasteel",
-            "Gold",
-            "Uranium",
-            "Jade",
-            "Heart",
-            "Lung",
-            "BionicEye",
-            "ScytherBlade",
-            "ElephantTusk",
-            "AIPersonaCore",
-            "MechSerumHealer",
-            "MechSerumNeurotrainer",
-            "ComponentSpacer",
-            "MedicineUltratech",
-            "ThrumboHorn"
-        };
 
         for (var i = things.Count - 1; i >= 0; i--) {
-            if (remove.Contains(things[i].def.defName)) {
+            if (things[i].def.category == ThingCategory.Item) {
                 things[i].Destroy();
                 continue;
             }
 
             //remove any plants that might've grown:
 
-            if (things[i] is not Plant plant) {
+            if (things[i] is not Plant) {
                 continue;
             }
 
-            if (PlantReactionUtil.AllowedTerrains.TryGetValue(plant.def, out var thingWeather)) {
+            if (PlantReactionUtil.AllowedTerrains.TryGetValue(things[i].def, out var thingWeather)) {
                 if (thingWeather.Contains(currentTerrain)) {
                     continue;
                 }
 
-                Log.Warning($"Destroying {plant.def.defName} at {location} on {currentTerrain.defName}");
-                plant.Destroy();
+                Log.Warning($"Destroying {things[i].def.defName} at {location} on {currentTerrain.defName}");
+                things[i].Destroy();
             }
             else {
-                plant.Destroy();
+                things[i].Destroy();
             }
         }
     }

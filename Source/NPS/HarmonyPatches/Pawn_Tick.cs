@@ -7,66 +7,60 @@ namespace TKKN_NPS;
 //[HarmonyPatch(typeof(Pawn), "Tick")]
 public static class Pawn_Tick
 {
-    private static Map cachedMap;
-
     public static void Postfix(Pawn __instance, Map map, Watcher watcher, bool isRaining) {
         if (!__instance.Spawned || __instance.Dead) {
             return;
         }
 
-        cachedMap = map;
-
         var terrain = __instance.Position.GetTerrain(__instance.MapHeld);
-        bool isHumanlike = __instance.RaceProps.Humanlike;
-        makePaths(__instance, watcher, isHumanlike);
-        makeBreath(__instance, watcher);
-        makeWet(__instance, terrain, isRaining, isHumanlike);
-        dyingCheck(__instance, terrain, isHumanlike);
+        makePaths(__instance, watcher, map);
+        makeBreath(__instance, watcher, map);
+        makeWet(__instance, terrain, isRaining, map);
+        drowningCheck(__instance, terrain);
+        springCheck(__instance, terrain);
+    }
 
-        if (__instance.needs == null) {
+    private static void springCheck(Pawn pawn, TerrainDef terrain) {
+        if (pawn.needs == null) {
             return;
         }
 
-
         if (terrain == TerrainDefOf.TKKN_HotSpringsWater) {
-            if (__instance.needs.comfort != null) {
-                __instance.needs.comfort.lastComfortUseTick--;
+            if (pawn.needs.comfort != null) {
+                pawn.needs.comfort.lastComfortUseTick--;
             }
 
             var hediffDef = HediffDefOf.TKKN_hotspring_chill_out;
-            if (__instance.health.hediffSet.GetFirstHediffOfDef(hediffDef) != null) {
+            if (pawn.health.hediffSet.GetFirstHediffOfDef(hediffDef) != null) {
                 return;
             }
 
-            var hediff = HediffMaker.MakeHediff(hediffDef, __instance);
-            __instance.health.AddHediff(hediff);
+            var hediff = HediffMaker.MakeHediff(hediffDef, pawn);
+            pawn.health.AddHediff(hediff);
         }
         else if (terrain == TerrainDefOf.TKKN_ColdSpringsWater) {
-            __instance.needs.rest?.TickResting(.05f);
+            pawn.needs.rest?.TickResting(.05f);
 
             if (Find.TickManager.TicksAbs % 300 == 0) {
                 //Remove heatstroke if pawn is in cold spring
-                Hediff heatstroke = __instance.health.hediffSet.GetFirstHediffOfDef(RimWorld.HediffDefOf.Heatstroke);
+                Hediff heatstroke = pawn.health.hediffSet.GetFirstHediffOfDef(RimWorld.HediffDefOf.Heatstroke);
                 if (heatstroke != null) {
-                    __instance.health.RemoveHediff(heatstroke);
+                    pawn.health.RemoveHediff(heatstroke);
                 }
             }
 
             var hediffDef = HediffDefOf.TKKN_coldspring_chill_out;
-            if (__instance.health.hediffSet.GetFirstHediffOfDef(hediffDef) != null) {
+            if (pawn.health.hediffSet.GetFirstHediffOfDef(hediffDef) != null) {
                 return;
             }
 
-            var hediff = HediffMaker.MakeHediff(hediffDef, __instance);
-            __instance.health.AddHediff(hediff);
+            var hediff = HediffMaker.MakeHediff(hediffDef, pawn);
+            pawn.health.AddHediff(hediff);
         }
     }
 
-    private static void dyingCheck(Pawn pawn, TerrainDef terrain, bool isHumanLike) {
+    private static void drowningCheck(Pawn pawn, TerrainDef terrain) {
         //drowning == immobile and in water
-        if (!isHumanLike) {
-            return;
-        }
 
         if (pawn.health.Downed && TerrainTagUtil.TKKN_Wet.Contains(terrain)) {
             var damage = .0005f;
@@ -107,13 +101,13 @@ public static class Pawn_Tick
         }
     }
 
-    private static void makeWet(Pawn pawn, TerrainDef currentTerrain, bool isRaining, bool isHumanLike) {
+    private static void makeWet(Pawn pawn, TerrainDef currentTerrain, bool isRaining, Map map) {
         if (!Settings.allowPawnsToGetWet) {
             return;
         }
 
         var hediffDef = HediffDefOf.TKKN_Wetness;
-        if (!isHumanLike || pawn.health.hediffSet.GetFirstHediffOfDef(hediffDef) != null) {
+        if (pawn.health.hediffSet.GetFirstHediffOfDef(hediffDef) != null) {
             return;
         }
 
@@ -124,7 +118,7 @@ public static class Pawn_Tick
 
         var isWet = false;
         if (isRaining) {
-            var roofed = cachedMap.roofGrid.Roofed(c);
+            var roofed = map.roofGrid.Roofed(c);
             if (!roofed) {
                 isWet = true;
             }
@@ -149,19 +143,19 @@ public static class Pawn_Tick
     }
 
 
-    private static void makePaths(Pawn pawn, Watcher watcher, bool isHumanLike) {
+    private static void makePaths(Pawn pawn, Watcher watcher, Map map) {
         if (!Settings.doDirtPath) {
             return;
         }
 
-        if (!isHumanLike || !pawn.Position.InBounds(cachedMap)) {
+        if (!pawn.Position.InBounds(map)) {
             return;
         }
 
         //damage plants and remove snow/frost where they are. This will hopefully generate paths as pawns walk :)
         if (watcher.CheckIfCold(pawn.Position)) {
             watcher.frostGridComponent.AddDepth(pawn.Position, (float)-.05);
-            cachedMap.snowGrid.AddDepth(pawn.Position, (float)-.05);
+            map.snowGrid.AddDepth(pawn.Position, (float)-.05);
         }
 
 
@@ -172,12 +166,12 @@ public static class Pawn_Tick
         }
     }
 
-    private static void makeBreath(Pawn pawn, Watcher watcher) {
+    private static void makeBreath(Pawn pawn, Watcher watcher, Map map) {
         if (!Settings.showCold) {
             return;
         }
 
-        if (Find.TickManager.TicksGame % 150 != 0) {
+        if (Find.TickManager.TicksGame % 200 != 0) {
             return;
         }
 
@@ -188,7 +182,7 @@ public static class Pawn_Tick
 
         var head = pawn.Position;
         head.z += 1;
-        if (!head.ShouldSpawnMotesAt(cachedMap) || cachedMap.moteCounter.SaturatedLowPriority) {
+        if (!head.ShouldSpawnMotesAt(map) || map.moteCounter.SaturatedLowPriority) {
             return;
         }
 
@@ -198,6 +192,6 @@ public static class Pawn_Tick
         moteThrown.rotationRate = Rand.Range(-30f, 30f);
         moteThrown.exactPosition = head.ToVector3();
         moteThrown.SetVelocity(Rand.Range(20, 30), Rand.Range(0.5f, 0.7f));
-        GenSpawn.Spawn(moteThrown, head, cachedMap);
+        GenSpawn.Spawn(moteThrown, head, map);
     }
 }

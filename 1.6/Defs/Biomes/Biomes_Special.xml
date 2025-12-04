@@ -10,6 +10,7 @@
     <implemented>true</implemented>
     <forageability>.25</forageability>
     <foragedFood>RawBerries</foragedFood>
+    <geyserCountFactor>1.5</geyserCountFactor>
     <settlementSelectionWeight>.6</settlementSelectionWeight>
     <texture>TKKN_NPS/World/Biomes/Lavatropical</texture>
     <soundsAmbient>

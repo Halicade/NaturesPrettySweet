@@ -83,6 +83,8 @@
     <changeable>false</changeable>
     <holdSnowOrSand>false</holdSnowOrSand>
     <takeSplashes>false</takeSplashes>
+    <gravshipReplacementTerrain>TKKN_LavaRock_RoughHewn</gravshipReplacementTerrain>
+    <meltSnowRadius>4</meltSnowRadius>
     <statBases>
       <Beauty>+2</Beauty>
       <Cleanliness>-2</Cleanliness>
@@ -117,6 +119,8 @@
     <changeable>false</changeable>
     <holdSnowOrSand>false</holdSnowOrSand>
     <takeSplashes>false</takeSplashes>
+    <gravshipReplacementTerrain>TKKN_LavaRock_RoughHewn</gravshipReplacementTerrain>
+    <meltSnowRadius>4</meltSnowRadius>
     <statBases>
       <Beauty>+2</Beauty>
       <Cleanliness>-2</Cleanliness>
@@ -271,7 +275,7 @@
     </tags>
     <generatedFilth>Filth_Sand</generatedFilth>
     <filthAcceptanceMask />
-    <fertility>.001</fertility>
+    <fertility>.1</fertility>
     <takeFootprints>True</takeFootprints>
     <avoidWander>True</avoidWander>
     <driesTo>Sand</driesTo>
@@ -423,17 +427,6 @@
       <TKKN_BlockLava>20</TKKN_BlockLava>
     </costList>
   </TerrainDef>
-  <TerrainDef Abstract="True" ParentName="FloorBase" Name="SpecialTileBase">
-    <renderPrecedence>220</renderPrecedence>
-    <description>Carefully-cut and fit fancy tiles. They are pretty to look at, but they take a long time to lay.</description>
-    <texturePath>Terrain/Surfaces/GenericFloorTile</texturePath>
-    <statBases>
-      <WorkToBuild>1100</WorkToBuild>
-      <Beauty>1</Beauty>
-    </statBases>
-    <designatorDropdown>Floor_Special_Tile</designatorDropdown>
-    <constructionSkillPrerequisite>3</constructionSkillPrerequisite>
-  </TerrainDef>
   <TerrainDef Abstract="True" ParentName="FloorBase" Name="SpecialPlankBase">
     <renderPrecedence>220</renderPrecedence>
     <description>Carefully-cut and fit fancy planks. They are pretty to look at, but they take a long time to lay.</description>
@@ -442,7 +435,7 @@
       <WorkToBuild>1100</WorkToBuild>
       <Beauty>1</Beauty>
     </statBases>
-    <designatorDropdown>Floor_Special_Plank</designatorDropdown>
+    <designatorDropdown>NPS_Floor_Special_Plank</designatorDropdown>
     <constructionSkillPrerequisite>3</constructionSkillPrerequisite>
   </TerrainDef>
   <TerrainDef ParentName="SpecialPlankBase">
@@ -450,10 +443,14 @@
     <label>red wood floor</label>
     <texturePath>Terrain/Surfaces/WoodFloor</texturePath>
     <color>(102,41,20)</color>
+    <statBases>
+      <Flammability>0.22</Flammability>
+    </statBases>
     <costList>
       <RedWoodLog>4</RedWoodLog>
     </costList>
   </TerrainDef>
+  <!--
   <TerrainDef ParentName="SpecialPlankBase">
     <defName>TKKN_FloorPertrifiedWood</defName>
     <label>petrified wood floor</label>
@@ -462,14 +459,23 @@
       <TKKN_PetrifiedWood>4</TKKN_PetrifiedWood>
     </costList>
   </TerrainDef>
-  <TerrainDef ParentName="SpecialTileBase">
+  -->
+  <TerrainDef ParentName="TileMetalBase">
     <defName>TKKN_FloorAmber</defName>
     <label>amber tile floor</label>
+    <description>Floor tiles made using ancient tree sap.</description>
     <texturePath>Terrain/Surfaces/GenericFloorTile</texturePath>
     <color>(224,147,4)</color>
+    <statBases>
+      <WorkToBuild>1100</WorkToBuild>
+      <Beauty>2</Beauty>
+    </statBases>
     <costList>
       <TKKN_Amber>6</TKKN_Amber>
     </costList>
+    <tags>
+      <li>FineFloor</li>
+    </tags>
   </TerrainDef>
   <TerrainDef ParentName="FloorBase">
     <defName>TKKN_Salted_Earth</defName>

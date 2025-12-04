@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<Patch>
+    <!--
+	<li>TKKN_VolcanicFlow</li>
+	<li>TKKN_RedwoodForest</li>
+	<li>TKKN_Oasis</li>
+	<li>TKKN_Desert</li>
+	<li>TKKN_Grasslands</li>
+	<li>TKKN_Savanna</li>
+	-->
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/FeatureDef[defName="TemperateForest"]/acceptableBiomes</xpath>
+        <value>
+            <li>TKKN_RedwoodForest</li>
+        </value>
+    </Operation>
+
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/FeatureDef[defName="Desert"]/acceptableBiomes</xpath>
+        <value>
+            <li>TKKN_Oasis</li>
+            <li>TKKN_Desert</li>
+        </value>
+    </Operation>
+
+</Patch>

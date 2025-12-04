@@ -15,12 +15,22 @@
     </statBases>
     <tools>
       <li>
+        <label>left claw</label>
         <capacities>
           <li>Cut</li>
         </capacities>
-        <power>7</power>
+        <power>8</power>
         <cooldownTime>2.5</cooldownTime>
-        <linkedBodyPartsGroup>HeadClaw</linkedBodyPartsGroup>
+        <linkedBodyPartsGroup>FrontLeftClaws</linkedBodyPartsGroup>
+      </li>
+      <li>
+        <label>right claw</label>
+        <capacities>
+          <li>Cut</li>
+        </capacities>
+        <power>8</power>
+        <cooldownTime>2.5</cooldownTime>
+        <linkedBodyPartsGroup>FrontRightClaws</linkedBodyPartsGroup>
       </li>
       <li>
         <label>head</label>
@@ -30,6 +40,8 @@
         <power>3</power>
         <cooldownTime>1.65</cooldownTime>
         <linkedBodyPartsGroup>HeadAttackTool</linkedBodyPartsGroup>
+        <ensureLinkedBodyPartsGroupAlwaysUsable>true</ensureLinkedBodyPartsGroupAlwaysUsable>
+        <chanceFactor>0.1</chanceFactor>
       </li>
     </tools>
     <comps>
@@ -42,9 +54,9 @@
       </li>
     </comps>
     <race>
-      <body>BeetleLikeWithClaw</body>
+      <meatLabel>shellfish meat</meatLabel>
+      <body>NPS_BeetleLikeWithClaws</body>
       <foodType>OmnivoreRoughAnimal</foodType>
-      <useMeatFrom>Tortoise</useMeatFrom>
       <baseHungerRate>0.15</baseHungerRate>
       <baseBodySize>0.8</baseBodySize>
       <baseHealthScale>1</baseHealthScale>
@@ -52,20 +64,20 @@
       <lifeExpectancy>6</lifeExpectancy>
       <lifeStageAges>
         <li>
-          <def>AnimalBabyTiny</def>
+          <def>EusocialInsectLarva</def>
           <minAge>0</minAge>
         </li>
         <li>
-          <def>AnimalJuvenile</def>
+          <def>EusocialInsectJuvenile</def>
           <minAge>0.1</minAge>
         </li>
         <li>
-          <def>AnimalAdult</def>
+          <def>EusocialInsectAdult</def>
           <minAge>0.3</minAge>
-          <soundWounded>Pawn_Spelopede_Pain</soundWounded>
-          <soundDeath>Pawn_Spelopede_Death</soundDeath>
-          <soundCall>Pawn_Spelopede_Call</soundCall>
-          <soundAngry>Pawn_Spelopede_Angry</soundAngry>
+          <soundWounded>Pawn_Megascarab_Wounded</soundWounded>
+          <soundDeath>Pawn_Megascarab_Death</soundDeath>
+          <soundCall>Pawn_Megascarab_Call</soundCall>
+          <soundAngry>Pawn_Megascarab_Angry</soundAngry>
         </li>
       </lifeStageAges>
       <soundMeleeHitPawn>Pawn_Melee_SmallScratch_HitPawn</soundMeleeHitPawn>
@@ -73,7 +85,7 @@
       <soundMeleeMiss>Pawn_Melee_SmallScratch_Miss</soundMeleeMiss>
     </race>
     <tradeTags>
-      <li>Insectoid</li>
+      <li>AnimalInsect</li>
     </tradeTags>
   </ThingDef>
   <PawnKindDef ParentName="AnimalKindBase">
@@ -153,7 +165,7 @@
       </li>
     </comps>
     <race>
-      <body>Rock</body>
+      <body>NPS_Rock</body>
       <baseBodySize>0.5</baseBodySize>
       <baseHungerRate>0.33</baseHungerRate>
       <baseHealthScale>0.6</baseHealthScale>
@@ -569,7 +581,7 @@
       </li>
     </comps>
     <race>
-      <body>Snail</body>
+      <body>NPS_Snail</body>
       <baseBodySize>0.2</baseBodySize>
       <baseHungerRate>0.10</baseHungerRate>
       <baseHealthScale>0.4</baseHealthScale>

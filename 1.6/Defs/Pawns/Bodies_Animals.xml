@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Defs>
   <BodyPartDef>
-    <defName>LeftTentacle</defName>
+    <defName>NPS_LeftTentacle</defName>
     <label>left tentacle</label>
     <hitPoints>90</hitPoints>
     <skinCovered>true</skinCovered>
   </BodyPartDef>
   <BodyPartDef>
-    <defName>RightTentacle</defName>
+    <defName>NPS_RightTentacle</defName>
     <label>right tentacle</label>
     <hitPoints>90</hitPoints>
     <skinCovered>true</skinCovered>
   </BodyPartDef>
   <BodyPartDef>
-    <defName>Snailhead</defName>
+    <defName>NPS_Snailhead</defName>
     <label>head</label>
     <hitPoints>200</hitPoints>
     <skinCovered>true</skinCovered>
@@ -23,6 +23,171 @@
       <li>TalkingPathway</li>
     </tags>
   </BodyPartDef>
+  <BodyPartDef>
+    <defName>NPS_Carapace</defName>
+    <label>carapace</label>
+    <hitPoints>60</hitPoints>
+    <frostbiteVulnerability>0.5</frostbiteVulnerability>
+    <permanentInjuryChanceFactor>0</permanentInjuryChanceFactor>
+    <skinCovered>false</skinCovered>
+    <alive>false</alive>
+    <bleedRate>0</bleedRate>
+  </BodyPartDef>
+  
+  <BodyPartDef>
+    <defName>NPS_InsectClaw</defName>
+    <label>insect claw</label>
+    <hitPoints>15</hitPoints>
+    <permanentInjuryChanceFactor>0</permanentInjuryChanceFactor>
+    <skinCovered>false</skinCovered>
+    <solid>true</solid>
+    <alive>false</alive>
+    <bleedRate>0</bleedRate>
+  </BodyPartDef>	
+  
+  <BodyDef>
+    <defName>NPS_BeetleLikeWithClaws</defName>
+    <label>beetle-like with claw</label>
+    <corePart>
+      <def>Shell</def>
+      <height>Middle</height>
+      <depth>Outside</depth>
+      <parts>
+        <li>
+          <def>NPS_Carapace</def>
+          <customLabel>carapace</customLabel>
+          <coverage>0.21</coverage>
+        </li>
+        <li>
+          <def>Stomach</def>
+          <coverage>0.05</coverage>
+          <depth>Inside</depth>
+        </li>
+        <li>
+          <def>InsectHeart</def>
+          <coverage>0.03</coverage>
+          <depth>Inside</depth>
+        </li>
+        <li>
+          <def>Pronotum</def>
+          <coverage>0.18</coverage>
+          <height>Top</height>
+          <parts>
+            <li>
+              <def>InsectHead</def>
+              <coverage>0.65</coverage>
+              <groups>
+                <li>HeadAttackTool</li>
+              </groups>
+              <parts>
+                <li>
+                  <def>Brain</def>
+                  <coverage>0.2</coverage>
+                  <depth>Inside</depth>
+                </li>
+                <li>
+                  <def>Eye</def>
+                  <customLabel>left eye</customLabel>
+                  <coverage>0.12</coverage>
+                </li>
+                <li>
+                  <def>Eye</def>
+                  <customLabel>right eye</customLabel>
+                  <coverage>0.12</coverage>
+                </li>
+                <li>
+                  <def>Antenna</def>
+                  <customLabel>left antenna</customLabel>
+                  <coverage>0.08</coverage>
+                </li>
+                <li>
+                  <def>Antenna</def>
+                  <customLabel>right antenna</customLabel>
+                  <coverage>0.08</coverage>
+                </li>
+                <li>
+                  <def>InsectNostril</def>
+                  <coverage>0.06</coverage>
+                </li>
+                <li>
+                  <def>InsectMouth</def>
+                  <coverage>0.08</coverage>
+                  <groups>
+                    <li>Mouth</li>
+                  </groups>
+                </li>
+              </parts>
+            </li>
+          </parts>
+        </li>
+        <li>
+          <def>InsectLeg</def>
+          <customLabel>front left leg</customLabel>
+          <coverage>0.04</coverage>
+          <height>Bottom</height>
+        </li>
+        <li>
+          <def>InsectLeg</def>
+          <customLabel>front right leg</customLabel>
+          <coverage>0.04</coverage>
+          <height>Bottom</height>
+        </li>
+        <li>
+          <def>InsectLeg</def>
+          <customLabel>middle left leg</customLabel>
+          <coverage>0.04</coverage>
+          <height>Bottom</height>
+        </li>
+        <li>
+          <def>InsectLeg</def>
+          <customLabel>middle right leg</customLabel>
+          <coverage>0.04</coverage>
+          <height>Bottom</height>
+        </li>
+        <li>
+          <def>InsectLeg</def>
+          <customLabel>middle rear left leg</customLabel>
+          <coverage>0.04</coverage>
+          <height>Bottom</height>
+        </li>
+        <li>
+          <def>InsectLeg</def>
+          <customLabel>middle rear right leg</customLabel>
+          <coverage>0.04</coverage>
+          <height>Bottom</height>
+        </li>
+        <li>
+          <def>InsectLeg</def>
+          <customLabel>rear right leg</customLabel>
+          <coverage>0.04</coverage>
+          <height>Bottom</height>
+        </li>
+        <li>
+          <def>InsectLeg</def>
+          <customLabel>rear right leg</customLabel>
+          <coverage>0.04</coverage>
+          <height>Bottom</height>
+        </li>
+        <li>
+          <def>NPS_InsectClaw</def>
+          <customLabel>right claw</customLabel>
+		  <coverage>0.10</coverage>
+		  <groups>
+			<li>FrontLeftClaws</li>
+		  </groups>
+        </li>
+        <li>
+          <def>NPS_InsectClaw</def>
+          <customLabel>left claw</customLabel>
+		  <coverage>0.10</coverage>
+		  <groups>
+			<li>FrontRightClaws</li>
+		  </groups>
+        </li>
+		
+      </parts>
+    </corePart>
+  </BodyDef>
   <BodyPartDef>
     <defName>SnailShell</defName>
     <label>snail shell</label>
@@ -50,7 +215,7 @@
     <spawnThingOnRemoved>Kidney</spawnThingOnRemoved>
   </BodyPartDef>
   <BodyDef>
-    <defName>Rock</defName>
+    <defName>NPS_Rock</defName>
     <label>rock</label>
     <corePart>
       <def>Body</def>
@@ -163,7 +328,7 @@
     </tags>
   </BodyPartDef>
   <BodyPartDef>
-    <defName>SnailFoot</defName>
+    <defName>NPS_SnailFoot</defName>
     <label>foot</label>
     <hitPoints>300</hitPoints>
     <frostbiteVulnerability>0.5</frostbiteVulnerability>
@@ -174,7 +339,7 @@
     </tags>
   </BodyPartDef>
   <BodyDef>
-    <defName>Snail</defName>
+    <defName>NPS_Snail</defName>
     <label>snail</label>
     <corePart>
       <def>SnailShell</def>
@@ -182,7 +347,7 @@
       <depth>Outside</depth>
       <parts>
         <li>
-          <def>SnailFoot</def>
+          <def>NPS_SnailFoot</def>
           <coverage>0.1</coverage>
           <height>Bottom</height>
         </li>
@@ -212,7 +377,7 @@
           <depth>Inside</depth>
         </li>
         <li>
-          <def>Snailhead</def>
+          <def>NPS_Snailhead</def>
           <height>Top</height>
           <depth>Outside</depth>
           <coverage>0.2</coverage>
@@ -238,12 +403,12 @@
               <depth>Outside</depth>
             </li>
             <li>
-              <def>LeftTentacle</def>
+              <def>NPS_LeftTentacle</def>
               <coverage>0.10</coverage>
               <depth>Outside</depth>
             </li>
             <li>
-              <def>RightTentacle</def>
+              <def>NPS_RightTentacle</def>
               <coverage>0.10</coverage>
               <depth>Outside</depth>
             </li>

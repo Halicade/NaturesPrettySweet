@@ -1,0 +1,296 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<Defs>
+    <!--
+    Original values I accidentally deleted
+     switch (leaveWhat) {
+                    case > 0.1f:
+                        //leave trash;
+                        allowed = [
+                            "Filth_Slime",
+                            "TKKN_FilthShells",
+                            "TKKN_FilthPuddle",
+                            "TKKN_FilthSeaweed",
+                            "TKKN_FilthDriftwood",
+                            "TKKN_Sculpture_Shell",
+                            "Kibble",
+                            "EggRoeFertilized",
+                            "EggRoeUnfertilized"
+                        ];
+                        break;
+                    case > 0.05f:
+                        //leave resource;
+                        allowed = [
+                            "Steel",
+                            "Cloth",
+                            "WoodLog",
+                            "Synthread",
+                            "Hyperweave",
+                            "Kibble",
+                            "SimpleProstheticLeg",
+                            "MedicineIndustrial",
+                            "ComponentIndustrial",
+                            "Neutroamine",
+                            "Chemfuel",
+                            "Pemmican"
+                            "MealSurvivalPack",
+                        ];
+                        break;
+                    case > 0.03f: {
+                        // leave treasure.
+                        allowed = [
+                            <li>Silver</li>
+                            <li>Plasteel</li>
+                            <li>Gold</li>
+                            <li>Uranium</li>
+                            <li>Jade</li>
+                            "Heart",
+                            "Lung",
+                            "BionicEye",
+                            "ScytherBlade",
+                            "ElephantTusk"
+                        ];
+
+                        string text = "TKKN_NPS_TreasureWashedUpText".Translate();
+                        Messages.Message(text, MessageTypeDefOf.NeutralEvent);
+                        break;
+                    }
+                    case > 0.02f: {
+                        //leave ultrarare
+                        allowed = [
+                            "AIPersonaCore",
+                            "MechSerumHealer",
+                            "MechSerumNeurotrainer",
+                            "ComponentSpacer",
+                            "MedicineUltratech",
+                            "ThrumboHorn"
+                        ];
+                        string text = "TKKN_NPS_UltraRareWashedUpText".Translate();
+                        Messages.Message(text, MessageTypeDefOf.NeutralEvent);
+                        break;
+                    }
+                }
+                -->
+
+
+    <ThingSetMakerDef>
+        <defName>TKKN_TidalLoot</defName>
+        <root Class="ThingSetMaker_RandomOption">
+            <options>
+
+                <!-- Survival meal -->
+                <li>
+                    <weight>1</weight>
+                    <thingSetMaker Class="ThingSetMaker_StackCount">
+                        <fixedParams>
+                            <filter>
+                                <thingDefs>
+                                    <li>Filth_Slime</li>
+                                    <li>TKKN_FilthShells</li>
+                                    <li>TKKN_FilthPuddle</li>
+                                    <li>TKKN_FilthSeaweed</li>
+                                    <li>TKKN_FilthDriftwood</li>
+                                    <li>TKKN_Sculpture_Shell</li>
+                                </thingDefs>
+                            </filter>
+                            <countRange>1</countRange>
+                        </fixedParams>
+                    </thingSetMaker>
+                </li>
+
+                <!-- Medicine -->
+                <li>
+                    <weight>1</weight>
+                    <thingSetMaker Class="ThingSetMaker_StackCount">
+                        <fixedParams>
+                            <filter>
+                                <thingDefs>
+                                    <li>Kibble</li>
+                                </thingDefs>
+                            </filter>
+                            <countRange>25~74</countRange>
+                        </fixedParams>
+                    </thingSetMaker>
+                </li>
+
+                <!-- Luciferium -->
+                <li>
+                    <weight>1</weight>
+                    <thingSetMaker Class="ThingSetMaker_StackCount">
+                        <fixedParams>
+                            <filter>
+                                <thingDefs>
+                                    <li>EggRoeFertilized</li>
+                                    <li>EggRoeUnfertilized</li>
+                                </thingDefs>
+                            </filter>
+                            <countRange>5~12</countRange>
+                        </fixedParams>
+                    </thingSetMaker>
+                </li>
+
+                <!-- Joywire -->
+                <li>
+                    <weight>0.15</weight>
+                    <thingSetMaker Class="ThingSetMaker_StackCount">
+                        <fixedParams>
+                            <filter>
+                                <thingDefs>
+                                    <li>Steel</li>
+                                    <li>Cloth</li>
+                                    <li>WoodLog</li>
+                                    <li>Synthread</li>
+                                    <li>Hyperweave</li>
+                                    <li>Neutroamine</li>
+                                    <li>Chemfuel</li>
+                                    <li>Pemmican</li>
+                                </thingDefs>
+                            </filter>
+                            <countRange>25~74</countRange>
+                        </fixedParams>
+                    </thingSetMaker>
+                </li>
+
+                <!-- Silver -->
+                <li>
+                    <weight>1</weight>
+                    <thingSetMaker Class="ThingSetMaker_StackCount">
+                        <fixedParams>
+                            <filter>
+                                <thingDefs>
+                                    <li>MedicineIndustrial</li>
+                                    <li>ComponentIndustrial</li>
+                                </thingDefs>
+                            </filter>
+                            <countRange>2~6</countRange>
+                        </fixedParams>
+                    </thingSetMaker>
+                </li>
+
+                <!-- Chemfuel -->
+                <li>
+                    <weight>1</weight>
+                    <thingSetMaker Class="ThingSetMaker_StackCount">
+                        <fixedParams>
+                            <filter>
+                                <thingDefs>
+                                    <li>MealSurvivalPack</li>
+                                </thingDefs>
+                            </filter>
+                            <countRange>1~10</countRange>
+                        </fixedParams>
+                    </thingSetMaker>
+                </li>
+
+                <!-- Uranium -->
+                <li>
+                    <weight>1</weight>
+                    <thingSetMaker Class="ThingSetMaker_StackCount">
+                        <fixedParams>
+                            <filter>
+                                <thingDefs>
+                                    <li>Silver</li>
+                                    <li>Plasteel</li>
+                                    <li>Gold</li>
+                                    <li>Uranium</li>
+                                    <li>Jade</li>
+                                </thingDefs>
+                            </filter>
+                            <countRange>30~90</countRange>
+                        </fixedParams>
+                    </thingSetMaker>
+                </li>
+
+                <!-- Hyperweave & plasteel -->
+                <li>
+                    <weight>1</weight>
+                    <thingSetMaker Class="ThingSetMaker_StackCount">
+                        <fixedParams>
+                            <filter>
+                                <thingDefs>
+                                    <li>Heart</li>
+                                    <li>Lung</li>
+                                    <li>BionicEye</li>
+                                    <li>ElephantTusk</li>
+                                </thingDefs>
+                            </filter>
+                            <countRange>1</countRange>
+                        </fixedParams>
+                    </thingSetMaker>
+                </li>
+
+                <!-- Advanced components -->
+                <li>
+                    <weight>0.15</weight>
+                    <thingSetMaker Class="ThingSetMaker_StackCount">
+                        <fixedParams>
+                            <filter>
+                                <thingDefs>
+                                    <li>SimpleProstheticLeg</li>
+                                </thingDefs>
+                            </filter>
+                            <countRange>1</countRange>
+                        </fixedParams>
+                    </thingSetMaker>
+                </li>
+
+                <!-- Ultratech meds -->
+                <li>
+                    <weight>0.15</weight>
+                    <thingSetMaker Class="ThingSetMaker_StackCount">
+                        <fixedParams>
+                            <filter>
+                                <thingDefs>
+                                    <li>AIPersonaCore</li>
+                                    <li>MechSerumHealer</li>
+                                    <li>ThrumboHorn</li>
+                                    <li>Neurotrainer_Shooting</li>
+                                    <li>Neurotrainer_Melee</li>
+                                    <li>Neurotrainer_Construction</li>
+                                    <li>Neurotrainer_Mining</li>
+                                    <li>Neurotrainer_Cooking</li>
+                                    <li>Neurotrainer_Plants</li>
+                                    <li>Neurotrainer_Animals</li>
+                                    <li>Neurotrainer_Crafting</li>
+                                    <li>Neurotrainer_Artistic</li>
+                                    <li>Neurotrainer_Medicine</li>
+                                    <li>Neurotrainer_Social</li>
+                                    <li>Neurotrainer_Intellectual</li>
+                                </thingDefs>
+                            </filter>
+                            <countRange>1</countRange>
+                        </fixedParams>
+                    </thingSetMaker>
+                </li>
+
+                <!-- Ultratech meds -->
+                <li>
+                    <weight>0.15</weight>
+                    <thingSetMaker Class="ThingSetMaker_StackCount">
+                        <fixedParams>
+                            <filter>
+                                <thingDefs>
+                                    <li>ComponentSpacer</li>
+                                    <li>MedicineUltratech</li>
+                                </thingDefs>
+                            </filter>
+                            <countRange>2~8</countRange>
+                        </fixedParams>
+                    </thingSetMaker>
+                </li>
+
+                <!-- Techprint -->
+                <li>
+                    <weight>0.05</weight>
+                    <thingSetMaker Class="ThingSetMaker_Techprints">
+                        <weightAccordingToPlayerNeeds>false</weightAccordingToPlayerNeeds>
+                        <fixedParams>
+                            <countRange>1</countRange>
+                        </fixedParams>
+                    </thingSetMaker>
+                </li>
+
+            </options>
+        </root>
+    </ThingSetMakerDef>
+</Defs>

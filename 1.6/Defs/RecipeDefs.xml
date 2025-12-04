@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Defs>
   <RecipeDef>
-    <defName>MakeChemfuelFromRedWood</defName>
-    <label>make chemfuel from redwood logs</label>
-    <description>Make a batch of chemfuel by gasifying redwood logs.</description>
-    <jobString>Refining chemfuel from redwood.</jobString>
+    <defName>TKKN_ConvertRedwood</defName>
+    <label>convert redwood to regular wood</label>
+    <description>Convert Redwood to regular wood. This process is not reversible.</description>
+    <jobString>converting wood.</jobString>
     <effectWorking>Cremate</effectWorking>
     <soundWorking>Recipe_Cremate</soundWorking>
-    <workAmount>2500</workAmount>
-    <workSkill>Intellectual</workSkill>
+    <workAmount>2000</workAmount>
+    <workSkillLearnFactor>0.2</workSkillLearnFactor>
+    <workSkill>Plants</workSkill>
     <ingredients>
       <li>
         <filter>
@@ -16,7 +17,7 @@
             <li>RedWoodLog</li>
           </thingDefs>
         </filter>
-        <count>85</count>
+        <count>20</count>
       </li>
     </ingredients>
     <fixedIngredientFilter>
@@ -25,7 +26,12 @@
       </thingDefs>
     </fixedIngredientFilter>
     <products>
-      <Chemfuel>35</Chemfuel>
+      <WoodLog>20</WoodLog>
     </products>
+    <recipeUsers>
+      <li>CraftingSpot</li>
+    </recipeUsers>
+    
   </RecipeDef>
+
 </Defs>

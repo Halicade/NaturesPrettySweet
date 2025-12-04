@@ -12,11 +12,14 @@ public class Comp_Heater : ThingComp
     public override void CompTick()
     {
         ticks++;
+        if (!parent.Spawned)
+            return;
         if (ticks % Props.howOften != 0)
         {
             return;
         }
 
+        
         GenTemperature.PushHeat(parent, Props.temperature);
         FleckMaker.ThrowFireGlow(parent.DrawPos, parent.Map, 1);
         FleckMaker.ThrowSmoke(parent.Position.ToVector3(), parent.Map, 1);

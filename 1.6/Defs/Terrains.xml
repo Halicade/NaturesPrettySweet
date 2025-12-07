@@ -153,6 +153,20 @@
     </tags>
     <fertility>0.001</fertility>
   </TerrainDef>
+  <TerrainDef ParentName="WaterChestDeepBase">
+    <defName>TKKN_ColdSpringsWaterDeep</defName>
+    <label>chest-deep cold spring</label>
+    <texturePath>TKKN_NPS/Terrain/springWaterDeep</texturePath>
+    <waterDepthShader>Map/WaterDepth</waterDepthShader>
+    <renderPrecedence>395</renderPrecedence>
+    <driesTo>Gravel</driesTo>
+    <statBases>
+      <Beauty>+2</Beauty>
+    </statBases>
+    <tags>
+      <li>Spring</li>
+    </tags>
+  </TerrainDef>
   <TerrainDef ParentName="WaterShallowBase">
     <defName>TKKN_HotSpringsWater</defName>
     <label>hot spring</label>

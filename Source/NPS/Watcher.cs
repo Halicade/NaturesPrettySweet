@@ -190,8 +190,6 @@ public class Watcher(Map map) : MapComponent(map)
         */
 
         if (regenCellLists) {
-            //spawn oasis. Do before cell list building, so it's stored correctly.
-            SpawnOasis();
             FixLava();
 
             Rot4 rot = Find.World.CoastDirectionAt(map.Tile);
@@ -412,25 +410,6 @@ public class Watcher(Map map) : MapComponent(map)
 
             var elementThing = ThingMaker.MakeThing(element.thingDef);
             GenSpawn.Spawn(elementThing, c, map);
-        }
-    }
-
-    private void SpawnOasis() {
-        if (map.Biome != BiomeDefOf.TKKN_Oasis) {
-            return;
-        }
-
-        while (true) {
-            //spawn a big ol cold spring
-            var springSpot = CellFinderLoose.TryFindCentralCell(map, 10, 15, x => !x.Roofed(map));
-            var spring = (Spring)ThingMaker.MakeThing(ThingDefOf.TKKN_OasisSpring);
-            GenSpawn.Spawn(spring, springSpot, map);
-
-            if (Rand.Value < .001f) {
-                continue;
-            }
-
-            break;
         }
     }
 

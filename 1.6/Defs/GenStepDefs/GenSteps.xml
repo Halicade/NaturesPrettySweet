@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<Defs>
+
+
+    <GenStepDef>
+        <defName>NPS_Oasis</defName>
+        <order>355</order>
+        <genStep Class="TKKN_NPS.GenSteps.GenStep_Oasis">
+            <deepWaterTerrain>TKKN_ColdSpringsWaterDeep</deepWaterTerrain>
+            <waterTerrain>TKKN_ColdSpringsWater</waterTerrain>
+            <soilTerrain>Riverbank</soilTerrain>
+        </genStep>
+    </GenStepDef>
+
+    <!--Needs to run after initial plant generation-->
+    <GenStepDef>
+        <defName>NPS_PostOasisPlants</defName>
+        <order>907</order>
+        <genStep Class="TKKN_NPS.GenSteps.GenStep_PostOasis">
+            <soilTerrain>Riverbank</soilTerrain>
+        </genStep>
+    </GenStepDef>
+
+</Defs>

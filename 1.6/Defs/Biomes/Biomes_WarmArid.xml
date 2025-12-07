@@ -104,6 +104,10 @@
     <texture>TKKN_NPS/World/Biomes/Oasis</texture>
     <implemented>true</implemented>
     <diseaseMtbDays>80</diseaseMtbDays>
+    <extraGenSteps>
+        <li>NPS_Oasis</li>
+        <li>NPS_PostOasisPlants</li>
+    </extraGenSteps>
     <diseases>
       <li>
         <diseaseInc>Disease_Flu</diseaseInc>

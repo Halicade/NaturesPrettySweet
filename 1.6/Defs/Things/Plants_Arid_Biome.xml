@@ -166,7 +166,7 @@
   </ThingDef>
   <ThingDef ParentName="PlantBase">
     <defName>TKKN_PlantSucculants</defName>
-    <label>succulant</label>
+    <label>succulent</label>
     <description>A decorative plant with leaves or petals that are thick and fleshy, to retain water in arid climates.</description>
     <statBases>
       <MaxHitPoints>85</MaxHitPoints>

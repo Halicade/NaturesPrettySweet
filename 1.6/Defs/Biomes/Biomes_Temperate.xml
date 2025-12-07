@@ -130,8 +130,6 @@
       <TKKN_PlantTreeRedwood>0.02</TKKN_PlantTreeRedwood>
       <Plant_Berry>0.1</Plant_Berry>
       <Plant_HealrootWild>0.05</Plant_HealrootWild>
-      <TKKN_SaltCrystal>2</TKKN_SaltCrystal>
-      <TKKN_PlantBarnacles>0.1</TKKN_PlantBarnacles>
     </wildPlants>
     <wildAnimals>
       <Hare>1.00</Hare>

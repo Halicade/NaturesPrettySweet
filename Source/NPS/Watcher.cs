@@ -170,9 +170,6 @@ public class Watcher(Map map) : MapComponent(map)
             Rand.Range(0, 651431), QualityMode.Medium);
 
         RebuildCellLists();
-        if (TKKN_Holder.modsPatched.Count > 0) {
-            Log.Message($"TKKN NPS: Loaded patches for: {string.Join(", ", TKKN_Holder.modsPatched.ToArray())}");
-        }
     }
 
 

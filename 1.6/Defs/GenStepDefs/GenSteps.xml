@@ -21,5 +21,23 @@
             <soilTerrain>Riverbank</soilTerrain>
         </genStep>
     </GenStepDef>
+    
+    <!--Needs to run after FindPlayerStartSpot-->
+    <GenStepDef>
+        <defName>NPS_LavaLanding</defName>
+        <order>851</order>
+        <genStep Class="TKKN_NPS.GenSteps.GenStep_PostLava">
+            <terrainOverwrite>TKKN_LavaRock_RoughHewn</terrainOverwrite>
+        </genStep>
+    </GenStepDef>
+    
+    <!--Needs to run after FindPlayerStartSpot-->
+    <GenStepDef>
+        <defName>NPS_LavaPathing</defName>
+        <order>224</order>
+        <genStep Class="TKKN_NPS.GenSteps.GenStep_LavaPathing">
+        </genStep>
+    </GenStepDef>
+    
 
 </Defs>

@@ -23,7 +23,7 @@ public class Watcher(Map map) : MapComponent(map)
     private bool bugFixFrostIsRemoved;
     public Dictionary<IntVec3, cellData> cellWeatherAffects = new();
     private int cycleIndex;
-    private bool doCoast = true; //false if no coast
+    private bool doCoast = map.Tile.Tile.IsCoastal; //false if no coast
     private List<List<IntVec3>> floodCellsList = [];
 
     private int floodLevel; // 0 - 3
@@ -56,7 +56,7 @@ public class Watcher(Map map) : MapComponent(map)
     private float wetPlantsValue;
 
     private bool dontRunAnything;
-    private bool lavaTerrain;
+    private bool anyLavaTerrain;
     private bool doUnpacking;
     private bool noHurtPlants;
     private readonly Dictionary<Pawn, bool> validPawns = [];
@@ -84,6 +84,7 @@ public class Watcher(Map map) : MapComponent(map)
             wetPlantsValue = -1 * (outdoorTemp / humidity / 10);
             noHurtPlants = !Settings.allowPlantEffects || ticks % 150 != 0;
             doUnpacking = ticks % 2 == 0;
+            doCoast = map.Tile.Tile.IsCoastal;
             DoTides();
             DoFloods();
             var num = Mathf.RoundToInt(map.Area * Settings.weatherCellUpdateSpeed / 2);
@@ -190,7 +191,7 @@ public class Watcher(Map map) : MapComponent(map)
         */
 
         if (regenCellLists) {
-            FixLava();
+            //FixLava();
 
             Rot4 rot = Find.World.CoastDirectionAt(map.Tile);
 
@@ -205,7 +206,7 @@ public class Watcher(Map map) : MapComponent(map)
                 }
 
                 if (terrain == TerrainDefOf.TKKN_Lava || terrain == TerrainDefOf.TKKN_LavaRock_RoughHewn) {
-                    lavaTerrain = true;
+                    anyLavaTerrain = true;
                 }
 
                 var cell = new cellData { location = c, baseTerrain = terrain, howWetPlants = 70 };
@@ -214,29 +215,8 @@ public class Watcher(Map map) : MapComponent(map)
                     cell.originalTerrain = terrain;
                 }
 
-                if (terrain == TerrainDefOf.TKKN_Lava) {
-                    //fix for lava pathing. If lava is near lava, make it impassable.
-                    var edgeLava = false;
-                    var num = GenRadial.NumCellsInRadius(1);
-                    for (var i = 0; i < num; i++) {
-                        var lavaCheck = c + GenRadial.RadialPattern[i];
-                        if (!lavaCheck.InBounds(map)) {
-                            continue;
-                        }
-
-                        var lavaCheckTerrain = lavaCheck.GetTerrain(map);
-                        if (lavaCheckTerrain != TerrainDefOf.TKKN_Lava &&
-                            lavaCheckTerrain != TerrainDefOf.TKKN_LavaDeep) {
-                            edgeLava = true;
-                        }
-                    }
-
-                    if (!edgeLava) {
-                        map.terrainGrid.SetTerrain(c, TerrainDefOf.TKKN_LavaDeep);
-                    }
-                }
-                else if (rot.IsValid && terrain == RimWorld.TerrainDefOf.Sand ||
-                         terrain == TerrainDefOf.TKKN_SandBeachWetSalt) {
+                if (rot.IsValid && terrain == RimWorld.TerrainDefOf.Sand ||
+                    terrain == TerrainDefOf.TKKN_SandBeachWetSalt) {
                     //get all the sand pieces that are touching water.
                     for (var j = 0; j < HowManyTideSteps; j++) {
                         var waterCheck = AdjustForRotation(rot, c, j);
@@ -410,20 +390,6 @@ public class Watcher(Map map) : MapComponent(map)
 
             var elementThing = ThingMaker.MakeThing(element.thingDef);
             GenSpawn.Spawn(elementThing, c, map);
-        }
-    }
-
-    private void FixLava() {
-        //set so the area people land in will most likely not be lava.
-        if (map.Biome != BiomeDefOf.TKKN_VolcanicFlow) {
-            return;
-        }
-
-        var centerSpot = CellFinderLoose.TryFindCentralCell(map, 10, 15, x => !x.Roofed(map));
-        var num = GenRadial.NumCellsInRadius(23);
-        for (var i = 0; i < num; i++) {
-            map.terrainGrid.SetTerrain(centerSpot + GenRadial.RadialPattern[i],
-                TerrainDefOf.TKKN_LavaRock_RoughHewn);
         }
     }
 
@@ -703,8 +669,7 @@ public class Watcher(Map map) : MapComponent(map)
     }
 
     private void LavaRockSpecials(IntVec3 c, TerrainDef currentTerrain) {
-        if (!lavaTerrain) return;
-
+        if (!anyLavaTerrain) return;
         if (Rand.Value < .0001f) {
             if (c.InBounds(map)) {
                 if (currentTerrain == TerrainDefOf.TKKN_Lava) {

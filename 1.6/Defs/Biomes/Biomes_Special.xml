@@ -16,6 +16,10 @@
     <soundsAmbient>
       <li>AmbientNightInsects_Standard</li>
     </soundsAmbient>
+    <extraGenSteps>
+      <li>NPS_LavaLanding</li>
+      <li>NPS_LavaPathing</li>
+    </extraGenSteps>
     <diseaseMtbDays>35</diseaseMtbDays>
     <diseases>
       <li>

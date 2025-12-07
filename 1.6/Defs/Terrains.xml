@@ -70,7 +70,7 @@
   </TerrainDef>
   <TerrainDef>
     <defName>TKKN_Lava</defName>
-    <label>Lava</label>
+    <label>lava</label>
     <texturePath>TKKN_NPS/Terrain/Lava</texturePath>
     <waterDepthShader>Map/WaterDepth</waterDepthShader>
     <edgeType>Water</edgeType>
@@ -106,7 +106,7 @@
   </TerrainDef>
   <TerrainDef>
     <defName>TKKN_LavaDeep</defName>
-    <label>Lava</label>
+    <label>deep lava</label>
     <texturePath>TKKN_NPS/Terrain/Lava</texturePath>
     <waterDepthShader>Map/WaterDepth</waterDepthShader>
     <edgeType>Water</edgeType>
@@ -184,7 +184,7 @@
   </TerrainDef>
   <TerrainDef ParentName="NaturalTerrainBase">
     <defName>TKKN_SoilWet</defName>
-    <label>Wet Soil</label>
+    <label>wet Soil</label>
     <texturePath>TKKN_NPS/Terrain/wetSoil</texturePath>
     <edgeType>FadeRough</edgeType>
     <renderPrecedence>375</renderPrecedence>
@@ -213,7 +213,7 @@
   </TerrainDef>
   <TerrainDef ParentName="NaturalTerrainBase">
     <defName>TKKN_SoilWetRich</defName>
-    <label>Wet Rich Soil</label>
+    <label>wet rich soil</label>
     <texturePath>TKKN_NPS/Terrain/wetSoilRich</texturePath>
     <edgeType>FadeRough</edgeType>
     <renderPrecedence>375</renderPrecedence>
@@ -242,7 +242,7 @@
   </TerrainDef>
   <TerrainDef ParentName="NaturalTerrainBase">
     <defName>TKKN_SandWet</defName>
-    <label>Wet Sand</label>
+    <label>wet sand</label>
     <texturePath>TKKN_NPS/Terrain/wetSand</texturePath>
     <edgeType>FadeRough</edgeType>
     <renderPrecedence>375</renderPrecedence>

@@ -23,7 +23,7 @@ public class Watcher(Map map) : MapComponent(map)
     private bool bugFixFrostIsRemoved;
     public Dictionary<IntVec3, cellData> cellWeatherAffects = new();
     private int cycleIndex;
-    private bool doCoast = map.Tile.Tile.IsCoastal; //false if no coast
+    private bool doCoast = true; //false if no coast
     private List<List<IntVec3>> floodCellsList = [];
 
     private int floodLevel; // 0 - 3
@@ -160,7 +160,8 @@ public class Watcher(Map map) : MapComponent(map)
             dontRunAnything = true;
             return;
         }
-
+        
+        doCoast = map.Tile.Tile.IsCoastal;
         biomeSettings = map.Biome.GetModExtension<BiomeSeasonalSettings>();
         frostGridComponent = map.GetComponent<FrostGrid>();
         location = Find.WorldGrid.LongLatOf(map.Tile);

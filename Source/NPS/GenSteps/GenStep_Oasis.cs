@@ -9,10 +9,10 @@ public class GenStep_Oasis : GenStep
 {
     public override int SeedPart => 7899489;
 
-    private HashSet<IntVec3> _waterCells = [];
-    private HashSet<IntVec3> _deepWaterCells = [];
-    private HashSet<IntVec3> _soilLine = [];
-    private HashSet<IntVec3> _soilCells = [];
+    private readonly HashSet<IntVec3> waterCells = [];
+    private readonly HashSet<IntVec3> deepWaterCells = [];
+    private readonly HashSet<IntVec3> soilLine = [];
+    private readonly HashSet<IntVec3> soilCells = [];
 
     public TerrainDef waterTerrain;
     public TerrainDef deepWaterTerrain;
@@ -26,14 +26,14 @@ public class GenStep_Oasis : GenStep
 
     private IntVec3 center;
 
-    private List<IntVec3> cornerPoints = [];
+    private readonly List<IntVec3> cornerPoints = [];
 
 
     public override void Generate(Map map, GenStepParams parms) {
-        _waterCells.Clear();
-        _deepWaterCells.Clear();
-        _soilLine.Clear();
-        _soilCells.Clear();
+        waterCells.Clear();
+        deepWaterCells.Clear();
+        soilLine.Clear();
+        soilCells.Clear();
         cornerPoints.Clear();
 
         center = CellFinderLoose.TryFindCentralCell(map, 10, 15, x => !x.Roofed(map));
@@ -67,7 +67,7 @@ public class GenStep_Oasis : GenStep
         encircleSoilCells();
 
 
-        foreach (var water in _waterCells) {
+        foreach (var water in waterCells) {
             if (!water.InBounds(map))
                 continue;
             if (water.GetEdifice(map) != null)
@@ -75,7 +75,7 @@ public class GenStep_Oasis : GenStep
             map.terrainGrid.SetTerrain(water, waterTerrain);
         }
 
-        foreach (var water in _deepWaterCells) {
+        foreach (var water in deepWaterCells) {
             if (!water.InBounds(map))
                 continue;
             if (water.GetEdifice(map) != null)
@@ -83,7 +83,7 @@ public class GenStep_Oasis : GenStep
             map.terrainGrid.SetTerrain(water, deepWaterTerrain);
         }
 
-        foreach (var soil in _soilCells) {
+        foreach (var soil in soilCells) {
             if (!soil.InBounds(map))
                 continue;
             if (soil.GetEdifice(map) != null)
@@ -96,10 +96,10 @@ public class GenStep_Oasis : GenStep
     }
 
     private void encircleSoilCells() {
-        foreach (var cell in _soilLine) {
+        foreach (var cell in soilLine) {
             if (Rand.Chance(0.45f)) {
                 foreach (var circledCell in GenRadial.RadialCellsAround(cell, Rand.Range(0, 15), true)) {
-                    _soilCells.Add(circledCell);
+                    soilCells.Add(circledCell);
                 }
             }
         }
@@ -162,15 +162,15 @@ public class GenStep_Oasis : GenStep
     }
 
     private void getWaterCellsAround(IntVec3 start) {
-        _soilLine.Add(start);
-        foreach (var waterCells in GenSight.PointsOnLineOfSight(start, center)) {
-            _waterCells.Add(waterCells);
+        soilLine.Add(start);
+        foreach (var cellsAround in GenSight.PointsOnLineOfSight(start, center)) {
+            this.waterCells.Add(cellsAround);
         }
     }
 
     private void getDeepWaterCellsAround(IntVec3 start) {
-        foreach (var deepWaterCells in GenSight.PointsOnLineOfSight(start, center)) {
-            _deepWaterCells.Add(deepWaterCells);
+        foreach (var cellsAround in GenSight.PointsOnLineOfSight(start, center)) {
+            this.deepWaterCells.Add(cellsAround);
         }
     }
     

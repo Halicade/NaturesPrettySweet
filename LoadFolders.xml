@@ -3,6 +3,8 @@
   <v1.6>
     <li>/</li>
     <li>1.6</li>
+    <!--Temporary method so I can use Assets instead of AssetBundles-->
+    <li>Source/Assets</li>
     <li IfModActive="Ludeon.Rimworld.Odyssey">1.6/DLC/Odyssey</li>
     <li IfModActiveAll="acpteam.acpvanillastyle,Ludeon.Rimworld.Odyssey">1.6/Mods/AnimalCollabProjectOdyssey</li>
     <li IfModActive="acpteam.acpvanillastyle" IfModNotActive="Ludeon.Rimworld.Odyssey">1.6/Mods/AnimalCollabProjectNoOdyssey</li>

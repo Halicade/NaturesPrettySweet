@@ -317,16 +317,19 @@ public class SpringComp : SpringCompAbstract
             return;
         }
 
-        var source = from def in list
-            where def.CanEverPlantAt(c, map)
-            select def;
+        List<ThingDef> viablePlants = [];
 
-        if (!source.Any())
+        foreach (var wildPlant in map.Biome.AllWildPlants) {
+            if (wildPlant.CanEverPlantAt(c, map))
+                viablePlants.Add(wildPlant);
+        }
+
+        if (!viablePlants.Any())
         {
             return;
         }
 
-        if (!source.TryRandomElementByWeight(def => plantChoiceWeight(def, map), out var thingDef))
+        if (!viablePlants.TryRandomElementByWeight(def => plantChoiceWeight(def, map), out var thingDef))
         {
             return;
         }

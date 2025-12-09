@@ -342,9 +342,7 @@ public class Watcher(Map map) : MapComponent(map)
     }
 
     private void SpawnSpecialElements(IntVec3 c) {
-        var terrain = c.GetTerrain(map);
-
-
+        
         //defaults
         var maxSprings = 3;
         var springSpawnChance = .8f;

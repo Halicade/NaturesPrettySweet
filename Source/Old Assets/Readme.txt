@@ -1,0 +1,1 @@
+Icons that are no longer used for one reason or another.

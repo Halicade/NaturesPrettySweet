@@ -137,13 +137,6 @@ public class Settings : ModSettings
             ref showDevReadout,
             "TKKN_showTempReadout_text".Translate());
 
-        if (Controller.currentVersion != null) {
-            list.Gap();
-            GUI.contentColor = Color.gray;
-            list.Label("TKKN_CurrentModVersion_text".Translate(Controller.currentVersion));
-            GUI.contentColor = Color.white;
-        }
-
         list.End();
     }
 

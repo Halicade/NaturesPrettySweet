@@ -13,18 +13,24 @@ internal class HarmonyMain
     public static readonly MethodInfo HasUmbrella;
 
     static HarmonyMain() {
+        TerrainTagUtil.IntializeTerrainTags();
+        PlantReactionUtil.InitializePlantGraphics();
+        BiomeUtil.InitializeDefaults();
+
+        if (ModsConfig.OdysseyActive) {
+            Settings.doIce = false;
+            Settings.doTides = false;
+            Settings.doFloods = false;
+            Settings.leaveStuff = false;
+            Settings.allowPawnsSwim = false;
+        }
+
+
         var harmony = new Harmony("com.github.tkkntkkn.Natures-Pretty-Sweet");
 
         harmony.Patch(AccessTools.Method(typeof(BiomeDef), nameof(BiomeDef.CommonalityOfDisease)),
             prefix: new HarmonyMethod(typeof(BiomeDef_CommonalityOfDisease),
                 nameof(BiomeDef_CommonalityOfDisease.Prefix)));
-        /*
-        harmony.Patch(AccessTools.Method(typeof(PlantUtility), nameof(PlantUtility.CanEverPlantAt), [
-                typeof(ThingDef), typeof(IntVec3), typeof(Map),
-                typeof(bool), typeof(bool)
-            ]),
-            prefix: new HarmonyMethod(typeof(CanEverPlantAt_PlantUtility),
-                nameof(CanEverPlantAt_PlantUtility.Postfix)));*/
 
         harmony.Patch(AccessTools.Method(typeof(CellFinder), nameof(CellFinder.TryRandomClosewalkCellNear)),
             prefix: new HarmonyMethod(typeof(CellFinder_TryRandomClosewalkCellNear),
@@ -37,13 +43,6 @@ internal class HarmonyMain
             ]),
             postfix: new HarmonyMethod(typeof(GenSpawn_Spawn), nameof(GenSpawn_Spawn.Postfix)));
 
-        if (Settings.allowPawnsToGetWet) {
-            harmony.Patch(
-                AccessTools.Method(typeof(GenTemperature), nameof(GenTemperature.ComfortableTemperatureRange),
-                    [typeof(Pawn)]),
-                postfix: new HarmonyMethod(typeof(GenTemperature_ComfortableTemperatureRange),
-                    nameof(GenTemperature_ComfortableTemperatureRange.Postfix)));
-        }
 
         harmony.Patch(
             AccessTools.Method(typeof(Graphic_Shadow), nameof(Graphic_Shadow.DrawWorker)),
@@ -62,18 +61,6 @@ internal class HarmonyMain
             postfix: new HarmonyMethod(typeof(Pawn_SpawnSetup),
                 nameof(Pawn_SpawnSetup.Postfix)));
 
-        if (Settings.allowPawnsSwim && !ModsConfig.OdysseyActive) {
-            harmony.Patch(
-                AccessTools.Method(typeof(PawnRenderNodeWorker_Body), nameof(PawnRenderNodeWorker_Body.CanDrawNow)),
-                postfix: new HarmonyMethod(typeof(PawnRenderNodeWorker_Body_CanDrawNow),
-                    nameof(PawnRenderNodeWorker_Body_CanDrawNow.Postfix)));
-        }
-
-        if (Settings.allowPlantEffects) {
-            harmony.Patch(AccessTools.PropertyGetter(typeof(Plant), nameof(Plant.Graphic)),
-                postfix: new HarmonyMethod(typeof(Plant_Graphic),
-                    nameof(Plant_Graphic.Postfix)));
-        }
 
         harmony.Patch(AccessTools.Method(typeof(Reachability), nameof(Reachability.CanReach), [
                 typeof(IntVec3), typeof(LocalTargetInfo),
@@ -82,6 +69,31 @@ internal class HarmonyMain
             ]),
             postfix: new HarmonyMethod(typeof(Reachability_CanReach),
                 nameof(Reachability_CanReach.Postfix)));
+
+
+        harmony.Patch(AccessTools.Method(typeof(WeatherDecider), "CurrentWeatherCommonality"),
+            prefix: new HarmonyMethod(typeof(WeatherDecider_CurrentWeatherCommonality),
+                nameof(WeatherDecider_CurrentWeatherCommonality.Prefix)));
+        if (Settings.allowPawnsSwim && !ModsConfig.OdysseyActive) {
+            harmony.Patch(
+                AccessTools.Method(typeof(PawnRenderNodeWorker_Body), nameof(PawnRenderNodeWorker_Body.CanDrawNow)),
+                postfix: new HarmonyMethod(typeof(PawnRenderNodeWorker_Body_CanDrawNow),
+                    nameof(PawnRenderNodeWorker_Body_CanDrawNow.Postfix)));
+        }
+
+        if (Settings.allowPawnsToGetWet) {
+            harmony.Patch(
+                AccessTools.Method(typeof(GenTemperature), nameof(GenTemperature.ComfortableTemperatureRange),
+                    [typeof(Pawn)]),
+                postfix: new HarmonyMethod(typeof(GenTemperature_ComfortableTemperatureRange),
+                    nameof(GenTemperature_ComfortableTemperatureRange.Postfix)));
+        }
+
+        if (Settings.allowPlantEffects) {
+            harmony.Patch(AccessTools.PropertyGetter(typeof(Plant), nameof(Plant.Graphic)),
+                postfix: new HarmonyMethod(typeof(Plant_Graphic),
+                    nameof(Plant_Graphic.Postfix)));
+        }
 
         if (Settings.terrainAffectTemperature) {
             harmony.Patch(AccessTools.PropertyGetter(typeof(Thing), nameof(Thing.AmbientTemperature)),
@@ -94,21 +106,18 @@ internal class HarmonyMain
                     nameof(JobGiver_SeekSafeTemperature_TryGiveJob.Postfix)));
         }
 
-        harmony.Patch(AccessTools.Method(typeof(WeatherDecider), "CurrentWeatherCommonality"),
-            prefix: new HarmonyMethod(typeof(WeatherDecider_CurrentWeatherCommonality),
-                nameof(WeatherDecider_CurrentWeatherCommonality.Prefix)));
+        if (Settings.modifyAridShrubland) {
+            harmony.Patch(
+                AccessTools.Method(typeof(BiomeWorker_AridShrubland), nameof(BiomeWorker_AridShrubland.GetScore)),
+                postfix: new HarmonyMethod(typeof(BiomeWorker_AridShrubland_GetScore),
+                    nameof(BiomeWorker_AridShrubland_GetScore.Postfix)));
+        }
 
-
-        TerrainTagUtil.IntializeTerrainTags();
-        PlantReactionUtil.InitializePlantGraphics();
-        BiomeUtil.InitializeDefaults();
-
-        if (ModsConfig.OdysseyActive) {
-            Settings.doIce = false;
-            Settings.doTides = false;
-            Settings.doFloods = false;
-            Settings.leaveStuff = false;
-            Settings.allowPawnsSwim = false;
+        if (Settings.modifyTemperateForest) {
+            harmony.Patch(
+                AccessTools.Method(typeof(BiomeWorker_TemperateForest), nameof(BiomeWorker_TemperateForest.GetScore)),
+                postfix: new HarmonyMethod(typeof(BiomeWorker_TemperateForest_GetScore),
+                    nameof(BiomeWorker_TemperateForest_GetScore.Postfix)));
         }
 
         RimBrellasActive = ModLister.GetActiveModWithIdentifier("battlemage64.Rimbrellas", true) != null;

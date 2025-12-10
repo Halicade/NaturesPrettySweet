@@ -17,7 +17,7 @@
     <TKKN_NPS_TreasureWashedUpText>Treasure has washed up on the beach! Get it before it washes away.</TKKN_NPS_TreasureWashedUpText>
     <TKKN_NPS_TreasureFloodedUpText>Recent flooding has left behind treasure! Get it before it washes away.</TKKN_NPS_TreasureFloodedUpText>
     <TKKN_NPS_UltraRareWashedUpText>Ultra rare treasure has washed up on the beach! Get it before it washes away.</TKKN_NPS_UltraRareWashedUpText>
-    <TKKN_NPS_UltraRareFloodedUpText>Recent flooding has left behind ultra rare treasure! Get it before it washes away.</TKKN_NPS_UltraRareFloodedUpText>
+    <TKKN_NPS_UltraRareFloodedUpText>Recent flooding has left behind ultra-rare treasure! Get it before it washes away.</TKKN_NPS_UltraRareFloodedUpText>
     <!-- Frost -->
     <FrostNone>No frost</FrostNone>
     <FrostDusting>Frost (dusting)</FrostDusting>
@@ -62,9 +62,15 @@
     <TKKN_leaveStuff_text>After floods, items can washup on land</TKKN_leaveStuff_text>
     <TKKN_doDirtPath_title>Generate paths</TKKN_doDirtPath_title>
     <TKKN_doDirtPath_text>Pawns will create natural paths when walking</TKKN_doDirtPath_text>
+    <NPS_doAmbientTemperature_title>Apply ambient temperature</NPS_doAmbientTemperature_title>
+    <NPS_doAmbientTemperature_text>Temperature of a pawn can be affected by the terrain they are standing on. Note that this can be performance heavy with multiple pawns</NPS_doAmbientTemperature_text>
+    <NPS_allowPawnsToDrown_title>Allow pawns to drown</NPS_allowPawnsToDrown_title>
+    <NPS_allowPawnsToDrown_text>If a pawn is downed in the water, they might drown</NPS_allowPawnsToDrown_text>
     <TKKN_showTempReadout_title>Show temperature readout</TKKN_showTempReadout_title>
     <TKKN_showTempReadout_text>Show temperature readout in the bottom left</TKKN_showTempReadout_text>
-    <TKKN_regen_title>LEAVE ALONE: Regen cell lists</TKKN_regen_title>
-    <TKKN_regen_text>Regenerates terrain on the currently loaded map so you can get flooding, tides, and/or an oasis in a save made before this mod was added. After saving this setting, make a new save file for your game (in case things go badly), then reload the game. Once you reload, UNCHECK THIS BOX.</TKKN_regen_text>
+    <NPS_AllowBiomesText>Allow {0} to spawn during world generation</NPS_AllowBiomesText>
+    <NPS_allowBiome_title>Allow {0}</NPS_allowBiome_title>
+    <NPS_ModifyBiome_title>Modify {0}</NPS_ModifyBiome_title>
+    <NPS_ModifyBiome_desc>Modifies generation of the {0} biome to use different logic</NPS_ModifyBiome_desc>
     <!-- @formatter:on -->
 </LanguageData>

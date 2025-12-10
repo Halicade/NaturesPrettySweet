@@ -6,15 +6,16 @@ namespace TKKN_NPS;
 
 internal class NPS_BiomeWorker_LavaFields : BiomeWorker_TropicalRainforest
 {
-    public override float GetScore(BiomeDef biome, Tile tile, PlanetTile planetTile)
-    {
-        if (!(base.GetScore(biome, tile, planetTile) > 0))
-        {
+    public override float GetScore(BiomeDef biome, Tile tile, PlanetTile planetTile) {
+        if (!Settings.allowVolcanicFields) {
+            return -100f;
+        }
+
+        if (!(base.GetScore(biome, tile, planetTile) > 0)) {
             return 0f;
         }
 
-        if (Rand.ValueSeeded(tile.tile.tileId) > .009)
-        {
+        if (Rand.ValueSeeded(tile.tile.tileId) > .009) {
             return 0f;
         }
 

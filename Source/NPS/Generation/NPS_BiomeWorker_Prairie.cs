@@ -5,25 +5,24 @@ namespace TKKN_NPS;
 
 internal class NPS_BiomeWorker_Prairie : BiomeWorker
 {
-    public override float GetScore(BiomeDef biome, Tile tile, PlanetTile planetTile)
-    {
-        if (tile.WaterCovered)
-        {
+    public override float GetScore(BiomeDef biome, Tile tile, PlanetTile planetTile) {
+        if (!Settings.allowTallGrassPrairie) {
             return -100f;
         }
 
-        if (tile.temperature is < -10f or > 22)
-        {
+        if (tile.WaterCovered) {
+            return -100f;
+        }
+
+        if (tile.temperature is < -10f or > 22) {
             return 0f;
         }
 
-        if (tile.rainfall is < 900f or >= 1300f)
-        {
+        if (tile.rainfall is < 900f or >= 1300f) {
             return 0f;
         }
 
-        if (tile.hilliness != Hilliness.Flat)
-        {
+        if (tile.hilliness != Hilliness.Flat) {
             return 0f;
         }
 

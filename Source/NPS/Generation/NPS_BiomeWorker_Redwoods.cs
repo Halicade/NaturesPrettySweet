@@ -7,6 +7,9 @@ internal class NPS_BiomeWorker_Redwoods : BiomeWorker
 {
     public override float GetScore(BiomeDef biome, Tile tile, PlanetTile planetTile)
     {
+        if (!Settings.allowRedwood) {
+            return -100f;
+        }
         if (tile.WaterCovered)
         {
             return -100f;

@@ -32,11 +32,22 @@ public class Settings : ModSettings
 
     public static bool terrainAffectTemperature = true;
 
+    //Biomes
+    public static bool allowDesertSaltFlats = true;
+    public static bool allowDesertOasis = true;
+    public static bool allowRedwood = true;
+    public static bool allowTallGrassPrairie = true;
+    public static bool allowSavanna = true;
+    public static bool allowVolcanicFields = true;
+    public static bool modifyAridShrubland = true;
+    public static bool modifyTemperateForest = true;
+
     static Settings() { }
 
     public static void DoWindowContents(Rect inRect) {
-        var list = new Listing_Standard(GameFont.Small) { ColumnWidth = inRect.width / 2 };
-        list.Begin(inRect);
+        Listing_Standard list = new Listing_Standard(GameFont.Small);
+
+        list.Begin(inRect.LeftHalf());
 
         //Performance Settings
         list.CheckboxLabeled(
@@ -96,10 +107,10 @@ public class Settings : ModSettings
             ref doDirtPath,
             "TKKN_doDirtPath_text".Translate());
         list.CheckboxLabeled(
-            "TKKN_doAmbientTemperature_title".Translate(),
+            "NPS_doAmbientTemperature_title".Translate(),
             ref terrainAffectTemperature,
-            "TKKN_doAmbientTemperature_text".Translate());
-        
+            "NPS_doAmbientTemperature_text".Translate());
+
         list.Gap();
 
 
@@ -123,9 +134,9 @@ public class Settings : ModSettings
             ref allowPawnsToGetWet,
             "TKKN_allowPawnsToGetWet_text".Translate());
         list.CheckboxLabeled(
-            "TKKN_allowPawnsToDrown_title".Translate(),
+            "NPS_allowPawnsToDrown_title".Translate(),
             ref allowPawnsDrowning,
-            "TKKN_allowPawnsToDrown_text".Translate());
+            "NPS_allowPawnsToDrown_text".Translate());
         if (!ModsConfig.OdysseyActive) {
             list.CheckboxLabeled(
                 "TKKN_allowPawnsSwim_title".Translate(),
@@ -139,16 +150,39 @@ public class Settings : ModSettings
 
         //list.CheckboxLabeled("Show Update Notes?", ref showUpdateNotes, "");
         list.Gap(30f);
-        list.CheckboxLabeled(
-            "TKKN_regen_title".Translate(),
-            ref regenCells,
-            "TKKN_regen_text".Translate());
 
         list.CheckboxLabeled(
             "TKKN_showTempReadout_title".Translate(),
             ref showDevReadout,
             "TKKN_showTempReadout_text".Translate());
 
+        list.End();
+
+        list.Begin(inRect.RightHalf());
+        list.CheckboxLabeled(
+            "NPS_allowBiome_title".Translate(BiomeDefOf.TKKN_Desert.LabelCap),
+            ref allowDesertSaltFlats, tooltip: "NPS_AllowBiomesText".Translate(BiomeDefOf.TKKN_Desert.LabelCap));
+        list.CheckboxLabeled(
+            "NPS_allowBiome_title".Translate(BiomeDefOf.TKKN_Oasis.LabelCap),
+            ref allowDesertOasis, tooltip: "NPS_AllowBiomesText".Translate(BiomeDefOf.TKKN_Oasis.LabelCap));
+        list.CheckboxLabeled(
+            "NPS_allowBiome_title".Translate(BiomeDefOf.TKKN_RedwoodForest.LabelCap),
+            ref allowRedwood, tooltip: "NPS_AllowBiomesText".Translate(BiomeDefOf.TKKN_RedwoodForest.LabelCap));
+        list.CheckboxLabeled(
+            "NPS_allowBiome_title".Translate(BiomeDefOf.TKKN_Grasslands.LabelCap),
+            ref allowTallGrassPrairie, tooltip: "NPS_AllowBiomesText".Translate(BiomeDefOf.TKKN_Grasslands.LabelCap));
+        list.CheckboxLabeled(
+            "NPS_allowBiome_title".Translate(BiomeDefOf.TKKN_Savanna.LabelCap),
+            ref allowSavanna, tooltip: "NPS_AllowBiomesText".Translate(BiomeDefOf.TKKN_Savanna.LabelCap));
+        list.CheckboxLabeled(
+            "NPS_allowBiome_title".Translate(BiomeDefOf.TKKN_VolcanicFlow.LabelCap),
+            ref allowVolcanicFields, tooltip: "NPS_AllowBiomesText".Translate(BiomeDefOf.TKKN_VolcanicFlow.LabelCap));
+        list.CheckboxLabeled(
+            "NPS_ModifyBiome_title".Translate(BiomeDefOf.AridShrubland.LabelCap),
+            ref modifyAridShrubland, tooltip: "NPS_ModifyBiome_desc".Translate(BiomeDefOf.AridShrubland.LabelCap));
+        list.CheckboxLabeled(
+            "NPS_ModifyBiome_title".Translate(BiomeDefOf.TemperateForest.LabelCap),
+            ref modifyTemperateForest, tooltip: "NPS_ModifyBiome_desc".Translate(BiomeDefOf.TemperateForest.LabelCap));
         list.End();
     }
 
@@ -175,7 +209,15 @@ public class Settings : ModSettings
         Scribe_Values.Look(ref allowLavaEruption, "allowLavaEruption", true, true);
         Scribe_Values.Look(ref regenCells, "regenCells", false, true);
         Scribe_Values.Look(ref terrainAffectTemperature, "terrainAffectTemperature", true, true);
-        
+        Scribe_Values.Look(ref allowDesertSaltFlats, "allowDesertSaltFlats", true, true);
+        Scribe_Values.Look(ref allowDesertOasis, "allowDesertOasis", true, true);
+        Scribe_Values.Look(ref allowRedwood, "allowRedwood", true, true);
+        Scribe_Values.Look(ref allowTallGrassPrairie, "allowTallGrassPrairie", true, true);
+        Scribe_Values.Look(ref allowSavanna, "allowSavanna", true, true);
+        Scribe_Values.Look(ref allowVolcanicFields, "allowVolcanicFields", true, true);
+        Scribe_Values.Look(ref modifyAridShrubland, "modifyAridShrubland", true, true);
+        Scribe_Values.Look(ref modifyTemperateForest, "modifyTemperateForest", true, true);
+
         //Scribe_Values.Look(ref showUpdateNotes, "showUpdateNotes", true, true);
     }
 }

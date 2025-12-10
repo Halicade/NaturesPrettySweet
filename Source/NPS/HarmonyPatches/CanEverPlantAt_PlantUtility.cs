@@ -5,6 +5,7 @@ using Verse;
 
 namespace TKKN_NPS;
 
+//Unnecessary with 1.6 changes
 //[HarmonyPatch(typeof(PlantUtility), nameof(PlantUtility.CanEverPlantAt), typeof(ThingDef), typeof(IntVec3), typeof(Map),typeof(bool), typeof(bool))]
 public static class CanEverPlantAt_PlantUtility
 {

@@ -5,21 +5,21 @@ namespace TKKN_NPS;
 
 internal class NPS_BiomeWorker_Savanna : BiomeWorker
 {
-    public override float GetScore(BiomeDef biome, Tile tile, PlanetTile planetTile)
-    {
-        //keep this the same, just make it fail more often. When it fails, shrubland will be rendered, instead.
-        if (tile.WaterCovered)
-        {
+    public override float GetScore(BiomeDef biome, Tile tile, PlanetTile planetTile) {
+        if (!Settings.allowSavanna) {
             return -100f;
         }
 
-        if (tile.temperature is < 24f or > 30f)
-        {
+        //keep this the same, just make it fail more often. When it fails, shrubland will be rendered, instead.
+        if (tile.WaterCovered) {
+            return -100f;
+        }
+
+        if (tile.temperature is < 24f or > 30f) {
             return 0f;
         }
 
-        if (tile.rainfall is < 1400f or >= 2000f)
-        {
+        if (tile.rainfall is < 1400f or >= 2000f) {
             return 0f;
         }
 

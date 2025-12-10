@@ -6,7 +6,7 @@ using Verse;
 namespace TKKN_NPS;
 
 //swap out plant graphics based on seasonal effects
-[HarmonyPatch(typeof(Plant), nameof(Plant.Graphic), MethodType.Getter)]
+//[HarmonyPatch(typeof(Plant), nameof(Plant.Graphic), MethodType.Getter)]
 public static class Plant_Graphic
 {
     private static Map cachedMap;

@@ -15,6 +15,7 @@ public class Settings : ModSettings
 
     //private static bool showHot = true;
     public static bool allowPawnsToGetWet = true;
+    public static bool allowPawnsDrowning = true;
     public static bool allowPawnsSwim = true;
     public static bool showRain = true;
     public static bool doWeather = true;
@@ -28,6 +29,8 @@ public class Settings : ModSettings
     public static float weatherCellUpdateSpeed = 0.0002f;
     public static bool doIce = showCold;
     public static bool doSprings = true;
+
+    public static bool terrainAffectTemperature = true;
 
     static Settings() { }
 
@@ -92,6 +95,11 @@ public class Settings : ModSettings
             "TKKN_doDirtPath_title".Translate(),
             ref doDirtPath,
             "TKKN_doDirtPath_text".Translate());
+        list.CheckboxLabeled(
+            "TKKN_doAmbientTemperature_title".Translate(),
+            ref terrainAffectTemperature,
+            "TKKN_doAmbientTemperature_text".Translate());
+        
         list.Gap();
 
 
@@ -114,6 +122,10 @@ public class Settings : ModSettings
             "TKKN_allowPawnsToGetWet_title".Translate(),
             ref allowPawnsToGetWet,
             "TKKN_allowPawnsToGetWet_text".Translate());
+        list.CheckboxLabeled(
+            "TKKN_allowPawnsToDrown_title".Translate(),
+            ref allowPawnsDrowning,
+            "TKKN_allowPawnsToDrown_text".Translate());
         if (!ModsConfig.OdysseyActive) {
             list.CheckboxLabeled(
                 "TKKN_allowPawnsSwim_title".Translate(),
@@ -156,11 +168,14 @@ public class Settings : ModSettings
         Scribe_Values.Look(ref doSprings, "doSprings", true, true);
         Scribe_Values.Look(ref doIce, "doIce", showCold, true);
         Scribe_Values.Look(ref allowPawnsToGetWet, "allowPawnsToGetWet", true, true);
+        Scribe_Values.Look(ref allowPawnsDrowning, "allowPawnsDrowning", true, true);
         Scribe_Values.Look(ref allowPawnsSwim, "allowPawnsSwim", true, true);
         Scribe_Values.Look(ref showDevReadout, "showDevReadout", false, true);
         Scribe_Values.Look(ref spawnLavaOnlyInBiome, "spawnLavaOnlyInBiome", false, true);
         Scribe_Values.Look(ref allowLavaEruption, "allowLavaEruption", true, true);
         Scribe_Values.Look(ref regenCells, "regenCells", false, true);
+        Scribe_Values.Look(ref terrainAffectTemperature, "terrainAffectTemperature", true, true);
+        
         //Scribe_Values.Look(ref showUpdateNotes, "showUpdateNotes", true, true);
     }
 }

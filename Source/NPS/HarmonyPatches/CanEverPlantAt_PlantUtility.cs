@@ -3,11 +3,10 @@ using HarmonyLib;
 using RimWorld;
 using Verse;
 
-namespace TKKN_NPS.HarmonyPatches;
+namespace TKKN_NPS;
 
-[HarmonyPatch(typeof(PlantUtility), nameof(PlantUtility.CanEverPlantAt), typeof(ThingDef), typeof(IntVec3), typeof(Map),
-    typeof(bool), typeof(bool))]
-internal class CanEverPlantAt_PlantUtility
+//[HarmonyPatch(typeof(PlantUtility), nameof(PlantUtility.CanEverPlantAt), typeof(ThingDef), typeof(IntVec3), typeof(Map),typeof(bool), typeof(bool))]
+public static class CanEverPlantAt_PlantUtility
 {
     public static void Postfix(ThingDef plantDef, IntVec3 c, Map map, ref bool __result) {
         if (!__result) {

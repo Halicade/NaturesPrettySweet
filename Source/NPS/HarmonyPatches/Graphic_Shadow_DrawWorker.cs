@@ -3,7 +3,7 @@ using Verse;
 
 namespace TKKN_NPS;
 
-[HarmonyPatch(typeof(Graphic_Shadow), nameof(Graphic_Shadow.DrawWorker))]
+//[HarmonyPatch(typeof(Graphic_Shadow), nameof(Graphic_Shadow.DrawWorker))]
 public static class Graphic_Shadow_DrawWorker
 {
     public static bool Prefix(Thing thing)

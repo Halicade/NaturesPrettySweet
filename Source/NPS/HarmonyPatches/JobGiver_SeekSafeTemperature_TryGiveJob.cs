@@ -7,7 +7,7 @@ using Verse.AI.Group;
 namespace TKKN_NPS;
 
 //pawns will go sit in cold springs to cool off if there is no better option and there is one nearby
-[HarmonyPatch(typeof(JobGiver_SeekSafeTemperature), "TryGiveJob")]
+//[HarmonyPatch(typeof(JobGiver_SeekSafeTemperature), "TryGiveJob")]
 internal class JobGiver_SeekSafeTemperature_TryGiveJob
 {
     public static void Postfix(ref Job __result, Pawn pawn) {

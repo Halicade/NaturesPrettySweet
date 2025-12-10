@@ -4,7 +4,7 @@ using RimWorld;
 
 namespace TKKN_NPS;
 
-[HarmonyPatch(typeof(BiomeDef), nameof(BiomeDef.CommonalityOfDisease))]
+//[HarmonyPatch(typeof(BiomeDef), nameof(BiomeDef.CommonalityOfDisease))]
 public static class BiomeDef_CommonalityOfDisease
 {
     public static void Prefix(BiomeDef __instance, ref Dictionary<IncidentDef, float> ___cachedDiseaseCommonalities)

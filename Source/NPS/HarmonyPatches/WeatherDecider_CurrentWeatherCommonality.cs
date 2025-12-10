@@ -5,7 +5,7 @@ using Verse;
 
 namespace TKKN_NPS;
 
-[HarmonyPatch(typeof(WeatherDecider), "CurrentWeatherCommonality")]
+//[HarmonyPatch(typeof(WeatherDecider), "CurrentWeatherCommonality")]
 public static class WeatherDecider_CurrentWeatherCommonality
 {
     public static bool Prefix(WeatherDef weather, ref float __result, Map ___map, int ___ticksWhenRainAllowedAgain)

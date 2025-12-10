@@ -10,7 +10,7 @@ internal class MouseoverReadout_MouseoverReadoutOnGUI
     private static Map cachedMap;
     private static FrostGrid cachedFrostGrid;
 
-    private static void Postfix()
+    public static void Postfix()
     {
         if (Event.current.type != EventType.Repaint || Find.MainTabsRoot.OpenTab != null)
         {

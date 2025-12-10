@@ -61,6 +61,7 @@ public static class Pawn_Tick
 
     private static void drowningCheck(Pawn pawn, TerrainDef terrain) {
         //drowning == immobile and in water
+        if (!Settings.allowPawnsDrowning) return;
 
         if (pawn.health.Downed && TerrainTagUtil.TKKN_Wet.Contains(terrain)) {
             var damage = .0005f;

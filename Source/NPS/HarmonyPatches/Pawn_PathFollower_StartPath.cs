@@ -5,7 +5,7 @@ using Verse.AI;
 
 namespace TKKN_NPS;
 
-[HarmonyPatch(typeof(Pawn_PathFollower), nameof(Pawn_PathFollower.StartPath))]
+//[HarmonyPatch(typeof(Pawn_PathFollower), nameof(Pawn_PathFollower.StartPath))]
 public static class Pawn_PathFollower_StartPath
 {
     public static bool Prefix(Pawn ___pawn)

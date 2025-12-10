@@ -4,7 +4,7 @@ using Verse;
 
 namespace TKKN_NPS;
 
-[HarmonyPatch(typeof(CellFinder), nameof(CellFinder.TryRandomClosewalkCellNear))]
+//[HarmonyPatch(typeof(CellFinder), nameof(CellFinder.TryRandomClosewalkCellNear))]
 public static class CellFinder_TryRandomClosewalkCellNear
 {
     public static bool Prefix(IntVec3 root, Map map, int radius, out IntVec3 result,

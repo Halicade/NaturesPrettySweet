@@ -4,7 +4,7 @@ using RimWorld.Planet;
 
 namespace TKKN_NPS;
 
-[HarmonyPatch(typeof(BiomeWorker_AridShrubland), nameof(BiomeWorker_AridShrubland.GetScore))]
+//[HarmonyPatch(typeof(BiomeWorker_AridShrubland), nameof(BiomeWorker_AridShrubland.GetScore))]
 public static class BiomeWorker_AridShrubland_GetScore
 {
     public static void Postfix(Tile tile, ref float __result)

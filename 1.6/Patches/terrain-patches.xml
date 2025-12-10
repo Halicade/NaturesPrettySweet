@@ -218,7 +218,12 @@
           </li>
       </value>
   </Operation>
-    Riverbank
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/TerrainDef[defName = "Riverbank"]/tags</xpath>
+    <value>
+      <li>Riverbank</li>
+    </value>
+  </Operation>
     <Operation Class="PatchOperationAddModExtension">
     <xpath>Defs/TerrainDef[defName = "TKKN_SandBeachWetSalt"]</xpath>
     <value>

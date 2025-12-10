@@ -23,7 +23,7 @@
       <harvestedThingDef>RawCorn</harvestedThingDef>
       <harvestYield>13</harvestYield>
       <topWindExposure>0.35</topWindExposure>
-      <growDays>11.3</growDays>
+      <growDays>13.3</growDays>
       <immatureGraphicPath>Things/Plant/CornPlant_Immature</immatureGraphicPath>
       <visualSizeRange>0.3~1.4</visualSizeRange>
     </plant>
@@ -113,7 +113,7 @@
   <ThingDef ParentName="PlantBase">
     <defName>TKKN_PlantDesertShrubA</defName>
     <label>desert shrub</label>
-    <description>Hardy, low lying plant that grows in arid conditions.</description>
+    <description>Hardy, low-lying plant that grows in arid conditions.</description>
     <statBases>
       <MaxHitPoints>35</MaxHitPoints>
       <Nutrition>0.25</Nutrition>

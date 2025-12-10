@@ -18,13 +18,13 @@ internal class HarmonyMain
         harmony.Patch(AccessTools.Method(typeof(BiomeDef), nameof(BiomeDef.CommonalityOfDisease)),
             prefix: new HarmonyMethod(typeof(BiomeDef_CommonalityOfDisease),
                 nameof(BiomeDef_CommonalityOfDisease.Prefix)));
-
+        /*
         harmony.Patch(AccessTools.Method(typeof(PlantUtility), nameof(PlantUtility.CanEverPlantAt), [
                 typeof(ThingDef), typeof(IntVec3), typeof(Map),
                 typeof(bool), typeof(bool)
             ]),
             prefix: new HarmonyMethod(typeof(CanEverPlantAt_PlantUtility),
-                nameof(CanEverPlantAt_PlantUtility.Postfix)));
+                nameof(CanEverPlantAt_PlantUtility.Postfix)));*/
 
         harmony.Patch(AccessTools.Method(typeof(CellFinder), nameof(CellFinder.TryRandomClosewalkCellNear)),
             prefix: new HarmonyMethod(typeof(CellFinder_TryRandomClosewalkCellNear),

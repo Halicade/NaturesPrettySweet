@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Patch>
-
+<!--
     <Operation Class="PatchOperationAddModExtension">
         <xpath>Defs/ThingDef[defName = "TKKN_PlantWildRice"]</xpath>
     <value>
@@ -72,7 +72,7 @@
       </li>
     </value>
   </Operation>
-
+-->
     <Operation Class="PatchOperationAddModExtension">
         <xpath>Defs/ThingDef[defName = "TKKN_PlantDesertShrubA"]</xpath>
     <value>

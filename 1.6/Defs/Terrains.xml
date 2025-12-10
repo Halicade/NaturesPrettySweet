@@ -149,7 +149,7 @@
       <Beauty>+2</Beauty>
     </statBases>
     <tags>
-      <li>Spring</li>
+      <li>ColdSpring</li>
     </tags>
     <fertility>0.001</fertility>
   </TerrainDef>
@@ -377,6 +377,7 @@
     <tags>
       <li>Wet</li>
       <li>WetFlood</li>
+        <li>Riverbank</li>
     </tags>
     <affordances>
       <li>Bridgeable</li>

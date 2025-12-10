@@ -3,7 +3,7 @@
   <ThingDef ParentName="PlantBase">
     <defName>TKKN_PlantWildRice</defName>
     <label>wild rice plant</label>
-    <description>Wild rice is hardy and grows in shallow water. It yeilds less rice than it's domesticated version.</description>
+    <description>Wild rice is hardy and grows in shallow water. It yields less rice than its domesticated version.</description>
     <statBases>
       <MaxHitPoints>85</MaxHitPoints>
       <Nutrition>0.18</Nutrition>
@@ -23,8 +23,19 @@
       <harvestedThingDef>RawRice</harvestedThingDef>
       <harvestYield>3</harvestYield>
       <topWindExposure>0.1</topWindExposure>
-      <growDays>3</growDays>
+      <growDays>4</growDays>
       <visualSizeRange>0.2~0.6</visualSizeRange>
+      <wildPlantUseDistanceToShore>true</wildPlantUseDistanceToShore>
+      <completelyIgnoreFertility>true</completelyIgnoreFertility>
+      <showInFrozenWater>false</showInFrozenWater>
+      <wildTerrainTags>
+        <li>WaterMarshy</li>
+        <li>ColdSpring</li>
+        <li>WaterFreshShallow</li>
+        <li>WaterFreshShallowStill</li>
+        <li>Riverbank</li>
+        <li>Mud</li>
+      </wildTerrainTags>
     </plant>
   </ThingDef>
   <!-- Savanna and Grasslands -->

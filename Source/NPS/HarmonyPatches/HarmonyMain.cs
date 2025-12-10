@@ -62,10 +62,12 @@ internal class HarmonyMain
             postfix: new HarmonyMethod(typeof(Pawn_SpawnSetup),
                 nameof(Pawn_SpawnSetup.Postfix)));
 
-        harmony.Patch(
-            AccessTools.Method(typeof(PawnRenderNodeWorker_Body), nameof(PawnRenderNodeWorker_Body.CanDrawNow)),
-            postfix: new HarmonyMethod(typeof(PawnRenderNodeWorker_Body_CanDrawNow),
-                nameof(PawnRenderNodeWorker_Body_CanDrawNow.Postfix)));
+        if (Settings.allowPawnsSwim && !ModsConfig.OdysseyActive) {
+            harmony.Patch(
+                AccessTools.Method(typeof(PawnRenderNodeWorker_Body), nameof(PawnRenderNodeWorker_Body.CanDrawNow)),
+                postfix: new HarmonyMethod(typeof(PawnRenderNodeWorker_Body_CanDrawNow),
+                    nameof(PawnRenderNodeWorker_Body_CanDrawNow.Postfix)));
+        }
 
         if (Settings.allowPlantEffects) {
             harmony.Patch(AccessTools.PropertyGetter(typeof(Plant), nameof(Plant.Graphic)),
@@ -85,7 +87,7 @@ internal class HarmonyMain
             harmony.Patch(AccessTools.PropertyGetter(typeof(Thing), nameof(Thing.AmbientTemperature)),
                 postfix: new HarmonyMethod(typeof(Thing_AmbientTemperature),
                     nameof(Thing_AmbientTemperature.Postfix)));
-            
+
             harmony.Patch(
                 AccessTools.Method(typeof(JobGiver_SeekSafeTemperature), "TryGiveJob"),
                 postfix: new HarmonyMethod(typeof(JobGiver_SeekSafeTemperature_TryGiveJob),

@@ -18,6 +18,10 @@ public class JobGiver_GoSwimming : JobGiver_Wander
 
     protected override Job TryGiveJob(Pawn pawn)
     {
+        if (ModsConfig.OdysseyActive) {
+            return null;
+        }
+
         if (!JoyUtility.EnjoyableOutsideNow(pawn))
         {
             return null;

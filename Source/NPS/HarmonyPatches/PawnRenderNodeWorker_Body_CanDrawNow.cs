@@ -13,11 +13,6 @@ internal class PawnRenderNodeWorker_Body_CanDrawNow
             return;
         }
 
-        if (!Settings.allowPawnsSwim)
-        {
-            return;
-        }
-
         var pawn = parms.pawn;
         if (pawn is not { Position.IsValid: true } || pawn.Dead)
         {

@@ -185,24 +185,6 @@
       </li>
     </value>
   </Operation>
-  <Operation Class="PatchOperationAdd">
-      <xpath>Defs/TerrainDef[defName = "WaterMovingShallow"]</xpath>
-    <value>
-      <fertility>0.001</fertility>
-    </value>
-  </Operation>
-  <Operation Class="PatchOperationAdd">
-      <xpath>Defs/TerrainDef[defName = "WaterShallow"]</xpath>
-    <value>
-      <fertility>0.001</fertility>
-    </value>
-  </Operation>
-  <Operation Class="PatchOperationReplace">
-      <xpath>Defs/TerrainDef[defName = "Marsh"]/fertility</xpath>
-    <value>
-      <fertility>0.001</fertility>
-    </value>
-  </Operation>
   <!--
   defName is not valid in base game
   <Operation Class="PatchOperationConditional">

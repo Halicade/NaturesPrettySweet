@@ -1,45 +1,6 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <Patch>
-    <Operation Class="PatchOperationReplace">
-        <xpath>Defs/ThingDef[defName = "Plant_TallGrass"]/graphicData/texPath</xpath>
-        <value>
-            <texPath>TKKN_NPS/Things/Plant/Grass</texPath>
-        </value>
-    </Operation>
 
-    <Operation Class="PatchOperationAdd">
-        <xpath>Defs/ThingDef[defName = "Plant_Dandelion"]/plant</xpath>
-        <value>
-            <harvestTag>Standard</harvestTag>
-            <harvestedThingDef>TKKN_WildGreens</harvestedThingDef>
-            <harvestYield>5</harvestYield>
-            <harvestWork>100</harvestWork>
-            <harvestAfterGrowth>0.10</harvestAfterGrowth>
-        </value>
-    </Operation>
-
-    <Operation Class="PatchOperationReplace">
-        <xpath>Defs/ThingDef[defName = "Plant_Dandelion"]/description</xpath>
-        <!-- @formatter:off-->
-        <value>
-            <description>A tiny, edible yellow flower which grows in large clusters. Though it is often considered a weed, dandelions in bloom are quite beautiful.</description>
-        </value>
-        <!-- @formatter:on-->
-    </Operation>
-
-    <Operation Class="PatchOperationAdd">
-        <xpath>Defs/ThingDef[defName = "Plant_Dandelion"]</xpath>
-        <value>
-            <selectable>true</selectable>
-        </value>
-    </Operation>
-
-    <Operation Class="PatchOperationAdd">
-        <xpath>Defs/ThingDef[defName = "Plant_Dandelion"]</xpath>
-        <value>
-            <neverMultiSelect>false</neverMultiSelect>
-        </value>
-    </Operation>
 
     <Operation Class="PatchOperationAddModExtension">
         <xpath>Defs/ThingDef[defName = "Plant_TallGrass"]</xpath>
@@ -51,12 +12,6 @@
         </value>
     </Operation>
 
-    <Operation Class="PatchOperationReplace">
-        <xpath>Defs/ThingDef[defName = "Plant_Grass"]/graphicData/texPath</xpath>
-        <value>
-            <texPath>TKKN_NPS/Things/Plant/Grass</texPath>
-        </value>
-    </Operation>
 
     <Operation Class="PatchOperationAddModExtension">
         <xpath>Defs/ThingDef[defName = "Plant_Grass"]</xpath>

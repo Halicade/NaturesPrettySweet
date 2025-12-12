@@ -7,7 +7,7 @@ public static class PlantReactionUtil
 {
     public static readonly Dictionary<ThingDef, List<TerrainDef>> AllowedTerrains = [];
 
-    public static readonly Dictionary<ThingDef, ThingWeatherReaction> HasGraphic = [];
+    //public static readonly Dictionary<ThingDef, ThingWeatherReaction> HasGraphic = [];
 
 
     public static void InitializePlantGraphics() {
@@ -23,10 +23,11 @@ public static class PlantReactionUtil
             if (modExtension.allowedTerrains != null) {
                 AllowedTerrains.Add(plant, modExtension.allowedTerrains);
             }
-
+            /*
             if (modExtension.initializeGraphics(plant)) {
                 HasGraphic.Add(plant, modExtension);
             }
+            */
         }
     }
 }

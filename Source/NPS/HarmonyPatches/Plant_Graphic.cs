@@ -13,6 +13,10 @@ public static class Plant_Graphic
     private static Watcher watcher;
     private static Season season;
 
+    //TODO think about immature plant growth levels
+    
+    //Giving higher priority to be before any mods that may modify texture
+    [HarmonyPriority(Priority.High)]
     public static void Postfix(Plant __instance, ref Graphic __result) {
         if (cachedMap != __instance.Map) {
             cachedMap = __instance.Map;
@@ -21,7 +25,7 @@ public static class Plant_Graphic
             season = GenDate.Season(Find.TickManager.TicksAbs, location);
         }
 
-        if (watcher == null) {
+        if (watcher?.dontRunAnything != false) {
             return;
         }
 

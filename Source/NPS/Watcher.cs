@@ -573,7 +573,7 @@ public class Watcher(Map map) : MapComponent(map)
             }
         }
 
-        var isCold = CheckIfCold(c);
+        var isCold = CheckIfCold(cell);
 
         if (isCold) {
             if (Settings.doIce) {
@@ -682,29 +682,24 @@ public class Watcher(Map map) : MapComponent(map)
         }
     }
 
+    public bool CheckIfCold(cellData cell) {
+        return CheckIfCold(cell.location, cell);
+    }
+
     public bool CheckIfCold(IntVec3 c) {
-        bool cellAffected = cellWeatherAffects.TryGetValue(c, out cellData cell);
-        if (!Settings.showCold) {
-            if (cellAffected && cell.temperature < -998) {
-                cell.temperature = c.GetTemperature(map);
-            }
+        return cellWeatherAffects.TryGetValue(c, out cellData cell) && CheckIfCold(c, cell);
+    }
 
-            return false;
-        }
-
-        if (!cellAffected) {
-            return false;
-        }
-
+    private bool CheckIfCold(IntVec3 c, cellData cell) {
         Room room = c.GetRoom(map);
 
-        if (room == null || room.UsesOutdoorTemperature) {
-            cell.temperature = outdoorTemp;
-            return outdoorTemp < 0f;
+        if (room is { UsesOutdoorTemperature: false }) {
+            cell.temperature = room.Temperature;
+            return cell.temperature < 0f;
         }
 
-        cell.temperature = room.Temperature;
-        return cell.temperature < 0f;
+        cell.temperature = outdoorTemp;
+        return outdoorTemp < 0f;
     }
 
     private void CreepFrostAt(IntVec3 c, float baseAmount) {

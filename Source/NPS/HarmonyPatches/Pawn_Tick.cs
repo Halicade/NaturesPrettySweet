@@ -154,7 +154,7 @@ public static class Pawn_Tick
         }
 
         //damage plants and remove snow/frost where they are. This will hopefully generate paths as pawns walk :)
-        if (watcher.CheckIfCold(pawn.Position)) {
+        if (Settings.showCold && watcher.CheckIfCold(pawn.Position)) {
             watcher.frostGridComponent.AddDepth(pawn.Position, (float)-.05);
             map.snowGrid.AddDepth(pawn.Position, (float)-.05);
         }

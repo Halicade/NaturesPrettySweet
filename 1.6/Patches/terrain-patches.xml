@@ -154,8 +154,13 @@
       <li Class="TKKN_NPS.TerrainWeatherReactions">
         <tideTerrain />
         <floodTerrain />
+        <wetTerrain/>
+        <freezeTerrain/>
+        <!--
+        This makes lava evaporate and doesn't change back
         <wetTerrain>TKKN_LavaRock_RoughHewn</wetTerrain>
         <freezeTerrain>TKKN_LavaRock_RoughHewn</freezeTerrain>
+        -->
         <freezeAt>4</freezeAt>
         <wetAt>2</wetAt>
         <isSalty>False</isSalty>

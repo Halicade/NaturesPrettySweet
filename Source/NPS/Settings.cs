@@ -102,10 +102,13 @@ public class Settings : ModSettings
             ref doSprings,
             "TKKN_doSprings_text".Translate());
         list.Gap();
-        list.CheckboxLabeled(
-            "TKKN_doDirtPath_title".Translate(),
-            ref doDirtPath,
-            "TKKN_doDirtPath_text".Translate());
+        if (!HarmonyMain.desirePathsActive) {
+            list.CheckboxLabeled(
+                "TKKN_doDirtPath_title".Translate(),
+                ref doDirtPath,
+                "TKKN_doDirtPath_text".Translate());
+        }
+
         list.CheckboxLabeled(
             "NPS_doAmbientTemperature_title".Translate(),
             ref terrainAffectTemperature,

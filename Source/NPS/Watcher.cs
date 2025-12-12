@@ -526,7 +526,7 @@ public class Watcher(Map map) : MapComponent(map)
         //cell.DoCellSteadyEffects();
 
         if (doUnpacking) {
-            cell.unpack();
+            cell.Unpack();
         }
 
         var currentTerrain = c.GetTerrain(map);

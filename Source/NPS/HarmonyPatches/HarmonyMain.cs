@@ -10,6 +10,8 @@ namespace TKKN_NPS;
 internal class HarmonyMain
 {
     public static readonly bool RimBrellasActive;
+    public static readonly bool desirePathsActive;
+    
     public static readonly MethodInfo HasUmbrella;
 
     static HarmonyMain() {
@@ -23,6 +25,11 @@ internal class HarmonyMain
             Settings.doFloods = false;
             Settings.leaveStuff = false;
             Settings.allowPawnsSwim = false;
+        }
+
+        if (ModsConfig.IsActive("mlie.desirepaths")) {
+            desirePathsActive = true;
+            Settings.doDirtPath = false;
         }
 
 

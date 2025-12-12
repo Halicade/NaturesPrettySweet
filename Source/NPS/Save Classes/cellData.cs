@@ -261,73 +261,60 @@ public class cellData : IExposable
     }
 
 
-    public void unpack() {
-        var thisTerrain = currentTerrain;
+    public void Unpack() {
         if (!Settings.doDirtPath) {
-            if (thisTerrain == TerrainDefOf.TKKN_DirtPath) {
-                changeTerrain(RimWorld.TerrainDefOf.Soil);
-            }
-
-            if (thisTerrain == TerrainDefOf.TKKN_SandPath) {
-                changeTerrain(RimWorld.TerrainDefOf.Sand);
-            }
-
             return;
-        }
-
-        if (howPacked > packAt) {
-            howPacked = packAt;
         }
 
         if (howPacked > 0) {
             howPacked--;
         }
-        else if (howPacked <= packAt / 2 && thisTerrain == TerrainDefOf.TKKN_DirtPath) {
-            changeTerrain(RimWorld.TerrainDefOf.Soil);
-        }
-        else if (howPacked <= packAt / 2 && thisTerrain == TerrainDefOf.TKKN_SandPath) {
-            changeTerrain(RimWorld.TerrainDefOf.Sand);
+
+        if (howPacked <= packAt / 2) {
+            if (currentTerrain == TerrainDefOf.TKKN_DirtPath) {
+                changeTerrain(RimWorld.TerrainDefOf.Soil);
+            }
+            else if (currentTerrain == TerrainDefOf.TKKN_SandPath) {
+                changeTerrain(RimWorld.TerrainDefOf.Sand);
+            }
         }
     }
-
-    public void doPack() {
-        var thisTerrain = currentTerrain;
-        if (map.zoneManager.ZoneAt(location) is Zone_Growing &&
-            thisTerrain != TerrainDefOf.TKKN_DirtPath &&
-            thisTerrain != TerrainDefOf.TKKN_SandPath) {
+    /// <summary>
+    /// This method currently has a weird thing where if you remove a packed path
+    /// (You can, and we want the user to do this) it will change back to a packed path after being stepped on
+    /// </summary>
+    public void DoPack() {
+        if (!Settings.doDirtPath) {
             return;
         }
 
-        //don't pack if there's a growing zone.
-        if (baseTerrain == RimWorld.TerrainDefOf.Soil
-            || baseTerrain == RimWorld.TerrainDefOf.Sand
-            || baseTerrain.texturePath == "Terrain/Surfaces/RoughStone") {
-            howPacked++;
+        if (!TerrainTagUtil.canBePacked.Contains(baseTerrain)) {
+            return;
         }
+        
+        howPacked++;
+        
+
+        //don't pack if there's a growing zone.
+        if (map.zoneManager.ZoneAt(location) is Zone_Growing) {
+            return;
+        }
+
 
         if (howPacked > packAt) {
             if (baseTerrain == RimWorld.TerrainDefOf.Soil) {
-                var packed = TerrainDefOf.TKKN_DirtPath;
-                changeTerrain(packed);
-                baseTerrain = packed;
+                changeTerrain(TerrainDefOf.TKKN_DirtPath);
+                baseTerrain = TerrainDefOf.TKKN_DirtPath;
             }
-
-            if (baseTerrain == RimWorld.TerrainDefOf.Sand) {
-                var packed = TerrainDefOf.TKKN_SandPath;
-                changeTerrain(packed);
-                baseTerrain = packed;
+            else if (baseTerrain == RimWorld.TerrainDefOf.Sand) {
+                changeTerrain(TerrainDefOf.TKKN_SandPath);
+                baseTerrain = TerrainDefOf.TKKN_SandPath;
+            }
+            else if (baseTerrain.smoothedTerrain != null && howPacked > packAt * 10) {
+                changeTerrain(baseTerrain.smoothedTerrain);
+                baseTerrain = baseTerrain.smoothedTerrain;
             }
         }
-
-        if (baseTerrain.texturePath != "Terrain/Surfaces/RoughStone" || howPacked <= packAt * 10) {
-            return;
-        }
-
-        var thisName = baseTerrain.defName;
-        var replace = thisName.Replace("_Rough", "_Smooth").Replace("_SmoothHewn", "_Smooth");
-        var terrain = TerrainDef.Named(replace);
-        changeTerrain(terrain);
-        baseTerrain = terrain;
     }
 
     private void changeTerrain(TerrainDef terrain) {

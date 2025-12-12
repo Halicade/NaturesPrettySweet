@@ -149,19 +149,18 @@ public static class Pawn_Tick
             return;
         }
 
-        if (!pawn.Position.InBounds(map)) {
+        if (!pawn.Position.InBounds(map) || !pawn.pather.MovingNow) {
             return;
         }
 
         //damage plants and remove snow/frost where they are. This will hopefully generate paths as pawns walk :)
         if (Settings.showCold && watcher.CheckIfCold(pawn.Position)) {
-            watcher.frostGridComponent.AddDepth(pawn.Position, (float)-.05);
-            map.snowGrid.AddDepth(pawn.Position, (float)-.05);
+            watcher.frostGridComponent.AddDepth(pawn.Position, -.05f);
+            map.snowGrid.AddDepth(pawn.Position, -.05f);
         }
 
-
         //pack down the soil only if the pawn is moving AND is in our colony
-        if (pawn.pather.MovingNow && pawn.IsColonist &&
+        if (pawn.IsColonist &&
             watcher.cellWeatherAffects.TryGetValue(pawn.Position, out var cell)) {
             cell.DoPack();
         }

@@ -11,8 +11,12 @@ namespace TKKN_NPS;
 public class Watcher(Map map) : MapComponent(map)
 {
     private const int HowManyFloodSteps = 5;
+    private readonly int halfFloodSteps = (int)Math.Round((HowManyFloodSteps - 1M) / 2);
+    private const int MaxFloodSteps = HowManyFloodSteps - 1;
 
     private const int HowManyTideSteps = 13;
+    private readonly int halfTideSteps = (int)Math.Round((HowManyTideSteps - 1M) / 2);
+    private const int MaxTideSteps = HowManyTideSteps - 1;
 
     private const int MaxPuddles = 50;
 
@@ -55,11 +59,13 @@ public class Watcher(Map map) : MapComponent(map)
 
     private float wetPlantsValue;
 
-    private bool dontRunAnything;
+    public bool dontRunAnything;
     private bool anyLavaTerrain;
     private bool doUnpacking;
     private bool noHurtPlants;
     private readonly Dictionary<Pawn, bool> validPawns = [];
+    private float currentRainRate;
+    private float currentSnowRate;
 
     /* STANDARD STUFF */
 
@@ -75,11 +81,12 @@ public class Watcher(Map map) : MapComponent(map)
         if (Settings.doWeather) {
             //set up humidity
             outdoorTemp = map.mapTemperature.OutdoorTemp;
-
+            currentRainRate = map.weatherManager.curWeather.rainRate;
+            currentSnowRate =  map.weatherManager.curWeather.snowRate;
             var baseHumidity = (map.TileInfo.rainfall + 1) * (map.TileInfo.temperature + 1) *
                                (map.TileInfo.swampiness + 1);
             var currentHumidity =
-                (1 + map.weatherManager.curWeather.rainRate) * (1 + outdoorTemp);
+                (1 + currentRainRate) * (1 + outdoorTemp);
             humidity = ((baseHumidity + currentHumidity) / 1000) + 18;
             wetPlantsValue = -1 * (outdoorTemp / humidity / 10);
             noHurtPlants = !Settings.allowPlantEffects || ticks % 150 != 0;
@@ -87,6 +94,7 @@ public class Watcher(Map map) : MapComponent(map)
             doCoast = map.Tile.Tile.IsCoastal;
             DoTides();
             DoFloods();
+            
             var num = Mathf.RoundToInt(map.Area * Settings.weatherCellUpdateSpeed / 2);
             var area = map.Area;
 
@@ -102,7 +110,7 @@ public class Watcher(Map map) : MapComponent(map)
             }
         }
 
-        var isRaining = map.weatherManager.curWeather.rainRate > 0;
+        bool isRaining = currentRainRate > 0;
         IReadOnlyList<Pawn> allPawnsSpawned = map.mapPawns.AllPawnsSpawned;
 
         //Clear the list of valid pawns if it gets too large
@@ -543,33 +551,29 @@ public class Watcher(Map map) : MapComponent(map)
         //spawn special things
         LavaRockSpecials(c, currentTerrain);
 
-        if (Settings.showRain && !TerrainTagUtil.TKKN_Wet.Contains(cell.currentTerrain)) {
-            switch (roofed) {
-                //if it's raining in this cell:
-                case false when map.weatherManager.curWeather.rainRate > .0001f: {
-                    if (floodThreat < 1090000) {
-                        floodThreat += 1 + (2 * (int)Math.Round(map.weatherManager.curWeather.rainRate));
-                    }
-
-                    gettingWet = true;
-                    cell.gettingWet = true;
-                    cell.setTerrain(TerrainType.Wet);
-                    break;
+        if (Settings.showRain && !roofed && !TerrainTagUtil.TKKN_Wet.Contains(cell.currentTerrain)) {
+            //if it's raining in this cell:
+            if (currentRainRate > .0001f) {
+                if (floodThreat < 1090000) {
+                    floodThreat += 1 + (2 * (int)Math.Round(currentRainRate));
                 }
-                case false when map.weatherManager.curWeather.snowRate > .001f:
-                    gettingWet = true;
-                    cell.gettingWet = true;
-                    cell.setTerrain(TerrainType.Wet);
-                    break;
-                default: {
-                    if (map.weatherManager.curWeather.rainRate == 0) {
-                        floodThreat--;
-                    }
 
-                    //DRY GROUND
-                    cell.setTerrain(TerrainType.Dry);
-                    break;
+                gettingWet = true;
+                cell.gettingWet = true;
+                cell.setTerrain(TerrainType.Wet);
+            }
+            else if (currentSnowRate > .001f) {
+                gettingWet = true;
+                cell.gettingWet = true;
+                cell.setTerrain(TerrainType.Wet);
+            }
+            else {
+                if (currentRainRate == 0) {
+                    floodThreat--;
                 }
+
+                //DRY GROUND
+                cell.setTerrain(TerrainType.Dry);
             }
         }
 
@@ -581,8 +585,8 @@ public class Watcher(Map map) : MapComponent(map)
             }
 
             //handle frost based on snowing
-            if (!roofed && map.weatherManager.SnowRate > 0.001f) {
-                frostGridComponent.AddDepth(c, map.weatherManager.SnowRate * -.01f);
+            if (!roofed && currentSnowRate > 0.001f) {
+                frostGridComponent.AddDepth(c, currentSnowRate * -.01f);
             }
             else {
                 CreepFrostAt(c, 0.46f * .3f);
@@ -599,11 +603,11 @@ public class Watcher(Map map) : MapComponent(map)
         if (gettingWet) {
             //note - removed ismelt because the dirt shouldn't dry out in winter, and snow wets the ground then.
             if (cell.howWetPlants < 100) {
-                if (map.weatherManager.curWeather.rainRate > 0) {
-                    cell.howWetPlants += map.weatherManager.curWeather.rainRate * 2;
+                if (currentRainRate > 0) {
+                    cell.howWetPlants += currentRainRate * 2;
                 }
-                else if (map.weatherManager.curWeather.snowRate > 0) {
-                    cell.howWetPlants += map.weatherManager.curWeather.snowRate * 2;
+                else if (currentSnowRate > 0) {
+                    cell.howWetPlants += currentSnowRate * 2;
                 }
             }
         }
@@ -737,26 +741,21 @@ public class Watcher(Map map) : MapComponent(map)
             return;
         }
 
-        var half = (int)Math.Round((HowManyFloodSteps - 1M) / 2);
-        const int max = HowManyFloodSteps - 1;
-
 
         FloodType flood = GetFloodType();
 
         TerrainType? overrideType = flood switch {
-            FloodType.High when floodLevel < max => TerrainType.Wet,
+            FloodType.High when floodLevel < MaxFloodSteps => TerrainType.Wet,
             FloodType.Low when floodLevel > 0 => TerrainType.Dry,
-            FloodType.Normal when floodLevel < half => TerrainType.Wet,
-            FloodType.Normal when floodLevel > half => TerrainType.Dry,
+            FloodType.Normal when floodLevel < halfFloodSteps => TerrainType.Wet,
+            FloodType.Normal when floodLevel > halfFloodSteps => TerrainType.Dry,
             _ => null
         };
 
-        switch (flood) {
-            case FloodType.High when floodLevel == HowManyFloodSteps:
-            case FloodType.Low when floodLevel == 0:
-            case FloodType.Normal when floodLevel == half:
-                return;
-        }
+        if ((flood == FloodType.High && floodLevel == HowManyFloodSteps) ||
+            (flood == FloodType.Low && floodLevel == 0) ||
+            (flood == FloodType.Normal && floodLevel == halfFloodSteps))
+            return;
 
         List<IntVec3> cellsToChange = floodCellsList[floodLevel];
         foreach (var c in cellsToChange) {
@@ -772,16 +771,16 @@ public class Watcher(Map map) : MapComponent(map)
         }
 
         switch (flood) {
-            case FloodType.High when floodLevel < max:
+            case FloodType.High when floodLevel < MaxFloodSteps:
                 floodLevel++;
                 break;
             case FloodType.Low when floodLevel > 0:
                 floodLevel--;
                 break;
-            case FloodType.Normal when floodLevel < half:
+            case FloodType.Normal when floodLevel < halfFloodSteps:
                 floodLevel++;
                 break;
-            case FloodType.Normal when floodLevel > half:
+            case FloodType.Normal when floodLevel > halfFloodSteps:
                 floodLevel--;
                 break;
         }
@@ -806,15 +805,13 @@ public class Watcher(Map map) : MapComponent(map)
         }
 
         var tideType = GetTideLevel();
-        var half = (int)Math.Round((HowManyTideSteps - 1M) / 2);
-        var max = HowManyTideSteps - 1;
 
         switch (tideType) {
-            case FloodType.Normal when tideLevel == half:
-            case FloodType.High when tideLevel == max:
+            case FloodType.Normal when tideLevel == halfTideSteps:
+            case FloodType.High when tideLevel == MaxTideSteps:
             case FloodType.Low when tideLevel == 0:
                 return;
-            case FloodType.Normal when tideLevel == max:
+            case FloodType.Normal when tideLevel == MaxTideSteps:
                 tideLevel--;
                 return;
         }
@@ -839,7 +836,7 @@ public class Watcher(Map map) : MapComponent(map)
 
         switch (tideType) {
             case FloodType.High: {
-                if (tideLevel < max) {
+                if (tideLevel < MaxTideSteps) {
                     tideLevel++;
                 }
 
@@ -852,11 +849,11 @@ public class Watcher(Map map) : MapComponent(map)
 
                 break;
             }
-            case FloodType.Normal when tideLevel > half:
+            case FloodType.Normal when tideLevel > halfTideSteps:
                 tideLevel--;
                 break;
             case FloodType.Normal: {
-                if (tideLevel < half) {
+                if (tideLevel < halfTideSteps) {
                     tideLevel++;
                 }
 

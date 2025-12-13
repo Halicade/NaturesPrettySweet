@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Patch>
 <!--
+Allowed terrains are in Plant defs now
     <Operation Class="PatchOperationAddModExtension">
         <xpath>Defs/ThingDef[defName = "TKKN_PlantWildRice"]</xpath>
     <value>

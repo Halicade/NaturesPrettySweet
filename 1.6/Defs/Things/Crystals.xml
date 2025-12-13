@@ -22,14 +22,7 @@
     <plant>
       <leaflessGraphicPath>TKKN_NPS/Things/Plant/saltCrystalDead</leaflessGraphicPath>
       <immatureGraphicPath>TKKN_NPS/Things/Plant/saltCrystalBaby</immatureGraphicPath>
-        <!--
-        TODO set to grow maybe. Set lower appearance rate
-        Salt currently has no purpose.
-        Need to set up so it can be used for preserved meat
-        -->
-      <fertilityMin>100</fertilityMin>
-      <fertilitySensitivity>1</fertilitySensitivity>
-      <growDays>6.5</growDays>
+      <growDays>8.5</growDays>
       <dieIfLeafless>false</dieIfLeafless>
       <harvestTag>Standard</harvestTag>
       <harvestedThingDef>TKKN_Salt</harvestedThingDef>
@@ -38,6 +31,11 @@
       <wildClusterWeight>60</wildClusterWeight>
       <wildClusterRadius>3</wildClusterRadius>
       <visualSizeRange>0.7~1.2</visualSizeRange>
+      <completelyIgnoreFertility>true</completelyIgnoreFertility>
+      <showInFrozenWater>false</showInFrozenWater>
+      <wildTerrainTags>
+        <li>salt</li>
+      </wildTerrainTags>
     </plant>
   </ThingDef>
   <ThingDef ParentName="OrganicProductBase">

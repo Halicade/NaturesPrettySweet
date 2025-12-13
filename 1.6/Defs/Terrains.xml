@@ -67,6 +67,9 @@
     <avoidWander>true</avoidWander>
     <extraNonDraftedPerceivedPathCost>80</extraNonDraftedPerceivedPathCost>
     <extraDraftedPerceivedPathCost>8</extraDraftedPerceivedPathCost>
+    <tags>
+      <li>Salt</li>
+    </tags>
   </TerrainDef>
   <TerrainDef>
     <defName>TKKN_Lava</defName>
@@ -286,6 +289,7 @@
       <li>Beach</li>
       <li>Wet</li>
       <li>WetRain</li>
+      <li>Salt</li>
     </tags>
     <generatedFilth>Filth_Sand</generatedFilth>
     <filthAcceptanceMask />
@@ -507,5 +511,8 @@
       <TKKN_Salt>2</TKKN_Salt>
     </costList>
     <designationHotKey>Misc6</designationHotKey>
+    <tags>
+      <li>salt</li>
+    </tags>
   </TerrainDef>
 </Defs>

@@ -19,10 +19,9 @@ public static class PlantReactionUtil
 
             ThingWeatherReaction modExtension = plant.GetModExtension<ThingWeatherReaction>();
             if (modExtension == null) continue;
-
-            if (modExtension.allowedTerrains != null) {
-                AllowedTerrains.Add(plant, modExtension.allowedTerrains);
-            }
+            
+            
+            modExtension.initializeGraphics(plant);
             /*
             if (modExtension.initializeGraphics(plant)) {
                 HasGraphic.Add(plant, modExtension);

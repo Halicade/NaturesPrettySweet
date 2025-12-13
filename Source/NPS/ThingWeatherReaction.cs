@@ -5,7 +5,6 @@ namespace TKKN_NPS;
 
 public class ThingWeatherReaction : DefModExtension
 {
-    public List<TerrainDef> allowedTerrains;
     public string droughtGraphicPath;
     public string floweringGraphicPath;
     public string frostGraphicPath;

@@ -12,8 +12,6 @@ public static class ThingDefOf
     public static ThingDef TKKN_ColdSpring;
     public static ThingDef TKKN_LavaRock;
 
-    public static ThingDef TKKN_IceOverlay;
-
     public static ThingDef TKKN_DustDevil;
 
     //ANIMALS

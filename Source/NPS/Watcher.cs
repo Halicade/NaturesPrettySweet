@@ -24,7 +24,6 @@ public class Watcher(Map map) : MapComponent(map)
     public Dictionary<int, springData> activeSprings = new();
 
     private BiomeSeasonalSettings biomeSettings;
-    private bool bugFixFrostIsRemoved;
     public Dictionary<IntVec3, cellData> cellWeatherAffects = new();
     private int cycleIndex;
     private bool doCoast = true; //false if no coast
@@ -147,12 +146,10 @@ public class Watcher(Map map) : MapComponent(map)
 
         Scribe_Collections.Look(ref activeSprings, "TKKN_activeSprings", LookMode.Value, LookMode.Deep);
         Scribe_Collections.Look(ref cellWeatherAffects, "cellWeatherAffects", LookMode.Value, LookMode.Deep);
-        Scribe_Values.Look(ref doCoast, "doCoast", true, true);
         Scribe_Values.Look(ref floodThreat, "floodThreat", 0, true);
         Scribe_Values.Look(ref tideLevel, "tideLevel", 0, true);
         Scribe_Values.Look(ref ticks, "ticks", 0, true);
         Scribe_Values.Look(ref totalPuddles, "totalPuddles", totalPuddles, true);
-        Scribe_Values.Look(ref bugFixFrostIsRemoved, "bugFixFrostIsRemoved", bugFixFrostIsRemoved, true);
     }
 
     public override void FinalizeInit() {
@@ -197,7 +194,6 @@ public class Watcher(Map map) : MapComponent(map)
         */
 
         if (regenCellLists) {
-            //FixLava();
 
             Rot4 rot = Find.World.CoastDirectionAt(map.Tile);
 
@@ -287,9 +283,6 @@ public class Watcher(Map map) : MapComponent(map)
 
         foreach (KeyValuePair<IntVec3, cellData> thisCell in cellWeatherAffects) {
             cellWeatherAffects[thisCell.Key].map = map;
-            if (!bugFixFrostIsRemoved) {
-                thisCell.Value.doFrostOverlay("remove");
-            }
 
             frostGridComponent.SetDepth(thisCell.Value.location, thisCell.Value.frostLevel);
             if (thisCell.Value.tideLevel > -1) {
@@ -306,8 +299,6 @@ public class Watcher(Map map) : MapComponent(map)
                 swimmingCellsList.Add(thisCell.Key);
             }
         }
-
-        bugFixFrostIsRemoved = true;
 
         if (!regenCellLists) {
             return;

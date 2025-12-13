@@ -240,27 +240,6 @@ public class cellData : IExposable
         }
     }
 
-    public void doFrostOverlay(string action) {
-        if (!location.InBounds(map)) {
-            return;
-        }
-
-        //KEEPING TO REMOVE OLD WAY OF DOING FROST
-        var overlayIce = (from t in location.GetThingList(map)
-            where t.def == ThingDefOf.TKKN_IceOverlay
-            select t).FirstOrDefault();
-        if (overlayIce == null) {
-            return;
-        }
-
-        if (isFrozen) {
-            isMelt = true;
-        }
-
-        overlayIce.Destroy();
-    }
-
-
     public void Unpack() {
         if (!Settings.doDirtPath) {
             return;

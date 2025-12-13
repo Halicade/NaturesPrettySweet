@@ -207,13 +207,14 @@
   <WeatherDef>
     <defName>TKKN_DustStorm</defName>
     <label>dust storm</label>
-    <description>storms whip up dust, reducing visibilty and the accuracy of ranged weapons.</description>
+    <description>storms whip up dust, reducing visibility and the accuracy of ranged weapons.</description>
     <windSpeedFactor>0.8</windSpeedFactor>
     <perceivePriority>2</perceivePriority>
     <accuracyMultiplier>0.8</accuracyMultiplier>
-    <rainRate>1.2</rainRate>
+    <sandRate>1.2</sandRate>
     <moveSpeedMultiplier>0.8</moveSpeedMultiplier>
     <favorability>Bad</favorability>
+    <preventSkygaze>true</preventSkygaze>
     <ambientSounds>
       <li>Ambient_Wind_Storm</li>
     </ambientSounds>
@@ -256,11 +257,12 @@
   <WeatherDef>
     <defName>TKKN_DryDustStorm</defName>
     <label>dry dust storm</label>
-    <description>high winds and storms whip up dust, reducing visibilty and the accuracy of ranged weapons.</description>
+    <description>high winds and storms whip up dust, reducing visibility and the accuracy of ranged weapons.</description>
     <windSpeedFactor>1.2</windSpeedFactor>
     <perceivePriority>2</perceivePriority>
     <accuracyMultiplier>0.8</accuracyMultiplier>
-    <rainRate>0</rainRate>
+    <sandRate>0.8</sandRate>
+    <preventSkygaze>true</preventSkygaze>
     <moveSpeedMultiplier>0.8</moveSpeedMultiplier>
     <favorability>Bad</favorability>
     <ambientSounds>

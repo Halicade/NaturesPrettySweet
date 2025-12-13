@@ -68,6 +68,7 @@
       <FoggyRain>0.5</FoggyRain>
       <SnowGentle>4</SnowGentle>
       <SnowHard>4</SnowHard>
+      <GrayPall MayRequire="Ludeon.RimWorld.Anomaly">1</GrayPall>
     </baseWeatherCommonalities>
     <maxFishPopulation>540</maxFishPopulation>
     <fishTypes MayRequire="Ludeon.RimWorld.Odyssey">
@@ -190,6 +191,7 @@
       <FoggyRain>0.5</FoggyRain>
       <SnowGentle>4</SnowGentle>
       <SnowHard>4</SnowHard>
+      <GrayPall MayRequire="Ludeon.RimWorld.Anomaly">1</GrayPall>
     </baseWeatherCommonalities>
     <maxFishPopulation>450</maxFishPopulation>
     <fishTypes MayRequire="Ludeon.RimWorld.Odyssey">

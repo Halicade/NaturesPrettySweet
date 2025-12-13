@@ -61,8 +61,10 @@
       <Rain>2</Rain>
       <TKKN_DryDustStorm>2</TKKN_DryDustStorm>
       <TKKN_DustStorm>2</TKKN_DustStorm>
+      <Sandstorm MayRequire="Ludeon.Rimworld.Odyssey">2</Sandstorm>
       <SnowGentle>1</SnowGentle>
       <SnowHard>3</SnowHard>
+      <GrayPall MayRequire="Ludeon.RimWorld.Anomaly">1</GrayPall>
     </baseWeatherCommonalities>
     <maxFishPopulation>0</maxFishPopulation>
     <wildPlants>
@@ -148,8 +150,10 @@
       <RainyThunderstorm>1</RainyThunderstorm>
       <TKKN_DustStorm>3</TKKN_DustStorm>
       <TKKN_DryDustStorm>3</TKKN_DryDustStorm>
+      <Sandstorm MayRequire="Ludeon.Rimworld.Odyssey">3</Sandstorm>
       <SnowGentle>3</SnowGentle>
       <SnowHard>3</SnowHard>
+      <GrayPall MayRequire="Ludeon.RimWorld.Anomaly">1</GrayPall>
     </baseWeatherCommonalities>
     <maxFishPopulation>320</maxFishPopulation>
     <fishTypes MayRequire="Ludeon.RimWorld.Odyssey">

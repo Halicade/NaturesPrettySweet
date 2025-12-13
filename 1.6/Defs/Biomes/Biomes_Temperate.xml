@@ -117,6 +117,7 @@
       <SnowGentle>4</SnowGentle>
       <SnowHard>4</SnowHard>
       <TKKN_ThickFog>3</TKKN_ThickFog>
+      <GrayPall MayRequire="Ludeon.RimWorld.Anomaly">1</GrayPall>
     </baseWeatherCommonalities>
     <wildPlants>
       <Plant_Grass>1.0</Plant_Grass>

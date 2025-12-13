@@ -109,6 +109,7 @@
       <DryThunderstorm>1</DryThunderstorm>
       <RainyThunderstorm>1</RainyThunderstorm>
       <FoggyRain>1</FoggyRain>
+      <GrayPall MayRequire="Ludeon.RimWorld.Anomaly">1</GrayPall>
     </baseWeatherCommonalities>
     <wildPlants>
       <Plant_TallGrass>2.0</Plant_TallGrass>

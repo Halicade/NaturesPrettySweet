@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<Patch>
+
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/BiomeDef[defName = "TropicalRainforest"]/coastalWildAnimals</xpath>
+        <value>
+            <TKKN_crab>0.1</TKKN_crab>
+        </value>
+    </Operation>
+    
+    
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/BiomeDef[defName = "TropicalSwamp"]/coastalWildAnimals</xpath>
+        <value>
+            <TKKN_crab>0.1</TKKN_crab>
+        </value>
+    </Operation>
+
+</Patch>

@@ -82,11 +82,11 @@ public class Settings : ModSettings
             "TKKN_showRain_title".Translate(),
             ref showRain,
             "TKKN_showRain_text".Translate());
+        list.CheckboxLabeled(
+            "TKKN_doTides_title".Translate(),
+            ref doTides,
+            "TKKN_doTides_text".Translate());
         if (!ModsConfig.OdysseyActive) {
-            list.CheckboxLabeled(
-                "TKKN_doTides_title".Translate(),
-                ref doTides,
-                "TKKN_doTides_text".Translate());
             list.CheckboxLabeled(
                 "TKKN_doFloods_title".Translate(),
                 ref doFloods,

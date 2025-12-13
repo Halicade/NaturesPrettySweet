@@ -21,7 +21,6 @@ internal class HarmonyMain
 
         if (ModsConfig.OdysseyActive) {
             Settings.doIce = false;
-            Settings.doTides = false;
             Settings.doFloods = false;
             Settings.leaveStuff = false;
             Settings.allowPawnsSwim = false;

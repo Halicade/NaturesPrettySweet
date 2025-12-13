@@ -30,7 +30,7 @@ public class Settings : ModSettings
     public static bool doIce = showCold;
     public static bool doSprings = true;
 
-    public static bool terrainAffectTemperature = true;
+    public static bool terrainAffectTemperature = false;
 
     //Biomes
     public static bool allowDesertSaltFlats = true;
@@ -211,7 +211,7 @@ public class Settings : ModSettings
         Scribe_Values.Look(ref spawnLavaOnlyInBiome, "spawnLavaOnlyInBiome", false, true);
         Scribe_Values.Look(ref allowLavaEruption, "allowLavaEruption", true, true);
         Scribe_Values.Look(ref regenCells, "regenCells", false, true);
-        Scribe_Values.Look(ref terrainAffectTemperature, "terrainAffectTemperature", true, true);
+        Scribe_Values.Look(ref terrainAffectTemperature, "terrainAffectTemperature", false, true);
         Scribe_Values.Look(ref allowDesertSaltFlats, "allowDesertSaltFlats", true, true);
         Scribe_Values.Look(ref allowDesertOasis, "allowDesertOasis", true, true);
         Scribe_Values.Look(ref allowRedwood, "allowRedwood", true, true);

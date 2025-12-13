@@ -105,12 +105,13 @@ internal class HarmonyMain
             harmony.Patch(AccessTools.PropertyGetter(typeof(Thing), nameof(Thing.AmbientTemperature)),
                 postfix: new HarmonyMethod(typeof(Thing_AmbientTemperature),
                     nameof(Thing_AmbientTemperature.Postfix)));
+        }
 
-            harmony.Patch(
+        harmony.Patch(
                 AccessTools.Method(typeof(JobGiver_SeekSafeTemperature), "TryGiveJob"),
                 postfix: new HarmonyMethod(typeof(JobGiver_SeekSafeTemperature_TryGiveJob),
                     nameof(JobGiver_SeekSafeTemperature_TryGiveJob.Postfix)));
-        }
+        
 
         if (Settings.modifyAridShrubland) {
             harmony.Patch(

@@ -37,9 +37,6 @@ Fall: very wet.
 Winter: wet.
 -->
 
-    <!--TODO add the rest. Give grasslands more personal touch. 
-    Currently just copypasted this mods grasslands.-->
-
     <Operation Class="PatchOperationAddModExtension">
         <xpath>Defs/BiomeDef[defName = "GlacialPlain"]</xpath>
         <value>
@@ -54,129 +51,124 @@ Winter: wet.
                 <bloomPlants>
                     <li>Plant_Moss</li>
                     <li>Plant_Berry</li>
-                    <li>Plant_Healroot</li>
-                    <li>Plant_Dandelion</li>
-                    <li>TKKN_PlantSunflower</li>
-                    <li>TKKN_PlantWildflowers</li>
+                    <li>Plant_HealrootWild</li>
                 </bloomPlants>
                 <springEvents>
-                    <TKKN_WildFlowerBloom>1.2</TKKN_WildFlowerBloom>
-                    <HerdMigration>1.5</HerdMigration>
-                    <!-- Tornado>1</Tornado -->
-                    <Aurora>0</Aurora>
-                    <TKKN_DustDevil>0</TKKN_DustDevil>
-                    <AnimalInsanityMass>1</AnimalInsanityMass>
-                    <AnimalInsanitySingle>4.5</AnimalInsanitySingle>
-                    <HeatWave>4</HeatWave>
-                    <ColdSnap>2</ColdSnap>
-                    <CropBlight>.25</CropBlight>
-                    <Alphabeavers>.1</Alphabeavers>
-                    <Flashstorm>.45</Flashstorm>
+                    <HerdMigration>.8</HerdMigration>
+                    <Aurora>1.5</Aurora>
+                    <AnimalInsanityMass>2</AnimalInsanityMass>
+                    <AnimalInsanitySingle>6</AnimalInsanitySingle>
+                    <HeatWave>1</HeatWave>
+                    <ColdSnap>4</ColdSnap>
+                    <CropBlight>.05</CropBlight>
+                    <ManhunterPack>3.5</ManhunterPack>
                 </springEvents>
                 <summerEvents>
-                    <!-- Tornado>1</Tornado -->
-                    <TKKN_WildFlowerBloom>.5</TKKN_WildFlowerBloom>
-                    <HerdMigration>.2</HerdMigration>
-                    <TKKN_DustDevil>0</TKKN_DustDevil>
-                    <AnimalInsanityMass>1.8</AnimalInsanityMass>
-                    <AnimalInsanitySingle>5.5</AnimalInsanitySingle>
-                    <HeatWave>5</HeatWave>
-                    <ColdSnap>1</ColdSnap>
-                    <CropBlight>.15</CropBlight>
-                    <Alphabeavers>.1</Alphabeavers>
-                    <Flashstorm>.6</Flashstorm>
+                    <HerdMigration>.5</HerdMigration>
+                    <Aurora>1</Aurora>
+                    <AnimalInsanityMass>2</AnimalInsanityMass>
+                    <AnimalInsanitySingle>6</AnimalInsanitySingle>
+                    <HeatWave>2</HeatWave>
+                    <ColdSnap>3</ColdSnap>
+                    <CropBlight>.05</CropBlight>
+                    <ManhunterPack>2</ManhunterPack>
                 </summerEvents>
                 <fallEvents>
-                    <!-- Tornado>.5</Tornado -->
-                    <HerdMigration>1.2</HerdMigration>
-                    <Aurora>0</Aurora>
-                    <TKKN_DustDevil>0</TKKN_DustDevil>
-                    <CropBlight>.5</CropBlight>
-                    <AnimalInsanityMass>1</AnimalInsanityMass>
-                    <AnimalInsanitySingle>4.5</AnimalInsanitySingle>
-                    <HeatWave>4</HeatWave>
-                    <ColdSnap>2</ColdSnap>
-                    <CropBlight>.25</CropBlight>
-                    <Alphabeavers>.1</Alphabeavers>
-                    <Flashstorm>.45</Flashstorm>
+                    <HerdMigration>.8</HerdMigration>
+                    <Aurora>1.5</Aurora>
+                    <AnimalInsanityMass>2</AnimalInsanityMass>
+                    <AnimalInsanitySingle>6</AnimalInsanitySingle>
+                    <HeatWave>1</HeatWave>
+                    <ColdSnap>4</ColdSnap>
+                    <CropBlight>.05</CropBlight>
+                    <ManhunterPack>3.5</ManhunterPack>
                 </fallEvents>
                 <winterEvents>
-                    <!-- Tornado>.5</Tornado -->
-                    <HerdMigration>.2</HerdMigration>
-                    <Aurora>0</Aurora>
-                    <TKKN_DustDevil>0</TKKN_DustDevil>
-                    <AnimalInsanityMass>.8</AnimalInsanityMass>
-                    <AnimalInsanitySingle>4</AnimalInsanitySingle>
-                    <HeatWave>3</HeatWave>
-                    <ColdSnap>3</ColdSnap>
-                    <CropBlight>.15</CropBlight>
-                    <Alphabeavers>.1</Alphabeavers>
-                    <Flashstorm>.15</Flashstorm>
+                    <HerdMigration>.4</HerdMigration>
+                    <Aurora>1</Aurora>
+                    <AnimalInsanityMass>3</AnimalInsanityMass>
+                    <AnimalInsanitySingle>8</AnimalInsanitySingle>
+                    <HeatWave>1</HeatWave>
+                    <ColdSnap>6</ColdSnap>
+                    <CropBlight>0</CropBlight>
+                    <ManhunterPack>6</ManhunterPack>
                 </winterEvents>
                 <springWeathers>
-                    <Clear>18</Clear>
-                    <Fog>1</Fog>
-                    <Rain>5</Rain>
+                    <Clear>12</Clear>
+                    <Fog>0</Fog>
+                    <Rain>0</Rain>
                     <DryThunderstorm>2</DryThunderstorm>
-                    <RainyThunderstorm>6</RainyThunderstorm>
-                    <FoggyRain>0.5</FoggyRain>
-                    <SnowGentle>0</SnowGentle>
-                    <SnowHard>0</SnowHard>
+                    <RainyThunderstorm>0</RainyThunderstorm>
+                    <FoggyRain>0</FoggyRain>
+                    <SnowGentle>2</SnowGentle>
+                    <SnowHard>2</SnowHard>
+                    <Windy>1</Windy>
+                    <Overcast>2</Overcast>
+                    <Blizzard>2</Blizzard>
                 </springWeathers>
                 <summerWeathers>
-                    <Clear>22</Clear>
-                    <Fog>1</Fog>
-                    <Rain>3</Rain>
-                    <DryThunderstorm>2</DryThunderstorm>
-                    <RainyThunderstorm>3</RainyThunderstorm>
-                    <FoggyRain>0.5</FoggyRain>
-                    <SnowGentle>0</SnowGentle>
-                    <SnowHard>0</SnowHard>
+                    <Clear>12</Clear>
+                    <Fog>0</Fog>
+                    <Rain>0</Rain>
+                    <DryThunderstorm>2.5</DryThunderstorm>
+                    <RainyThunderstorm>0</RainyThunderstorm>
+                    <FoggyRain>0</FoggyRain>
+                    <SnowGentle>1.5</SnowGentle>
+                    <SnowHard>2</SnowHard>
+                    <Windy>1.5</Windy>
+                    <Overcast>2.5</Overcast>
+                    <Blizzard>2</Blizzard>
                 </summerWeathers>
                 <fallWeathers>
-                    <Clear>25</Clear>
-                    <Fog>1</Fog>
-                    <Rain>1</Rain>
-                    <DryThunderstorm>1</DryThunderstorm>
-                    <RainyThunderstorm>2</RainyThunderstorm>
-                    <FoggyRain>0.5</FoggyRain>
-                    <SnowGentle>0</SnowGentle>
-                    <SnowHard>0</SnowHard>
+                    <Clear>10</Clear>
+                    <Fog>0</Fog>
+                    <Rain>0</Rain>
+                    <DryThunderstorm>1.5</DryThunderstorm>
+                    <RainyThunderstorm>0</RainyThunderstorm>
+                    <FoggyRain>0</FoggyRain>
+                    <SnowGentle>3</SnowGentle>
+                    <SnowHard>3</SnowHard>
+                    <Windy>1</Windy>
+                    <Overcast>2</Overcast>
+                    <Blizzard>3</Blizzard>
                 </fallWeathers>
                 <winterWeathers>
-                    <Clear>18</Clear>
-                    <Fog>1</Fog>
-                    <Rain>3</Rain>
-                    <DryThunderstorm>2</DryThunderstorm>
-                    <RainyThunderstorm>3</RainyThunderstorm>
-                    <FoggyRain>0.5</FoggyRain>
-                    <SnowGentle>4</SnowGentle>
-                    <SnowHard>4</SnowHard>
+                    <Clear>11</Clear>
+                    <Fog>0</Fog>
+                    <Rain>0</Rain>
+                    <DryThunderstorm>1.75</DryThunderstorm>
+                    <RainyThunderstorm>0</RainyThunderstorm>
+                    <FoggyRain>0</FoggyRain>
+                    <SnowGentle>2.5</SnowGentle>
+                    <SnowHard>2.5</SnowHard>
+                    <Windy>1.5</Windy>
+                    <Overcast>2.5</Overcast>
+                    <Blizzard>2.5</Blizzard>
                 </winterWeathers>
                 <springDiseases>
                     <li>
                         <diseaseInc>TKKN_Disease_Common_Cold</diseaseInc>
-                        <commonality>120</commonality>
+                        <commonality>150</commonality>
                     </li>
                     <li>
                         <diseaseInc>TKKN_Disease_Animal_Common_Cold</diseaseInc>
-                        <commonality>120</commonality>
+                        <commonality>150</commonality>
                     </li>
                     <li>
                         <diseaseInc>TKKN_Disease_Allergies</diseaseInc>
-                        <commonality>180</commonality>
+                        <commonality>0</commonality>
                     </li>
                     <li>
                         <diseaseInc>TKKN_Disease_Animal_Allergies</diseaseInc>
-                        <commonality>180</commonality>
+                        <commonality>0</commonality>
                     </li>
                     <li>
                         <diseaseInc>Disease_Flu</diseaseInc>
-                        <commonality>100</commonality>
+                        <commonality>120</commonality>
                     </li>
                     <li>
                         <diseaseInc>Disease_AnimalFlu</diseaseInc>
-                        <commonality>100</commonality>
+                        <commonality>120</commonality>
                     </li>
                     <li>
                         <diseaseInc>Disease_Plague</diseaseInc>
@@ -186,57 +178,57 @@ Winter: wet.
                 <summerDiseases>
                     <li>
                         <diseaseInc>TKKN_Disease_Common_Cold</diseaseInc>
-                        <commonality>80</commonality>
+                        <commonality>100</commonality>
                     </li>
                     <li>
                         <diseaseInc>TKKN_Disease_Animal_Common_Cold</diseaseInc>
-                        <commonality>80</commonality>
+                        <commonality>100</commonality>
                     </li>
                     <li>
                         <diseaseInc>TKKN_Disease_Allergies</diseaseInc>
-                        <commonality>120</commonality>
+                        <commonality>0</commonality>
                     </li>
                     <li>
                         <diseaseInc>TKKN_Disease_Animal_Allergies</diseaseInc>
-                        <commonality>120</commonality>
+                        <commonality>0</commonality>
                     </li>
                     <li>
                         <diseaseInc>Disease_Flu</diseaseInc>
-                        <commonality>70</commonality>
+                        <commonality>90</commonality>
                     </li>
                     <li>
                         <diseaseInc>Disease_AnimalFlu</diseaseInc>
-                        <commonality>70</commonality>
+                        <commonality>90</commonality>
                     </li>
                     <li>
                         <diseaseInc>Disease_Plague</diseaseInc>
-                        <commonality>120</commonality>
+                        <commonality>90</commonality>
                     </li>
                 </summerDiseases>
                 <fallDiseases>
                     <li>
                         <diseaseInc>TKKN_Disease_Common_Cold</diseaseInc>
-                        <commonality>120</commonality>
+                        <commonality>150</commonality>
                     </li>
                     <li>
                         <diseaseInc>TKKN_Disease_Animal_Common_Cold</diseaseInc>
-                        <commonality>120</commonality>
+                        <commonality>150</commonality>
                     </li>
                     <li>
                         <diseaseInc>TKKN_Disease_Allergies</diseaseInc>
-                        <commonality>180</commonality>
+                        <commonality>0</commonality>
                     </li>
                     <li>
                         <diseaseInc>TKKN_Disease_Animal_Allergies</diseaseInc>
-                        <commonality>180</commonality>
+                        <commonality>0</commonality>
                     </li>
                     <li>
                         <diseaseInc>Disease_Flu</diseaseInc>
-                        <commonality>100</commonality>
+                        <commonality>120</commonality>
                     </li>
                     <li>
                         <diseaseInc>Disease_AnimalFlu</diseaseInc>
-                        <commonality>100</commonality>
+                        <commonality>120</commonality>
                     </li>
                     <li>
                         <diseaseInc>Disease_Plague</diseaseInc>
@@ -246,31 +238,31 @@ Winter: wet.
                 <winterDiseases>
                     <li>
                         <diseaseInc>TKKN_Disease_Common_Cold</diseaseInc>
-                        <commonality>100</commonality>
+                        <commonality>180</commonality>
                     </li>
                     <li>
                         <diseaseInc>TKKN_Disease_Animal_Common_Cold</diseaseInc>
-                        <commonality>100</commonality>
+                        <commonality>180</commonality>
                     </li>
                     <li>
                         <diseaseInc>TKKN_Disease_Allergies</diseaseInc>
-                        <commonality>50</commonality>
+                        <commonality>0</commonality>
                     </li>
                     <li>
                         <diseaseInc>TKKN_Disease_Animal_Allergies</diseaseInc>
-                        <commonality>50</commonality>
+                        <commonality>0</commonality>
                     </li>
                     <li>
                         <diseaseInc>Disease_Flu</diseaseInc>
-                        <commonality>80</commonality>
+                        <commonality>150</commonality>
                     </li>
                     <li>
                         <diseaseInc>Disease_AnimalFlu</diseaseInc>
-                        <commonality>80</commonality>
+                        <commonality>150</commonality>
                     </li>
                     <li>
                         <diseaseInc>Disease_Plague</diseaseInc>
-                        <commonality>50</commonality>
+                        <commonality>70</commonality>
                     </li>
                 </winterDiseases>
             </li>

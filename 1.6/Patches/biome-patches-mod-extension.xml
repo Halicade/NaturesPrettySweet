@@ -802,7 +802,7 @@ Winter: wet.
                 <springEvents>
                     <TKKN_WildFlowerBloom>1.2</TKKN_WildFlowerBloom>
                     <HerdMigration>1.5</HerdMigration>
-                    <!-- Tornado>1</Tornado -->
+                    
                     <Aurora>0</Aurora>
                     <TKKN_DustDevil>0</TKKN_DustDevil>
                     <AnimalInsanityMass>1</AnimalInsanityMass>
@@ -814,7 +814,7 @@ Winter: wet.
                     <Flashstorm>.45</Flashstorm>
                 </springEvents>
                 <summerEvents>
-                    <!-- Tornado>1</Tornado -->
+                    
                     <TKKN_WildFlowerBloom>.5</TKKN_WildFlowerBloom>
                     <HerdMigration>.2</HerdMigration>
                     <TKKN_DustDevil>0</TKKN_DustDevil>

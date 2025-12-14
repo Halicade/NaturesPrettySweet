@@ -37,121 +37,118 @@ Fall: very wet.
 Winter: wet.
 -->
 
-    <!--TODO add the rest. Give grasslands more personal touch. 
-    Currently just copypasted this mods grasslands.-->
-
     <Operation Class="PatchOperationAddModExtension">
         <xpath>Defs/BiomeDef[defName = "LavaField"]</xpath>
         <value>
             <li Class="TKKN_NPS.BiomeSeasonalSettings">
                 <!-- springSettings -->
                 <maxSprings>2</maxSprings>
-                <springSpawnChance>0.8</springSpawnChance>
+                <springSpawnChance>0.5</springSpawnChance>
                 <springsSurviveDrought>true</springsSurviveDrought>
                 <springsSurviveSummer>true</springsSurviveSummer>
                 <!-- /springSettings -->
                 <wetPlantStart>50</wetPlantStart>
                 <bloomPlants>
-                    <li>Plant_Moss</li>
-                    <li>Plant_Berry</li>
-                    <li>Plant_Healroot</li>
                     <li>Plant_Dandelion</li>
-                    <li>TKKN_PlantSunflower</li>
-                    <li>TKKN_PlantWildflowers</li>
+                    <li>Plant_Berry</li>
+                    <li>Plant_MagmaCactus</li>
+                    <li>Plant_PincushionCactus</li>
                 </bloomPlants>
                 <springEvents>
-                    <TKKN_WildFlowerBloom>1.2</TKKN_WildFlowerBloom>
-                    <HerdMigration>1.5</HerdMigration>
-                    <!-- Tornado>1</Tornado -->
-                    <Aurora>0</Aurora>
-                    <TKKN_DustDevil>0</TKKN_DustDevil>
-                    <AnimalInsanityMass>1</AnimalInsanityMass>
-                    <AnimalInsanitySingle>4.5</AnimalInsanitySingle>
-                    <HeatWave>4</HeatWave>
+                    <TKKN_WildFlowerBloom>1</TKKN_WildFlowerBloom>
+                    <TKKN_Drought>0</TKKN_Drought>
+                    <AnimalInsanityMass>1.5</AnimalInsanityMass>
+                    <AnimalInsanitySingle>6</AnimalInsanitySingle>
+                    <HeatWave>8</HeatWave>
                     <ColdSnap>2</ColdSnap>
-                    <CropBlight>.25</CropBlight>
-                    <Alphabeavers>.1</Alphabeavers>
-                    <Flashstorm>.45</Flashstorm>
+                    <CropBlight>.6</CropBlight>
+                    <Alphabeavers>.2</Alphabeavers>
+                    <Flashstorm>.2</Flashstorm>
                 </springEvents>
                 <summerEvents>
-                    <!-- Tornado>1</Tornado -->
-                    <TKKN_WildFlowerBloom>.5</TKKN_WildFlowerBloom>
+                    <TKKN_Drought>.5</TKKN_Drought>
                     <HerdMigration>.2</HerdMigration>
-                    <TKKN_DustDevil>0</TKKN_DustDevil>
-                    <AnimalInsanityMass>1.8</AnimalInsanityMass>
-                    <AnimalInsanitySingle>5.5</AnimalInsanitySingle>
-                    <HeatWave>5</HeatWave>
+                    <AnimalInsanityMass>2.5</AnimalInsanityMass>
+                    <AnimalInsanitySingle>8</AnimalInsanitySingle>
+                    <HeatWave>8</HeatWave>
                     <ColdSnap>1</ColdSnap>
-                    <CropBlight>.15</CropBlight>
-                    <Alphabeavers>.1</Alphabeavers>
-                    <Flashstorm>.6</Flashstorm>
+                    <CropBlight>.65</CropBlight>
+                    <Alphabeavers>.5</Alphabeavers>
+                    <Flashstorm>.2</Flashstorm>
                 </summerEvents>
                 <fallEvents>
-                    <!-- Tornado>.5</Tornado -->
-                    <HerdMigration>1.2</HerdMigration>
-                    <Aurora>0</Aurora>
-                    <TKKN_DustDevil>0</TKKN_DustDevil>
-                    <CropBlight>.5</CropBlight>
-                    <AnimalInsanityMass>1</AnimalInsanityMass>
-                    <AnimalInsanitySingle>4.5</AnimalInsanitySingle>
-                    <HeatWave>4</HeatWave>
+                    <TKKN_Drought>0</TKKN_Drought>
+                    <TKKN_WildFlowerBloom>0</TKKN_WildFlowerBloom>
+                    <AnimalInsanityMass>1.5</AnimalInsanityMass>
+                    <AnimalInsanitySingle>6</AnimalInsanitySingle>
+                    <HeatWave>5</HeatWave>
                     <ColdSnap>2</ColdSnap>
-                    <CropBlight>.25</CropBlight>
-                    <Alphabeavers>.1</Alphabeavers>
-                    <Flashstorm>.45</Flashstorm>
+                    <CropBlight>.55</CropBlight>
+                    <Alphabeavers>.4</Alphabeavers>
+                    <Flashstorm>.2</Flashstorm>
                 </fallEvents>
                 <winterEvents>
-                    <!-- Tornado>.5</Tornado -->
-                    <HerdMigration>.2</HerdMigration>
-                    <Aurora>0</Aurora>
-                    <TKKN_DustDevil>0</TKKN_DustDevil>
-                    <AnimalInsanityMass>.8</AnimalInsanityMass>
-                    <AnimalInsanitySingle>4</AnimalInsanitySingle>
+                    <TKKN_Drought>0</TKKN_Drought>
+                    <TKKN_WildFlowerBloom>0</TKKN_WildFlowerBloom>
+                    <AnimalInsanityMass>1</AnimalInsanityMass>
+                    <AnimalInsanitySingle>4.5</AnimalInsanitySingle>
                     <HeatWave>3</HeatWave>
-                    <ColdSnap>3</ColdSnap>
-                    <CropBlight>.15</CropBlight>
-                    <Alphabeavers>.1</Alphabeavers>
-                    <Flashstorm>.15</Flashstorm>
+                    <ColdSnap>2</ColdSnap>
+                    <CropBlight>.35</CropBlight>
+                    <Alphabeavers>.5</Alphabeavers>
+                    <Flashstorm>.1</Flashstorm>
                 </winterEvents>
                 <springWeathers>
                     <Clear>18</Clear>
                     <Fog>1</Fog>
-                    <Rain>5</Rain>
-                    <DryThunderstorm>2</DryThunderstorm>
-                    <RainyThunderstorm>6</RainyThunderstorm>
+                    <Rain>3</Rain>
+                    <DryThunderstorm>0.3</DryThunderstorm>
+                    <RainyThunderstorm>1</RainyThunderstorm>
                     <FoggyRain>0.5</FoggyRain>
-                    <SnowGentle>0</SnowGentle>
-                    <SnowHard>0</SnowHard>
+                    <SnowGentle>4</SnowGentle>
+                    <SnowHard>4</SnowHard>
+                    <TKKN_WindStorm>1</TKKN_WindStorm>
+                    <TKKN_Overcast>3</TKKN_Overcast>
+                    <TKKN_LavaSmoke>4</TKKN_LavaSmoke>
                 </springWeathers>
                 <summerWeathers>
-                    <Clear>22</Clear>
-                    <Fog>1</Fog>
-                    <Rain>3</Rain>
-                    <DryThunderstorm>2</DryThunderstorm>
-                    <RainyThunderstorm>3</RainyThunderstorm>
-                    <FoggyRain>0.5</FoggyRain>
-                    <SnowGentle>0</SnowGentle>
-                    <SnowHard>0</SnowHard>
-                </summerWeathers>
-                <fallWeathers>
-                    <Clear>25</Clear>
-                    <Fog>1</Fog>
-                    <Rain>1</Rain>
+                    <Clear>18</Clear>
+                    <Fog>1.5</Fog>
+                    <Rain>8</Rain>
                     <DryThunderstorm>1</DryThunderstorm>
                     <RainyThunderstorm>2</RainyThunderstorm>
-                    <FoggyRain>0.5</FoggyRain>
-                    <SnowGentle>0</SnowGentle>
-                    <SnowHard>0</SnowHard>
+                    <FoggyRain>2</FoggyRain>
+                    <SnowGentle>3</SnowGentle>
+                    <SnowHard>3</SnowHard>
+                    <TKKN_WindStorm>1</TKKN_WindStorm>
+                    <TKKN_Overcast>1.5</TKKN_Overcast>
+                    <TKKN_LavaSmoke>4</TKKN_LavaSmoke>
+                </summerWeathers>
+                <fallWeathers>
+                    <Clear>18</Clear>
+                    <Fog>1.25</Fog>
+                    <Rain>3</Rain>
+                    <DryThunderstorm>0.3</DryThunderstorm>
+                    <RainyThunderstorm>3</RainyThunderstorm>
+                    <FoggyRain>2</FoggyRain>
+                    <SnowGentle>3</SnowGentle>
+                    <SnowHard>3</SnowHard>
+                    <TKKN_WindStorm>0</TKKN_WindStorm>
+                    <TKKN_Overcast>3</TKKN_Overcast>
+                    <TKKN_LavaSmoke>4</TKKN_LavaSmoke>
                 </fallWeathers>
                 <winterWeathers>
                     <Clear>18</Clear>
                     <Fog>1</Fog>
-                    <Rain>3</Rain>
-                    <DryThunderstorm>2</DryThunderstorm>
-                    <RainyThunderstorm>3</RainyThunderstorm>
-                    <FoggyRain>0.5</FoggyRain>
+                    <Rain>1</Rain>
+                    <DryThunderstorm>0.4</DryThunderstorm>
+                    <RainyThunderstorm>1</RainyThunderstorm>
+                    <FoggyRain>1</FoggyRain>
                     <SnowGentle>4</SnowGentle>
                     <SnowHard>4</SnowHard>
+                    <TKKN_WindStorm>0</TKKN_WindStorm>
+                    <TKKN_Overcast>3</TKKN_Overcast>
+                    <TKKN_LavaSmoke>7</TKKN_LavaSmoke>
                 </winterWeathers>
                 <springDiseases>
                     <li>

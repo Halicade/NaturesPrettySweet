@@ -105,6 +105,7 @@
             <TKKN_PlantWildRice>2.2</TKKN_PlantWildRice>
             <TKKN_PlantCatTails>2.3</TKKN_PlantCatTails>
             <TKKN_PlantLilypad>2.2</TKKN_PlantLilypad>
+            <Plant_GrayGrass MayRequire="Ludeon.RimWorld.Biotech">9</Plant_GrayGrass>
         </wildPlants>
         <wildAnimals>
             <Muffalo>0.2</Muffalo>

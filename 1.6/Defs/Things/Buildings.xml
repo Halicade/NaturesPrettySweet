@@ -42,7 +42,7 @@
   <ThingDef ParentName="BuildingBase">
     <defName>TKKN_RedwoodDead</defName>
     <label>redwood</label>
-    <description>A huge, dead tree. Its roots are shallow, and when it gets too large, it topples over. \n\n Yeilds red wood, which is valuable and rare.</description>
+    <description>A huge, dead tree. Its roots are shallow, and when it gets too large, it topples over. \n\n Yields red wood, which is valuable and rare.</description>
     <graphicData>
       <texPath>TKKN_NPS/Things/Plant/TreeRedwoodDead</texPath>
       <graphicClass>Graphic_Random</graphicClass>

@@ -69,13 +69,15 @@
         </baseWeatherCommonalities>
         <maxFishPopulation>0</maxFishPopulation>
         <wildPlants>
-            <Plant_Grass>6</Plant_Grass>
+            <Plant_Grass>4.5</Plant_Grass>
             <Plant_SaguaroCactus>1</Plant_SaguaroCactus>
             <Plant_PincushionCactus>1</Plant_PincushionCactus>
             <Plant_Dandelion>0.5</Plant_Dandelion>
             <Plant_TreePoplar>0.45</Plant_TreePoplar>
             <Plant_Agave>0.25</Plant_Agave>
             <Plant_Bush>0.25</Plant_Bush>
+            <Plant_GrayGrass MayRequire="Ludeon.RimWorld.Biotech">3</Plant_GrayGrass>
+            <Plant_PebbleCactus MayRequire="Ludeon.RimWorld.Biotech">1</Plant_PebbleCactus>
         </wildPlants>
         <wildAnimals>
             <Gazelle>0.1</Gazelle>

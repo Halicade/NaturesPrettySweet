@@ -99,6 +99,8 @@
             <Plant_TreeBamboo>0.3</Plant_TreeBamboo>
             <Plant_Agave>0.3</Plant_Agave>
             <Plant_Bush>0.25</Plant_Bush>
+            <Plant_GrayGrass MayRequire="Ludeon.RimWorld.Biotech">5</Plant_GrayGrass>
+            <Plant_PebbleCactus MayRequire="Ludeon.RimWorld.Biotech">1</Plant_PebbleCactus>
         </wildPlants>
         <wildAnimals>
             <Gazelle>1</Gazelle>

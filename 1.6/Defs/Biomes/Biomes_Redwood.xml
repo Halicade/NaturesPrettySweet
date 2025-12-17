@@ -133,6 +133,8 @@
             <TKKN_PlantTreeRedwood>0.02</TKKN_PlantTreeRedwood>
             <Plant_Berry>0.1</Plant_Berry>
             <Plant_HealrootWild>0.05</Plant_HealrootWild>
+            <Plant_GrayGrass MayRequire="Ludeon.RimWorld.Biotech">3</Plant_GrayGrass>
+            <Plant_Ripthorn MayRequire="Ludeon.RimWorld.Biotech">3</Plant_Ripthorn>
         </wildPlants>
         <wildAnimals>
             <Hare>1.00</Hare>

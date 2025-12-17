@@ -492,7 +492,7 @@
     </tradeTags>
   </ThingDef>
   <PawnKindDef ParentName="AnimalKindBase">
-    <defName>TKKN_salamanders</defName>
+    <defName>TKKN_salamander</defName>
     <label>salamander</label>
     <race>TKKN_salamander</race>
     <combatPower>60</combatPower>

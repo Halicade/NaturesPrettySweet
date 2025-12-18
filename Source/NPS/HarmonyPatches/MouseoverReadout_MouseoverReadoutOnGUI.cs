@@ -78,7 +78,7 @@ internal class MouseoverReadout_MouseoverReadoutOnGUI
 
                 rect = new Rect(botLeft.x, UI.screenHeight - botLeft.y - num, 999f, 999f);
                 var label4 =
-                    $"Cell Info: Base Terrain {cell.baseTerrain.defName} Current Terrain {cell.currentTerrain.defName} | Wet {cell.isWet} | Melt {cell.isMelt} | Flooded {cell.isFlooded} | Frozen {cell.isFrozen} | Thawed {cell.isThawed} | Getting Wet? {cell.gettingWet}";
+                    $"Cell Info: Base Terrain {cell.baseTerrain.defName} Current Terrain {cell.currentTerrain.defName} | Wet {cell.isWet} | Flooded {cell.isFlooded} | Frozen {cell.isFrozen} | Thawed {cell.isThawed} | Getting Wet? {cell.gettingWet}";
                 Widgets.Label(rect, label4);
                 num += 19f;
 

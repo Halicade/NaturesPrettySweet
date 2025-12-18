@@ -551,12 +551,12 @@ public class Watcher(Map map) : MapComponent(map)
 
                 gettingWet = true;
                 cell.gettingWet = true;
-                cell.setTerrain(TerrainType.Wet);
+                cell.setTerrainWet();
             }
             else if (currentSnowRate > .001f) {
                 gettingWet = true;
                 cell.gettingWet = true;
-                cell.setTerrain(TerrainType.Wet);
+                cell.setTerrainWet();
             }
             else {
                 if (currentRainRate == 0) {
@@ -564,7 +564,7 @@ public class Watcher(Map map) : MapComponent(map)
                 }
 
                 //DRY GROUND
-                cell.setTerrain(TerrainType.Dry);
+                cell.trySetTerrainDry();
             }
         }
 
@@ -618,13 +618,16 @@ public class Watcher(Map map) : MapComponent(map)
             }
         }
 
-        switch (cell.howWet) {
-            case < 3 when Settings.showRain && (cell.isMelt || gettingWet):
+        if (Settings.showRain) {
+            if (currentTerrain.IsWater) {
+                cell.howWet = 4;
+            }
+            else if (cell.howWet < 3 && gettingWet) {
                 cell.howWet += 2;
-                break;
-            case > -1:
+            }
+            else if (cell.howWet > -1) {
                 cell.howWet--;
-                break;
+            }
         }
 
         //PUDDLES
@@ -653,8 +656,6 @@ public class Watcher(Map map) : MapComponent(map)
                 totalPuddles--;
                 break;
         }
-
-        cell.isMelt = false;
 
         //cellWeatherAffects[c] = cell;
     }

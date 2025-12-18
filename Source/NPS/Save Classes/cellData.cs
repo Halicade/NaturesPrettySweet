@@ -19,7 +19,6 @@ public class cellData : IExposable
     public float howWetPlants = 60;
     public bool isFlooded;
     public bool isFrozen;
-    public bool isMelt;
     public bool isThawed = true;
     public bool isWet;
     public IntVec3 location;
@@ -32,9 +31,7 @@ public class cellData : IExposable
     public int tideLevel = -1;
 
 
-    public TerrainWeatherReactions weather => baseTerrain.HasModExtension<TerrainWeatherReactions>()
-        ? baseTerrain.GetModExtension<TerrainWeatherReactions>()
-        : null;
+    public TerrainWeatherReactions weather => baseTerrain.GetModExtension<TerrainWeatherReactions>();
 
     public TerrainDef currentTerrain => location.GetTerrain(map);
 
@@ -48,7 +45,6 @@ public class cellData : IExposable
         Scribe_Values.Look(ref frostLevel, "frostLevel", frostLevel, true);
         Scribe_Values.Look(ref isWet, "isWet", isWet, true);
         Scribe_Values.Look(ref isFlooded, "isFlooded", isFlooded, true);
-        Scribe_Values.Look(ref isMelt, "isMelt", isMelt, true);
         Scribe_Values.Look(ref overrideType, "overrideType", overrideType, true);
 
         Scribe_Values.Look(ref isThawed, "isThawed", isThawed, true);
@@ -60,6 +56,64 @@ public class cellData : IExposable
 
         Scribe_Defs.Look(ref originalTerrain, "originalTerrain");
     }
+
+    public void setTerrainWet() {
+
+        var thisTerrain = currentTerrain;
+        //if terrain is temporary we don't want to affect it
+        if (thisTerrain.temporary) {
+            return;
+        }
+        if (!TerrainTagUtil.WetTerrain.TryGetValue(thisTerrain, out TerrainDef wetTerrain)) {
+            return;
+        }
+
+        var weatherExtension = weather;
+        if (weatherExtension == null) {
+            return;
+        }
+
+        if (howWet > weatherExtension.wetAt) {
+            map.terrainGrid.SetTerrain(location, wetTerrain);
+            isWet = true;
+            rainSpawns();
+        } else if (howWet == 0) {
+            isWet = false;
+            howWet = -1;
+        }
+    }
+
+    public void trySetTerrainDry() {
+        var thisTerrain = currentTerrain;
+        //if terrain is temporary we don't want to affect it
+        if (thisTerrain.temporary) {
+            return;
+        }
+        if (!TerrainTagUtil.DryTerrain.TryGetValue(thisTerrain, out TerrainDef dryTerrain)) {
+            return;
+        }
+        var weatherExtension = weather;
+        if (weatherExtension == null) {
+            return;
+        }
+
+        if (howWet <= weatherExtension.wetAt) {
+            map.terrainGrid.SetTerrain(location, dryTerrain);
+            isWet = false;
+            howWet = -1;
+        }
+        
+    }
+    
+
+    public void removeTempTerrain() {
+        var thisTerrain = currentTerrain;
+        if (!thisTerrain.temporary) {
+            return;
+        }
+        map.terrainGrid.RemoveTempTerrain(location,doLeavings:false,preventDestroyEffects:true);
+    }
+    
 
     public void setTerrain(TerrainType type) {
         var thisTerrain = currentTerrain;
@@ -123,22 +177,19 @@ public class cellData : IExposable
             rainSpawns();
         }
         else {
-            switch (howWet) {
-                case 0 when thisTerrain != baseTerrain && isWet && !isFlooded:
-                    changeTerrain(baseTerrain);
-                    isWet = false;
-                    howWet = -1;
-                    break;
-                case -1 when weather.dryTerrain != null && !isFlooded: {
-                    if (thisTerrain == weather.dryTerrain && baseTerrain == weather.dryTerrain) {
-                        return;
-                    }
-
-                    isWet = false;
-                    baseTerrain = weather.dryTerrain;
-                    changeTerrain(weather.dryTerrain);
-                    break;
+            if (howWet == 0 && (thisTerrain != baseTerrain && isWet && !isFlooded)) {
+                changeTerrain(baseTerrain);
+                isWet = false;
+                howWet = -1;
+            }
+            else if (howWet == -1 && (weather.dryTerrain != null && !isFlooded)) {
+                if (thisTerrain == weather.dryTerrain && baseTerrain == weather.dryTerrain) {
+                    return;
                 }
+
+                isWet = false;
+                baseTerrain = weather.dryTerrain;
+                changeTerrain(weather.dryTerrain);
             }
         }
     }

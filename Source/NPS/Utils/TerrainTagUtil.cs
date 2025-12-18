@@ -14,6 +14,8 @@ public static class TerrainTagUtil
     public static readonly HashSet<TerrainDef> canBePacked = [];
     public static readonly Dictionary<TerrainDef, float> AmbientTempReaction = [];
     public static readonly Dictionary<TerrainDef, TerrainDef> DryTerrain = [];
+    public static readonly Dictionary<TerrainDef, TerrainDef> WetTerrain = [];
+    
 
 
     public static void IntializeTerrainTags() {
@@ -55,6 +57,12 @@ public static class TerrainTagUtil
                 if (weatherExtension.dryTerrain != null) {
                     DryTerrain.Add(terrain, weatherExtension.dryTerrain);
                 }
+
+                if (weatherExtension.wetTerrain != null) {
+                    WetTerrain.Add(terrain, weatherExtension.wetTerrain);
+                }
+                
+                
             }
         }
     }

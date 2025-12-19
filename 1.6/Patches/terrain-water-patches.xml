@@ -9,7 +9,6 @@
         <wetTerrain />
         <freezeTerrain>TKKN_Ice</freezeTerrain>
         <dryTerrain />
-        <baseOverride />
         <freezeAt>0</freezeAt>
         <wetAt>
         </wetAt>

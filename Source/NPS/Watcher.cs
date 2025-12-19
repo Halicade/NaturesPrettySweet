@@ -532,7 +532,6 @@ public class Watcher(Map map) : MapComponent(map)
         var roofed = map.roofGrid.Roofed(c);
 
         var gettingWet = false;
-        cell.gettingWet = false;
 
         //check if the terrain has been floored
         if (currentTerrain.designationCategory == DesignationCategoryDefOf.Floors) {
@@ -550,12 +549,10 @@ public class Watcher(Map map) : MapComponent(map)
                 }
 
                 gettingWet = true;
-                cell.gettingWet = true;
                 cell.setTerrainWet();
             }
             else if (currentSnowRate > .001f) {
                 gettingWet = true;
-                cell.gettingWet = true;
                 cell.setTerrainWet();
             }
             else {
@@ -572,7 +569,7 @@ public class Watcher(Map map) : MapComponent(map)
 
         if (isCold) {
             if (Settings.doIce) {
-                cell.setTerrain(TerrainType.Frozen);
+                cell.SetTerrainFrozen();
             }
 
             //handle frost based on snowing
@@ -584,7 +581,7 @@ public class Watcher(Map map) : MapComponent(map)
             }
         }
         else {
-            cell.setTerrain(TerrainType.Thaw);
+            cell.TrySetTerrainThawed();
             var frosty = cell.temperature * -.025f;
             frostGridComponent.AddDepth(c, frosty);
         }

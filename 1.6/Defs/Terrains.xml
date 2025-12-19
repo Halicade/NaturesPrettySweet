@@ -305,6 +305,7 @@
     <edgeType>FadeRough</edgeType>
     <renderPrecedence>350</renderPrecedence>
     <pathCost>4</pathCost>
+      <temporary>true</temporary>
     <statBases>
       <Beauty>-1</Beauty>
       <Cleanliness>-1</Cleanliness>
@@ -325,6 +326,7 @@
     <edgeType>FadeRough</edgeType>
     <renderPrecedence>350</renderPrecedence>
     <pathCost>4</pathCost>
+    <temporary>true</temporary>
     <statBases>
       <Beauty>-1</Beauty>
       <Cleanliness>-1</Cleanliness>

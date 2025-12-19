@@ -13,7 +13,6 @@ public class cellData : IExposable
     public HashSet<int> floodLevel = [];
     public float frostLevel;
 
-    public bool gettingWet = false;
     public int howPacked;
     public int howWet;
     public float howWetPlants = 60;
@@ -58,12 +57,12 @@ public class cellData : IExposable
     }
 
     public void setTerrainWet() {
-
         var thisTerrain = currentTerrain;
         //if terrain is temporary we don't want to affect it
         if (thisTerrain.temporary) {
             return;
         }
+
         if (!TerrainTagUtil.WetTerrain.TryGetValue(thisTerrain, out TerrainDef wetTerrain)) {
             return;
         }
@@ -77,7 +76,8 @@ public class cellData : IExposable
             map.terrainGrid.SetTerrain(location, wetTerrain);
             isWet = true;
             rainSpawns();
-        } else if (howWet == 0) {
+        }
+        else if (howWet == 0) {
             isWet = false;
             howWet = -1;
         }
@@ -89,9 +89,11 @@ public class cellData : IExposable
         if (thisTerrain.temporary) {
             return;
         }
+
         if (!TerrainTagUtil.DryTerrain.TryGetValue(thisTerrain, out TerrainDef dryTerrain)) {
             return;
         }
+
         var weatherExtension = weather;
         if (weatherExtension == null) {
             return;
@@ -102,7 +104,35 @@ public class cellData : IExposable
             isWet = false;
             howWet = -1;
         }
-        
+    }
+
+    public void SetTerrainFrozen() {
+        var thisTerrain = currentTerrain;
+
+        var extension = thisTerrain.GetModExtension<TerrainWeatherReactions>();
+        if (weather == null) {
+            return;
+        }
+
+        if (extension.freezeTerrain != null && temperature < extension.freezeAt) {
+            map.terrainGrid.SetTerrain(location, extension.freezeTerrain);
+            isFrozen = true;
+        }
+    }
+
+    public void TrySetTerrainThawed() {
+        if (!isFrozen) {
+            return;
+        }
+
+        var thisTerrain = currentTerrain;
+        if (!thisTerrain.temporary) {
+            return;
+        }
+
+        map.terrainGrid.RemoveTempTerrain(location, doLeavings: false, preventDestroyEffects: true);
+        howWet = 4;
+        setTerrainWet();
     }
     
 

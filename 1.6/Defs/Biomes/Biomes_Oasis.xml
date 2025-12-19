@@ -120,5 +120,26 @@
             <li>Muffalo</li>
             <li>Dromedary</li>
         </allowedPackAnimals>
+        <modExtensions>
+            <li Class="GeologicalLandforms.BiomeProperties" MayRequire="m00nl1ght.GeologicalLandforms">
+
+                <allowLandforms>true</allowLandforms>
+                <allowBiomeTransitions>true</allowBiomeTransitions>
+                <!--
+                These make water spawn in the oasis water which looks weird.
+                Probably need to block more but that's for future me
+                -->
+                <disallowedLandforms>
+                    <li>Oasis</li>
+                    <li>Cove</li>
+                    <li>CoveWithIsland</li>
+                    <li>Fjord</li>
+                    <li>SecludedCove</li>
+                </disallowedLandforms>
+
+                <isWaterCovered>false</isWaterCovered>
+
+            </li>
+        </modExtensions>
     </BiomeDef>
 </Defs>

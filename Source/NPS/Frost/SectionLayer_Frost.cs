@@ -8,7 +8,7 @@ internal class SectionLayer_Frost : SectionLayer
 {
     private static readonly Color32 ColorClear = new(194, 219, 249, 0); // 194, 219, 249
 
-    private static readonly Color32 ColorWhite = new(194, 219, 249, 120);
+    private static readonly Color32 ColorWhite = new(194, 219, 249, 200);
     private readonly float[] vertDepth = new float[9];
 
     public SectionLayer_Frost(Section section) : base(section)
@@ -16,12 +16,13 @@ internal class SectionLayer_Frost : SectionLayer
         relevantChangeTypes = MapMeshFlagDefOf.Snow;
     }
 
-    public override bool Visible => true;
+    public override bool Visible => Settings.showFrost;
 
     public override void Regenerate()
     {
-        var subMesh = GetSubMesh(Verse.MatBases.Snow);
-        //		LayerSubMesh subMesh = base.GetSubMesh(MatBases.Frost); // for some reason the custom one was causing a huge memory issue and rendering in giant squares :(
+        
+        //LayerSubMesh subMesh = GetSubMesh(Verse.MatBases.Snow);
+        LayerSubMesh subMesh = GetSubMesh(MatBases.Frost); // for some reason the custom one was causing a huge memory issue and rendering in giant squares :(
 
         if (subMesh.mesh.vertexCount == 0)
         {

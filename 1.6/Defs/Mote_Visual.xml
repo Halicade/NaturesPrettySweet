@@ -15,4 +15,18 @@
       <attachedDrawOffset>(0.45, 0, 0.45)</attachedDrawOffset>
     </mote>
   </ThingDef>
+  
+  <ThingDef ParentName="MoteBase">
+    <defName>TKKN_Frost</defName>
+    <graphicData>
+      <texPath>TKKN_NPS/Temperature/Frost</texPath>
+      <shaderType>MoteGlow</shaderType>
+    </graphicData>
+    <altitudeLayer>MoteOverhead</altitudeLayer>
+    <mote>
+      <fadeInTime>2.0</fadeInTime>
+      <solidTime>3.0</solidTime>
+      <fadeOutTime>3.5</fadeOutTime>
+    </mote>
+  </ThingDef>
 </Defs>

@@ -16,7 +16,7 @@ internal class SectionLayer_Frost : SectionLayer
         relevantChangeTypes = MapMeshFlagDefOf.Snow;
     }
 
-    public override bool Visible => Settings.showFrost;
+    public override bool Visible => Settings.showCold;
 
     public override void Regenerate()
     {

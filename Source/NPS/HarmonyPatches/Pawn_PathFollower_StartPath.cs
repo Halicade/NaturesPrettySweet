@@ -4,7 +4,7 @@ using Verse;
 using Verse.AI;
 
 namespace TKKN_NPS;
-
+/*
 //[HarmonyPatch(typeof(Pawn_PathFollower), nameof(Pawn_PathFollower.StartPath))]
 public static class Pawn_PathFollower_StartPath
 {
@@ -75,3 +75,4 @@ public static class Pawn_PathFollower_StartPath
         return !TerrainTagUtil.TKKN_SwimOrLava.Contains(c.GetTerrain(pawn.Map));
     }
 }
+*/

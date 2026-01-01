@@ -102,7 +102,7 @@ public class Settings : ModSettings
             ref doSprings,
             "TKKN_doSprings_text".Translate());
         list.Gap();
-        if (!HarmonyMain.desirePathsActive) {
+        if (!HarmonyMain.DesirePathsActive) {
             list.CheckboxLabeled(
                 "TKKN_doDirtPath_title".Translate(),
                 ref doDirtPath,

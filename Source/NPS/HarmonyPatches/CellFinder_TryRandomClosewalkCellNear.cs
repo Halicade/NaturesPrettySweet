@@ -3,7 +3,7 @@ using HarmonyLib;
 using Verse;
 
 namespace TKKN_NPS;
-
+/*
 //[HarmonyPatch(typeof(CellFinder), nameof(CellFinder.TryRandomClosewalkCellNear))]
 public static class CellFinder_TryRandomClosewalkCellNear
 {
@@ -19,3 +19,4 @@ public static class CellFinder_TryRandomClosewalkCellNear
         return false;
     }
 }
+*/

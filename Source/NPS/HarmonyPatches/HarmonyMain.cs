@@ -10,7 +10,7 @@ namespace TKKN_NPS;
 internal class HarmonyMain
 {
     public static readonly bool RimBrellasActive;
-    public static readonly bool desirePathsActive;
+    public static readonly bool DesirePathsActive;
     
     public static readonly MethodInfo HasUmbrella;
 
@@ -27,7 +27,7 @@ internal class HarmonyMain
         }
 
         if (ModsConfig.IsActive("mlie.desirepaths")) {
-            desirePathsActive = true;
+            DesirePathsActive = true;
             Settings.doDirtPath = false;
         }
 
@@ -37,16 +37,10 @@ internal class HarmonyMain
         harmony.Patch(AccessTools.Method(typeof(BiomeDef), nameof(BiomeDef.CommonalityOfDisease)),
             prefix: new HarmonyMethod(typeof(BiomeDef_CommonalityOfDisease),
                 nameof(BiomeDef_CommonalityOfDisease.Prefix)));
-
-        harmony.Patch(AccessTools.Method(typeof(CellFinder), nameof(CellFinder.TryRandomClosewalkCellNear)),
-            prefix: new HarmonyMethod(typeof(CellFinder_TryRandomClosewalkCellNear),
-                nameof(CellFinder_TryRandomClosewalkCellNear.Prefix)));
-
+        
         harmony.Patch(
             AccessTools.Method(typeof(GenSpawn), nameof(GenSpawn.Spawn),
-            [
-                typeof(Thing), typeof(IntVec3), typeof(Map), typeof(Rot4), typeof(WipeMode), typeof(bool), typeof(bool)
-            ]),
+            [typeof(Thing), typeof(IntVec3), typeof(Map), typeof(Rot4), typeof(WipeMode), typeof(bool), typeof(bool)]),
             postfix: new HarmonyMethod(typeof(GenSpawn_Spawn), nameof(GenSpawn_Spawn.Postfix)));
 
 
@@ -59,14 +53,14 @@ internal class HarmonyMain
             postfix: new HarmonyMethod(typeof(MouseoverReadout_MouseoverReadoutOnGUI),
                 nameof(MouseoverReadout_MouseoverReadoutOnGUI.Postfix)));
 
+        /*
+        //Removed these patches cause this mod shouldn't be the one to do it
+        harmony.Patch(AccessTools.Method(typeof(CellFinder), nameof(CellFinder.TryRandomClosewalkCellNear)),
+            prefix: new HarmonyMethod(typeof(CellFinder_TryRandomClosewalkCellNear),
+                nameof(CellFinder_TryRandomClosewalkCellNear.Prefix)));
         harmony.Patch(AccessTools.Method(typeof(Pawn_PathFollower), nameof(Pawn_PathFollower.StartPath)),
             prefix: new HarmonyMethod(typeof(Pawn_PathFollower_StartPath),
                 nameof(Pawn_PathFollower_StartPath.Prefix)));
-
-        harmony.Patch(AccessTools.Method(typeof(Pawn), nameof(Pawn.SpawnSetup)),
-            postfix: new HarmonyMethod(typeof(Pawn_SpawnSetup),
-                nameof(Pawn_SpawnSetup.Postfix)));
-
 
         harmony.Patch(AccessTools.Method(typeof(Reachability), nameof(Reachability.CanReach), [
                 typeof(IntVec3), typeof(LocalTargetInfo),
@@ -75,11 +69,21 @@ internal class HarmonyMain
             ]),
             postfix: new HarmonyMethod(typeof(Reachability_CanReach),
                 nameof(Reachability_CanReach.Postfix)));
+        */
 
+        harmony.Patch(AccessTools.Method(typeof(Pawn), nameof(Pawn.SpawnSetup)),
+            postfix: new HarmonyMethod(typeof(Pawn_SpawnSetup),
+                nameof(Pawn_SpawnSetup.Postfix)));
 
         harmony.Patch(AccessTools.Method(typeof(WeatherDecider), "CurrentWeatherCommonality"),
             prefix: new HarmonyMethod(typeof(WeatherDecider_CurrentWeatherCommonality),
                 nameof(WeatherDecider_CurrentWeatherCommonality.Prefix)));
+        
+        harmony.Patch(
+            AccessTools.Method(typeof(JobGiver_SeekSafeTemperature), "TryGiveJob"),
+            postfix: new HarmonyMethod(typeof(JobGiver_SeekSafeTemperature_TryGiveJob),
+                nameof(JobGiver_SeekSafeTemperature_TryGiveJob.Postfix)));
+        
         if (Settings.allowPawnsSwim && !ModsConfig.OdysseyActive) {
             harmony.Patch(
                 AccessTools.Method(typeof(PawnRenderNodeWorker_Body), nameof(PawnRenderNodeWorker_Body.CanDrawNow)),
@@ -106,12 +110,6 @@ internal class HarmonyMain
                 postfix: new HarmonyMethod(typeof(Thing_AmbientTemperature),
                     nameof(Thing_AmbientTemperature.Postfix)));
         }
-
-        harmony.Patch(
-                AccessTools.Method(typeof(JobGiver_SeekSafeTemperature), "TryGiveJob"),
-                postfix: new HarmonyMethod(typeof(JobGiver_SeekSafeTemperature_TryGiveJob),
-                    nameof(JobGiver_SeekSafeTemperature_TryGiveJob.Postfix)));
-        
 
         if (Settings.modifyAridShrubland) {
             harmony.Patch(

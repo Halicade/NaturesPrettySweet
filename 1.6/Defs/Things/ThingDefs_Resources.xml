@@ -364,6 +364,7 @@
       </li>
     </comps>
   </ThingDef>
+  <!--
   <ThingDef ParentName="PlantFoodRawBase">
     <defName>TKKN_Cattails</defName>
     <label>cattails</label>
@@ -384,6 +385,7 @@
       </li>
     </comps>
   </ThingDef>
+  -->
   <!-- eggs -->
   <ThingDef ParentName="EggUnfertBase">
     <defName>EggSnailUnfertilized</defName>

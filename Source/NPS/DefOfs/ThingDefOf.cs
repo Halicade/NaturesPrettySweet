@@ -20,7 +20,6 @@ public static class ThingDefOf
     public static ThingDef TKKN_giantsnail;
 
     //HARVESTABLES
-    public static ThingDef TKKN_Cattails;
     public static ThingDef TKKN_PricklyPear;
 
     //PLANTS

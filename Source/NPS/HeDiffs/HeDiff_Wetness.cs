@@ -1,4 +1,5 @@
-﻿using RimWorld;
+﻿using System.Collections.Generic;
+using RimWorld;
 using Verse;
 
 namespace TKKN_NPS;
@@ -15,6 +16,11 @@ public class Hediff_Wetness : HediffWithComps
         base.ExposeData();
         Scribe_Values.Look(ref wetnessLevel, "wetnessLevel");
         Scribe_Values.Look(ref timeDrying, "timeDrying");
+    }
+
+    public override void PreRemoved() {
+        base.PreRemoved();
+        pawn.needs?.mood?.thoughts?.memories?.RemoveMemoriesOfDef(ThoughtDefOf.SoakingWet);
     }
 
     public override void Tick() {
@@ -42,8 +48,8 @@ public class Hediff_Wetness : HediffWithComps
                 return;
             }
 
-            FilthMaker.TryMakeFilth(position, map, ThingDefOf.TKKN_FilthPuddle);
-            Severity -= .3f;
+            if(FilthMaker.TryMakeFilth(position, map, ThingDefOf.TKKN_FilthPuddle))
+                Severity -= .3f;
         }
         else {
             Severity += wetness / 1000;
@@ -66,16 +72,16 @@ public class Hediff_Wetness : HediffWithComps
 
             rate = .05f;
         }
-
-
-        //check if the pawn is wet from the weather
-        if (!map.roofGrid.Roofed(position)) {
-            var weatherManager = map.weatherManager.curWeather;
-            if (weatherManager.rainRate > .001f) {
-                rate = weatherManager.rainRate / 10;
-            }
-            else if (weatherManager.snowRate > .001f) {
-                rate = weatherManager.snowRate / 100;
+        else {
+            //check if the pawn is wet from the weather
+            if (!map.roofGrid.Roofed(position)) {
+                var weatherManager = map.weatherManager.curWeather;
+                if (weatherManager.rainRate > .001f) {
+                    rate = weatherManager.rainRate / 10;
+                }
+                else if (weatherManager.snowRate > .001f) {
+                    rate = weatherManager.snowRate / 100;
+                }
             }
         }
 
@@ -92,9 +98,8 @@ public class Hediff_Wetness : HediffWithComps
             rate -= ambientTemp / 200;
         }
 
-        /*
-         This is such a niche case it really isn't worth calculating
-        //check if the pawn is near a heat source
+        // This is such a niche case, and pawns dry relatively quick.
+        // If it's a performance issue I can remove it but it doesn't seem like it should be
         foreach (var c in GenAdj.CellsAdjacentCardinal(pawn))
         {
             if (!c.InBounds(map) || !c.IsValid)
@@ -102,16 +107,13 @@ public class Hediff_Wetness : HediffWithComps
                 continue;
             }
 
-            var things = c.GetThingList(map);
-            foreach (var thing in things)
+            foreach (var thing in c.GetThingList(map))
             {
-                var heater = thing.TryGetComp<CompHeatPusher>();
-                if (heater != null)
-                {
-                    rate -= heater.Props.heatPerSecond / 5000;
+                if (ThingUtil.heatThings.TryGetValue(thing.def, out var heat)) {
+                    rate -= heat;
                 }
             }
-        }*/
+        }
         return rate - (float)timeDrying / 250;
     }
 }

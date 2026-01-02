@@ -45,7 +45,9 @@
     <TKKN_showCold_title>Show cold effects</TKKN_showCold_title>
     <TKKN_showCold_text>When temperatures are cold, there will be visual indicators</TKKN_showCold_text>
     <TKKN_showRain_title>Show rain effects</TKKN_showRain_title>
-    <TKKN_showRain_text>When it rains, the ground will get splatters and darken</TKKN_showRain_text>
+    <TKKN_showRain_text>When it rains, the ground will get wet. This increases soil fertility.</TKKN_showRain_text>
+    <NPS_makePuddles_title>Make puddles</NPS_makePuddles_title>
+    <NPS_makePuddles_text>Puddles will appear when it rains or when snow melts.</NPS_makePuddles_text>
     <TKKN_doWeather_title>Show weather effects (master)</TKKN_doWeather_title>
     <TKKN_doWeather_text>If unchecked, none of the below will happen. If checked, only the ones checked below will happen.</TKKN_doWeather_text>
     <TKKN_weatherCellUpdateSpeed_title>Weather effects update-speed: {0}</TKKN_weatherCellUpdateSpeed_title>
@@ -62,7 +64,7 @@
     <TKKN_leaveStuff_text>After floods, items can washup on land</TKKN_leaveStuff_text>
     <TKKN_doDirtPath_title>Generate paths</TKKN_doDirtPath_title>
     <TKKN_doDirtPath_text>Pawns will create natural paths when walking</TKKN_doDirtPath_text>
-    <NPS_doAmbientTemperature_title>Apply ambient temperature</NPS_doAmbientTemperature_title>
+    <NPS_doAmbientTemperature_title>Apply ambient temperature patch</NPS_doAmbientTemperature_title>
     <NPS_doAmbientTemperature_text>Temperature of a pawn can be affected by the terrain they are standing on. Note that this can be performance heavy with multiple pawns</NPS_doAmbientTemperature_text>
     <NPS_allowPawnsToDrown_title>Allow pawns to drown</NPS_allowPawnsToDrown_title>
     <NPS_allowPawnsToDrown_text>If a pawn is downed in the water, they might drown</NPS_allowPawnsToDrown_text>

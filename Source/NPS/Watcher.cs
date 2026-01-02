@@ -627,31 +627,12 @@ public class Watcher(Map map) : MapComponent(map)
             }
         }
 
-        //PUDDLES
-        Thing puddle = null;
-        List<Thing> ts = c.GetThingList(map);
-        for (int index = 0; index < ts.Count; index++) {
-            Thing t = ts[index];
-            if (t.def == ThingDefOf.TKKN_FilthPuddle) {
-                puddle = t;
-                break;
+        if (Settings.makePuddles) {
+            if (cell.howWet == 3 && (!isCold && MaxPuddles > totalPuddles &&
+                                     cell.currentTerrain != TerrainDefOf.TKKN_SandBeachWetSalt)) {
+                FilthMaker.TryMakeFilth(c, map, ThingDefOf.TKKN_FilthPuddle);
+                totalPuddles++;
             }
-        }
-
-        switch (cell.howWet) {
-            case 3 when !isCold && MaxPuddles > totalPuddles &&
-                        cell.currentTerrain != TerrainDefOf.TKKN_SandBeachWetSalt: {
-                if (puddle == null) {
-                    FilthMaker.TryMakeFilth(c, map, ThingDefOf.TKKN_FilthPuddle);
-                    totalPuddles++;
-                }
-
-                break;
-            }
-            case <= 0 when puddle != null:
-                puddle.Destroy();
-                totalPuddles--;
-                break;
         }
 
         //cellWeatherAffects[c] = cell;

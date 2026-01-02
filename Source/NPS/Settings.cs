@@ -18,6 +18,7 @@ public class Settings : ModSettings
     public static bool allowPawnsDrowning = true;
     public static bool allowPawnsSwim = true;
     public static bool showRain = true;
+    public static bool makePuddles = true;
     public static bool doWeather = true;
     public static bool doDirtPath = true;
     public static bool regenCells;
@@ -82,6 +83,10 @@ public class Settings : ModSettings
             "TKKN_showRain_title".Translate(),
             ref showRain,
             "TKKN_showRain_text".Translate());
+        list.CheckboxLabeled(
+            "NPS_makePuddles_title".Translate(),
+            ref makePuddles,
+            "NPS_makePuddles_text".Translate());
         list.CheckboxLabeled(
             "TKKN_doTides_title".Translate(),
             ref doTides,
@@ -199,6 +204,7 @@ public class Settings : ModSettings
         Scribe_Values.Look(ref showCold, "showCold", true, true);
         Scribe_Values.Look(ref allowPlantEffects, "allowPlantEffects", true, true);
         Scribe_Values.Look(ref showRain, "showRain", true, true);
+        Scribe_Values.Look(ref makePuddles, "makePuddles", true, true);
         Scribe_Values.Look(ref doTides, "doTides", true, true);
         Scribe_Values.Look(ref doFloods, "doFloods", true, true);
         Scribe_Values.Look(ref leaveStuff, "leaveStuff", true, true);

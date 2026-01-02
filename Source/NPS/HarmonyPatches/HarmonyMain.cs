@@ -16,6 +16,7 @@ internal class HarmonyMain
 
     static HarmonyMain() {
         TerrainTagUtil.IntializeTerrainTags();
+        ThingUtil.InitializeThingUtil();
         PlantReactionUtil.InitializePlantGraphics();
         BiomeUtil.InitializeDefaults();
 
@@ -90,14 +91,14 @@ internal class HarmonyMain
                 postfix: new HarmonyMethod(typeof(PawnRenderNodeWorker_Body_CanDrawNow),
                     nameof(PawnRenderNodeWorker_Body_CanDrawNow.Postfix)));
         }
-
+        /*
         if (Settings.allowPawnsToGetWet) {
             harmony.Patch(
                 AccessTools.Method(typeof(GenTemperature), nameof(GenTemperature.ComfortableTemperatureRange),
                     [typeof(Pawn)]),
                 postfix: new HarmonyMethod(typeof(GenTemperature_ComfortableTemperatureRange),
                     nameof(GenTemperature_ComfortableTemperatureRange.Postfix)));
-        }
+        }*/
 
         if (Settings.allowPlantEffects) {
             harmony.Patch(AccessTools.PropertyGetter(typeof(Plant), nameof(Plant.Graphic)),

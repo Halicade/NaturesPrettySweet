@@ -8,6 +8,8 @@ namespace TKKN_NPS;
 //[HarmonyPatch(typeof(GenTemperature), nameof(GenTemperature.ComfortableTemperatureRange), typeof(Pawn))]
 internal class GenTemperature_ComfortableTemperatureRange
 {
+    //This wouldn't display on hediff screen or elsewhere
+    //Removing and replacing with modified comfortable temp since that's possible since 1.5
     public static void Postfix(Pawn p, ref FloatRange __result)
     {
         if (!p.RaceProps.Humanlike)

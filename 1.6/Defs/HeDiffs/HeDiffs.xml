@@ -10,22 +10,39 @@
       <li>
         <label>dry</label>
         <minSeverity>0</minSeverity>
+
       </li>
       <li>
         <label>damp</label>
         <minSeverity>0.04</minSeverity>
+        <statOffsets>
+          <ComfyTemperatureMin>2</ComfyTemperatureMin>
+          <ComfyTemperatureMax>2</ComfyTemperatureMax>
+        </statOffsets>
       </li>
       <li>
         <label>soggy</label>
         <minSeverity>0.35</minSeverity>
+        <statOffsets>
+          <ComfyTemperatureMin>4</ComfyTemperatureMin>
+          <ComfyTemperatureMax>4</ComfyTemperatureMax>
+        </statOffsets>
       </li>
       <li>
         <label>wet</label>
         <minSeverity>0.62</minSeverity>
+        <statOffsets>
+          <ComfyTemperatureMin>6</ComfyTemperatureMin>
+          <ComfyTemperatureMax>7</ComfyTemperatureMax>
+        </statOffsets>
       </li>
       <li>
         <label>soaked</label>
         <minSeverity>0.8</minSeverity>
+        <statOffsets>
+          <ComfyTemperatureMin>10</ComfyTemperatureMin>
+          <ComfyTemperatureMax>8</ComfyTemperatureMax>
+        </statOffsets>
       </li>
     </stages>
   </HediffDef>

@@ -60,14 +60,7 @@ public class Settings : ModSettings
                 "TKKN_weatherCellUpdateSpeed_title".Translate(weatherCellUpdateSpeed * 10000),
                 weatherCellUpdateSpeed, 0.0001f, 0.002f, 0.5f, "TKKN_weatherCellUpdateSpeed_text".Translate());
         }
-
-        /*
-         Setting doesn't do anything
-        list.CheckboxLabeled(
-            "TKKN_showHot_title".Translate(),
-            ref showHot,
-            "TKKN_showHot_text".Translate());
-            */
+        
         list.CheckboxLabeled(
             "TKKN_showCold_title".Translate(),
             ref showCold,
@@ -156,9 +149,6 @@ public class Settings : ModSettings
         //Development stuff
         list.Gap(30f);
 
-        //list.CheckboxLabeled("Show Update Notes?", ref showUpdateNotes, "");
-        list.Gap(30f);
-
         list.CheckboxLabeled(
             "TKKN_showTempReadout_title".Translate(),
             ref showDevReadout,
@@ -200,7 +190,6 @@ public class Settings : ModSettings
         Scribe_Values.Look(ref doWeather, "doWeather", true, true);
         Scribe_Values.Look(ref weatherCellUpdateSpeed, "weatherCellUpdateSpeed", 0.0006f, true);
         Scribe_Values.Look(ref doDirtPath, "doDirtPath", true, true);
-        //Scribe_Values.Look(ref showHot, "showHot", true, true);
         Scribe_Values.Look(ref showCold, "showCold", true, true);
         Scribe_Values.Look(ref allowPlantEffects, "allowPlantEffects", true, true);
         Scribe_Values.Look(ref showRain, "showRain", true, true);
@@ -226,7 +215,6 @@ public class Settings : ModSettings
         Scribe_Values.Look(ref allowVolcanicFields, "allowVolcanicFields", true, true);
         Scribe_Values.Look(ref modifyAridShrubland, "modifyAridShrubland", true, true);
         Scribe_Values.Look(ref modifyTemperateForest, "modifyTemperateForest", true, true);
-
-        //Scribe_Values.Look(ref showUpdateNotes, "showUpdateNotes", true, true);
+        
     }
 }

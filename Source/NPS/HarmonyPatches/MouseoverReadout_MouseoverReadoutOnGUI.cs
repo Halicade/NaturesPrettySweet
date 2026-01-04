@@ -10,22 +10,18 @@ internal class MouseoverReadout_MouseoverReadoutOnGUI
     private static Map cachedMap;
     private static FrostGrid cachedFrostGrid;
 
-    public static void Postfix()
-    {
-        if (Event.current.type != EventType.Repaint || Find.MainTabsRoot.OpenTab != null)
-        {
+    public static void Postfix() {
+        if (!Settings.showDevReadout || Event.current.type != EventType.Repaint || Find.MainTabsRoot.OpenTab != null) {
             return;
         }
 
         var c = UI.MouseCell();
         var map = Find.CurrentMap;
-        if (!c.InBounds(map))
-        {
+        if (!c.InBounds(map)) {
             return;
         }
 
-        if (cachedMap != map)
-        {
+        if (cachedMap != map) {
             cachedMap = map;
             cachedFrostGrid = map.GetComponent<FrostGrid>();
         }
@@ -34,97 +30,83 @@ internal class MouseoverReadout_MouseoverReadoutOnGUI
         var botLeft = new Vector2(15f, 65f);
         var num = 38f;
         var zone = c.GetZone(map);
-        if (zone != null)
-        {
+        if (zone != null) {
             num += 19f;
         }
 
         var depth = map.snowGrid.GetDepth(c);
-        if (depth > 0.03f)
-        {
+        if (depth > 0.03f) {
             num += 19f;
         }
 
         var thingList = c.GetThingList(map);
-        foreach (var thing in thingList)
-        {
-            if (thing.def.category != ThingCategory.Mote)
-            {
+        foreach (var thing in thingList) {
+            if (thing.def.category != ThingCategory.Mote) {
                 num += 19f;
             }
         }
 
         var roof = c.GetRoof(map);
-        if (roof != null)
-        {
+        if (roof != null) {
             num += 19f;
         }
 
-        if (Settings.showDevReadout)
-        {
+
+        rect = new Rect(botLeft.x, UI.screenHeight - botLeft.y - num, 999f, 999f);
+        var label3 = $"C: x-{c.x} y-{c.y} z-{c.z}";
+        Widgets.Label(rect, label3);
+        num += 19f;
+
+        var watcher = map.GetComponent<Watcher>();
+
+        if (watcher.cellWeatherAffects.TryGetValue(c, out var cell)) {
             rect = new Rect(botLeft.x, UI.screenHeight - botLeft.y - num, 999f, 999f);
-            var label3 = $"C: x-{c.x} y-{c.y} z-{c.z}";
-            Widgets.Label(rect, label3);
+            var label2 = $"Temperature: {cell.temperature}";
+            Widgets.Label(rect, label2);
             num += 19f;
 
-            var watcher = map.GetComponent<Watcher>();
+            rect = new Rect(botLeft.x, UI.screenHeight - botLeft.y - num, 999f, 999f);
+            var label4 =
+                $"Cell Info: Base Terrain {cell.baseTerrain.defName} Current Terrain {cell.currentTerrain.defName} | Wet {cell.isWet} | Flooded {cell.isFlooded} | Frozen {cell.isFrozen} | Thawed {cell.isThawed}";
+            Widgets.Label(rect, label4);
+            num += 19f;
 
-            if (watcher.cellWeatherAffects.TryGetValue(c, out var cell))
-            {
-                rect = new Rect(botLeft.x, UI.screenHeight - botLeft.y - num, 999f, 999f);
-                var label2 = $"Temperature: {cell.temperature}";
-                Widgets.Label(rect, label2);
-                num += 19f;
-
-                rect = new Rect(botLeft.x, UI.screenHeight - botLeft.y - num, 999f, 999f);
-                var label4 =
-                    $"Cell Info: Base Terrain {cell.baseTerrain.defName} Current Terrain {cell.currentTerrain.defName} | Wet {cell.isWet} | Flooded {cell.isFlooded} | Frozen {cell.isFrozen} | Thawed {cell.isThawed}";
-                Widgets.Label(rect, label4);
-                num += 19f;
-
-                rect = new Rect(botLeft.x, UI.screenHeight - botLeft.y - num, 999f, 999f);
-                var label6 =
-                    $"TKKN_Wet {TerrainTagUtil.TKKN_Wet.Contains(cell.currentTerrain)}TKKN_Swim {TerrainTagUtil.TKKN_Swim.Contains(cell.currentTerrain)}";
-                Widgets.Label(rect, label6);
-                num += 19f;
+            rect = new Rect(botLeft.x, UI.screenHeight - botLeft.y - num, 999f, 999f);
+            var label6 =
+                $"TKKN_Wet {TerrainTagUtil.TKKN_Wet.Contains(cell.currentTerrain)}TKKN_Swim {TerrainTagUtil.TKKN_Swim.Contains(cell.currentTerrain)}";
+            Widgets.Label(rect, label6);
+            num += 19f;
 
 
-                rect = new Rect(botLeft.x, UI.screenHeight - botLeft.y - num, 999f, 999f);
-                var label5 =
-                    $"Cell Info: howWet {cell.howWet} | How Wet (Plants) {cell.howWetPlants} | How Packed {cell.howPacked}";
-                if (cell.weather != null)
-                {
-                    if (cell.weather.wetTerrain != null)
-                    {
-                        label5 += $" | T Wet {cell.weather.wetTerrain.defName}";
-                    }
-
-                    if (cell.weather.dryTerrain != null)
-                    {
-                        label5 += $" | T Dry {cell.weather.dryTerrain.defName}";
-                    }
-
-                    if (cell.weather.freezeTerrain != null)
-                    {
-                        label5 += $" | T Freeze {cell.weather.freezeTerrain.defName}";
-                    }
+            rect = new Rect(botLeft.x, UI.screenHeight - botLeft.y - num, 999f, 999f);
+            var label5 =
+                $"Cell Info: howWet {cell.howWet} | How Wet (Plants) {cell.howWetPlants} | How Packed {cell.howPacked}";
+            if (cell.weather != null) {
+                if (cell.weather.wetTerrain != null) {
+                    label5 += $" | T Wet {cell.weather.wetTerrain.defName}";
                 }
 
-                if (cell.originalTerrain != null)
-                {
-                    label5 += $" | Orig Terrain {cell.originalTerrain.defName}";
+                if (cell.weather.dryTerrain != null) {
+                    label5 += $" | T Dry {cell.weather.dryTerrain.defName}";
                 }
 
-                Widgets.Label(rect, label5);
+                if (cell.weather.freezeTerrain != null) {
+                    label5 += $" | T Freeze {cell.weather.freezeTerrain.defName}";
+                }
             }
 
-            num += 19f;
+            if (cell.originalTerrain != null) {
+                label5 += $" | Orig Terrain {cell.originalTerrain.defName}";
+            }
+
+            Widgets.Label(rect, label5);
         }
+
+        num += 19f;
 
 
         depth = cachedFrostGrid.GetDepth(c);
-        if (!(depth > 0.01f))
-        {
+        if (!(depth > 0.01f)) {
             return;
         }
 

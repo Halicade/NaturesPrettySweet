@@ -5,6 +5,8 @@ using Verse.AI;
 
 namespace TKKN_NPS;
 
+// This job apparently never worked. Not sure if I'm going to reimplement
+/*
 public class JobGiver_GoSwimming : JobGiver_Wander
 {
     private static readonly List<IntVec3> swimmingSpots = [];
@@ -104,4 +106,4 @@ public class JobGiver_GoSwimming : JobGiver_Wander
 
         return swimmingSpots.Count > 0 ? swimmingSpots.RandomElement() : IntVec3.Invalid;
     }
-}
+}*/

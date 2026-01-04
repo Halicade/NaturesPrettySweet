@@ -11,7 +11,7 @@ internal class HarmonyMain
 {
     public static readonly bool RimBrellasActive;
     public static readonly bool DesirePathsActive;
-    
+
     public static readonly MethodInfo HasUmbrella;
 
     static HarmonyMain() {
@@ -20,6 +20,9 @@ internal class HarmonyMain
         PlantReactionUtil.InitializePlantGraphics();
         BiomeUtil.InitializeDefaults();
 
+        DesirePathsActive = ModLister.GetActiveModWithIdentifier("mlie.desirepaths") != null;
+        RimBrellasActive = ModLister.GetActiveModWithIdentifier("battlemage64.Rimbrellas", true) != null;
+
         if (ModsConfig.OdysseyActive) {
             Settings.doIce = false;
             Settings.doFloods = false;
@@ -27,8 +30,7 @@ internal class HarmonyMain
             Settings.allowPawnsSwim = false;
         }
 
-        if (ModsConfig.IsActive("mlie.desirepaths")) {
-            DesirePathsActive = true;
+        if (DesirePathsActive) {
             Settings.doDirtPath = false;
         }
 
@@ -38,10 +40,12 @@ internal class HarmonyMain
         harmony.Patch(AccessTools.Method(typeof(BiomeDef), nameof(BiomeDef.CommonalityOfDisease)),
             prefix: new HarmonyMethod(typeof(BiomeDef_CommonalityOfDisease),
                 nameof(BiomeDef_CommonalityOfDisease.Prefix)));
-        
+
         harmony.Patch(
             AccessTools.Method(typeof(GenSpawn), nameof(GenSpawn.Spawn),
-            [typeof(Thing), typeof(IntVec3), typeof(Map), typeof(Rot4), typeof(WipeMode), typeof(bool), typeof(bool)]),
+            [
+                typeof(Thing), typeof(IntVec3), typeof(Map), typeof(Rot4), typeof(WipeMode), typeof(bool), typeof(bool)
+            ]),
             postfix: new HarmonyMethod(typeof(GenSpawn_Spawn), nameof(GenSpawn_Spawn.Postfix)));
 
 
@@ -79,12 +83,12 @@ internal class HarmonyMain
         harmony.Patch(AccessTools.Method(typeof(WeatherDecider), "CurrentWeatherCommonality"),
             prefix: new HarmonyMethod(typeof(WeatherDecider_CurrentWeatherCommonality),
                 nameof(WeatherDecider_CurrentWeatherCommonality.Prefix)));
-        
+
         harmony.Patch(
             AccessTools.Method(typeof(JobGiver_SeekSafeTemperature), "TryGiveJob"),
             postfix: new HarmonyMethod(typeof(JobGiver_SeekSafeTemperature_TryGiveJob),
                 nameof(JobGiver_SeekSafeTemperature_TryGiveJob.Postfix)));
-        
+
         if (Settings.allowPawnsSwim && !ModsConfig.OdysseyActive) {
             harmony.Patch(
                 AccessTools.Method(typeof(PawnRenderNodeWorker_Body), nameof(PawnRenderNodeWorker_Body.CanDrawNow)),
@@ -126,19 +130,15 @@ internal class HarmonyMain
                     nameof(BiomeWorker_TemperateForest_GetScore.Postfix)));
         }
 
-        RimBrellasActive = ModLister.GetActiveModWithIdentifier("battlemage64.Rimbrellas", true) != null;
+        if (RimBrellasActive) {
+            HasUmbrella = AccessTools.Method("Umbrellas.UmbrellaDefMethods:HasUmbrella");
+            if (HasUmbrella != null) {
+                return;
+            }
 
-        if (!RimBrellasActive) {
-            return;
+            Log.Warning(
+                "[Natures Pretty Sweet]: Rimbrella loaded but could not find the correct method to check for umbrellas");
+            RimBrellasActive = false;
         }
-
-        HasUmbrella = AccessTools.Method("Umbrellas.UmbrellaDefMethods:HasUmbrella");
-        if (HasUmbrella != null) {
-            return;
-        }
-
-        Log.Warning(
-            "[Natures Pretty Sweet]: Rimbrella loaded but could not find the correct method to check for umbrellas");
-        RimBrellasActive = false;
     }
 }

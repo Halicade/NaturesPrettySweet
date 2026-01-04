@@ -2,14 +2,16 @@
 using Verse.AI;
 
 // NOTE: The job that puts pawns in springs when they're too hot is in harmonypatches/jobgiverspringspatch.cs
-
+// This job apparently never worked. Not sure if I'm going to reimplement
 
 namespace TKKN_NPS;
-
+/*
 public class JobGiver_Dryoff : ThinkNode_JobGiver
 {
     protected override Job TryGiveJob(Pawn pawn)
     {
+        
+        
         if (!pawn.RaceProps.Humanlike)
         {
             return null;
@@ -52,4 +54,4 @@ public class JobGiver_Dryoff : ThinkNode_JobGiver
             return pawn.MapHeld.roofGrid.Roofed(pos);
         }
     }
-}
+}*/

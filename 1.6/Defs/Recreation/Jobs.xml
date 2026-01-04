@@ -2,12 +2,14 @@
 <Defs>
   <JobDef>
     <defName>TKKN_RelaxSpring</defName>
-    <driverClass>TKKN_NPS.JobGiver_RelaxInSpring</driverClass>
+    <driverClass>TKKN_NPS.JobDriver_RelaxInSpring</driverClass>
     <reportString>relaxing in a spring.</reportString>
     <joyDuration>4000</joyDuration>
     <joyGainRate>1</joyGainRate>
     <joyKind>Meditative</joyKind>
   </JobDef>
+  <!--
+  These apparently never worked. Not going to fix them
   <JobDef>
     <defName>TKKN_GoSwimming</defName>
     <driverClass>TKKN_NPS.JobGiver_GoSwimming</driverClass>
@@ -21,5 +23,5 @@
     <driverClass>TKKN_NPS.JobGiver_Dryoff</driverClass>
     <reportString>drying off.</reportString>
     <joyDuration>4000</joyDuration>
-  </JobDef>
+  </JobDef>-->
 </Defs>

@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+    <JoyGiverDef>
+        <defName>TKKN_RelaxSpring</defName>
+        <giverClass>TKKN_NPS.JoyGiver_RelaxInSpring</giverClass>
+        <baseChance>1</baseChance>
+        <joyKind>Meditative</joyKind>
+        <jobDef>TKKN_RelaxSpring</jobDef>
+    </JoyGiverDef>
+    
+</Defs>

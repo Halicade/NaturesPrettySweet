@@ -101,8 +101,6 @@
             <TKKN_PlantTreeBaobab>0.11</TKKN_PlantTreeBaobab>
             <Plant_TreeDrago>0.11</Plant_TreeDrago>
             <Plant_Berry>0.1</Plant_Berry>
-            <!-- because these are special, aritfically inflate their numbers -->
-            <TKKN_PlantWildRice>2.2</TKKN_PlantWildRice>
             <TKKN_PlantCatTails>2.3</TKKN_PlantCatTails>
             <TKKN_PlantLilypad>2.2</TKKN_PlantLilypad>
             <Plant_GrayGrass MayRequire="Ludeon.RimWorld.Biotech">9</Plant_GrayGrass>

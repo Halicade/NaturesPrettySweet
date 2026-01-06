@@ -26,6 +26,7 @@
       <growDays>13.3</growDays>
       <immatureGraphicPath>Things/Plant/CornPlant_Immature</immatureGraphicPath>
       <visualSizeRange>0.3~1.4</visualSizeRange>
+      <wildBiomes/>
     </plant>
   </ThingDef>
   <ThingDef ParentName="PlantBase">

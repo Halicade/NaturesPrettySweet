@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+
+<Patch>
+
+    <!--
+    <Operation Class="PatchOperationReplace">
+        <xpath>Defs/ThingDef[defName = "Plant_Grass"]/graphicData/texPath</xpath>
+        <value>
+            <texPath>TKKN_NPS/Things/Plant/Grass</texPath>
+        </value>
+    </Operation>
+    
+    <Operation Class="PatchOperationReplace">
+        <xpath>Defs/ThingDef[defName = "Plant_TallGrass"]/graphicData/texPath</xpath>
+        <value>
+            <texPath>TKKN_NPS/Things/Plant/Grass</texPath>
+        </value>
+    </Operation>
+    -->
+
+    <!-- 
+    I apologize for the obscenity I have created.
+    Should only create dandelions (and apply it's respective patches) 
+    if nothing else has patched dandelions similarly
+    -->
+
+    <Operation Class="PatchOperationConditional">
+        <xpath>Defs/ThingDef[defName = "Plant_Dandelion"]/plant/harvestedThingDef</xpath>
+        <nomatch Class="TKKN_NPS.Toggleables">
+            <setting>Dandelions</setting>
+            <patchOp Class="PatchOperationSequence">
+                <operations>
+                    <li Class="PatchOperationAdd">
+                        <xpath>Defs/ThingDef[defName = "Plant_Dandelion"]/plant</xpath>
+                        <value>
+                            <harvestTag>Standard</harvestTag>
+                            <harvestedThingDef>TKKN_WildGreens</harvestedThingDef>
+                            <harvestYield>5</harvestYield>
+                            <harvestWork>100</harvestWork>
+                            <harvestAfterGrowth>0.10</harvestAfterGrowth>
+                        </value>
+                    </li>
+
+                    <li Class="PatchOperationReplace">
+                        <xpath>Defs/ThingDef[defName = "Plant_Dandelion"]/description</xpath>
+                    <!-- @formatter:off-->
+                    <value>
+                        <description>A tiny, edible yellow flower which grows in large clusters. Though it is often considered a weed, dandelions in bloom are quite beautiful.</description>
+                    </value>
+                        <!-- @formatter:on-->
+                    </li>
+
+                    <li Class="PatchOperationAdd">
+                        <xpath>Defs/ThingDef[defName = "Plant_Dandelion"]</xpath>
+                        <value>
+                            <selectable>true</selectable>
+                            <neverMultiSelect>false</neverMultiSelect>
+                        </value>
+                    </li>
+
+                </operations>
+            </patchOp>
+
+        </nomatch>
+
+    </Operation>
+
+
+</Patch>

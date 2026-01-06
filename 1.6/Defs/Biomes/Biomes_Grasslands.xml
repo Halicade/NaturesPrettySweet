@@ -98,8 +98,6 @@
             <TKKN_PlantWildflowers>0.05</TKKN_PlantWildflowers>
             <Plant_TreeOak>0.05</Plant_TreeOak>
             <Plant_Berry>0.2</Plant_Berry>
-            <TKKN_PlantWildCorn>0.1</TKKN_PlantWildCorn>
-            <TKKN_PlantWildRice>.6</TKKN_PlantWildRice>
             <TKKN_PlantCatTails>.6</TKKN_PlantCatTails>
             <TKKN_PlantLilypad>.5</TKKN_PlantLilypad>
             <Plant_GrayGrass MayRequire="Ludeon.RimWorld.Biotech">9</Plant_GrayGrass>

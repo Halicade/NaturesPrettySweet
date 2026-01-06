@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<Patch>
+
+    <Operation Class="TKKN_NPS.Toggleables">
+        <setting>WildVegetables</setting>
+        <patchOp Class="PatchOperationAdd">
+            <xpath>Defs/ThingDef[defName = "TKKN_PlantWildRice"]/plant/wildBiomes</xpath>
+            <value>
+                <TemperateForest>0.5</TemperateForest>
+                <TemperateSwamp>0.5</TemperateSwamp>
+                <TropicalRainforest>0.5</TropicalRainforest>
+                <TropicalSwamp>0.7</TropicalSwamp>
+                <TKKN_Grasslands>0.6</TKKN_Grasslands>
+                <TKKN_Oasis>0.6</TKKN_Oasis>
+                <TKKN_Savanna>2.2</TKKN_Savanna>
+            </value>
+
+        </patchOp>
+    </Operation>
+
+    <Operation Class="TKKN_NPS.Toggleables">
+        <setting>WildVegetables</setting>
+        <patchOp Class="PatchOperationAdd">
+            <xpath>Defs/ThingDef[defName = "TKKN_PlantWildCorn"]/plant/wildBiomes</xpath>
+            <value>
+                <AridShrubland>0.1</AridShrubland>
+                <Desert>0.1</Desert>
+                <TKKN_Grasslands>0.1</TKKN_Grasslands>
+            </value>
+        </patchOp>
+    </Operation>
+</Patch>

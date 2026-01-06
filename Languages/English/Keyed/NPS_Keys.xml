@@ -73,6 +73,12 @@
     <NPS_AllowBiomesText>Allow {0} to spawn during world generation</NPS_AllowBiomesText>
     <NPS_allowBiome_title>Allow {0}</NPS_allowBiome_title>
     <NPS_ModifyBiome_title>Modify {0}</NPS_ModifyBiome_title>
+    <NPS_Dandelions_Title>Dandelions generate resources</NPS_Dandelions_Title>
+    <NPS_Dandelions_text>Changes dandelions to generate wild greens when fully grown.</NPS_Dandelions_text>
+    <NPS_WildVegetables_Title>Wild vegetables</NPS_WildVegetables_Title>
+    <NPS_WildVegetables_text>Wild vegetable plants will generate in biomes</NPS_WildVegetables_text>
+    <NPS_GrassTexture_Title>Replace grass textures</NPS_GrassTexture_Title>
+    <NPS_GrassTexture_text>Replaces the textures for Grass and Long Grass and adds an extra variant to them.</NPS_GrassTexture_text>
     <NPS_ModifyBiome_desc>Modifies generation of the {0} biome to use different logic</NPS_ModifyBiome_desc>
     <!-- @formatter:on -->
 </LanguageData>

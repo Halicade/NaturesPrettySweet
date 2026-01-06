@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 using Verse;
 
 namespace TKKN_NPS;
@@ -43,6 +44,30 @@ public class Settings : ModSettings
     public static bool modifyAridShrubland = true;
     public static bool modifyTemperateForest = true;
 
+    //Plant changes
+    public static bool dandelionChanges = true;
+    public static bool wildVegetables = true;
+    public static bool grassTexture = true;
+
+    private static HashSet<string> ActiveSettings;
+
+    public static HashSet<string> GetActiveSettings {
+        get
+        {
+            if (ActiveSettings == null) {
+                ActiveSettings = [];
+                if (dandelionChanges)
+                    ActiveSettings.Add("Dandelions");
+                if (wildVegetables)
+                    ActiveSettings.Add("WildVegetables");
+                if (grassTexture)
+                    ActiveSettings.Add("GrassTexture");
+            }
+
+            return ActiveSettings;
+        }
+    }
+
     static Settings() { }
 
     public static void DoWindowContents(Rect inRect) {
@@ -60,7 +85,7 @@ public class Settings : ModSettings
                 "TKKN_weatherCellUpdateSpeed_title".Translate(weatherCellUpdateSpeed * 10000),
                 weatherCellUpdateSpeed, 0.0001f, 0.002f, 0.5f, "TKKN_weatherCellUpdateSpeed_text".Translate());
         }
-        
+
         list.CheckboxLabeled(
             "TKKN_showCold_title".Translate(),
             ref showCold,
@@ -181,6 +206,21 @@ public class Settings : ModSettings
         list.CheckboxLabeled(
             "NPS_ModifyBiome_title".Translate(BiomeDefOf.TemperateForest.LabelCap),
             ref modifyTemperateForest, tooltip: "NPS_ModifyBiome_desc".Translate(BiomeDefOf.TemperateForest.LabelCap));
+
+        //ToggleablePatches
+        list.Gap();
+        list.CheckboxLabeled(
+            "NPS_Dandelions_Title".Translate(),
+            ref dandelionChanges,
+            "NPS_Dandelions_text".Translate());
+        list.CheckboxLabeled(
+            "NPS_WildVegetables_Title".Translate(),
+            ref wildVegetables,
+            "NPS_WildVegetables_text".Translate());
+        list.CheckboxLabeled(
+            "NPS_GrassTexture_Title".Translate(),
+            ref grassTexture,
+            "NPS_GrassTexture_text".Translate());
         list.End();
     }
 
@@ -215,6 +255,9 @@ public class Settings : ModSettings
         Scribe_Values.Look(ref allowVolcanicFields, "allowVolcanicFields", true, true);
         Scribe_Values.Look(ref modifyAridShrubland, "modifyAridShrubland", true, true);
         Scribe_Values.Look(ref modifyTemperateForest, "modifyTemperateForest", true, true);
+        Scribe_Values.Look(ref dandelionChanges, "dandelionChanges", true, true);
+        Scribe_Values.Look(ref wildVegetables, "wildVegetables", true, true);
+        Scribe_Values.Look(ref grassTexture, "grassTexture", true, true);
         
     }
 }

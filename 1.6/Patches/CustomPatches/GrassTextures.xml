@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<Patch>
+    <Operation Class="TKKN_NPS.Toggleables">
+        <setting>GrassTexture</setting>
+        <patchOp Class="PatchOperationReplace">
+            <xpath>Defs/ThingDef[defName = "Plant_Grass"]/graphicData/texPath</xpath>
+            <value>
+                <texPath>TKKN_NPS/Things/Plant/Grass</texPath>
+            </value>
+        </patchOp>
+    </Operation>
+
+    <Operation Class="TKKN_NPS.Toggleables">
+        <setting>Dandelions</setting>
+        <patchOp Class="PatchOperationReplace">
+            <xpath>Defs/ThingDef[defName = "Plant_TallGrass"]/graphicData/texPath</xpath>
+            <value>
+                <texPath>TKKN_NPS/Things/Plant/Grass</texPath>
+            </value>
+        </patchOp>
+    </Operation>
+
+</Patch>

@@ -15,6 +15,7 @@
     <selectable>true</selectable>
     <pathCost>10</pathCost>
     <ingestible />
+    <neverMultiSelect>false</neverMultiSelect>
     <plant>
       <fertilitySensitivity>1.0</fertilitySensitivity>
       <dieIfLeafless>true</dieIfLeafless>
@@ -26,7 +27,7 @@
       <growDays>4</growDays>
       <visualSizeRange>0.2~0.6</visualSizeRange>
       <wildPlantUseDistanceToShore>true</wildPlantUseDistanceToShore>
-      <completelyIgnoreFertility>true</completelyIgnoreFertility>
+      <!--<completelyIgnoreFertility>true</completelyIgnoreFertility>-->
       <showInFrozenWater>false</showInFrozenWater>
       <wildTerrainTags>
         <li>WaterMarshy</li>
@@ -36,6 +37,7 @@
         <li>Riverbank</li>
         <li>Mud</li>
       </wildTerrainTags>
+      <wildBiomes/>
     </plant>
   </ThingDef>
   <!-- Savanna and Grasslands -->

@@ -6,7 +6,9 @@
     <!--Temporary method so I can use Assets instead of AssetBundles-->
     <li>Source/Assets</li>
     <li IfModActive="Ludeon.Rimworld.Odyssey">1.6/DLC/Odyssey</li>
-    <li IfModActiveAll="acpteam.acpvanillastyle,Ludeon.Rimworld.Odyssey">1.6/Mods/AnimalCollabProjectOdyssey</li>
     <li IfModActive="acpteam.acpvanillastyle" IfModNotActive="Ludeon.Rimworld.Odyssey">1.6/Mods/AnimalCollabProjectNoOdyssey</li>
+    <li IfModActive="mlie.jurassicrimworlddinosaursonly,Mlie.JurassicRimworld">1.6/Mods/JurassicRimworld</li>
+    <li IfModActive="BiomesTeam.BiomesPollutedLands">1.6/Mods/BiomesPollutedLands</li>
+    <li IfModActiveAll="sarg.alphabiomes,Ludeon.Rimworld.Odyssey">1.6/Mods/AlphaBiomesOdyssey</li>
   </v1.6>
 </loadFolders>

@@ -3,7 +3,6 @@
 <Defs>
     <!-- 
     Biome was never implemented/finished
-    No Sequoia trees
     <BiomeDef>
     <defName>TKKN_SequoiaForest</defName>
     <label>sequoia forest</label>

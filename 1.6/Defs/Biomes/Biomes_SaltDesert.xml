@@ -76,21 +76,105 @@
             <Plant_TreePoplar>0.45</Plant_TreePoplar>
             <Plant_Agave>0.25</Plant_Agave>
             <Plant_Bush>0.25</Plant_Bush>
+            <Plant_Lily MayRequire="mlie.flowers">0.08</Plant_Lily>
+            <Plant_Daffodil MayRequire="mlie.flowers">0.08</Plant_Daffodil>
+            <Plant_Chrysanthemum MayRequire="mlie.flowers">0.08</Plant_Chrysanthemum>
+            <Plant_Daisy MayRequire="mlie.flowers">0.08</Plant_Daisy>
+            
+            <!-- Pollution plants -->
             <Plant_GrayGrass MayRequire="Ludeon.RimWorld.Biotech">3</Plant_GrayGrass>
             <Plant_PebbleCactus MayRequire="Ludeon.RimWorld.Biotech">1</Plant_PebbleCactus>
+            <BMT_Plant_ScorchedStars MayRequire="biomesteam.biomespollutedlands">1</BMT_Plant_ScorchedStars>
+            <BMT_Plant_TwistedDandelion MayRequire="biomesteam.biomespollutedlands">0.2</BMT_Plant_TwistedDandelion>
         </wildPlants>
         <wildAnimals>
-            <Gazelle>0.1</Gazelle>
-            <Emu>0.02</Emu>
-            <Megascarab>1</Megascarab>
-            <Iguana>0.7</Iguana>
-            <Dromedary>0.5</Dromedary>
             <Boomalope>0.2</Boomalope>
+            <Cougar>0.02</Cougar>
+            <Dromedary>0.5</Dromedary>
+            <Emu>0.02</Emu>
+            <Fox_Fennec>0.02</Fox_Fennec>
+            <Gazelle>0.1</Gazelle>
+            <Iguana>0.7</Iguana>
+            <Megascarab>1</Megascarab>
             <Ostrich>0.2</Ostrich>
             <Rat>0.30</Rat>
-            <Cougar>0.02</Cougar>
-            <Fox_Fennec>0.02</Fox_Fennec>
+            <AA_DesertAve MayRequire="sarg.alphaanimals">0.2</AA_DesertAve>
+            <ZHY_Birdoa MayRequire="zylle.hybridanimals">0.3</ZHY_Birdoa>
+            <TYR_KangarooRat MayRequire="tyrannidae.littlecritters">0.25</TYR_KangarooRat>
+            <BU_Vulture MayRequire="dizzy.birdup.allinone">0.8</BU_Vulture>
+            <pphhyy_Vulaken MayRequire="zal.terroravis">0.07</pphhyy_Vulaken>
+            <pphhyy_DesertSparaken MayRequire="zal.terroravis">0.05</pphhyy_DesertSparaken>
+            <Doedicurus MayRequire="spino.megafauna">0.02</Doedicurus>
+            <SyntheticIguana MayRequire="zal.syntheticanimals">0.004</SyntheticIguana>
+            <SyntheticRat MayRequire="zal.syntheticanimals">0.004</SyntheticRat>
+            <SyntheticCougar MayRequire="zal.syntheticanimals">0.004</SyntheticCougar>
+            <SyntheticRhinoceros MayRequire="zal.syntheticanimals">0.004</SyntheticRhinoceros>
+            <SyntheticFox MayRequire="zal.syntheticanimals">0.004</SyntheticFox>
+            <ACPThornyDevil MayRequire="acpteam.acpvanillastyle">0.04</ACPThornyDevil>
+            <ACPWildDog MayRequire="acpteam.acpvanillastyle">0.04</ACPWildDog>
+            <AA_Aerofleet MayRequire="sarg.alphaanimals">0.05</AA_Aerofleet>
+            <AA_Barbslinger MayRequire="sarg.alphaanimals">0.1</AA_Barbslinger>
+            <AA_BloodShrimp MayRequire="sarg.alphaanimals">0.01</AA_BloodShrimp>
+            <AA_BoulderMit MayRequire="sarg.alphaanimals">0.07</AA_BoulderMit>
+            <AA_Bumbledrone MayRequire="sarg.alphaanimals">0.07</AA_Bumbledrone>
+            <AA_Cactipine MayRequire="sarg.alphaanimals">0.07</AA_Cactipine>
+            <AA_Dunealisk MayRequire="sarg.alphaanimals">0.07</AA_Dunealisk>
+            <AA_FissionMouse MayRequire="sarg.alphaanimals">0.01</AA_FissionMouse>
+            <AA_GreatDevourer MayRequire="sarg.alphaanimals">0.01</AA_GreatDevourer>
+            <AA_MammothWorm MayRequire="sarg.alphaanimals">0.03</AA_MammothWorm>
+            <AA_MeadowAve MayRequire="sarg.alphaanimals">0.01</AA_MeadowAve>
+            <AA_MegaLouse MayRequire="sarg.alphaanimals">0.03</AA_MegaLouse>
+            <AA_Needlepost MayRequire="sarg.alphaanimals">0.1</AA_Needlepost>
+            <AA_Needleroll MayRequire="sarg.alphaanimals">1</AA_Needleroll>
+            <AA_Nightling MayRequire="sarg.alphaanimals">0.03</AA_Nightling>
+            <AA_PebbleMit MayRequire="sarg.alphaanimals">0.07</AA_PebbleMit>
+            <AA_SandSquid MayRequire="sarg.alphaanimals">0.05</AA_SandSquid>
+            <AA_Slurrypede MayRequire="sarg.alphaanimals">0.01</AA_Slurrypede>
+            <AA_Swarmling MayRequire="sarg.alphaanimals">0.01</AA_Swarmling>
+            <AA_TetraSlug MayRequire="sarg.alphaanimals">0.001</AA_TetraSlug>
+            <AA_Thermadon MayRequire="sarg.alphaanimals">0.01</AA_Thermadon>
+            <AA_Thunderox MayRequire="sarg.alphaanimals">0.03</AA_Thunderox>
+            <AA_MatureFleshbeast MayRequire="sarg.alphaanmimals">0.01</AA_MatureFleshbeast>
+            <AA_SandProwler MayRequire="sarg.alphaanimals">0.1</AA_SandProwler>
+            <AA_Erin MayRequire="sarg.alphaanimals">0.015</AA_Erin>
+            <AA_Murkling MayRequire="sarg.alphaanimals">0.1</AA_Murkling>
+            <GlowFlommel MayRequire="tigerblut.flommel">0.03</GlowFlommel>
+            <LizardFlommel MayRequire="tigerblut.flommel">0.12</LizardFlommel>
+            <MapleFlommel MayRequire="tigerblut.flommel">0.12</MapleFlommel>
+            <RainbowFlommel MayRequire="tigerblut.flommel">0.05</RainbowFlommel>
+            <SpikeFlommel MayRequire="tigerblut.flommel">0.25</SpikeFlommel>
+            <TrickleFlommel MayRequire="tigerblut.flommel">0.2</TrickleFlommel>
+            <VKC_Baharis MayRequire="ellenot.vaelkorrcreatures">0.03</VKC_Baharis>
+            <VKC_FenHowler MayRequire="ellenot.vaelkorrcreatures">0.025</VKC_FenHowler>
+            <FEB_Apotheca MayRequire="feb.biopunklivestock">0.7</FEB_Apotheca>
+            <Antis MayRequire="mlie.rimbeast">0.01</Antis>
+            <Gnawler MayRequire="mlie.rimbeast">0.01</Gnawler>
+            <MA_Direhorse MayRequire="veterano.mythicages.megafaunabestiary">0.2</MA_Direhorse>
+            <MA_Harpeagle MayRequire="veterano.mythicages.megafaunabestiary">0.02</MA_Harpeagle>
+            <MA_Hellboar MayRequire="veterano.mythicages.megafaunabestiary">0.07</MA_Hellboar>
+            <MA_Raptorkhan MayRequire="veterano.mythicages.megafaunabestiary">0.05</MA_Raptorkhan>
+            <DA_BlackScribe MayRequire="van.beasts">0.3</DA_BlackScribe>
+            <DA_Karabal MayRequire="van.beasts">0.1</DA_Karabal>
+            <DA_Pilgrim MayRequire="van.beasts">0.15</DA_Pilgrim>
+            <DankPyon_Hyena MayRequire="dankpyon.medieval.overhaul">0.05</DankPyon_Hyena>
+            <BR_elephant_dessert MayRequire="febvre.thebrianrotanimals.core">0.25</BR_elephant_dessert>
+            <RT_Uni_AetherWarWasp MayRequire="rt.universal">0.07</RT_Uni_AetherWarWasp>
+            <BotchJob_UndeadColossus MayRequire="botchjob.profaned">0.002</BotchJob_UndeadColossus>
+            <BotchJob_UndeadHorse MayRequire="botchjob.profaned">0.01</BotchJob_UndeadHorse>
+            <BotchJob_UndeadWarg MayRequire="botchjob.profaned">0.01</BotchJob_UndeadWarg>
+            <SanguineDrake MayRequire="zal.monstermash">0.03</SanguineDrake>
         </wildAnimals>
+        <pollutionWildAnimals>
+            <Boomalope>0.1</Boomalope>
+            <Boomrat>0.07</Boomrat>
+            <Rat>0.15</Rat>
+            <Iguana>0.5</Iguana>
+            <Toxalope MayRequire="Ludeon.RimWorld.Biotech">0.1</Toxalope>
+            <WasteRat MayRequire="Ludeon.RimWorld.Biotech">0.25</WasteRat>
+            <VAEWaste_Toxiguana MayRequire="vanillaexpanded.vaewaste">0.4</VAEWaste_Toxiguana>
+            <VAEWaste_Toxscorpion MayRequire="vanillaexpanded.vaewaste">0.4</VAEWaste_Toxscorpion>
+            <VAEWaste_Toxafox MayRequire="vanillaexpanded.vaewaste">0.03</VAEWaste_Toxafox>
+        </pollutionWildAnimals>
         <allowedPackAnimals>
             <li>Muffalo</li>
             <li>Dromedary</li>

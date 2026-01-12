@@ -1,0 +1,56 @@
+﻿Mods that have MayRequires somewhere in this mod.
+Animal mods:
+ABF: Synstruct Biomimetics killathon.artificialbeings.syncore.biomimetics https://steamcommunity.com/sharedfiles/filedetails/?id=3288479776
+Alpha Animals sarg.alphaanimals https://steamcommunity.com/sharedfiles/filedetails/?id=1541721856
+Animal Collab Project Vanilla-Style acpteam.acpvanillastyle https://steamcommunity.com/sharedfiles/filedetails/?id=2208467668
+BIRD UP! Continued dizzy.birdup.allinone https://steamcommunity.com/sharedfiles/filedetails/?id=3529627105
+BIRD UP!+ tyrannidae.birdupplus https://steamcommunity.com/sharedfiles/filedetails/?id=3529981601
+Biomes! Polluted Lands biomesteam.biomespollutedlands https://steamcommunity.com/sharedfiles/filedetails/?id=3390196656
+Birds Beyond (Continued) mlie.birdsbeyond https://steamcommunity.com/sharedfiles/filedetails/?id=3263608515
+Birds of the World! tyrannidae.birdsoftheworld https://steamcommunity.com/sharedfiles/filedetails/?id=3245417989
+Creatures of the Vael ellenot.vaelkorrcreatures https://steamcommunity.com/sharedfiles/filedetails/?id=3568419088
+Dark Ages : Beasts and Monsters van.beasts https://steamcommunity.com/sharedfiles/filedetails/?id=3472275628
+Erin's Azaphrae - Biotech Ver. erin.azaphraebiotech https://steamcommunity.com/sharedfiles/filedetails/?id=3035240271
+Erin's Fluffy Fauna erin.fluffyfauna https://steamcommunity.com/sharedfiles/filedetails/?id=3521909777
+Erin's Fox Squirrel erin.foxsquirrel https://steamcommunity.com/sharedfiles/filedetails/?id=2092951979
+Erin's Shisune erin.shisune https://steamcommunity.com/sharedfiles/filedetails/?id=2974138931
+FEB's Biopunk Livestock feb.biopunklivestock https://steamcommunity.com/sharedfiles/filedetails/?id=3556058978
+Fabled Cervidae scurvyez.fabledcervidae https://steamcommunity.com/sharedfiles/filedetails/?id=3400548142
+Flommel tigerblut.flommel https://steamcommunity.com/sharedfiles/filedetails/?id=1541255350
+Fox Expansion (Continued) zal.fox https://steamcommunity.com/sharedfiles/filedetails/?id=2818483526
+GREG tyrannidae.gregnfriends https://steamcommunity.com/sharedfiles/filedetails/?id=3228302152
+Giant Toads (Continued) zal.gianttoads https://steamcommunity.com/sharedfiles/filedetails/?id=3365223736
+HC Animal Continued hc.animal.continued https://steamcommunity.com/sharedfiles/filedetails/?id=3238206164
+Hilda's Creatures - Deerfox (Continued) zal.deerfox https://steamcommunity.com/sharedfiles/filedetails/?id=2818484342
+Hybrid Animals zylle.hybridanimals https://steamcommunity.com/sharedfiles/filedetails/?id=2531718666
+Jurassic Rimworld (Continued) Mlie.JurassicRimworld https://steamcommunity.com/sharedfiles/filedetails/?id=3541468886
+Jurassic Rimworld - Dinosaurs Only (Continued) mlie.jurassicrimworlddinosaursonly https://steamcommunity.com/sharedfiles/filedetails/?id=3541510004
+Little Critters tyrannidae.littlecritters https://steamcommunity.com/sharedfiles/filedetails/?id=3331281387
+Medieval Overhaul dankpyon.medieval.overhaul https://steamcommunity.com/sharedfiles/filedetails/?id=3219596926
+Megafauna spino.megafauna https://steamcommunity.com/sharedfiles/filedetails/?id=1055485938
+Monster Mash (Continued) zal.monstermash https://steamcommunity.com/sharedfiles/filedetails/?id=3175345611
+Mythic Ages: Megafauna Bestiary veterano.mythicages.megafaunabestiary https://steamcommunity.com/sharedfiles/filedetails/?id=3537788184
+Pygmy muffalo dismarzero.vgp.pygmymuffalo https://steamcommunity.com/sharedfiles/filedetails/?id=1885527800
+Rare Animals Expanded : The BrainRot Animals febvre.thebrianrotanimals.core https://steamcommunity.com/sharedfiles/filedetails/?id=3538484053
+Rats With Gats shunthewitch.armedrats https://steamcommunity.com/sharedfiles/filedetails/?id=3484091653
+ReGrowth 2 regrowth.botr.core https://steamcommunity.com/sharedfiles/filedetails/?id=2260097569
+ReGrowth: Extinct Animals (Continued) mlie.regrowthextinctanimals https://steamcommunity.com/sharedfiles/filedetails/?id=3602926791
+RimBeast (Continued) mlie.rimbeast https://steamcommunity.com/sharedfiles/filedetails/?id=2114991205
+Rimcraft Reborn Beta rimcraftreborn.betatest https://steamcommunity.com/sharedfiles/filedetails/?id=3599879749
+Rimtroid: Universal rt.universal https://steamcommunity.com/sharedfiles/filedetails/?id=3618242371
+Synthetic Animals (Continued) zal.syntheticanimals https://steamcommunity.com/sharedfiles/filedetails/?id=3171141566
+Terror Avis (Continued) zal.terroravis https://steamcommunity.com/sharedfiles/filedetails/?id=3627086683
+The Profaned botchjob.profaned https://steamcommunity.com/sharedfiles/filedetails/?id=3202008037
+Vanilla Animals Expanded vanillaexpanded.vanillaanimalsexpanded https://steamcommunity.com/sharedfiles/filedetails/?id=2871933948
+Vanilla Animals Expanded — Waste Animals vanillaexpanded.vaewaste https://steamcommunity.com/sharedfiles/filedetails/?id=2962126499
+[Ry]Rimcraft Animals (Continued) zal.rimcraftanimals https://steamcommunity.com/sharedfiles/filedetails/?id=3599363187
+
+Plants:
+Biomes! Polluted Lands biomesteam.biomespollutedlands https://steamcommunity.com/sharedfiles/filedetails/?id=3390196656
+Flowers (Continued) mlie.flowers https://steamcommunity.com/sharedfiles/filedetails/?id=2025555200
+VGP Xtra Trees and Flowers dismarzero.vgp.xtratreesandflowers https://steamcommunity.com/sharedfiles/filedetails/?id=2007064094
+
+Other mods:
+Alpha Biomes sarg.alphabiomes https://steamcommunity.com/sharedfiles/filedetails/?id=1841354677
+FirefliesTwo scurvyez.firefliestwo https://steamcommunity.com/sharedfiles/filedetails/?id=3347026598
+Geological Landforms m00nl1ght.GeologicalLandforms https://steamcommunity.com/sharedfiles/filedetails/?id=2773943594

@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/ThingDef[defName="BMT_SludgeCrawler"]/comps</xpath>
+        <value>
+            <li Class="TKKN_NPS.CompProperties_DeadlySalt">
+                <deadlyTerrain>
+                    <li>TKKN_SaltField</li>
+                    <li>TKKN_Salted_Earth</li>
+                </deadlyTerrain>
+            </li>
+        </value>
+    </Operation>
+</Patch>

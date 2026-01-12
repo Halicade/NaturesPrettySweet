@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<Patch>
+    
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/TileMutatorDef[defName="AB_DerelictResort"]/biomeWhitelist</xpath>
+        <value>
+            <li>TKKN_Oasis</li>
+            <li>TKKN_Grasslands</li>
+        </value>
+    </Operation>
+
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/TileMutatorDef[defName="AB_HealingSprings"]/biomeWhitelist</xpath>
+        <value>
+            <li>TKKN_RedwoodForest</li>
+        </value>
+    </Operation>
+
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/TileMutatorDef[defName="AB_QuicksandPits"]/biomeWhitelist</xpath>
+        <value>
+            <li>TKKN_Oasis</li>
+            <li>TKKN_Desert</li>
+        </value>
+    </Operation>
+
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/TileMutatorDef[defName="AB_GiantFossils"]/biomeWhitelist</xpath>
+        <value>
+            <li>TKKN_Desert</li>
+        </value>
+    </Operation>
+    
+    <!-- Requires Alpha Biomes, Odyssey, and Alpha Animals -->
+    <Operation Class="PatchOperationFindMod">
+        <mods>
+            <li>Alpha Animals</li>
+        </mods>
+        <match Class="PatchOperationAdd">
+            <xpath>Defs/TileMutatorDef[defName="AB_DunealiskNest"]/biomeWhitelist</xpath>
+            <value>
+                <li>TKKN_Desert</li>
+                <li>TKKN_Oasis</li>
+            </value>
+        </match>
+    </Operation>
+
+</Patch>

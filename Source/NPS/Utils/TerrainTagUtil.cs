@@ -16,6 +16,7 @@ public static class TerrainTagUtil
     public static readonly Dictionary<TerrainDef, TerrainDef> DryTerrain = [];
     public static readonly Dictionary<TerrainDef, TerrainDef> WetTerrain = [];
     public static readonly Dictionary<TerrainDef, TerrainDef> FreezeTerrain = [];
+    public static readonly Dictionary<TerrainDef, TerrainDef> FloodTerrain = [];
     
 
 
@@ -65,6 +66,10 @@ public static class TerrainTagUtil
 
                 if (weatherExtension.freezeTerrain != null) {
                     FreezeTerrain.Add(terrain, weatherExtension.freezeTerrain);
+                }
+
+                if (weatherExtension.floodTerrain != null) {
+                    FloodTerrain.Add(terrain, weatherExtension.floodTerrain);
                 }
                 
             }

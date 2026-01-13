@@ -18,13 +18,12 @@ public class cellData : IExposable
     public float howWetPlants = 60;
     public bool isFlooded;
     public bool isFrozen;
-    public bool isThawed = true;
     public bool isWet;
     public IntVec3 location;
     public Map map;
     public TerrainDef originalTerrain;
 
-    public string overrideType = "";
+    public TerrainType? terrainOverride;
     public float temperature = -9999;
 
     public int tideLevel = -1;
@@ -44,11 +43,8 @@ public class cellData : IExposable
         Scribe_Values.Look(ref frostLevel, "frostLevel", frostLevel, true);
         Scribe_Values.Look(ref isWet, "isWet", isWet, true);
         Scribe_Values.Look(ref isFlooded, "isFlooded", isFlooded, true);
-        Scribe_Values.Look(ref overrideType, "overrideType", overrideType, true);
-
-        Scribe_Values.Look(ref isThawed, "isThawed", isThawed, true);
-
-
+        Scribe_Values.Look(ref terrainOverride, "overrideType", terrainOverride, true);
+        
         Scribe_Values.Look(ref location, "location", location, true);
         Scribe_Values.Look(ref temperature, "temperature", -999, true);
         Scribe_Defs.Look(ref baseTerrain, "baseTerrain");
@@ -107,13 +103,11 @@ public class cellData : IExposable
     }
 
     public void SetTerrainFrozen() {
-        var thisTerrain = currentTerrain;
-
-        var extension = thisTerrain.GetModExtension<TerrainWeatherReactions>();
-        if (weather == null) {
+        if (isFrozen || !TerrainTagUtil.TerrainHasModExtension.Contains(baseTerrain)) {
             return;
         }
-
+        var thisTerrain = currentTerrain;
+        var extension = thisTerrain.GetModExtension<TerrainWeatherReactions>();
         if (extension.freezeTerrain != null && temperature < extension.freezeAt) {
             map.terrainGrid.SetTerrain(location, extension.freezeTerrain);
             isFrozen = true;
@@ -133,6 +127,7 @@ public class cellData : IExposable
         map.terrainGrid.RemoveTempTerrain(location, doLeavings: false, preventDestroyEffects: true);
         howWet = 4;
         setTerrainWet();
+        isFrozen = false;
     }
     
 
@@ -156,27 +151,12 @@ public class cellData : IExposable
             baseTerrain = thisTerrain;
         }
 
-        if (weather == null) {
+        if (TerrainTagUtil.TerrainHasModExtension.Contains(baseTerrain)) {
             return;
         }
 
         switch (type) {
             //change the terrain
-            case TerrainType.Frozen:
-                setFrozenTerrain(true);
-                break;
-            case TerrainType.Dry:
-            case TerrainType.Wet:
-                setWetTerrain();
-                break;
-            case TerrainType.Thaw when isFrozen:
-                howWet = 1;
-                setWetTerrain();
-                isFrozen = false;
-                break;
-            case TerrainType.Thaw:
-                setFrozenTerrain(false);
-                break;
             case TerrainType.Flooded:
                 setFloodedTerrain();
                 break;
@@ -185,7 +165,7 @@ public class cellData : IExposable
                 break;
         }
 
-        overrideType = "";
+        terrainOverride = null;
     }
 
     public void DoCellSteadyEffects() {
@@ -194,67 +174,8 @@ public class cellData : IExposable
         }
     }
 
-    private void setWetTerrain() {
-        if (!Settings.showRain) {
-            return;
-        }
 
-        var thisTerrain = currentTerrain;
-
-        if (weather.wetTerrain != null && thisTerrain != weather.wetTerrain && howWet > weather.wetAt) {
-            changeTerrain(weather.wetTerrain);
-            isWet = true;
-            rainSpawns();
-        }
-        else {
-            if (howWet == 0 && (thisTerrain != baseTerrain && isWet && !isFlooded)) {
-                changeTerrain(baseTerrain);
-                isWet = false;
-                howWet = -1;
-            }
-            else if (howWet == -1 && (weather.dryTerrain != null && !isFlooded)) {
-                if (thisTerrain == weather.dryTerrain && baseTerrain == weather.dryTerrain) {
-                    return;
-                }
-
-                isWet = false;
-                baseTerrain = weather.dryTerrain;
-                changeTerrain(weather.dryTerrain);
-            }
-        }
-    }
-
-    private void setFrozenTerrain(bool frozen) {
-        if (frozen) {
-            if (!(temperature < 0) || !(temperature < weather.freezeAt) || weather.freezeTerrain == null) {
-                return;
-            }
-
-            var thisTerrain = currentTerrain;
-
-            if (isFlooded && weather.freezeTerrain != thisTerrain) {
-                if (TerrainTagUtil.TerrainHasModExtension.Contains(thisTerrain)) {
-                    var curWeather = thisTerrain.GetModExtension<TerrainWeatherReactions>();
-                    changeTerrain(curWeather.freezeTerrain);
-                }
-            }
-            else if (!isFrozen) {
-                changeTerrain(weather.freezeTerrain);
-            }
-
-            isFrozen = true;
-            isThawed = false;
-            return;
-        }
-
-        if (isThawed) {
-            return;
-        }
-
-        isFrozen = false;
-        isThawed = true;
-        changeTerrain(baseTerrain);
-    }
+    
 
     private void setFloodedTerrain() {
         if (!Settings.showRain || !Settings.doTides) {
@@ -262,15 +183,16 @@ public class cellData : IExposable
         }
 
         var thisTerrain = currentTerrain;
-        var floodTerrain = weather.floodTerrain;
+        if (!TerrainTagUtil.FloodTerrain.TryGetValue(baseTerrain, out TerrainDef floodTerrain)) {
+            return;
+        }
+        
         if (isFrozen) {
-            var currWeather = thisTerrain.GetModExtension<TerrainWeatherReactions>();
-            var frozenTerrain = currWeather.freezeTerrain;
-            if (frozenTerrain != null) {
-                changeTerrain(frozenTerrain);
+            if (TerrainTagUtil.FreezeTerrain.TryGetValue(thisTerrain, out var freezeTerrain)) {
+                changeTerrain(freezeTerrain);
             }
         }
-        else if (overrideType == "dry") {
+        else if (terrainOverride == TerrainType.Dry) {
             howWetPlants = 100;
             floodTerrain = baseTerrain;
             changeTerrain(floodTerrain);
@@ -296,11 +218,11 @@ public class cellData : IExposable
         }
 
         var thisTerrain = currentTerrain;
-        switch (overrideType) {
-            case "dry":
+        switch (terrainOverride) {
+            case TerrainType.Dry:
                 changeTerrain(baseTerrain);
                 break;
-            case "wet":
+            case TerrainType.Wet:
                 changeTerrain(weather.tideTerrain);
                 break;
             default: {

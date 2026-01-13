@@ -425,19 +425,15 @@ public class Watcher(Map map) : MapComponent(map)
             }
 
             //bring to current tide levels
-            var level = GetTideLevel();
-            var max = 0;
-            switch (level) {
-                case FloodType.Normal:
-                    max = (int)Math.Floor((HowManyTideSteps - 1) / 2M);
-                    break;
-                case FloodType.High:
-                    max = HowManyTideSteps - 1;
-                    break;
-            }
+            FloodType level = GetTideLevel();
+            int max = level switch {
+                FloodType.Normal => (int)Math.Floor((HowManyTideSteps - 1) / 2M),
+                FloodType.High => HowManyTideSteps - 1,
+                _ => 0
+            };
 
             for (var i = 0; i < max; i++) {
-                var makeSand = tideCellsList[i];
+                List<IntVec3> makeSand = tideCellsList[i];
                 foreach (var c in makeSand) {
                     if (!cellWeatherAffects.TryGetValue(c, out var cell)) {
                         continue;
@@ -453,7 +449,7 @@ public class Watcher(Map map) : MapComponent(map)
         FloodType flood = GetFloodType();
 
         for (var i = 0; i < HowManyFloodSteps; i++) {
-            var makeWater = floodCellsList[i];
+            List<IntVec3> makeWater = floodCellsList[i];
             foreach (var c in makeWater) {
                 if (!cellWeatherAffects.TryGetValue(c, out var cell)) {
                     continue;
@@ -463,18 +459,12 @@ public class Watcher(Map map) : MapComponent(map)
                     cell.baseTerrain = RimWorld.TerrainDefOf.Riverbank;
                 }
 
-                switch (flood) {
-                    case FloodType.High:
-                        break;
-                    case FloodType.Low:
-                        cell.overrideType = "dry";
-                        break;
-                    default: {
-                        if (i >= HowManyFloodSteps / 2) {
-                            cell.overrideType = "dry";
-                        }
-
-                        break;
+                if (flood == FloodType.Low) {
+                    cell.terrainOverride = TerrainType.Dry;
+                }
+                else if(flood !=FloodType.High) {
+                    if (i >= HowManyFloodSteps / 2) {
+                        cell.terrainOverride = TerrainType.Dry;
                     }
                 }
 
@@ -727,7 +717,7 @@ public class Watcher(Map map) : MapComponent(map)
             }
 
             if (overrideType != null) {
-                cell.overrideType = nameof(overrideType);
+                cell.terrainOverride = overrideType;
             }
 
             cell.setTerrain(TerrainType.Flooded);
@@ -787,10 +777,10 @@ public class Watcher(Map map) : MapComponent(map)
 
             switch (tideType) {
                 case FloodType.High:
-                    cell.overrideType = "wet";
+                    cell.terrainOverride = TerrainType.Wet;
                     break;
                 case FloodType.Low:
-                    cell.overrideType = "dry";
+                    cell.terrainOverride = TerrainType.Dry;
                     break;
             }
 

@@ -9,6 +9,7 @@ internal class MouseoverReadout_MouseoverReadoutOnGUI
 {
     private static Map cachedMap;
     private static FrostGrid cachedFrostGrid;
+    private static Watcher watcher;
 
     public static void Postfix() {
         if (!Settings.showDevReadout || Event.current.type != EventType.Repaint || Find.MainTabsRoot.OpenTab != null) {
@@ -24,6 +25,7 @@ internal class MouseoverReadout_MouseoverReadoutOnGUI
         if (cachedMap != map) {
             cachedMap = map;
             cachedFrostGrid = map.GetComponent<FrostGrid>();
+            watcher= map.GetComponent<Watcher>();
         }
 
         Rect rect;
@@ -57,8 +59,6 @@ internal class MouseoverReadout_MouseoverReadoutOnGUI
         Widgets.Label(rect, label3);
         num += 19f;
 
-        var watcher = map.GetComponent<Watcher>();
-
         if (watcher.cellWeatherAffects.TryGetValue(c, out var cell)) {
             rect = new Rect(botLeft.x, UI.screenHeight - botLeft.y - num, 999f, 999f);
             var label2 = $"Temperature: {cell.temperature}";
@@ -67,7 +67,7 @@ internal class MouseoverReadout_MouseoverReadoutOnGUI
 
             rect = new Rect(botLeft.x, UI.screenHeight - botLeft.y - num, 999f, 999f);
             var label4 =
-                $"Cell Info: Base Terrain {cell.baseTerrain.defName} Current Terrain {cell.currentTerrain.defName} | Wet {cell.isWet} | Flooded {cell.isFlooded} | Frozen {cell.isFrozen} | Thawed {cell.isThawed}";
+                $"Cell Info: Base Terrain {cell.baseTerrain.defName} Current Terrain {cell.currentTerrain.defName} | Wet {cell.isWet} | Flooded {cell.isFlooded} | Frozen {cell.isFrozen}";
             Widgets.Label(rect, label4);
             num += 19f;
 
@@ -81,17 +81,18 @@ internal class MouseoverReadout_MouseoverReadoutOnGUI
             rect = new Rect(botLeft.x, UI.screenHeight - botLeft.y - num, 999f, 999f);
             var label5 =
                 $"Cell Info: howWet {cell.howWet} | How Wet (Plants) {cell.howWetPlants} | How Packed {cell.howPacked}";
-            if (cell.weather != null) {
-                if (cell.weather.wetTerrain != null) {
-                    label5 += $" | T Wet {cell.weather.wetTerrain.defName}";
+            var weatherExt = cell.weather;
+            if (weatherExt != null) {
+                if (weatherExt.wetTerrain != null) {
+                    label5 += $" | T Wet {weatherExt.wetTerrain.defName}";
                 }
 
-                if (cell.weather.dryTerrain != null) {
-                    label5 += $" | T Dry {cell.weather.dryTerrain.defName}";
+                if (weatherExt.dryTerrain != null) {
+                    label5 += $" | T Dry {weatherExt.dryTerrain.defName}";
                 }
 
-                if (cell.weather.freezeTerrain != null) {
-                    label5 += $" | T Freeze {cell.weather.freezeTerrain.defName}";
+                if (weatherExt.freezeTerrain != null) {
+                    label5 += $" | T Freeze {weatherExt.freezeTerrain.defName}";
                 }
             }
 

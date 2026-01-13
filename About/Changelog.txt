@@ -1,5 +1,8 @@
 # Changelog for NaturesPrettySweet
 
+1.6.8 - Pawns do not get wet in snow, only rain
+
+
 1.6.7 - Bugfix and more flooding terrain. Thanks to Halicade
 
 

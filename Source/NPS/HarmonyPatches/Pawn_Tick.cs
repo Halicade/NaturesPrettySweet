@@ -149,7 +149,7 @@ internal class Pawn_Tick
         }
 
         var isWet = false;
-        if (cachedMap.weatherManager.curWeather.rainRate > .001f)
+        if (cachedMap.weatherManager.curWeather.rainRate > .001f && cachedMap.weatherManager.curWeather.snowRate == 0)
         {
             var roofed = cachedMap.roofGrid.Roofed(c);
             if (!roofed)

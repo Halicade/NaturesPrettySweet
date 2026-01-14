@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using RimWorld;
+using RimWorld.Planet;
 using UnityEngine;
 using Verse;
 using Verse.Noise;
@@ -65,6 +66,8 @@ public class Watcher(Map map) : MapComponent(map)
     private readonly Dictionary<Pawn, bool> validPawns = [];
     private float currentRainRate;
     private float currentSnowRate;
+    private int mapArea; //Default area 62500
+    private bool isRaining;
 
     /* STANDARD STUFF */
 
@@ -82,6 +85,7 @@ public class Watcher(Map map) : MapComponent(map)
             outdoorTemp = map.mapTemperature.OutdoorTemp;
             currentRainRate = map.weatherManager.curWeather.rainRate;
             currentSnowRate =  map.weatherManager.curWeather.snowRate;
+            isRaining = currentRainRate > 0;
             var baseHumidity = (map.TileInfo.rainfall + 1) * (map.TileInfo.temperature + 1) *
                                (map.TileInfo.swampiness + 1);
             var currentHumidity =
@@ -89,17 +93,14 @@ public class Watcher(Map map) : MapComponent(map)
             humidity = ((baseHumidity + currentHumidity) / 1000) + 18;
             wetPlantsValue = -1 * (outdoorTemp / humidity / 10);
             noHurtPlants = !Settings.allowPlantEffects || ticks % 150 != 0;
-            doUnpacking = ticks % 2 == 0;
-            doCoast = map.Tile.Tile.IsCoastal;
+            doUnpacking = !doUnpacking;
             DoTides();
             DoFloods();
-            
-            var num = Mathf.RoundToInt(map.Area * Settings.weatherCellUpdateSpeed / 2);
-            var area = map.Area;
+            var num = Mathf.RoundToInt(mapArea * Settings.weatherCellUpdateSpeed / 2);
 
 
             for (var i = 0; i < num; i++) {
-                if (cycleIndex >= area) {
+                if (cycleIndex >= mapArea) {
                     cycleIndex = 0;
                 }
 
@@ -109,7 +110,7 @@ public class Watcher(Map map) : MapComponent(map)
             }
         }
 
-        bool isRaining = currentRainRate > 0;
+        
         IReadOnlyList<Pawn> allPawnsSpawned = map.mapPawns.AllPawnsSpawned;
 
         //Clear the list of valid pawns if it gets too large
@@ -165,7 +166,8 @@ public class Watcher(Map map) : MapComponent(map)
             dontRunAnything = true;
             return;
         }
-        
+
+        mapArea = map.Area;
         doCoast = map.Tile.Tile.IsCoastal;
         biomeSettings = map.Biome.GetModExtension<BiomeSeasonalSettings>();
         frostGridComponent = map.GetComponent<FrostGrid>();
@@ -487,6 +489,7 @@ public class Watcher(Map map) : MapComponent(map)
         }
         else {
             if (Find.TickManager.TicksAbs % 30000 != 0) {
+                // Check every 12 hours
                 return;
             }
 

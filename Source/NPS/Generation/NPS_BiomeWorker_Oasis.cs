@@ -4,7 +4,7 @@ using Verse;
 
 namespace TKKN_NPS;
 
-internal class NPS_BiomeWorker_Oasis : BiomeWorker_ExtremeDesert
+public class NPS_BiomeWorker_Oasis : BiomeWorker_ExtremeDesert
 {
     public override float GetScore(BiomeDef biome, Tile tile, PlanetTile planetTile) {
         if (!Settings.allowDesertOasis) {

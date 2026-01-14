@@ -96,10 +96,8 @@ public class Watcher(Map map) : MapComponent(map)
             doUnpacking = !doUnpacking;
             DoTides();
             DoFloods();
-            var num = Mathf.RoundToInt(mapArea * Settings.weatherCellUpdateSpeed / 2);
 
-
-            for (var i = 0; i < num; i++) {
+            for (var i = 0; i < Settings.cellsPerTick; i++) {
                 if (cycleIndex >= mapArea) {
                     cycleIndex = 0;
                 }

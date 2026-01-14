@@ -28,7 +28,7 @@ public class Settings : ModSettings
 
     //private static bool showUpdateNotes = true;
     public static bool doFloods = true;
-    public static float weatherCellUpdateSpeed = 0.0002f;
+    public static float cellsPerTick = 3;
     public static bool doIce = showCold;
     public static bool doSprings = true;
 
@@ -81,9 +81,9 @@ public class Settings : ModSettings
             ref doWeather,
             "TKKN_doWeather_text".Translate());
         if (doWeather) {
-            weatherCellUpdateSpeed = list.SliderLabeled(
-                "TKKN_weatherCellUpdateSpeed_title".Translate(weatherCellUpdateSpeed * 10000),
-                weatherCellUpdateSpeed, 0.0001f, 0.002f, 0.5f, "TKKN_weatherCellUpdateSpeed_text".Translate());
+            cellsPerTick = list.SliderLabeled(
+                "NPS_weatherCellUpdateSpeed_title".Translate(cellsPerTick),
+                cellsPerTick, 3, 75, 0.5f, "NPS_weatherCellUpdateSpeed_text".Translate());
         }
 
         list.CheckboxLabeled(
@@ -228,7 +228,7 @@ public class Settings : ModSettings
         base.ExposeData();
 
         Scribe_Values.Look(ref doWeather, "doWeather", true, true);
-        Scribe_Values.Look(ref weatherCellUpdateSpeed, "weatherCellUpdateSpeed", 0.0006f, true);
+        Scribe_Values.Look(ref cellsPerTick, "cellsPerTick", 3f, true);
         Scribe_Values.Look(ref doDirtPath, "doDirtPath", true, true);
         Scribe_Values.Look(ref showCold, "showCold", true, true);
         Scribe_Values.Look(ref allowPlantEffects, "allowPlantEffects", true, true);

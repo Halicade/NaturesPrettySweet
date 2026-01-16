@@ -29,7 +29,7 @@ public class cellData : IExposable
     public int tideLevel = -1;
 
 
-    public TerrainWeatherReactions weather => baseTerrain.GetModExtension<TerrainWeatherReactions>();
+    public TerrainWeatherReactions Weather => baseTerrain.GetModExtension<TerrainWeatherReactions>();
 
     public TerrainDef currentTerrain => location.GetTerrain(map);
 
@@ -63,7 +63,7 @@ public class cellData : IExposable
             return;
         }
 
-        var weatherExtension = weather;
+        var weatherExtension = Weather;
         if (weatherExtension == null) {
             return;
         }
@@ -90,7 +90,7 @@ public class cellData : IExposable
             return;
         }
 
-        var weatherExtension = weather;
+        var weatherExtension = Weather;
         if (weatherExtension == null) {
             return;
         }
@@ -102,15 +102,29 @@ public class cellData : IExposable
         }
     }
 
+    /// <summary>
+    /// Yes this is hideous, yes I hate it.
+    /// Needs to reduce the amount of pieces that turn to ice per tick so now it has a 5% chance to happen
+    /// If anyone has a better suggestion I'm all ears.
+    /// </summary>
     public void SetTerrainFrozen() {
-        if (isFrozen || !TerrainTagUtil.TerrainHasModExtension.Contains(baseTerrain)) {
+        if (isFrozen ) {
             return;
         }
-        var thisTerrain = currentTerrain;
-        var extension = thisTerrain.GetModExtension<TerrainWeatherReactions>();
-        if (extension.freezeTerrain != null && temperature < extension.freezeAt) {
-            map.terrainGrid.SetTerrain(location, extension.freezeTerrain);
+        TerrainDef thisTerrain = currentTerrain;
+        if (!TerrainTagUtil.FreezeAt.TryGetValue(thisTerrain, out int freezeAt))
+            return;
+
+        if (temperature > freezeAt)
+            return;
+        if (!Rand.Chance(0.05f))
+            return;
+
+
+        if (TerrainTagUtil.FreezeTerrain.TryGetValue(thisTerrain, out var freezeTerrain)) {
+            map.terrainGrid.SetTerrain(location, freezeTerrain);
             isFrozen = true;
+            
         }
     }
 
@@ -223,15 +237,15 @@ public class cellData : IExposable
                 changeTerrain(baseTerrain);
                 break;
             case TerrainType.Wet:
-                changeTerrain(weather.tideTerrain);
+                changeTerrain(Weather.tideTerrain);
                 break;
             default: {
-                changeTerrain(thisTerrain != baseTerrain ? baseTerrain : weather.tideTerrain);
+                changeTerrain(thisTerrain != baseTerrain ? baseTerrain : Weather.tideTerrain);
                 break;
             }
         }
 
-        if (weather.tideTerrain == null) {
+        if (Weather.tideTerrain == null) {
             return;
         }
 

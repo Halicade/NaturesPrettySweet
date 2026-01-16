@@ -657,7 +657,7 @@ public class Watcher(Map map) : MapComponent(map)
 
     private bool CheckIfCold(IntVec3 c, cellData cell) {
         cell.temperature = c.GetTemperature(map);
-        return cell.temperature < 0f;
+        return cell.temperature < 5f;
     }
 
     private void CreepFrostAt(IntVec3 c, float baseAmount) {

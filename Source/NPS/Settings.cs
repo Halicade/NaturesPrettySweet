@@ -29,7 +29,7 @@ public class Settings : ModSettings
     //private static bool showUpdateNotes = true;
     public static bool doFloods = true;
     public static float cellsPerTick = 3;
-    public static bool doIce = showCold;
+    public static bool doIce = true;
     public static bool doSprings = true;
 
     public static bool terrainAffectTemperature = false;
@@ -81,7 +81,7 @@ public class Settings : ModSettings
             ref doWeather,
             "TKKN_doWeather_text".Translate());
         if (doWeather) {
-            cellsPerTick = list.SliderLabeled(
+            cellsPerTick = (int)list.SliderLabeled(
                 "NPS_weatherCellUpdateSpeed_title".Translate(cellsPerTick),
                 cellsPerTick, 3, 75, 0.5f, "NPS_weatherCellUpdateSpeed_text".Translate());
         }
@@ -90,7 +90,7 @@ public class Settings : ModSettings
             "TKKN_showCold_title".Translate(),
             ref showCold,
             "TKKN_showCold_text".Translate());
-        if (showCold && !ModsConfig.OdysseyActive) {
+        if (!ModsConfig.OdysseyActive) {
             list.CheckboxLabeled(
                 "TKKN_doIce_title".Translate(),
                 ref doIce,
@@ -238,7 +238,7 @@ public class Settings : ModSettings
         Scribe_Values.Look(ref doFloods, "doFloods", true, true);
         Scribe_Values.Look(ref leaveStuff, "leaveStuff", true, true);
         Scribe_Values.Look(ref doSprings, "doSprings", true, true);
-        Scribe_Values.Look(ref doIce, "doIce", showCold, true);
+        Scribe_Values.Look(ref doIce, "doIce", true, true);
         Scribe_Values.Look(ref allowPawnsToGetWet, "allowPawnsToGetWet", true, true);
         Scribe_Values.Look(ref allowPawnsDrowning, "allowPawnsDrowning", true, true);
         Scribe_Values.Look(ref allowPawnsSwim, "allowPawnsSwim", true, true);

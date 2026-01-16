@@ -81,7 +81,7 @@ internal class MouseoverReadout_MouseoverReadoutOnGUI
             rect = new Rect(botLeft.x, UI.screenHeight - botLeft.y - num, 999f, 999f);
             var label5 =
                 $"Cell Info: howWet {cell.howWet} | How Wet (Plants) {cell.howWetPlants} | How Packed {cell.howPacked}";
-            var weatherExt = cell.weather;
+            var weatherExt = cell.Weather;
             if (weatherExt != null) {
                 if (weatherExt.wetTerrain != null) {
                     label5 += $" | T Wet {weatherExt.wetTerrain.defName}";

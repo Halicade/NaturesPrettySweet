@@ -306,7 +306,7 @@
     <renderPrecedence>350</renderPrecedence>
     <pathCost>4</pathCost>
     <temporary>true</temporary>
-    <statBases>
+    <statBases> 
       <Beauty>-1</Beauty>
       <Cleanliness>-1</Cleanliness>
     </statBases>

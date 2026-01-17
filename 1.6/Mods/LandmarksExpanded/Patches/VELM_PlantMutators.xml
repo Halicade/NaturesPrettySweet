@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<Patch>
+
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/TileMutatorDef[@ParentName="VEE_WildFlowers_Base"]/biomeWhitelist</xpath>
+        <value>
+            <li>TKKN_Grasslands</li>
+        </value>
+    </Operation>
+
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/TileMutatorDef[@ParentName="VEE_WildCacti_Base"]/biomeWhitelist</xpath>
+        <value>
+            <li>TKKN_Oasis</li>
+            <li>TKKN_Desert</li>
+        </value>
+    </Operation>
+    
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/TileMutatorDef[defName="VEE_PlentifulGrass"]/biomeWhitelist</xpath>
+        <value>
+            <li>TKKN_Savanna</li>
+            <li>TKKN_RedwoodForest</li>
+        </value>
+    </Operation>
+
+
+</Patch>

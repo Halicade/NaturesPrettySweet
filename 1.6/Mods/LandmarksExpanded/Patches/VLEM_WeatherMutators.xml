@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<Patch>
+
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/TileMutatorDef[defName="VEE_RagingWind"]/biomeWhitelist</xpath>
+        <value>
+            <li>TKKN_Desert</li>
+            <li>TKKN_Grasslands</li>
+            <li>TKKN_Savanna</li>
+        </value>
+    </Operation>
+
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/TileMutatorDef[defName="VEE_Sandstorms"]/biomeWhitelist</xpath>
+        <value>
+            <li>TKKN_Desert</li>
+            <li>TKKN_Oasis</li>
+            <li>TKKN_Savanna</li>
+        </value>
+    </Operation>
+
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/TileMutatorDef[defName="VEE_DustStorms"]/biomeWhitelist</xpath>
+        <value>
+            <li>TKKN_Desert</li>
+            <li>TKKN_Oasis</li>
+            <li>TKKN_Savanna</li>
+            <li>TKKN_VolcanicFlow</li>
+        </value>
+    </Operation>
+
+
+</Patch>

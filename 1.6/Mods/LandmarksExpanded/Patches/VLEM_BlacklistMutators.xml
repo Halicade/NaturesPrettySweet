@@ -1,0 +1,87 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<Patch>
+
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/TileMutatorDef[defName="VEE_MigratoryHerds"]/biomeBlacklist</xpath>
+        <value>
+            <li>TKKN_Desert</li>
+        </value>
+    </Operation>
+
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/TileMutatorDef[defName="VEE_DomesticatedEscapees"]/biomeBlacklist</xpath>
+        <value>
+            <li>TKKN_Desert</li>
+        </value>
+    </Operation>
+    
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/TileMutatorDef[defName="VEE_Megafauna"]/biomeBlacklist</xpath>
+        <value>
+            <li>TKKN_Desert</li>
+        </value>
+    </Operation>
+
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/TileMutatorDef[defName="VEE_SteamGeysers_Decreased"]/biomeBlacklist</xpath>
+        <value>
+            <li>TKKN_Grasslands</li>
+            <li>TKKN_VolcanicFlow</li>
+        </value>
+    </Operation>
+
+
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/TileMutatorDef[defName="VEE_Fertility_Reduced"]/biomeBlacklist</xpath>
+        <value>
+            <li>TKKN_Desert</li>
+            <li>TKKN_Oasis</li>
+        </value>
+    </Operation>
+
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/TileMutatorDef[defName="VEE_Volcano"]/biomeBlacklist</xpath>
+        <value>
+            <li>TKKN_VolcanicFlow</li>
+        </value>
+    </Operation>
+
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/TileMutatorDef[defName="VEE_RockRidge"]/biomeBlacklist</xpath>
+        <value>
+            <li>TKKN_Oasis</li>
+        </value>
+    </Operation>
+
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/TileMutatorDef[defName="VEE_JaggedRocks"]/biomeBlacklist</xpath>
+        <value>
+            <li>TKKN_Oasis</li>
+        </value>
+    </Operation>
+
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/TileMutatorDef[defName="VEE_Cenotes"]/biomeBlacklist</xpath>
+        <value>
+            <li>TKKN_Oasis</li>
+            <li>TKKN_Desert</li>
+            <li>TKKN_VolcanicFlow</li>
+        </value>
+    </Operation>
+
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/TileMutatorDef[defName="VEE_BasaltCape"]/biomeBlacklist</xpath>
+        <value>
+            <li>TKKN_VolcanicFlow</li>
+        </value>
+    </Operation>
+
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/TileMutatorDef[@ParentName="WildPlants_Base"]/biomeBlacklist</xpath>
+        <value>
+            <li>TKKN_Desert</li>
+        </value>
+    </Operation>
+
+</Patch>

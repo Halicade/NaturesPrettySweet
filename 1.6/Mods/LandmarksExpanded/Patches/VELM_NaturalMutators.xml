@@ -1,0 +1,134 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<Patch>
+
+
+
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/TileMutatorDef[defName="VEE_DryRiver"]/biomeWhitelist</xpath>
+        <value>
+            <li>TKKN_RedwoodForest</li>	
+            <li>TKKN_Desert</li>
+            <li>TKKN_Grasslands</li>
+            <li>TKKN_Savanna</li>
+        </value>
+    </Operation>
+
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/TileMutatorDef[defName="VEE_BurnedForest"]/biomeWhitelist</xpath>
+        <value>
+            <li>TKKN_RedwoodForest</li>
+        </value>
+    </Operation>
+
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/TileMutatorDef[defName="VEE_QuicksandPits"]/biomeWhitelist</xpath>
+        <value>
+            <li>TKKN_Oasis</li>
+            <li>TKKN_Desert</li>
+        </value>
+    </Operation>
+
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/TileMutatorDef[defName="VEE_BurnedForest"]/biomeWhitelist</xpath>
+        <value>
+            <li>TKKN_RedwoodForest</li>
+        </value>
+    </Operation>
+
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/TileMutatorDef[defName="VEE_RelictDelta"]/biomeWhitelist</xpath>
+        <value>
+            <li>TKKN_Savanna</li>
+        </value>
+    </Operation>
+
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/TileMutatorDef[defName="VEE_RedDesert"]/biomeWhitelist</xpath>
+        <value>
+            <li>TKKN_Oasis</li>
+            <li>TKKN_Desert</li>
+        </value>
+    </Operation>
+
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/TileMutatorDef[defName="VEE_RedDesertPlants"]/biomeWhitelist</xpath>
+        <value>
+            <li>TKKN_Oasis</li>
+            <li>TKKN_Desert</li>
+        </value>
+    </Operation>
+
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/TileMutatorDef[defName="VEE_VolcanicSandDesert"]/biomeWhitelist</xpath>
+        <value>
+            <li>TKKN_Oasis</li>
+            <li>TKKN_Desert</li>
+        </value>
+    </Operation>
+
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/TileMutatorDef[defName="VEE_VolcanicSandDesertFlora"]/biomeWhitelist</xpath>
+        <value>
+            <li>TKKN_Oasis</li>
+            <li>TKKN_Desert</li>
+        </value>
+    </Operation>
+
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/TileMutatorDef[defName="VEE_QuicksandDunes"]/biomeWhitelist</xpath>
+        <value>
+            <li>TKKN_Desert</li>
+        </value>
+    </Operation>
+
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/TileMutatorDef[defName="VEE_PebbleDunes"]/biomeWhitelist</xpath>
+        <value>
+            <li>TKKN_Savanna</li>
+        </value>
+    </Operation>
+
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/TileMutatorDef[defName="VEE_TropicalBeach"]/biomeWhitelist</xpath>
+        <value>
+            <li>TKKN_VolcanicFlow</li>
+        </value>
+    </Operation>
+
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/TileMutatorDef[defName="VEE_TropicalBeachFlora"]/biomeWhitelist</xpath>
+        <value>
+            <li>TKKN_Savanna</li>
+        </value>
+    </Operation>
+
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/TileMutatorDef[defName="VEE_LushLavaFields"]/biomeWhitelist</xpath>
+        <value>
+            <li>TKKN_VolcanicFlow</li>
+        </value>
+    </Operation>
+
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/TileMutatorDef[defName="VEE_FirewoodTrees"]/biomeWhitelist</xpath>
+        <value>
+            <li>TKKN_VolcanicFlow</li>
+        </value>
+    </Operation>
+
+
+    <!-- Requires Alpha Biomes, Odyssey, and Alpha Animals -->
+    <Operation Class="PatchOperationFindMod">
+        <mods>
+            <li>Vanilla Animals Expanded</li>
+        </mods>
+        <match Class="PatchOperationAdd">
+            <xpath>Defs/TileMutatorDef[defName="VEE_NocturnalFauna"]/biomeWhitelist</xpath>
+            <value>
+                <li>TKKN_RedwoodForest</li>
+            </value>
+        </match>
+    </Operation>
+
+</Patch>

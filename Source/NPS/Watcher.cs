@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using NPS;
 using RimWorld;
 using RimWorld.Planet;
 using UnityEngine;
@@ -32,7 +33,7 @@ public class Watcher(Map map) : MapComponent(map)
 
     private int floodLevel; // 0 - 3
     private int floodThreat;
-    public float[] frostGrid;
+    private int floodThreatIncrease;
 
     public FrostGrid frostGridComponent;
     private Vector2 location;
@@ -40,7 +41,7 @@ public class Watcher(Map map) : MapComponent(map)
     private ModuleBase frostNoise;
     private float humidity;
 
-    private float outdoorTemp;
+    public float outdoorTemp;
 
     //public HashSet<IntVec3> lavaCellsList = [];
     public Thing overlay;
@@ -92,6 +93,7 @@ public class Watcher(Map map) : MapComponent(map)
                 (1 + currentRainRate) * (1 + outdoorTemp);
             humidity = ((baseHumidity + currentHumidity) / 1000) + 18;
             wetPlantsValue = -1 * (outdoorTemp / humidity / 10);
+            floodThreatIncrease = 1 + 2 * (int)Math.Round(currentRainRate);
             noHurtPlants = !Settings.allowPlantEffects || ticks % 150 != 0;
             doUnpacking = !doUnpacking;
             DoTides();
@@ -102,8 +104,7 @@ public class Watcher(Map map) : MapComponent(map)
                     cycleIndex = 0;
                 }
 
-                var c = map.cellsInRandomOrder.Get(cycleIndex);
-                DoCellEnvironment(c);
+                DoCellEnvironment(map.cellsInRandomOrder.Get(cycleIndex));
                 cycleIndex++;
             }
         }
@@ -118,7 +119,7 @@ public class Watcher(Map map) : MapComponent(map)
 
         for (int i = 0; i < allPawnsSpawned.Count; i++) {
             if (checkPawnHuman(allPawnsSpawned[i]))
-                Pawn_Tick.Postfix(allPawnsSpawned[i], map, this, isRaining);
+                PawnChecks.checks(allPawnsSpawned[i], map, this, isRaining, ticks);
         }
 
         UpdateBiomeSettings();
@@ -174,6 +175,7 @@ public class Watcher(Map map) : MapComponent(map)
 
         frostNoise = new Perlin(0.039999999105930328, 2.0, 0.5, 5,
             Rand.Range(0, 651431), QualityMode.Medium);
+        
 
         RebuildCellLists();
     }
@@ -532,11 +534,11 @@ public class Watcher(Map map) : MapComponent(map)
         //spawn special things
         LavaRockSpecials(c, currentTerrain);
 
-        if (Settings.showRain && !roofed && !TerrainTagUtil.TKKN_Wet.Contains(cell.currentTerrain)) {
+        if (Settings.showRain && !roofed && !TerrainTagUtil.TKKN_Wet.Contains(currentTerrain)) {
             //if it's raining in this cell:
             if (currentRainRate > .0001f) {
                 if (floodThreat < 1090000) {
-                    floodThreat += 1 + (2 * (int)Math.Round(currentRainRate));
+                    floodThreat += floodThreatIncrease;
                 }
 
                 gettingWet = true;
@@ -556,9 +558,9 @@ public class Watcher(Map map) : MapComponent(map)
             }
         }
 
-        var isCold = CheckIfCold(cell);
+        cell.temperature = cell.location.GetTemperature(map);
 
-        if (isCold) {
+        if (cell.temperature <= 1) {
             if (Settings.doIce) {
                 cell.SetTerrainFrozen();
             }
@@ -594,8 +596,8 @@ public class Watcher(Map map) : MapComponent(map)
             if (outdoorTemp > 20) {
                 cell.howWetPlants += wetPlantsValue;
                 if (cell.howWetPlants <= 0) {
-                    if (TerrainTagUtil.TerrainHasModExtension.Contains(cell.currentTerrain)) {
-                        if (!TerrainTagUtil.DryTerrain.ContainsKey(cell.currentTerrain)) {
+                    if (TerrainTagUtil.TerrainHasModExtension.Contains(currentTerrain)) {
+                        if (!TerrainTagUtil.DryTerrain.ContainsKey(currentTerrain)) {
                             HurtPlants(c, false, true);
                         }
                     }
@@ -619,8 +621,8 @@ public class Watcher(Map map) : MapComponent(map)
         }
 
         if (Settings.makePuddles) {
-            if (cell.howWet == 3 && (!isCold && MaxPuddles > totalPuddles &&
-                                     cell.currentTerrain != TerrainDefOf.TKKN_SandBeachWetSalt)) {
+            if (cell.howWet == 3 && (outdoorTemp>2 && MaxPuddles > totalPuddles &&
+                                     currentTerrain != TerrainDefOf.TKKN_SandBeachWetSalt)) {
                 FilthMaker.TryMakeFilth(c, map, ThingDefOf.TKKN_FilthPuddle);
                 totalPuddles++;
             }
@@ -647,21 +649,8 @@ public class Watcher(Map map) : MapComponent(map)
         }
     }
 
-    public bool CheckIfCold(cellData cell) {
-        return CheckIfCold(cell.location, cell);
-    }
-
-    public bool CheckIfCold(IntVec3 c) {
-        return cellWeatherAffects.TryGetValue(c, out cellData cell) && CheckIfCold(c, cell);
-    }
-
-    private bool CheckIfCold(IntVec3 c, cellData cell) {
-        cell.temperature = c.GetTemperature(map);
-        return cell.temperature < 5f;
-    }
-
     private void CreepFrostAt(IntVec3 c, float baseAmount) {
-        var num = frostNoise.GetValue(c);
+        var num = frostNoise.GetValue(c)+1;
         num += 1f;
         num *= 0.5f;
         if (num < 0.5f) {

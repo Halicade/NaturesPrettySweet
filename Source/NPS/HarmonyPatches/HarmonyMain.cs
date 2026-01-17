@@ -12,7 +12,11 @@ internal class HarmonyMain
     public static readonly bool RimBrellasActive;
     public static readonly bool DesirePathsActive;
 
-    public static readonly MethodInfo HasUmbrella;
+    public delegate bool HasUmbrellaDelegate(Pawn pawn);
+
+    public static HasUmbrellaDelegate HasUmbrella;
+    
+    
 
     static HarmonyMain() {
         TerrainTagUtil.IntializeTerrainTags();
@@ -131,14 +135,14 @@ internal class HarmonyMain
         }
 
         if (RimBrellasActive) {
-            HasUmbrella = AccessTools.Method("Umbrellas.UmbrellaDefMethods:HasUmbrella");
-            if (HasUmbrella != null) {
-                return;
-            }
+            HasUmbrella = AccessTools.MethodDelegate<HasUmbrellaDelegate>(
+                AccessTools.Method("Umbrellas.UmbrellaDefMethods:HasUmbrella"));
 
-            Log.Warning(
-                "[Natures Pretty Sweet]: Rimbrella loaded but could not find the correct method to check for umbrellas");
-            RimBrellasActive = false;
+            if (HasUmbrella == null) {
+                Log.Warning(
+                    "[Natures Pretty Sweet]: Rimbrella loaded but could not find the correct method to check for umbrellas");
+                RimBrellasActive = false;
+            }
         }
     }
 }

@@ -103,7 +103,7 @@ public class cellData : IExposable
     }
 
     /// <summary>
-    /// Yes this is hideous, yes I hate it.
+    /// Yes this feels hideous, yes I hate it.
     /// Needs to reduce the amount of pieces that turn to ice per tick so now it has a 5% chance to happen
     /// If anyone has a better suggestion I'm all ears.
     /// </summary>
@@ -280,10 +280,6 @@ public class cellData : IExposable
     /// (You can, and we want the user to do this) it will change back to a packed path after being stepped on
     /// </summary>
     public void DoPack() {
-        if (!Settings.doDirtPath) {
-            return;
-        }
-
         if (!TerrainTagUtil.canBePacked.Contains(baseTerrain)) {
             return;
         }

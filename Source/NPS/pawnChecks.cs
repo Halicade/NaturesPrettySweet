@@ -1,27 +1,38 @@
-﻿using HarmonyLib;
-using RimWorld;
+﻿using RimWorld;
+using TKKN_NPS;
+using UnityEngine;
 using Verse;
+using HediffDefOf = TKKN_NPS.HediffDefOf;
+using TerrainDefOf = TKKN_NPS.TerrainDefOf;
+using ThingDefOf = TKKN_NPS.ThingDefOf;
 
-namespace TKKN_NPS;
+namespace NPS;
 
-//[HarmonyPatch(typeof(Pawn), "Tick")]
-public static class Pawn_Tick
+public static class PawnChecks
 {
-    public static void Postfix(Pawn __instance, Map map, Watcher watcher, bool isRaining) {
-        if (!__instance.Spawned || __instance.Dead) {
+    public static void checks(Pawn pawn, Map map, Watcher watcher, bool isRaining, int ticks) {
+        if (!pawn.Spawned || pawn.Dead) {
             return;
         }
 
-        var terrain = __instance.Position.GetTerrain(__instance.MapHeld);
-        makePaths(__instance, watcher, map);
-        makeBreath(__instance, watcher, map);
-        makeWet(__instance, terrain, isRaining, map);
-        drowningCheck(__instance, terrain);
-        springCheck(__instance, terrain);
+        bool doExtraChecks = (pawn.thingIDNumber + ticks) % 300 == 0;
+
+        TerrainDef terrain = pawn.Position.GetTerrain(pawn.MapHeld);
+        bool doColdCheck = Settings.showCold && doExtraChecks && pawn.Position.GetTemperature(map) > 4;
+
+        makePaths(pawn, watcher, map);
+        makeBreath(pawn, map, doColdCheck);
+        makeWet(pawn, terrain, isRaining, map);
+        drowningCheck(pawn, terrain, doExtraChecks);
+        springCheck(pawn, terrain, doExtraChecks);
     }
 
-    private static void springCheck(Pawn pawn, TerrainDef terrain) {
+    private static void springCheck(Pawn pawn, TerrainDef terrain, bool terrainChecks) {
         if (pawn.needs == null) {
+            return;
+        }
+
+        if (!terrainChecks) {
             return;
         }
 
@@ -41,13 +52,13 @@ public static class Pawn_Tick
         else if (terrain == TerrainDefOf.TKKN_ColdSpringsWater) {
             pawn.needs.rest?.TickResting(.05f);
 
-            if (Find.TickManager.TicksAbs % 300 == 0) {
-                //Remove heatstroke if pawn is in cold spring
-                Hediff heatstroke = pawn.health.hediffSet.GetFirstHediffOfDef(RimWorld.HediffDefOf.Heatstroke);
-                if (heatstroke != null) {
-                    pawn.health.RemoveHediff(heatstroke);
-                }
+
+            //Remove heatstroke if pawn is in cold spring
+            Hediff heatstroke = pawn.health.hediffSet.GetFirstHediffOfDef(RimWorld.HediffDefOf.Heatstroke);
+            if (heatstroke != null) {
+                pawn.health.RemoveHediff(heatstroke);
             }
+
 
             var hediffDef = HediffDefOf.TKKN_coldspring_chill_out;
             if (pawn.health.hediffSet.GetFirstHediffOfDef(hediffDef) != null) {
@@ -59,9 +70,9 @@ public static class Pawn_Tick
         }
     }
 
-    private static void drowningCheck(Pawn pawn, TerrainDef terrain) {
+    private static void drowningCheck(Pawn pawn, TerrainDef terrain, bool drowningCheck) {
         //drowning == immobile and in water
-        if (!Settings.allowPawnsDrowning) return;
+        if (!Settings.allowPawnsDrowning && !drowningCheck) return;
 
         if (pawn.health.Downed && TerrainTagUtil.TKKN_Wet.Contains(terrain)) {
             var damage = .0005f;
@@ -134,7 +145,7 @@ public static class Pawn_Tick
             return;
         }
 
-        if (HarmonyMain.RimBrellasActive && (bool)HarmonyMain.HasUmbrella.Invoke(pawn, [pawn])) {
+        if (HarmonyMain.RimBrellasActive && HarmonyMain.HasUmbrella(pawn)) {
             return;
         }
 
@@ -153,10 +164,9 @@ public static class Pawn_Tick
             return;
         }
 
-        //damage plants and remove snow/frost where they are. This will hopefully generate paths as pawns walk :)
-        if (Settings.showCold && watcher.CheckIfCold(pawn.Position)) {
-            watcher.frostGridComponent.AddDepth(pawn.Position, -.05f);
-            map.snowGrid.AddDepth(pawn.Position, -.05f);
+        if (Settings.showCold && watcher.outdoorTemp < 3) {
+            watcher.frostGridComponent.AddDepth(pawn.Position, -.01f);
+            map.snowGrid.AddDepth(pawn.Position, -.01f);
         }
 
         //pack down the soil only if the pawn is moving AND is in our colony
@@ -166,32 +176,21 @@ public static class Pawn_Tick
         }
     }
 
-    private static void makeBreath(Pawn pawn, Watcher watcher, Map map) {
-        if (!Settings.showCold) {
+    private static readonly Vector3 BreathOffset = new(0f, 0f, -0.04f);
+
+    private static void makeBreath(Pawn pawn, Map map, bool doBreathCheck) {
+        if (!doBreathCheck) {
             return;
         }
 
-        if (Find.TickManager.TicksGame % 200 != 0) {
-            return;
-        }
+        var head = pawn.Drawer.DrawPos + pawn.Drawer.renderer.BaseHeadOffsetAt(pawn.Rotation) +
+                   pawn.Rotation.FacingCell.ToVector3() * 0.21f + BreathOffset;
 
-        var isCold = watcher.CheckIfCold(pawn.Position);
-        if (!isCold) {
-            return;
-        }
-
-        var head = pawn.Position;
-        head.z += 1;
-        if (!head.ShouldSpawnMotesAt(map) || map.moteCounter.SaturatedLowPriority) {
-            return;
-        }
-
-        var moteThrown = (MoteThrown)ThingMaker.MakeThing(ThingDefOf.TKKN_Mote_ColdBreath);
-        moteThrown.airTimeLeft = 99999f;
+        MoteThrown moteThrown = (MoteThrown)ThingMaker.MakeThing(ThingDefOf.TKKN_Mote_ColdBreath);
         moteThrown.Scale = Rand.Range(.5f, 1.5f);
         moteThrown.rotationRate = Rand.Range(-30f, 30f);
-        moteThrown.exactPosition = head.ToVector3();
+        moteThrown.exactPosition = head;
         moteThrown.SetVelocity(Rand.Range(20, 30), Rand.Range(0.5f, 0.7f));
-        GenSpawn.Spawn(moteThrown, head, map);
+        GenSpawn.Spawn(moteThrown, head.ToIntVec3(), map);
     }
 }

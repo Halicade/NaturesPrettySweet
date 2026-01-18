@@ -70,12 +70,12 @@ public static class Plant_Graphic
         if (!Settings.showCold) return;
 
         //get snow graphic
-        if (cachedMap.snowGrid.GetDepth(__instance.Position) >= 0.5f && graphics.snowGraphicPath != null) {
+        if (graphics.snowGraphicPath != null && cachedMap.snowGrid.GetDepth(__instance.Position) >= 0.5f) {
             __result = graphics.snowGraphic;
             return;
         }
 
-        if (watcher.frostGridComponent.GetDepth(__instance.Position) >= 0.6f && graphics.frostGraphicPath != null) {
+        if (graphics.frostGraphicPath != null && watcher.frostGridComponent.GetDepth(__instance.Position) >= 0.6f) {
             __result = graphics.frostGraphic;
             return;
         }

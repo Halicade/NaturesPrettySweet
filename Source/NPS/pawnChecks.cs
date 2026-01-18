@@ -18,21 +18,16 @@ public static class PawnChecks
         bool doExtraChecks = (pawn.thingIDNumber + ticks) % 300 == 0;
 
         TerrainDef terrain = pawn.Position.GetTerrain(pawn.MapHeld);
-        bool doColdCheck = Settings.showCold && doExtraChecks && pawn.Position.GetTemperature(map) > 4;
 
         makePaths(pawn, watcher, map);
-        makeBreath(pawn, map, doColdCheck);
+        makeBreath(pawn, map, doExtraChecks);
         makeWet(pawn, terrain, isRaining, map);
         drowningCheck(pawn, terrain, doExtraChecks);
         springCheck(pawn, terrain, doExtraChecks);
     }
 
     private static void springCheck(Pawn pawn, TerrainDef terrain, bool terrainChecks) {
-        if (pawn.needs == null) {
-            return;
-        }
-
-        if (!terrainChecks) {
+        if (pawn.needs == null || !terrainChecks) {
             return;
         }
 
@@ -179,7 +174,10 @@ public static class PawnChecks
     private static readonly Vector3 BreathOffset = new(0f, 0f, -0.04f);
 
     private static void makeBreath(Pawn pawn, Map map, bool doBreathCheck) {
-        if (!doBreathCheck) {
+        if (!doBreathCheck && Settings.showCold &&
+            pawn.Position.GetTemperature(map) < 3f &&
+            (!ModsConfig.OdysseyActive ||
+             pawn.GetStatValue(StatDefOf.VacuumResistance, cacheStaleAfterTicks: 60) < 1.0)) {
             return;
         }
 

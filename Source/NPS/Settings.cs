@@ -43,11 +43,13 @@ public class Settings : ModSettings
     public static bool allowVolcanicFields = true;
     public static bool modifyAridShrubland = true;
     public static bool modifyTemperateForest = true;
+    public static bool lavaReplace = false;
 
     //Plant changes
     public static bool dandelionChanges = true;
     public static bool wildVegetables = true;
     public static bool grassTexture = true;
+    
 
     private static HashSet<string> ActiveSettings;
 
@@ -62,6 +64,8 @@ public class Settings : ModSettings
                     ActiveSettings.Add("WildVegetables");
                 if (grassTexture)
                     ActiveSettings.Add("GrassTexture");
+                if(lavaReplace)
+                    ActiveSettings.Add("LavaReplace");
             }
 
             return ActiveSettings;
@@ -221,6 +225,13 @@ public class Settings : ModSettings
             "NPS_GrassTexture_Title".Translate(),
             ref grassTexture,
             "NPS_GrassTexture_text".Translate());
+        if (ModsConfig.OdysseyActive) {
+            list.CheckboxLabeled(
+                "NPS_LavaReplace_Title".Translate(),
+                ref lavaReplace,
+                "NPS_LavaReplace_text".Translate());
+        }
+
         list.End();
     }
 
@@ -258,6 +269,7 @@ public class Settings : ModSettings
         Scribe_Values.Look(ref dandelionChanges, "dandelionChanges", true, true);
         Scribe_Values.Look(ref wildVegetables, "wildVegetables", true, true);
         Scribe_Values.Look(ref grassTexture, "grassTexture", true, true);
+        Scribe_Values.Look(ref lavaReplace, "lavaReplace", false, true);
         
     }
 }

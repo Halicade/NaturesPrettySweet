@@ -8,7 +8,6 @@ public static class TerrainTagUtil
     public static readonly HashSet<TerrainDef> TKKN_Wet = [];
     public static readonly HashSet<TerrainDef> TKKN_Swim = [];
     public static readonly HashSet<TerrainDef> Lava = [];
-    //public static readonly HashSet<TerrainDef> TKKN_SwimOrLava = [];
     public static readonly HashSet<TerrainDef> TerrainHasModExtension = [];
     public static readonly HashSet<TerrainDef> HoldsFrost = [];
     public static readonly HashSet<TerrainDef> canBePacked = [];
@@ -33,12 +32,10 @@ public static class TerrainTagUtil
 
             if (terrain.HasTag("TKKN_Swim")) {
                 TKKN_Swim.Add(terrain);
-                //TKKN_SwimOrLava.Add(terrain);
             }
 
-            if (terrain.HasTag("Lava")) {
+            if (terrain.HasTag("Lava")||terrain.HasTag("TKKN_Lava")) {
                 Lava.Add(terrain);
-                //TKKN_SwimOrLava.Add(terrain);
             }
 
             if (terrain.smoothedTerrain != null) {
@@ -53,7 +50,7 @@ public static class TerrainTagUtil
                     AmbientTempReaction.Add(terrain, weatherExtension.temperatureAdjust);
                 }
 
-                if (weatherExtension.holdFrost) {
+                if (terrain.holdSnowOrSand && weatherExtension.holdFrost) {
                     HoldsFrost.Add(terrain);
                 }
 

@@ -4,17 +4,8 @@
       <xpath>Defs/TerrainDef[defName = "WaterDeep"]</xpath>
     <value>
       <li Class="TKKN_NPS.TerrainWeatherReactions">
-        <tideTerrain />
-        <floodTerrain />
-        <wetTerrain />
         <freezeTerrain>TKKN_Ice</freezeTerrain>
-        <dryTerrain />
-        <freezeAt>0</freezeAt>
-        <wetAt>
-        </wetAt>
-        <isSalty>False</isSalty>
-        <holdFrost>False</holdFrost>
-        <temperatureAdjust />
+        <temperatureAdjust>-5</temperatureAdjust>
       </li>
     </value>
   </Operation>
@@ -22,15 +13,9 @@
       <xpath>Defs/TerrainDef[defName = "WaterMovingChestDeep"]</xpath>
     <value>
       <li Class="TKKN_NPS.TerrainWeatherReactions">
-        <tideTerrain />
-        <floodTerrain />
-        <wetTerrain />
         <freezeTerrain>TKKN_Ice</freezeTerrain>
-        <freezeAt>1</freezeAt>
-        <wetAt>
-        </wetAt>
-        <isSalty>False</isSalty>
-        <holdFrost>False</holdFrost>
+        <freezeAt>-1</freezeAt>
+        <temperatureAdjust>-5</temperatureAdjust>
       </li>
     </value>
   </Operation>
@@ -38,14 +23,7 @@
       <xpath>Defs/TerrainDef[defName = "WaterShallow"]</xpath>
     <value>
       <li Class="TKKN_NPS.TerrainWeatherReactions">
-        <tideTerrain />
-        <floodTerrain />
-        <wetTerrain />
         <freezeTerrain>TKKN_Ice</freezeTerrain>
-        <freezeAt>0</freezeAt>
-        <wetAt />
-        <isSalty>False</isSalty>
-        <holdFrost>False</holdFrost>
         <temperatureAdjust>-5</temperatureAdjust>
       </li>
     </value>
@@ -54,15 +32,8 @@
       <xpath>Defs/TerrainDef[defName = "WaterMovingShallow"]</xpath>
     <value>
       <li Class="TKKN_NPS.TerrainWeatherReactions">
-        <tideTerrain />
-        <floodTerrain />
-        <wetTerrain />
         <freezeTerrain>TKKN_Ice</freezeTerrain>
         <freezeAt>-1</freezeAt>
-        <wetAt>
-        </wetAt>
-        <isSalty>False</isSalty>
-        <holdFrost>False</holdFrost>
         <temperatureAdjust>-5</temperatureAdjust>
       </li>
     </value>
@@ -86,15 +57,7 @@
       <xpath>Defs/TerrainDef[defName = "TKKN_ColdSpringsWater"]</xpath>
     <value>
       <li Class="TKKN_NPS.TerrainWeatherReactions">
-        <tideTerrain />
-        <floodTerrain />
-        <wetTerrain />
         <freezeTerrain>TKKN_Ice</freezeTerrain>
-        <freezeAt>0</freezeAt>
-        <wetAt>
-        </wetAt>
-        <isSalty>False</isSalty>
-        <holdFrost>False</holdFrost>
         <temperatureAdjust>-10</temperatureAdjust>
       </li>
     </value>
@@ -103,15 +66,7 @@
     <xpath>Defs/TerrainDef[defName = "TKKN_ColdSpringsWaterDeep"]</xpath>
     <value>
       <li Class="TKKN_NPS.TerrainWeatherReactions">
-        <tideTerrain />
-        <floodTerrain />
-        <wetTerrain />
         <freezeTerrain>TKKN_Ice</freezeTerrain>
-        <freezeAt>0</freezeAt>
-        <wetAt>
-        </wetAt>
-        <isSalty>False</isSalty>
-        <holdFrost>False</holdFrost>
         <temperatureAdjust>-10</temperatureAdjust>
       </li>
     </value>
@@ -120,15 +75,8 @@
       <xpath>Defs/TerrainDef[defName = "TKKN_HotSpringsWater"]</xpath>
     <value>
       <li Class="TKKN_NPS.TerrainWeatherReactions">
-        <tideTerrain />
-        <floodTerrain />
-        <wetTerrain />
         <freezeTerrain>TKKN_Ice</freezeTerrain>
         <freezeAt>-4</freezeAt>
-        <wetAt>
-        </wetAt>
-        <isSalty>False</isSalty>
-        <holdFrost>False</holdFrost>
         <temperatureAdjust>10</temperatureAdjust>
       </li>
     </value>
@@ -138,16 +86,7 @@
     <value>
       <li Class="TKKN_NPS.TerrainWeatherReactions">
         <tideTerrain>TKKN_SandBeachWetSalt</tideTerrain>
-        <floodTerrain />
-        <wetTerrain />
-        <freezeTerrain>
-        </freezeTerrain>
-        <freezeAt>
-        </freezeAt>
-        <wetAt>
-        </wetAt>
         <isSalty>True</isSalty>
-        <holdFrost>False</holdFrost>
         <temperatureAdjust>-5</temperatureAdjust>
       </li>
     </value>
@@ -156,15 +95,7 @@
       <xpath>Defs/TerrainDef[defName = "WaterOceanDeep"]</xpath>
     <value>
       <li Class="TKKN_NPS.TerrainWeatherReactions">
-        <tideTerrain />
-        <floodTerrain />
-        <wetTerrain />
-        <freezeTerrain />
-        <freezeAt />
-        <wetAt>
-        </wetAt>
         <isSalty>True</isSalty>
-        <holdFrost>False</holdFrost>
       </li>
     </value>
   </Operation>
@@ -172,44 +103,15 @@
     <xpath>Defs/TerrainDef[defName = "Marsh"]</xpath>
     <value>
       <li Class="TKKN_NPS.TerrainWeatherReactions">
-        <tideTerrain />
         <floodTerrain>WaterShallow</floodTerrain>
-        <wetTerrain />
         <freezeTerrain>TKKN_MuddyIce</freezeTerrain>
-        <freezeAt>0</freezeAt>
-        <wetAt>0</wetAt>
-        <isSalty>False</isSalty>
-        <holdFrost>False</holdFrost>
-        <dryTerrain />
       </li>
     </value>
   </Operation>
-  <!--
-  defName is not valid in base game
-  <Operation Class="PatchOperationConditional">
-    <xpath>Defs/MainButtonDef[defName="Achievements"]</xpath>
-    <success>Always</success>
-    <match Class="PatchOperationRemove">
-      <xpath>Defs/TerrainDef[@Name = "WaterDeepBase"]/passability</xpath>
-    </match>
-  </Operation>
-  -->
   <Operation Class="PatchOperationAdd">
       <xpath>Defs/TerrainDef[@Name = "WaterBase"]/tags</xpath>
     <value>
       <li>TKKN_Wet</li>
-      <li>TKKN_Swim</li>
-    </value>
-  </Operation>
-  <Operation Class="PatchOperationAdd">
-      <xpath>Defs/TerrainDef[@Name = "WaterDeepBase"]</xpath>
-    <value>
-      <tags />
-    </value>
-  </Operation>
-  <Operation Class="PatchOperationAdd">
-      <xpath>Defs/TerrainDef[@Name = "WaterDeepBase"]/tags</xpath>
-    <value>
       <li>TKKN_Swim</li>
     </value>
   </Operation>

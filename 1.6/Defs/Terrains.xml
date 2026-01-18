@@ -83,17 +83,21 @@
     <filthAcceptanceMask />
     <fertility>0</fertility>
     <avoidWander>true</avoidWander>
+    <dangerous>true</dangerous>
     <changeable>false</changeable>
     <holdSnowOrSand>false</holdSnowOrSand>
     <takeSplashes>false</takeSplashes>
     <gravshipReplacementTerrain>TKKN_LavaRock_RoughHewn</gravshipReplacementTerrain>
     <meltSnowRadius>4</meltSnowRadius>
+    <glowRadius>4</glowRadius>
+    <glowColor>(239,143,1,0)</glowColor>
     <statBases>
       <Beauty>+2</Beauty>
       <Cleanliness>-2</Cleanliness>
     </statBases>
     <tags>
       <li>Lava</li>
+      <li>TKKN_Lava</li>
     </tags>
     <heatPerTick>0.25</heatPerTick>
     <throwFleckChance>0.06</throwFleckChance>
@@ -119,17 +123,21 @@
     <filthAcceptanceMask />
     <fertility>0</fertility>
     <avoidWander>true</avoidWander>
+    <dangerous>true</dangerous>
     <changeable>false</changeable>
     <holdSnowOrSand>false</holdSnowOrSand>
     <takeSplashes>false</takeSplashes>
     <gravshipReplacementTerrain>TKKN_LavaRock_RoughHewn</gravshipReplacementTerrain>
     <meltSnowRadius>4</meltSnowRadius>
+    <glowRadius>5</glowRadius>
+    <glowColor>(239,143,1,0)</glowColor>
     <statBases>
       <Beauty>+2</Beauty>
       <Cleanliness>-2</Cleanliness>
     </statBases>
     <tags>
       <li>Lava</li>
+      <li>TKKN_Lava</li>
     </tags>
     <heatPerTick>0.25</heatPerTick>
     <throwFleckChance>0.03</throwFleckChance>
@@ -505,6 +513,7 @@
     <texturePath>TKKN_NPS/Terrain/Saltedearth</texturePath>
     <edgeType>FadeRough</edgeType>
     <renderPrecedence>70</renderPrecedence>
+    <holdSnowOrSand>false</holdSnowOrSand>
     <statBases>
       <Beauty>-1</Beauty>
       <WorkToBuild>100</WorkToBuild>

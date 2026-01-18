@@ -80,5 +80,7 @@
     <NPS_GrassTexture_Title>Replace grass textures</NPS_GrassTexture_Title>
     <NPS_GrassTexture_text>Replaces the textures for Grass and Long Grass and adds an extra variant to them.</NPS_GrassTexture_text>
     <NPS_ModifyBiome_desc>Modifies generation of the {0} biome to use different logic</NPS_ModifyBiome_desc>
+    <NPS_LavaReplace_Title>Replace lava with Odyssey Variant</NPS_LavaReplace_Title>
+    <NPS_LavaReplace_text>Replace the lava that spawns on the Volcanic fields biome with its Odyssey counterpart</NPS_LavaReplace_text>
     <!-- @formatter:on -->
 </LanguageData>

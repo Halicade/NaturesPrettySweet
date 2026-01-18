@@ -108,7 +108,7 @@
             <Plant_AssortedFlower MayRequire="dismarzero.vgp.xtratreesandflowers">0.05</Plant_AssortedFlower>
             <Plant_Daisy MayRequire="mlie.flowers">0.3</Plant_Daisy>
             <Plant_Buttercup MayRequire="mlie.flowers">0.3</Plant_Buttercup>
-            
+
             <!-- Pollution plants -->
             <Plant_GrayGrass MayRequire="Ludeon.RimWorld.Biotech">9</Plant_GrayGrass>
             <BMT_Plant_CryingWolfberryBush MayRequire="biomesteam.biomespollutedlands">0.05</BMT_Plant_CryingWolfberryBush>
@@ -224,6 +224,14 @@
             <BotchJob_UndeadColossus MayRequire="botchjob.profaned">0.002</BotchJob_UndeadColossus>
             <BotchJob_UndeadHorse MayRequire="botchjob.profaned">0.01</BotchJob_UndeadHorse>
             <BotchJob_UndeadWarg MayRequire="botchjob.profaned">0.01</BotchJob_UndeadWarg>
+            <Blue_Dragon MayRequire="onyxae.dragonsdescent">0.001</Blue_Dragon>
+            <Black_Dragon MayRequire="onyxae.dragonsdescent">0.001</Black_Dragon>
+            <Green_Dragon MayRequire="onyxae.dragonsdescent">0.001</Green_Dragon>
+            <Purple_Dragon MayRequire="onyxae.dragonsdescent">0.001</Purple_Dragon>
+            <White_Dragon MayRequire="onyxae.dragonsdescent">0.001</White_Dragon>
+            <Silver_Dragon MayRequire="onyxae.dragonsdescent">0.001</Silver_Dragon>
+            <Jade_Dragon MayRequire="onyxae.dragonsdescent">0.001</Jade_Dragon>
+            <True_Dragon MayRequire="onyxae.dragonsdescent">0.001</True_Dragon>
         </wildAnimals>
         <pollutionWildAnimals>
             <Boomalope>0.4</Boomalope>
@@ -241,12 +249,18 @@
             <li>Elephant</li>
             <li>Alpaca</li>
         </allowedPackAnimals>
-        
+
         <modExtensions>
             <li Class="FirefliesTwoO.NightlySpawningExtension" MayRequire="scurvyez.firefliestwo">
                 <biomeEmissionRate>1.2</biomeEmissionRate>
                 <biomeAllowedTempRange>-100~100</biomeAllowedTempRange>
                 <biomeAllowInWinter>false</biomeAllowInWinter>
+            </li>
+            <li Class="BiomesKit.BiomesKitControls" MayRequireAnyOf="zal.wmbp,regrowth.botr.core">
+                <forested>true</forested>
+                <uniqueHills>true</uniqueHills>
+                <forestSparseBelow>1100</forestSparseBelow>
+                <forestDenseAbove>1200</forestDenseAbove>
             </li>
         </modExtensions>
     </BiomeDef>

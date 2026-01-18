@@ -102,8 +102,8 @@
             <Plant_Bush>0.25</Plant_Bush>
             <Plant_Daisy MayRequire="mlie.flowers">0.1</Plant_Daisy>
             <Plant_Chrysanthemum MayRequire="mlie.flowers">0.1</Plant_Chrysanthemum>
-            
-            
+
+
             <!-- Pollution plants -->
             <Plant_GrayGrass MayRequire="Ludeon.RimWorld.Biotech">5</Plant_GrayGrass>
             <Plant_PebbleCactus MayRequire="Ludeon.RimWorld.Biotech">1</Plant_PebbleCactus>
@@ -204,6 +204,10 @@
             <BotchJob_UndeadHorse MayRequire="botchjob.profaned">0.01</BotchJob_UndeadHorse>
             <BotchJob_UndeadWarg MayRequire="botchjob.profaned">0.01</BotchJob_UndeadWarg>
             <SanguineDrake MayRequire="zal.monstermash">0.05</SanguineDrake>
+            <Black_Dragon MayRequire="onyxae.dragonsdescent">0.001</Black_Dragon>
+            <Red_Dragon MayRequire="onyxae.dragonsdescent">0.001</Red_Dragon>
+            <Yellow_Dragon MayRequire="onyxae.dragonsdescent">0.001</Yellow_Dragon>
+            <Gold_Dragon MayRequire="onyxae.dragonsdescent">0.001</Gold_Dragon>
         </wildAnimals>
         <pollutionWildAnimals>
             <Boomalope>0.1</Boomalope>
@@ -225,9 +229,8 @@
                 <biomeAllowedTempRange>-100~100</biomeAllowedTempRange>
                 <biomeAllowInWinter>false</biomeAllowInWinter>
             </li>
-            
-            <li Class="GeologicalLandforms.BiomeProperties" MayRequire="m00nl1ght.GeologicalLandforms">
 
+            <li Class="GeologicalLandforms.BiomeProperties" MayRequire="m00nl1ght.GeologicalLandforms">
                 <allowLandforms>true</allowLandforms>
                 <allowBiomeTransitions>true</allowBiomeTransitions>
                 <!--
@@ -241,9 +244,13 @@
                     <li>Fjord</li>
                     <li>SecludedCove</li>
                 </disallowedLandforms>
-
                 <isWaterCovered>false</isWaterCovered>
-
+            </li>
+            <li Class="BiomesKit.BiomesKitControls" MayRequireAnyOf="zal.wmbp,regrowth.botr.core">
+                <forested>true</forested>
+                <uniqueHills>true</uniqueHills>
+                <forestSparseBelow>1100</forestSparseBelow>
+                <forestDenseAbove>1500</forestDenseAbove>
             </li>
         </modExtensions>
     </BiomeDef>

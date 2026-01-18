@@ -11,5 +11,8 @@
     <li IfModActive="BiomesTeam.BiomesPollutedLands">1.6/Mods/BiomesPollutedLands</li>
     <li IfModActiveAll="sarg.alphabiomes,Ludeon.Rimworld.Odyssey">1.6/Mods/AlphaBiomesOdyssey</li>
     <li IfModActive="WildPlants_Base">1.6/Mods/LandmarksExpanded</li>
+    <li IfModActive="regrowth.botr.core">1.6/Mods/Regrowth</li>
+    <li IfModActive="regrowth.botr.core">1.6/Mods/WMBPRegrowth</li>
+    <li IfModActive="zal.wmbp">WMBPRegrowth</li>
   </v1.6>
 </loadFolders>

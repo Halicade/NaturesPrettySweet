@@ -136,7 +136,7 @@
             <Plant_HealrootWild>0.05</Plant_HealrootWild>
             <Plant_Iris MayRequire="mlie.flowers">0.2</Plant_Iris>
             <Plant_Lily MayRequire="mlie.flowers">0.2</Plant_Lily>
-            
+
             <!-- Pollution plants -->
             <Plant_GrayGrass MayRequire="Ludeon.RimWorld.Biotech">3</Plant_GrayGrass>
             <Plant_Ripthorn MayRequire="Ludeon.RimWorld.Biotech">3</Plant_Ripthorn>
@@ -276,10 +276,14 @@
             <BotchJob_UndeadWarg MayRequire="botchjob.profaned">0.01</BotchJob_UndeadWarg>
             <Fox_grey MayRequire="zal.fox">0.03</Fox_grey>
             <Fox_luci MayRequire="zal.fox">0.03</Fox_luci>
-            <Fox_black MayRequire="zal.fox">0.03</Fox_black>        
+            <Fox_black MayRequire="zal.fox">0.03</Fox_black>
             <ABF_PawnKind_Synstruct_Convoystruct_Newboot MayRequire="killathon.artificialbeings.syncore.biomimetics">0.05</ABF_PawnKind_Synstruct_Convoystruct_Newboot>
             <ABF_PawnKind_Synstruct_Guardstruct_Newboot MayRequire="killathon.artificialbeings.syncore.biomimetics">0.02</ABF_PawnKind_Synstruct_Guardstruct_Newboot>
             <InfernoBeetle MayRequire="zal.monstermash">0.05</InfernoBeetle>
+            <Blue_Dragon MayRequire="onyxae.dragonsdescent">0.002</Blue_Dragon>
+            <White_Dragon MayRequire="onyxae.dragonsdescent">0.002</White_Dragon>
+            <Jade_Dragon MayRequire="onyxae.dragonsdescent">0.001</Jade_Dragon>
+            <True_Dragon MayRequire="onyxae.dragonsdescent">0.001</True_Dragon>
         </wildAnimals>
         <pollutionWildAnimals>
             <Boomalope>0.1</Boomalope>
@@ -295,11 +299,28 @@
             <li>Muffalo</li>
             <li>Alpaca</li>
         </allowedPackAnimals>
+        
         <modExtensions>
             <li Class="FirefliesTwoO.NightlySpawningExtension" MayRequire="scurvyez.firefliestwo">
                 <biomeEmissionRate>0.4</biomeEmissionRate>
                 <biomeAllowedTempRange>-100~100</biomeAllowedTempRange>
                 <biomeAllowInWinter>false</biomeAllowInWinter>
+            </li>
+            <li Class="BiomesKit.BiomesKitControls" MayRequireAnyOf="zal.wmbp,regrowth.botr.core">
+                <forested>true</forested>
+                <uniqueHills>true</uniqueHills>
+                <snowpilesBelow>0</snowpilesBelow>
+                <forestSparseBelow>1400</forestSparseBelow>
+                <forestDenseAbove>1700</forestDenseAbove>
+                <forestSnowyBelow>0</forestSnowyBelow>
+                <mountainsSemiSnowyBelow>10</mountainsSemiSnowyBelow>
+                <mountainsSnowyBelow>-5</mountainsSnowyBelow>
+                <mountainsVerySnowyBelow>-12</mountainsVerySnowyBelow>
+                <mountainsFullySnowyBelow>-21</mountainsFullySnowyBelow>
+                <impassableSemiSnowyBelow>15</impassableSemiSnowyBelow>
+                <impassableSnowyBelow>0</impassableSnowyBelow>
+                <impassableVerySnowyBelow>-7</impassableVerySnowyBelow>
+                <impassableFullySnowyBelow>-16</impassableFullySnowyBelow>
             </li>
         </modExtensions>
     </BiomeDef>

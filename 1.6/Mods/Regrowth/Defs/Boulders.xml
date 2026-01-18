@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+    <ThingDef ParentName="RG_BoulderRockMediumBase">
+        <defName>RG_BoulderRockMediumTKKN_LavaRock</defName>
+        <label>basalt boulder</label>
+        <graphicData>
+            <color>(50,50,50)</color>
+        </graphicData>
+        <modExtensions>
+            <li Class="ReGrowthCore.BoulderProperties">
+                <chunkDefToSpawn>TKKN_ChunkLava</chunkDefToSpawn>
+                <chunksToSpawn>4~6</chunksToSpawn>
+            </li>
+        </modExtensions>
+    </ThingDef>
+    <ThingDef ParentName="RG_BoulderRockLargeBase">
+        <defName>RG_BoulderRockLargeTKKN_LavaRock</defName>
+        <label>basalt boulder</label>
+        <graphicData>
+            <color>(50,50,50)</color>
+        </graphicData>
+        <modExtensions>
+            <li Class="ReGrowthCore.BoulderProperties">
+                <chunkDefToSpawn>TKKN_ChunkLava</chunkDefToSpawn>
+                <chunksToSpawn>2~3</chunksToSpawn>
+            </li>
+        </modExtensions>
+    </ThingDef>
+</Defs>

@@ -80,7 +80,7 @@
             <Plant_Daffodil MayRequire="mlie.flowers">0.08</Plant_Daffodil>
             <Plant_Chrysanthemum MayRequire="mlie.flowers">0.08</Plant_Chrysanthemum>
             <Plant_Daisy MayRequire="mlie.flowers">0.08</Plant_Daisy>
-            
+
             <!-- Pollution plants -->
             <Plant_GrayGrass MayRequire="Ludeon.RimWorld.Biotech">3</Plant_GrayGrass>
             <Plant_PebbleCactus MayRequire="Ludeon.RimWorld.Biotech">1</Plant_PebbleCactus>
@@ -163,6 +163,10 @@
             <BotchJob_UndeadHorse MayRequire="botchjob.profaned">0.01</BotchJob_UndeadHorse>
             <BotchJob_UndeadWarg MayRequire="botchjob.profaned">0.01</BotchJob_UndeadWarg>
             <SanguineDrake MayRequire="zal.monstermash">0.03</SanguineDrake>
+            <Black_Dragon MayRequire="onyxae.dragonsdescent">0.001</Black_Dragon>
+            <Red_Dragon MayRequire="onyxae.dragonsdescent">0.001</Red_Dragon>
+            <Yellow_Dragon MayRequire="onyxae.dragonsdescent">0.001</Yellow_Dragon>
+            <Gold_Dragon MayRequire="onyxae.dragonsdescent">0.001</Gold_Dragon>
         </wildAnimals>
         <pollutionWildAnimals>
             <Boomalope>0.1</Boomalope>
@@ -179,5 +183,14 @@
             <li>Muffalo</li>
             <li>Dromedary</li>
         </allowedPackAnimals>
+
+        <modExtensions>
+            <li Class="BiomesKit.BiomesKitControls" MayRequireAnyOf="zal.wmbp,regrowth.botr.core">
+                <forested>true</forested>
+                <uniqueHills>true</uniqueHills>
+                <forestSparseBelow>1100</forestSparseBelow>
+                <forestDenseAbove>1500</forestDenseAbove>
+            </li>
+        </modExtensions>
     </BiomeDef>
 </Defs>

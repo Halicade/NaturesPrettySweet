@@ -33,7 +33,6 @@ Mythic Ages: Megafauna Bestiary veterano.mythicages.megafaunabestiary https://st
 Pygmy muffalo dismarzero.vgp.pygmymuffalo https://steamcommunity.com/sharedfiles/filedetails/?id=1885527800
 Rare Animals Expanded : The BrainRot Animals febvre.thebrianrotanimals.core https://steamcommunity.com/sharedfiles/filedetails/?id=3538484053
 Rats With Gats shunthewitch.armedrats https://steamcommunity.com/sharedfiles/filedetails/?id=3484091653
-ReGrowth 2 regrowth.botr.core https://steamcommunity.com/sharedfiles/filedetails/?id=2260097569
 ReGrowth: Extinct Animals (Continued) mlie.regrowthextinctanimals https://steamcommunity.com/sharedfiles/filedetails/?id=3602926791
 RimBeast (Continued) mlie.rimbeast https://steamcommunity.com/sharedfiles/filedetails/?id=2114991205
 Rimcraft Reborn Beta rimcraftreborn.betatest https://steamcommunity.com/sharedfiles/filedetails/?id=3599879749
@@ -44,13 +43,23 @@ The Profaned botchjob.profaned https://steamcommunity.com/sharedfiles/filedetail
 Vanilla Animals Expanded vanillaexpanded.vanillaanimalsexpanded https://steamcommunity.com/sharedfiles/filedetails/?id=2871933948
 Vanilla Animals Expanded — Waste Animals vanillaexpanded.vaewaste https://steamcommunity.com/sharedfiles/filedetails/?id=2962126499
 [Ry]Rimcraft Animals (Continued) zal.rimcraftanimals https://steamcommunity.com/sharedfiles/filedetails/?id=3599363187
+Dragons Descent onyxae.dragonsdescent https://steamcommunity.com/sharedfiles/filedetails/?id=2026992161
+
 
 Plants:
 Biomes! Polluted Lands biomesteam.biomespollutedlands https://steamcommunity.com/sharedfiles/filedetails/?id=3390196656
 Flowers (Continued) mlie.flowers https://steamcommunity.com/sharedfiles/filedetails/?id=2025555200
 VGP Xtra Trees and Flowers dismarzero.vgp.xtratreesandflowers https://steamcommunity.com/sharedfiles/filedetails/?id=2007064094
 
-Other mods:
+Misc mods:
+// Tile mutators
 Alpha Biomes sarg.alphabiomes https://steamcommunity.com/sharedfiles/filedetails/?id=1841354677
+// Fireflies
 FirefliesTwo scurvyez.firefliestwo https://steamcommunity.com/sharedfiles/filedetails/?id=3347026598
+// Prevent Oasis on oasis biome
 Geological Landforms m00nl1ght.GeologicalLandforms https://steamcommunity.com/sharedfiles/filedetails/?id=2773943594
+// Tile mutators
+Vanilla Landmarks Expanded vanillaexpanded.vexploratione
+// Boulders and map beautification
+World Map Beautification Project (Continued) zal.wmbp https://steamcommunity.com/sharedfiles/filedetails/?id=3266720501
+ReGrowth 2 regrowth.botr.core https://steamcommunity.com/sharedfiles/filedetails/?id=2260097569

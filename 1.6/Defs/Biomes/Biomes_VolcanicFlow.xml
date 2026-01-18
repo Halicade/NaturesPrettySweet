@@ -81,6 +81,11 @@
                     <li>
                         <terrain>TKKN_Lava</terrain>
                         <min>.6</min>
+                        <max>0.7</max>
+                    </li>
+                    <li>
+                        <terrain>TKKN_LavaDeep</terrain>
+                        <min>0.7</min>
                         <max>999</max>
                     </li>
                 </thresholds>
@@ -127,7 +132,7 @@
             <Plant_Rafflesia>0.0008</Plant_Rafflesia>
             <PlantAnthurium MayRequire="dismarzero.vgp.xtratreesandflowers">0.1</PlantAnthurium>
             <PlantPlumeria MayRequire="dismarzero.vgp.xtratreesandflowers">0.15</PlantPlumeria>
-            
+
             <!-- Pollution plants -->
             <Plant_GrayGrass MayRequire="Ludeon.RimWorld.Biotech">4</Plant_GrayGrass>
             <Plant_RatPalm MayRequire="Ludeon.RimWorld.Biotech">0.3</Plant_RatPalm>
@@ -236,15 +241,38 @@
             <ABF_PawnKind_Synstruct_Convoystruct_Newboot MayRequire="killathon.artificialbeings.syncore.biomimetics">0.05</ABF_PawnKind_Synstruct_Convoystruct_Newboot>
             <ABF_PawnKind_Synstruct_Guardstruct_Newboot MayRequire="killathon.artificialbeings.syncore.biomimetics">0.02</ABF_PawnKind_Synstruct_Guardstruct_Newboot>
             <LandKraken MayRequire="zal.monstermash">0.02</LandKraken>
+            <Red_Dragon MayRequire="onyxae.dragonsdescent">0.001</Red_Dragon>
+            <Yellow_Dragon MayRequire="onyxae.dragonsdescent">0.001</Yellow_Dragon>
+            <Gold_Dragon MayRequire="onyxae.dragonsdescent">0.001</Gold_Dragon>
         </wildAnimals>
         <pollutionWildAnimals>
-            <BMT_ToxSheep MayRequire="biomesteam.biomespollutedlands">0.7</BMT_ToxSheep>
+            <Rat>0.8</Rat>
+            <Warg>0.012</Warg>
+            <Boomrat>0.4</Boomrat>
+            <Toxalope MayRequire="Ludeon.RimWorld.Biotech">0.4</Toxalope>
+            <WasteRat MayRequire="Ludeon.RimWorld.Biotech">0.2</WasteRat>
+            <BMT_ToxSheep MayRequire="biomesteam.biomespollutedlands">0.5</BMT_ToxSheep>
             <VAEWaste_Toxafox MayRequire="vanillaexpanded.vaewaste">0.03</VAEWaste_Toxafox>
         </pollutionWildAnimals>
-        <allowedPackAnimals> 
+        <allowedPackAnimals>
             <li>Muffalo</li>
             <li>Elephant</li>
             <li>Alpaca</li>
         </allowedPackAnimals>
+
+        <modExtensions>
+            <li Class="FirefliesTwoO.NightlySpawningExtension" MayRequire="scurvyez.firefliestwo">
+                <biomeEmissionRate>0.35</biomeEmissionRate>
+                <biomeAllowedTempRange>-100~100</biomeAllowedTempRange>
+                <biomeAllowInWinter>false</biomeAllowInWinter>
+            </li>
+            
+            <li Class="BiomesKit.BiomesKitControls" MayRequireAnyOf="zal.wmbp,regrowth.botr.core">
+                <forested>true</forested>
+                <uniqueHills>true</uniqueHills>
+                <forestSparseBelow>1100</forestSparseBelow>
+                <forestDenseAbove>1500</forestDenseAbove>
+            </li>
+        </modExtensions>
     </BiomeDef>
 </Defs>

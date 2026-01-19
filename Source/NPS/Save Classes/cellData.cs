@@ -8,10 +8,12 @@ namespace TKKN_NPS;
 
 public class cellData : IExposable
 {
-    private readonly int packAt = 750;
+    private const int packAt = 750;
+    private const int unpack = packAt / 2;
     public TerrainDef baseTerrain;
     public HashSet<int> floodLevel = [];
     public float frostLevel;
+    public float frostNoise;
 
     public int howPacked;
     public int howWet;
@@ -41,10 +43,11 @@ public class cellData : IExposable
         Scribe_Values.Look(ref howWet, "howWet", howWet, true);
         Scribe_Values.Look(ref howWetPlants, "howWetPlants", howWetPlants, true);
         Scribe_Values.Look(ref frostLevel, "frostLevel", frostLevel, true);
+        Scribe_Values.Look(ref frostNoise, "frostNoise", frostNoise, true);
         Scribe_Values.Look(ref isWet, "isWet", isWet, true);
         Scribe_Values.Look(ref isFlooded, "isFlooded", isFlooded, true);
         Scribe_Values.Look(ref terrainOverride, "overrideType", terrainOverride, true);
-        
+
         Scribe_Values.Look(ref location, "location", location, true);
         Scribe_Values.Look(ref temperature, "temperature", -999, true);
         Scribe_Defs.Look(ref baseTerrain, "baseTerrain");
@@ -80,6 +83,10 @@ public class cellData : IExposable
     }
 
     public void trySetTerrainDry() {
+        if (!isWet) {
+            return;
+        }
+
         var thisTerrain = currentTerrain;
         //if terrain is temporary we don't want to affect it
         if (thisTerrain.temporary) {
@@ -108,9 +115,10 @@ public class cellData : IExposable
     /// If anyone has a better suggestion I'm all ears.
     /// </summary>
     public void SetTerrainFrozen() {
-        if (isFrozen ) {
+        if (isFrozen) {
             return;
         }
+
         TerrainDef thisTerrain = currentTerrain;
         if (!TerrainTagUtil.FreezeAt.TryGetValue(thisTerrain, out int freezeAt))
             return;
@@ -124,7 +132,6 @@ public class cellData : IExposable
         if (TerrainTagUtil.FreezeTerrain.TryGetValue(thisTerrain, out var freezeTerrain)) {
             map.terrainGrid.SetTerrain(location, freezeTerrain);
             isFrozen = true;
-            
         }
     }
 
@@ -133,8 +140,7 @@ public class cellData : IExposable
             return;
         }
 
-        var thisTerrain = currentTerrain;
-        if (!thisTerrain.temporary) {
+        if (!currentTerrain.temporary) {
             return;
         }
 
@@ -143,16 +149,17 @@ public class cellData : IExposable
         setTerrainWet();
         isFrozen = false;
     }
-    
+
 
     public void removeTempTerrain() {
         var thisTerrain = currentTerrain;
         if (!thisTerrain.temporary) {
             return;
         }
-        map.terrainGrid.RemoveTempTerrain(location,doLeavings:false,preventDestroyEffects:true);
+
+        map.terrainGrid.RemoveTempTerrain(location, doLeavings: false, preventDestroyEffects: true);
     }
-    
+
 
     public void setTerrain(TerrainType type) {
         var thisTerrain = currentTerrain;
@@ -189,8 +196,6 @@ public class cellData : IExposable
     }
 
 
-    
-
     private void setFloodedTerrain() {
         if (!Settings.showRain || !Settings.doTides) {
             return;
@@ -200,7 +205,7 @@ public class cellData : IExposable
         if (!TerrainTagUtil.FloodTerrain.TryGetValue(baseTerrain, out TerrainDef floodTerrain)) {
             return;
         }
-        
+
         if (isFrozen) {
             if (TerrainTagUtil.FreezeTerrain.TryGetValue(thisTerrain, out var freezeTerrain)) {
                 changeTerrain(freezeTerrain);
@@ -258,15 +263,14 @@ public class cellData : IExposable
     }
 
     public void Unpack() {
-        if (!Settings.doDirtPath) {
-            return;
-        }
-
         if (howPacked > 0) {
             howPacked--;
         }
+        else {
+            return;
+        }
 
-        if (howPacked <= packAt / 2) {
+        if (howPacked <= unpack) {
             if (currentTerrain == TerrainDefOf.TKKN_DirtPath) {
                 changeTerrain(RimWorld.TerrainDefOf.Soil);
             }
@@ -275,6 +279,7 @@ public class cellData : IExposable
             }
         }
     }
+
     /// <summary>
     /// This method currently has a weird thing where if you remove a packed path
     /// (You can, and we want the user to do this) it will change back to a packed path after being stepped on
@@ -283,9 +288,9 @@ public class cellData : IExposable
         if (!TerrainTagUtil.canBePacked.Contains(baseTerrain)) {
             return;
         }
-        
+
         howPacked++;
-        
+
 
         //don't pack if there's a growing zone.
         if (map.zoneManager.ZoneAt(location) is Zone_Growing) {
@@ -343,15 +348,16 @@ public class cellData : IExposable
         var leaveSomething = Rand.Value;
         switch (leaveSomething) {
             case < 0.001f: {
-                List<Thing> allowed=ThingSetMakerDefOf.TKKN_TidalLoot.root.Generate();
-                
+                List<Thing> allowed = ThingSetMakerDefOf.TKKN_TidalLoot.root.Generate();
+
                 if (allowed == null) {
                     return;
                 }
-                
+
                 for (int i = 0; i < allowed.Count; i++) {
                     GenSpawn.Spawn(allowed[i], location, map);
                 }
+
                 break;
             }
             //grow water and shore plants:

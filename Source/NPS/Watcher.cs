@@ -43,12 +43,8 @@ public class Watcher(Map map) : MapComponent(map)
 
     public float outdoorTemp;
 
-    //public HashSet<IntVec3> lavaCellsList = [];
-    public Thing overlay;
-
     //used by weather
     private bool regenCellLists = true;
-    public List<IntVec3> swimmingCellsList = [];
 
     private int ticks;
 
@@ -95,7 +91,7 @@ public class Watcher(Map map) : MapComponent(map)
             wetPlantsValue = -1 * (outdoorTemp / humidity / 10);
             floodThreatIncrease = 1 + 2 * (int)Math.Round(currentRainRate);
             noHurtPlants = !Settings.allowPlantEffects || ticks % 150 != 0;
-            doUnpacking = !doUnpacking;
+            doUnpacking = Settings.doDirtPath && !doUnpacking;
             DoTides();
             DoFloods();
 
@@ -218,6 +214,14 @@ public class Watcher(Map map) : MapComponent(map)
                 if (cell.originalTerrain != null) {
                     cell.originalTerrain = terrain;
                 }
+                var frostVal = frostNoise.GetValue(c)+1;
+                frostVal += 1f;
+                frostVal *= 0.5f;
+                if (frostVal < 0.5f) {
+                    frostVal = 0.5f;
+                }
+
+                cell.frostNoise = frostVal;
 
                 if (rot.IsValid && terrain == RimWorld.TerrainDefOf.Sand ||
                     terrain == TerrainDefOf.TKKN_SandBeachWetSalt) {
@@ -271,7 +275,6 @@ public class Watcher(Map map) : MapComponent(map)
 
 
         //rebuild lookup lists.
-        swimmingCellsList = [];
         tideCellsList = [];
         floodCellsList = [];
 
@@ -285,8 +288,10 @@ public class Watcher(Map map) : MapComponent(map)
 
         foreach (KeyValuePair<IntVec3, cellData> thisCell in cellWeatherAffects) {
             cellWeatherAffects[thisCell.Key].map = map;
+            if (TerrainTagUtil.HoldsFrost.Contains(thisCell.Value.currentTerrain)) {
+                frostGridComponent.SetDepth(thisCell.Value.location, thisCell.Value.frostLevel);
+            }
 
-            frostGridComponent.SetDepth(thisCell.Value.location, thisCell.Value.frostLevel);
             if (thisCell.Value.tideLevel > -1) {
                 tideCellsList[thisCell.Value.tideLevel].Add(thisCell.Key);
             }
@@ -295,10 +300,6 @@ public class Watcher(Map map) : MapComponent(map)
                 foreach (var level in thisCell.Value.floodLevel) {
                     floodCellsList[level].Add(thisCell.Key);
                 }
-            }
-
-            if (TerrainTagUtil.TKKN_Swim.Contains(thisCell.Value.baseTerrain)) {
-                swimmingCellsList.Add(thisCell.Key);
             }
         }
 
@@ -532,7 +533,9 @@ public class Watcher(Map map) : MapComponent(map)
         }
 
         //spawn special things
-        LavaRockSpecials(c, currentTerrain);
+        if (anyLavaTerrain) {
+            LavaRockSpecials(c, currentTerrain);
+        }
 
         if (Settings.showRain && !roofed && !TerrainTagUtil.TKKN_Wet.Contains(currentTerrain)) {
             //if it's raining in this cell:
@@ -565,18 +568,22 @@ public class Watcher(Map map) : MapComponent(map)
                 cell.SetTerrainFrozen();
             }
 
-            //handle frost based on snowing
-            if (!roofed && currentSnowRate > 0.001f) {
-                frostGridComponent.AddDepth(c, currentSnowRate * -.01f);
-            }
-            else {
-                CreepFrostAt(c, 0.46f * .3f);
+            if (TerrainTagUtil.HoldsFrost.Contains(currentTerrain)) {
+                //handle frost based on snowing
+                if (!roofed && currentSnowRate > 0.001f) {
+                    frostGridComponent.AddDepth(cell, currentSnowRate * -.01f);
+                }
+                else {
+                    CreepFrostAt(cell, 0.46f * .3f);
+                }
             }
         }
         else {
             cell.TrySetTerrainThawed();
-            var frosty = cell.temperature * -.025f;
-            frostGridComponent.AddDepth(c, frosty);
+            if (TerrainTagUtil.HoldsFrost.Contains(currentTerrain)) {
+                var frosty = cell.temperature * -.025f;
+                frostGridComponent.AddDepth(cell, frosty);
+            }
         }
 
 
@@ -632,7 +639,6 @@ public class Watcher(Map map) : MapComponent(map)
     }
 
     private void LavaRockSpecials(IntVec3 c, TerrainDef currentTerrain) {
-        if (!anyLavaTerrain) return;
         if (Rand.Value < .0001f) {
             if (c.InBounds(map)) {
                 if (currentTerrain == TerrainDefOf.TKKN_Lava) {
@@ -649,15 +655,10 @@ public class Watcher(Map map) : MapComponent(map)
         }
     }
 
-    private void CreepFrostAt(IntVec3 c, float baseAmount) {
-        var num = frostNoise.GetValue(c)+1;
-        num += 1f;
-        num *= 0.5f;
-        if (num < 0.5f) {
-            num = 0.5f;
-        }
+    private void CreepFrostAt(cellData c, float baseAmount) {
 
-        var depthToAdd = baseAmount * num;
+
+        var depthToAdd = baseAmount * c.frostNoise;
 
         frostGridComponent.AddDepth(c, depthToAdd);
     }

@@ -159,14 +159,16 @@ public static class PawnChecks
             return;
         }
 
+        if (!watcher.cellWeatherAffects.TryGetValue(pawn.Position, out var cell))
+            return;
+
         if (Settings.showCold && watcher.outdoorTemp < 3) {
-            watcher.frostGridComponent.AddDepth(pawn.Position, -.01f);
-            map.snowGrid.AddDepth(pawn.Position, -.01f);
+            watcher.frostGridComponent.AddDepth(cell, -.005f);
+            map.snowGrid.AddDepth(pawn.Position, -.005f);
         }
 
         //pack down the soil only if the pawn is moving AND is in our colony
-        if (pawn.IsColonist &&
-            watcher.cellWeatherAffects.TryGetValue(pawn.Position, out var cell)) {
+        if (pawn.IsColonist) {
             cell.DoPack();
         }
     }
@@ -174,10 +176,11 @@ public static class PawnChecks
     private static readonly Vector3 BreathOffset = new(0f, 0f, -0.04f);
 
     private static void makeBreath(Pawn pawn, Map map, bool doBreathCheck) {
-        if (!doBreathCheck && Settings.showCold &&
-            pawn.Position.GetTemperature(map) < 3f &&
+        if (!doBreathCheck || !Settings.showCold)
+            return;
+        if (pawn.Position.GetTemperature(map) >= 3f &&
             (!ModsConfig.OdysseyActive ||
-             pawn.GetStatValue(StatDefOf.VacuumResistance, cacheStaleAfterTicks: 60) < 1.0)) {
+             pawn.GetStatValue(StatDefOf.VacuumResistance, cacheStaleAfterTicks: 60) > 0.95)) {
             return;
         }
 

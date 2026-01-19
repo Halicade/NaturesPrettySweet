@@ -4,12 +4,12 @@ using Verse;
 
 namespace TKKN_NPS;
 
-public sealed class FrostGrid : MapComponent
+public class FrostGrid : MapComponent
 {
     public const float MaxDepth = 1f;
-    public const float currentFrost = 0f;
 
     private double totalDepth;
+
 
     public FrostGrid(Map map) : base(map) {
         DepthGridDirect_Unsafe = new float[map.cellIndices.NumGridCells];
@@ -20,21 +20,12 @@ public sealed class FrostGrid : MapComponent
     private bool canHaveFrost(int ind) {
         var building = map.edificeGrid[ind];
 
-        if (building != null && !canCoexistWithFrost(building.def)) {
-            return false;
-        }
 
-        var terrainDef = map.terrainGrid.TerrainAt(ind);
-        return terrainDef.holdSnowOrSand || TerrainTagUtil.HoldsFrost.Contains(terrainDef);
-
-        //return terrainDef.affordances.Contains(TerrainAffordance.Light);
+        return building == null || building.def.category == ThingCategory.Building;
     }
 
-    private static bool canCoexistWithFrost(ThingDef def) {
-        return def.category != ThingCategory.Building; // || def.Fillage != FillCategory.Full;
-    }
-
-    public void AddDepth(IntVec3 c, float depthToAdd) {
+    public void AddDepth(cellData cell, float depthToAdd) {
+        var c = cell.location;
         if (!c.InBounds(map)) {
             return;
         }
@@ -45,7 +36,7 @@ public sealed class FrostGrid : MapComponent
             return;
         }
 
-        if (num2 >= 0.999f && depthToAdd > 1f) {
+        if (num2 >= 0.999f && depthToAdd > MaxDepth) {
             return;
         }
 
@@ -55,7 +46,7 @@ public sealed class FrostGrid : MapComponent
         }
 
         var num3 = num2 + depthToAdd;
-        num3 = Mathf.Clamp(num3, 0f, 1f);
+        num3 = Mathf.Clamp(num3, 0f, MaxDepth);
         var num4 = num3 - num2;
         totalDepth += num4;
         if (!(Mathf.Abs(num4) > 0.0001f)) {
@@ -63,7 +54,7 @@ public sealed class FrostGrid : MapComponent
         }
 
         DepthGridDirect_Unsafe[num] = num3;
-        checkVisualOrPathCostChange(c, num2, num3);
+        checkVisualOrPathCostChange(cell, num2, num3);
     }
 
     public void SetDepth(IntVec3 c, float newDepth) {
@@ -82,29 +73,19 @@ public sealed class FrostGrid : MapComponent
         DepthGridDirect_Unsafe[num] = newDepth;
         var num3 = newDepth - num2;
         totalDepth += num3;
-        checkVisualOrPathCostChange(c, num2, newDepth);
+        //checkVisualOrPathCostChange(c, num2, newDepth);
     }
 
-    private void checkVisualOrPathCostChange(IntVec3 c, float oldDepth, float newDepth) {
-        if (!map.GetComponent<Watcher>().cellWeatherAffects.TryGetValue(c, out var cell)) {
-            return;
-        }
-
+    private void checkVisualOrPathCostChange(cellData cell, float oldDepth, float newDepth) {
         cell.frostLevel = newDepth;
         if (Mathf.Approximately(oldDepth, newDepth)) {
             return;
         }
 
-        if (Mathf.Abs(oldDepth - newDepth) > 0.15f || Rand.Value < 0.0125f) {
-            map.mapDrawer.MapMeshDirty(c, MapMeshFlagDefOf.Snow, true, false);
-            map.mapDrawer.MapMeshDirty(c, MapMeshFlagDefOf.Things, true, false);
-        }
-        else if (newDepth == 0f) {
-            map.mapDrawer.MapMeshDirty(c, MapMeshFlagDefOf.Snow, true, false);
+        if (Mathf.Abs(oldDepth - newDepth) > 0.15f || newDepth == 0f || Rand.Value < 0.0012f) {
+            map.mapDrawer.MapMeshDirty(cell.location, MapMeshFlagDefOf.Snow, true, false);
         }
     }
 
-    public float GetDepth(IntVec3 c) {
-        return !c.InBounds(map) ? 0f : DepthGridDirect_Unsafe[map.cellIndices.CellToIndex(c)];
-    }
+    public float GetDepth(IntVec3 c) => c.InBounds(map) ? DepthGridDirect_Unsafe[map.cellIndices.CellToIndex(c)] : 0f;
 }

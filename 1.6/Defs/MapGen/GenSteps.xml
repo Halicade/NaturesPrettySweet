@@ -21,7 +21,33 @@
             <soilTerrain>Riverbank</soilTerrain>
         </genStep>
     </GenStepDef>
-    
+
+
+    <GenStepDef>
+        <defName>NPS_HotSpring</defName>
+        <order>224</order>
+        <genStep Class="TKKN_NPS.GenSteps.GenStep_SpringTerrain">
+            <waterTerrain>TKKN_HotSpringsWater</waterTerrain>
+            <soilTerrain>Riverbank</soilTerrain>
+        </genStep>
+    </GenStepDef>
+
+    <GenStepDef>
+        <defName>NPS_ColdSpring</defName>
+        <order>224</order>
+        <genStep Class="TKKN_NPS.GenSteps.GenStep_SpringTerrain">
+            <waterTerrain>TKKN_ColdSpringsWater</waterTerrain>
+        </genStep>
+    </GenStepDef>
+
+
+    <GenStepDef>
+        <defName>NPS_PostSpringPlants</defName>
+        <order>906</order>
+        <genStep Class="TKKN_NPS.GenSteps.GenStep_PostSpringPlants" />
+    </GenStepDef>
+
+
     <!--Needs to run after FindPlayerStartSpot-->
     <GenStepDef>
         <defName>NPS_LavaLanding</defName>
@@ -30,7 +56,7 @@
             <terrainOverwrite>TKKN_LavaRock_RoughHewn</terrainOverwrite>
         </genStep>
     </GenStepDef>
-    
+
     <!--Needs to run after FindPlayerStartSpot-->
     <GenStepDef>
         <defName>NPS_LavaPathing</defName>
@@ -38,6 +64,6 @@
         <genStep Class="TKKN_NPS.GenSteps.GenStep_LavaPathing">
         </genStep>
     </GenStepDef>
-    
+
 
 </Defs>

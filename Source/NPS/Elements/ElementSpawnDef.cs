@@ -9,6 +9,7 @@ public class ElementSpawnDef : Def
     public List<BiomeDef> allowedBiomes=[];
     //public bool allowOnWater;
     public List<BiomeDef> forbiddenBiomes=[];
+    
     /*
     public List<string> terrainValidationAllowed;
     public List<string> terrainValidationDisallowed;*/

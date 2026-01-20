@@ -17,7 +17,6 @@ public class SpringComp : SpringCompAbstract
     private int age;
 
     private string biomeName;
-    private int makeAnotherAt = 400;
 
     private bool spawnThings;
     private StatusType status = StatusType.spawning;
@@ -36,14 +35,12 @@ public class SpringComp : SpringCompAbstract
     public override void PostSpawnSetup(bool respawningAfterLoad)
     {
         base.PostSpawnSetup(respawningAfterLoad);
-        makeAnotherAt = Props.howOftenToChange * 4000;
         if (respawningAfterLoad)
         {
             var savedData = parent.Map.GetComponent<Watcher>().activeSprings[getID()];
             if (savedData != null)
             {
                 biomeName = savedData.biomeName;
-                makeAnotherAt = savedData.makeAnotherAt;
                 age = savedData.age;
                 Enum.TryParse(savedData.status, out status);
                 width = savedData.width;
@@ -59,7 +56,6 @@ public class SpringComp : SpringCompAbstract
             {
                 springID = parent.ThingID,
                 biomeName = biomeName,
-                makeAnotherAt = makeAnotherAt,
                 age = age,
                 status = nameof(status),
                 width = width
@@ -102,7 +98,6 @@ public class SpringComp : SpringCompAbstract
         {
             //see if we're going to add another spring spawner.
             status = StatusType.expand;
-            makeAnotherAt += Props.weight;
         }
 
         if (status != StatusType.despawn)
@@ -220,7 +215,6 @@ public class SpringComp : SpringCompAbstract
         }
 
         savedData.biomeName = biomeName;
-        savedData.makeAnotherAt = makeAnotherAt;
         savedData.age = age;
         savedData.status = nameof(status);
         savedData.width = width;

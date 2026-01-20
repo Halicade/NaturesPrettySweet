@@ -1,12 +1,8 @@
 ﻿using RimWorld;
-using TKKN_NPS;
 using UnityEngine;
 using Verse;
-using HediffDefOf = TKKN_NPS.HediffDefOf;
-using TerrainDefOf = TKKN_NPS.TerrainDefOf;
-using ThingDefOf = TKKN_NPS.ThingDefOf;
 
-namespace NPS;
+namespace TKKN_NPS;
 
 public static class PawnChecks
 {

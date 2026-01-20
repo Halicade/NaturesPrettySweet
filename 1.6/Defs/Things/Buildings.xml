@@ -137,7 +137,7 @@
     </graphicData>
     <comps>
       <li Class="TKKN_NPS.CompProperties_SpringWater">
-        <radius>3</radius>
+        <radius>8</radius>
         <dryTile>SoilRich</dryTile>
         <wetTile>TKKN_ColdSpringsWater</wetTile>
         <deepTile>WaterDeep</deepTile>
@@ -147,9 +147,9 @@
         <howOftenToChange>0</howOftenToChange>
         <commonBiome>
         </commonBiome>
-        <borderSize>3</borderSize>
+        <borderSize>35</borderSize>
         <canReproduce>false</canReproduce>
-        <startingRadius>2</startingRadius>
+        <startingRadius>5</startingRadius>
       </li>
     </comps>
     <tickerType>Rare</tickerType>

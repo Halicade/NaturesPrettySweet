@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using NPS;
 using RimWorld;
-using RimWorld.Planet;
 using UnityEngine;
 using Verse;
 using Verse.Noise;
@@ -67,6 +65,33 @@ public class Watcher(Map map) : MapComponent(map)
     private bool isRaining;
 
     /* STANDARD STUFF */
+    
+    public override void FinalizeInit() {
+        base.FinalizeInit();
+        if (map.IsPocketMap) {
+            Log.Message("This is a pocket map. Nothing is running");
+            dontRunAnything = true;
+            return;
+        }
+
+        if (map.Biome.inVacuum) {
+            Log.Message("In the vacuum of space. Not running");
+            dontRunAnything = true;
+            return;
+        }
+
+        mapArea = map.Area;
+        doCoast = map.Tile.Tile.IsCoastal;
+        biomeSettings = map.Biome.GetModExtension<BiomeSeasonalSettings>();
+        frostGridComponent = map.GetComponent<FrostGrid>();
+        location = Find.WorldGrid.LongLatOf(map.Tile);
+        UpdateBiomeSettings(true);
+
+        frostNoise = new Perlin(0.039999999105930328, 2.0, 0.5, 5,
+            Rand.Range(0, 651431), QualityMode.Medium);
+        
+        RebuildCellLists();
+    }
 
     public override void MapComponentTick() {
         if (dontRunAnything) {
@@ -81,7 +106,7 @@ public class Watcher(Map map) : MapComponent(map)
             //set up humidity
             outdoorTemp = map.mapTemperature.OutdoorTemp;
             currentRainRate = map.weatherManager.curWeather.rainRate;
-            currentSnowRate =  map.weatherManager.curWeather.snowRate;
+            currentSnowRate = map.weatherManager.curWeather.snowRate;
             isRaining = currentRainRate > 0;
             var baseHumidity = (map.TileInfo.rainfall + 1) * (map.TileInfo.temperature + 1) *
                                (map.TileInfo.swampiness + 1);
@@ -105,7 +130,7 @@ public class Watcher(Map map) : MapComponent(map)
             }
         }
 
-        
+
         IReadOnlyList<Pawn> allPawnsSpawned = map.mapPawns.AllPawnsSpawned;
 
         //Clear the list of valid pawns if it gets too large
@@ -139,41 +164,12 @@ public class Watcher(Map map) : MapComponent(map)
         base.ExposeData();
 
         Scribe_Values.Look(ref regenCellLists, "regenCellLists", true, true);
-
         Scribe_Collections.Look(ref activeSprings, "TKKN_activeSprings", LookMode.Value, LookMode.Deep);
         Scribe_Collections.Look(ref cellWeatherAffects, "cellWeatherAffects", LookMode.Value, LookMode.Deep);
         Scribe_Values.Look(ref floodThreat, "floodThreat", 0, true);
         Scribe_Values.Look(ref tideLevel, "tideLevel", 0, true);
         Scribe_Values.Look(ref ticks, "ticks", 0, true);
         Scribe_Values.Look(ref totalPuddles, "totalPuddles", totalPuddles, true);
-    }
-
-    public override void FinalizeInit() {
-        base.FinalizeInit();
-        if (map.IsPocketMap) {
-            Log.Message("This is a pocket map. Nothing is running");
-            dontRunAnything = true;
-            return;
-        }
-
-        if (map.Biome.inVacuum) {
-            Log.Message("In the vacuum of space. Not running");
-            dontRunAnything = true;
-            return;
-        }
-
-        mapArea = map.Area;
-        doCoast = map.Tile.Tile.IsCoastal;
-        biomeSettings = map.Biome.GetModExtension<BiomeSeasonalSettings>();
-        frostGridComponent = map.GetComponent<FrostGrid>();
-        location = Find.WorldGrid.LongLatOf(map.Tile);
-        UpdateBiomeSettings(true);
-
-        frostNoise = new Perlin(0.039999999105930328, 2.0, 0.5, 5,
-            Rand.Range(0, 651431), QualityMode.Medium);
-        
-
-        RebuildCellLists();
     }
 
 
@@ -192,7 +188,6 @@ public class Watcher(Map map) : MapComponent(map)
         */
 
         if (regenCellLists) {
-
             Rot4 rot = Find.World.CoastDirectionAt(map.Tile);
 
             IEnumerable<IntVec3>
@@ -214,7 +209,8 @@ public class Watcher(Map map) : MapComponent(map)
                 if (cell.originalTerrain != null) {
                     cell.originalTerrain = terrain;
                 }
-                var frostVal = frostNoise.GetValue(c)+1;
+
+                var frostVal = frostNoise.GetValue(c) + 1;
                 frostVal += 1f;
                 frostVal *= 0.5f;
                 if (frostVal < 0.5f) {
@@ -345,8 +341,8 @@ public class Watcher(Map map) : MapComponent(map)
     }
 
     private void SpawnSpecialElements(IntVec3 c) {
-        
         //defaults
+        return;
         var maxSprings = 3;
         var springSpawnChance = .8f;
 
@@ -465,7 +461,7 @@ public class Watcher(Map map) : MapComponent(map)
                 if (flood == FloodType.Low) {
                     cell.terrainOverride = TerrainType.Dry;
                 }
-                else if(flood !=FloodType.High) {
+                else if (flood != FloodType.High) {
                     if (i >= HowManyFloodSteps / 2) {
                         cell.terrainOverride = TerrainType.Dry;
                     }
@@ -628,7 +624,7 @@ public class Watcher(Map map) : MapComponent(map)
         }
 
         if (Settings.makePuddles) {
-            if (cell.howWet == 3 && (outdoorTemp>2 && MaxPuddles > totalPuddles &&
+            if (cell.howWet == 3 && (outdoorTemp > 2 && MaxPuddles > totalPuddles &&
                                      currentTerrain != TerrainDefOf.TKKN_SandBeachWetSalt)) {
                 FilthMaker.TryMakeFilth(c, map, ThingDefOf.TKKN_FilthPuddle);
                 totalPuddles++;
@@ -656,10 +652,7 @@ public class Watcher(Map map) : MapComponent(map)
     }
 
     private void CreepFrostAt(cellData c, float baseAmount) {
-
-
         var depthToAdd = baseAmount * c.frostNoise;
-
         frostGridComponent.AddDepth(c, depthToAdd);
     }
 

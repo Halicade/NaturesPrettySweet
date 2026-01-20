@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+    <TileMutatorDef>
+        <defName>NPS_HotSpringMutator</defName>
+        <label>hot spring</label>
+        <description>Hot springs can be found in the area. These provide rest and improve injuries.</description>
+        <categories>
+            <li>Lake</li>
+        </categories>
+        <chanceOnNonLandmarkTile>1</chanceOnNonLandmarkTile>
+        <extraGenSteps>
+            <li>NPS_HotSpring</li>
+            <li>NPS_PostSpringPlants</li>
+        </extraGenSteps>
+        <biomeBlacklist>
+            <li>TKKN_VolcanicFlow</li>
+            <li>Ocean</li>
+            <li>SeaIce</li>
+            <li>TKKN_Desert</li>
+            <li>Desert</li>
+            <li>TKKN_Oasis</li>
+        </biomeBlacklist>
+        <averageTemperatureRange>-999~17.5</averageTemperatureRange>
+        <coastSidesRange>0~0</coastSidesRange>
+    </TileMutatorDef>
+
+    <TileMutatorDef>
+        <defName>NPS_ColdSpringMutator</defName>
+        <label>cold spring</label>
+        <description>Cold springs can be found in the area. These provide rest and improve injuries.</description>
+        <categories>
+            <li>Lake</li>
+        </categories>
+        <chanceOnNonLandmarkTile>1</chanceOnNonLandmarkTile>
+        <extraGenSteps>
+            <li>NPS_ColdSpring</li>
+            <li>NPS_PostSpringPlants</li>
+        </extraGenSteps>
+        <biomeBlacklist>
+            <li>TKKN_VolcanicFlow</li>
+            <li>Ocean</li>
+            <li>SeaIce</li>
+            <li>TKKN_Desert</li>
+            <li>Desert</li>
+            <li>TKKN_Oasis</li>
+        </biomeBlacklist>
+        <averageTemperatureRange>17.51~999</averageTemperatureRange>
+        <coastSidesRange>0~0</coastSidesRange>
+    </TileMutatorDef>
+    
+</Defs>

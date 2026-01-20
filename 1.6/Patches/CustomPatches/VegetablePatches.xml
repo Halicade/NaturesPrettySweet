@@ -7,12 +7,12 @@
         <patchOp Class="PatchOperationAdd">
             <xpath>Defs/ThingDef[defName = "TKKN_PlantWildRice"]/plant/wildBiomes</xpath>
             <value>
-                <TemperateForest>0.5</TemperateForest>
-                <TemperateSwamp>0.5</TemperateSwamp>
-                <TropicalRainforest>0.5</TropicalRainforest>
-                <TropicalSwamp>0.7</TropicalSwamp>
-                <TKKN_Grasslands>0.6</TKKN_Grasslands>
-                <TKKN_Oasis>0.6</TKKN_Oasis>
+                <TemperateForest>0.3</TemperateForest>
+                <TemperateSwamp>0.3</TemperateSwamp>
+                <TropicalRainforest>0.3</TropicalRainforest>
+                <TropicalSwamp>0.3</TropicalSwamp>
+                <TKKN_Grasslands>0.3</TKKN_Grasslands>
+                <TKKN_Oasis>0.3</TKKN_Oasis>
                 <TKKN_Savanna>2.2</TKKN_Savanna>
             </value>
 

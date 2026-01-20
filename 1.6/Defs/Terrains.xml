@@ -156,6 +156,7 @@
     <waterDepthShader>Map/WaterDepth</waterDepthShader>
     <renderPrecedence>394</renderPrecedence>
     <driesTo>Gravel</driesTo>
+    <waterBodyType>Other</waterBodyType>
     <statBases>
       <Beauty>+2</Beauty>
     </statBases>
@@ -171,6 +172,7 @@
     <waterDepthShader>Map/WaterDepth</waterDepthShader>
     <renderPrecedence>395</renderPrecedence>
     <driesTo>Gravel</driesTo>
+    <waterBodyType>Other</waterBodyType>
     <statBases>
       <Beauty>+2</Beauty>
     </statBases>
@@ -185,6 +187,7 @@
     <waterDepthShader>Map/WaterDepth</waterDepthShader>
     <renderPrecedence>394</renderPrecedence>
     <driesTo>Gravel</driesTo>
+    <waterBodyType>Other</waterBodyType>
     <statBases>
       <Beauty>+2</Beauty>
     </statBases>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Defs>
   <RecipeDef>
-    <defName>TKKN_ConvertRedwood</defName>
+    <defName>NPS_ConvertRedwood</defName>
     <label>convert redwood to regular wood</label>
     <description>Convert Redwood to regular wood. This process is not reversible.</description>
     <jobString>converting wood.</jobString>

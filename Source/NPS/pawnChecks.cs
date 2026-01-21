@@ -174,8 +174,8 @@ public static class PawnChecks
     private static void makeBreath(Pawn pawn, Map map, bool doBreathCheck) {
         if (!doBreathCheck || !Settings.showCold)
             return;
-        if (pawn.Position.GetTemperature(map) >= 3f &&
-            (!ModsConfig.OdysseyActive ||
+        if (pawn.Position.GetTemperature(map) >= 3f ||
+            (ModsConfig.OdysseyActive &&
              pawn.GetStatValue(StatDefOf.VacuumResistance, cacheStaleAfterTicks: 60) > 0.95)) {
             return;
         }

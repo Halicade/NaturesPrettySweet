@@ -9,6 +9,7 @@ namespace TKKN_NPS;
 public class cellData : IExposable
 {
     private const int packAt = 750;
+    private const int packAtSmooth = packAt * 10;
     private const int unpack = packAt / 2;
     public TerrainDef baseTerrain;
     public HashSet<int> floodLevel = [];
@@ -263,13 +264,16 @@ public class cellData : IExposable
     }
 
     public void Unpack() {
-        if (howPacked > 0) {
-            howPacked--;
-        }
-        else {
+        if (howPacked > 10000) {
+            howPacked = 10000;
             return;
         }
 
+        if (howPacked <= 0) {
+            return;
+        }
+        
+        howPacked--;
         if (howPacked <= unpack) {
             if (currentTerrain == TerrainDefOf.TKKN_DirtPath) {
                 changeTerrain(RimWorld.TerrainDefOf.Soil);
@@ -278,39 +282,39 @@ public class cellData : IExposable
                 changeTerrain(RimWorld.TerrainDefOf.Sand);
             }
         }
+        
     }
 
     /// <summary>
     /// This method currently has a weird thing where if you remove a packed path
-    /// (You can, and we want the user to do this) it will change back to a packed path after being stepped on
+    /// (You can, and we want the user to do the above)
+    /// It will change back to a packed path after being stepped on
+    /// Unsure how to address this part.
     /// </summary>
     public void DoPack() {
-        if (!TerrainTagUtil.canBePacked.Contains(baseTerrain)) {
+        var terrain = currentTerrain;
+        if (!TerrainTagUtil.canBePacked.Contains(terrain)) {
             return;
         }
-
-        howPacked++;
-
 
         //don't pack if there's a growing zone.
         if (map.zoneManager.ZoneAt(location) is Zone_Growing) {
             return;
         }
 
+        howPacked++;
+        if (howPacked <= packAt) {
+            return;
+        }
 
-        if (howPacked > packAt) {
-            if (baseTerrain == RimWorld.TerrainDefOf.Soil) {
-                changeTerrain(TerrainDefOf.TKKN_DirtPath);
-                baseTerrain = TerrainDefOf.TKKN_DirtPath;
-            }
-            else if (baseTerrain == RimWorld.TerrainDefOf.Sand) {
-                changeTerrain(TerrainDefOf.TKKN_SandPath);
-                baseTerrain = TerrainDefOf.TKKN_SandPath;
-            }
-            else if (baseTerrain.smoothedTerrain != null && howPacked > packAt * 10) {
-                changeTerrain(baseTerrain.smoothedTerrain);
-                baseTerrain = baseTerrain.smoothedTerrain;
-            }
+        if (terrain == RimWorld.TerrainDefOf.Soil) {
+            changeTerrain(TerrainDefOf.TKKN_DirtPath);
+        }
+        else if (terrain == RimWorld.TerrainDefOf.Sand) {
+            changeTerrain(TerrainDefOf.TKKN_SandPath);
+        }
+        else if (terrain.smoothedTerrain != null && howPacked > packAtSmooth) {
+            changeTerrain(terrain.smoothedTerrain);
         }
     }
 

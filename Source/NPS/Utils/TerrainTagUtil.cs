@@ -24,6 +24,8 @@ public static class TerrainTagUtil
         List<TerrainDef> allTerrains = DefDatabase<TerrainDef>.AllDefsListForReading;
         canBePacked.Add(RimWorld.TerrainDefOf.Soil);
         canBePacked.Add(RimWorld.TerrainDefOf.Sand);
+        canBePacked.Add(TerrainDefOf.TKKN_DirtPath);
+        canBePacked.Add(TerrainDefOf.TKKN_SandPath);
         
         foreach (var terrain in allTerrains) {
             if (terrain.HasTag("TKKN_Wet")) {

@@ -5,7 +5,6 @@ namespace TKKN_NPS;
 public class TerrainWeatherReactions : DefModExtension
 {
     public TerrainDef floodTerrain;
-    public int freezeAt;
     public freezeTerrain freezeTerrain;
     public bool holdFrost;
     public bool isSalty;

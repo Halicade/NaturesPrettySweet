@@ -4,7 +4,6 @@ namespace TKKN_NPS;
 
 public class TerrainWeatherReactions : DefModExtension
 {
-    public TerrainDef dryTerrain; //perm fix for wet soils getting bugged
     public TerrainDef floodTerrain;
     public int freezeAt;
     public freezeTerrain freezeTerrain;

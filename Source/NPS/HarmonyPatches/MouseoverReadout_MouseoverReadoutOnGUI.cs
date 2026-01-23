@@ -88,10 +88,6 @@ internal class MouseoverReadout_MouseoverReadoutOnGUI
                     label5 += $" | T Wet {weatherExt.wetTerrain}";
                 }
 
-                if (weatherExt.dryTerrain != null) {
-                    label5 += $" | T Dry {weatherExt.dryTerrain}";
-                }
-
                 if (weatherExt.freezeTerrain?.terrain != null) {
                     label5 += $" | T Freeze {weatherExt.freezeTerrain.terrain}";
                 }

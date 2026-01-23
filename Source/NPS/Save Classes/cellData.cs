@@ -25,6 +25,7 @@ public class cellData : IExposable
     public IntVec3 location;
     public Map map;
     public TerrainDef originalTerrain;
+    private TerrainDef driedTerrain;
 
     public TerrainType? terrainOverride;
     public float temperature = -9999;
@@ -52,7 +53,7 @@ public class cellData : IExposable
         Scribe_Values.Look(ref location, "location", location, true);
         Scribe_Values.Look(ref temperature, "temperature", -999, true);
         Scribe_Defs.Look(ref baseTerrain, "baseTerrain");
-
+        Scribe_Defs.Look(ref driedTerrain, "driedTerrain");
         Scribe_Defs.Look(ref originalTerrain, "originalTerrain");
     }
 
@@ -67,19 +68,20 @@ public class cellData : IExposable
             return;
         }
 
-        var weatherExtension = Weather;
-        if (weatherExtension == null) {
+        if (!TerrainTagUtil.TerrainWetAt.TryGetValue(thisTerrain, out var wetAt)) {
             return;
         }
 
-        if (howWet > weatherExtension.wetAt) {
+        if (howWet > wetAt) {
             map.terrainGrid.SetTerrain(location, wetTerrain);
+            driedTerrain = thisTerrain;
             isWet = true;
             rainSpawns();
         }
         else if (howWet == 0) {
             isWet = false;
             howWet = -1;
+            driedTerrain = thisTerrain;
         }
     }
 
@@ -94,19 +96,14 @@ public class cellData : IExposable
             return;
         }
 
-        if (!TerrainTagUtil.DryTerrain.TryGetValue(thisTerrain, out TerrainDef dryTerrain)) {
+        if (!TerrainTagUtil.TerrainWetAt.TryGetValue(thisTerrain, out var wetAt))
             return;
-        }
 
-        var weatherExtension = Weather;
-        if (weatherExtension == null) {
-            return;
-        }
-
-        if (howWet <= weatherExtension.wetAt) {
-            map.terrainGrid.SetTerrain(location, dryTerrain);
+        if (howWet <= wetAt) {
+            map.terrainGrid.SetTerrain(location, driedTerrain);
             isWet = false;
             howWet = -1;
+            driedTerrain = null;
         }
     }
 
@@ -121,19 +118,17 @@ public class cellData : IExposable
         }
 
         TerrainDef thisTerrain = currentTerrain;
-        if (!TerrainTagUtil.FreezeAt.TryGetValue(thisTerrain, out int freezeAt))
+        if (!TerrainTagUtil.FreezeTerrain.TryGetValue(thisTerrain, out var frozenTerrain))
             return;
 
-        if (temperature > freezeAt)
+        if (temperature > frozenTerrain.freezeAt)
             return;
         if (!Rand.Chance(0.05f))
             return;
-
-
-        if (TerrainTagUtil.FreezeTerrain.TryGetValue(thisTerrain, out var freezeTerrain)) {
-            map.terrainGrid.SetTerrain(location, freezeTerrain);
-            isFrozen = true;
-        }
+        
+        map.terrainGrid.SetTerrain(location, frozenTerrain.terrain);
+        isFrozen = true;
+        
     }
 
     public void TrySetTerrainThawed() {
@@ -209,7 +204,7 @@ public class cellData : IExposable
 
         if (isFrozen) {
             if (TerrainTagUtil.FreezeTerrain.TryGetValue(thisTerrain, out var freezeTerrain)) {
-                changeTerrain(freezeTerrain);
+                changeTerrain(freezeTerrain.terrain);
             }
         }
         else if (terrainOverride == TerrainType.Dry) {
@@ -293,7 +288,7 @@ public class cellData : IExposable
     /// </summary>
     public void DoPack() {
         var terrain = currentTerrain;
-        if (!TerrainTagUtil.canBePacked.Contains(terrain)) {
+        if (!TerrainTagUtil.CanBePacked.Contains(terrain)) {
             return;
         }
 

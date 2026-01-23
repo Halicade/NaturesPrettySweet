@@ -60,6 +60,7 @@ internal class MouseoverReadout_MouseoverReadoutOnGUI
         num += 19f;
 
         if (watcher.cellWeatherAffects.TryGetValue(c, out var cell)) {
+            var currentTerrain = cell.currentTerrain;
             rect = new Rect(botLeft.x, UI.screenHeight - botLeft.y - num, 999f, 999f);
             var label2 = $"Temperature: {cell.temperature}";
             Widgets.Label(rect, label2);
@@ -67,13 +68,13 @@ internal class MouseoverReadout_MouseoverReadoutOnGUI
 
             rect = new Rect(botLeft.x, UI.screenHeight - botLeft.y - num, 999f, 999f);
             var label4 =
-                $"Cell Info: Base Terrain {cell.baseTerrain.defName} Current Terrain {cell.currentTerrain.defName} | Wet {cell.isWet} | Flooded {cell.isFlooded} | Frozen {cell.isFrozen}";
+                $"Cell Info: Base Terrain {cell.baseTerrain.defName} Current Terrain {currentTerrain.defName} | Wet {cell.isWet} | Flooded {cell.isFlooded} | Frozen {cell.isFrozen}";
             Widgets.Label(rect, label4);
             num += 19f;
 
             rect = new Rect(botLeft.x, UI.screenHeight - botLeft.y - num, 999f, 999f);
             var label6 =
-                $"TKKN_Wet {TerrainTagUtil.TKKN_Wet.Contains(cell.currentTerrain)}TKKN_Swim {TerrainTagUtil.TKKN_Swim.Contains(cell.currentTerrain)}";
+                $"TKKN_Wet {TerrainTagUtil.TKKN_Wet.Contains(currentTerrain)}TKKN_Swim {TerrainTagUtil.TKKN_Swim.Contains(currentTerrain)}";
             Widgets.Label(rect, label6);
             num += 19f;
 
@@ -84,20 +85,20 @@ internal class MouseoverReadout_MouseoverReadoutOnGUI
             var weatherExt = cell.Weather;
             if (weatherExt != null) {
                 if (weatherExt.wetTerrain != null) {
-                    label5 += $" | T Wet {weatherExt.wetTerrain.defName}";
+                    label5 += $" | T Wet {weatherExt.wetTerrain}";
                 }
 
                 if (weatherExt.dryTerrain != null) {
-                    label5 += $" | T Dry {weatherExt.dryTerrain.defName}";
+                    label5 += $" | T Dry {weatherExt.dryTerrain}";
                 }
 
-                if (weatherExt.freezeTerrain != null) {
-                    label5 += $" | T Freeze {weatherExt.freezeTerrain.defName}";
+                if (weatherExt.freezeTerrain?.terrain != null) {
+                    label5 += $" | T Freeze {weatherExt.freezeTerrain.terrain}";
                 }
             }
 
             if (cell.originalTerrain != null) {
-                label5 += $" | Orig Terrain {cell.originalTerrain.defName}";
+                label5 += $" | Orig Terrain {cell.originalTerrain}";
             }
 
             Widgets.Label(rect, label5);

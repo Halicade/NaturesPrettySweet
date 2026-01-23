@@ -59,7 +59,9 @@
     <value>
       <li Class="TKKN_NPS.TerrainWeatherReactions">
         <wetTerrain>WaterShallow</wetTerrain>
-        <freezeTerrain>TKKN_MuddyIce</freezeTerrain>
+        <freezeTerrain>
+          <terrain>TKKN_MuddyIce</terrain>
+        </freezeTerrain>
         <wetAt>1</wetAt>
         <holdFrost>True</holdFrost>
       </li>
@@ -105,22 +107,25 @@
     <value>
       <li Class="TKKN_NPS.TerrainWeatherReactions">
         <floodTerrain>WaterShallow</floodTerrain>
-        <wetTerrain />
-        <freezeTerrain>TKKN_MuddyIce</freezeTerrain>
+        <freezeTerrain>
+          <terrain>TKKN_MuddyIce</terrain>
+        </freezeTerrain>
         <holdFrost>True</holdFrost>
       </li>
     </value>
   </Operation>
   <Operation Class="PatchOperationAddModExtension">
-      <xpath>Defs/TerrainDef[defName = "Riverbank"]</xpath>
-      <value>
-          <li Class="TKKN_NPS.TerrainWeatherReactions">
-              <floodTerrain>WaterShallow</floodTerrain>
-              <freezeTerrain>TKKN_MuddyIce</freezeTerrain>
-              
-              <holdFrost>True</holdFrost>
-          </li>
-      </value>
+    <xpath>Defs/TerrainDef[defName = "Riverbank"]</xpath>
+    <value>
+      <li Class="TKKN_NPS.TerrainWeatherReactions">
+        <floodTerrain>WaterShallow</floodTerrain>
+        <freezeTerrain>
+          <terrain>TKKN_MuddyIce</terrain>
+        </freezeTerrain>
+
+        <holdFrost>True</holdFrost>
+      </li>
+    </value>
   </Operation>
   <Operation Class="PatchOperationAdd">
     <xpath>Defs/TerrainDef[defName = "Riverbank"]/tags</xpath>
@@ -142,8 +147,9 @@
     <value>
       <li Class="TKKN_NPS.TerrainWeatherReactions">
         <floodTerrain>Marsh</floodTerrain>
-        <freezeTerrain>TKKN_MuddyIce</freezeTerrain>
-        
+        <freezeTerrain>
+          <terrain>TKKN_MuddyIce</terrain>
+        </freezeTerrain>
       </li>
     </value>
   </Operation>
@@ -152,7 +158,9 @@
     <value>
       <li Class="TKKN_NPS.TerrainWeatherReactions">
         <floodTerrain>Marsh</floodTerrain>
-        <freezeTerrain>TKKN_MuddyIce</freezeTerrain>
+        <freezeTerrain>
+          <terrain>TKKN_MuddyIce</terrain>
+        </freezeTerrain>
         <holdFrost>True</holdFrost>
         <dryTerrain>MossyTerrain</dryTerrain>
       </li>

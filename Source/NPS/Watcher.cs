@@ -50,7 +50,6 @@ public class Watcher(Map map) : MapComponent(map)
     private List<List<IntVec3>> tideCellsList = [];
     private int tideLevel; // 0 - 13
     private int totalPuddles;
-    private int totalSprings;
 
     private float wetPlantsValue;
 
@@ -65,7 +64,7 @@ public class Watcher(Map map) : MapComponent(map)
     private bool isRaining;
 
     /* STANDARD STUFF */
-    
+
     public override void FinalizeInit() {
         base.FinalizeInit();
         if (map.IsPocketMap) {
@@ -89,7 +88,7 @@ public class Watcher(Map map) : MapComponent(map)
 
         frostNoise = new Perlin(0.039999999105930328, 2.0, 0.5, 5,
             Rand.Range(0, 651431), QualityMode.Medium);
-        
+
         RebuildCellLists();
     }
 
@@ -338,7 +337,7 @@ public class Watcher(Map map) : MapComponent(map)
 
         GenSpawn.Spawn(barnaclePlant, c, map);
     }
-    
+
 
     private static IntVec3 AdjustForRotation(Rot4 rot, IntVec3 cell, int j) {
         var newDirection = new IntVec3(cell.x, cell.y, cell.z);

@@ -262,7 +262,6 @@ public class Watcher(Map map) : MapComponent(map)
                 }
 
                 //Spawn special elements:
-                SpawnSpecialElements(c);
                 SpawnSpecialPlants(c);
 
                 cellWeatherAffects[c] = cell;
@@ -339,53 +338,7 @@ public class Watcher(Map map) : MapComponent(map)
 
         GenSpawn.Spawn(barnaclePlant, c, map);
     }
-
-    private void SpawnSpecialElements(IntVec3 c) {
-        //defaults
-        return;
-        var maxSprings = 3;
-        var springSpawnChance = .8f;
-
-        if (biomeSettings != null) {
-            maxSprings = biomeSettings.maxSprings;
-            springSpawnChance = biomeSettings.springSpawnChance;
-        }
-
-        if (!Settings.doSprings) {
-            maxSprings = 0;
-            springSpawnChance = 0;
-        }
-
-        foreach (var element in DefDatabase<ElementSpawnDef>.AllDefs) {
-            var isSpring = element.thingDef.defName.Contains("Spring");
-
-            if (isSpring && maxSprings <= totalSprings) {
-                continue;
-            }
-
-            if (element.forbiddenBiomes.Contains(map.Biome)) {
-                continue;
-            }
-
-            if (!element.allowedBiomes.Contains(map.Biome)) {
-                continue;
-            }
-
-
-            if (isSpring && Rand.Value < springSpawnChance) {
-                var thing = ThingMaker.MakeThing(element.thingDef);
-                GenSpawn.Spawn(thing, c, map);
-                totalSprings++;
-            }
-
-            if (isSpring || !(Rand.Value < .0001f)) {
-                continue;
-            }
-
-            var elementThing = ThingMaker.MakeThing(element.thingDef);
-            GenSpawn.Spawn(elementThing, c, map);
-        }
-    }
+    
 
     private static IntVec3 AdjustForRotation(Rot4 rot, IntVec3 cell, int j) {
         var newDirection = new IntVec3(cell.x, cell.y, cell.z);

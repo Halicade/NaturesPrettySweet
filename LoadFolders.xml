@@ -7,10 +7,12 @@
     <li>Source/Assets</li>
     <li IfModActive="Ludeon.Rimworld.Odyssey">1.6/DLC/Odyssey</li>
     <li IfModActive="acpteam.acpvanillastyle" IfModNotActive="Ludeon.Rimworld.Odyssey">1.6/Mods/AnimalCollabProjectNoOdyssey</li>
+    <li IfModActive="sarg.alphaanimals">1.6/Mods/AlphaAnimals</li>
     <li IfModActive="mlie.jurassicrimworlddinosaursonly,Mlie.JurassicRimworld">1.6/Mods/JurassicRimworld</li>
+    <li IfModActive="mlie.starwarsanimalcollection">1.6/Mods/StarWarsAnimals</li>
     <li IfModActive="BiomesTeam.BiomesPollutedLands">1.6/Mods/BiomesPollutedLands</li>
     <li IfModActiveAll="sarg.alphabiomes,Ludeon.Rimworld.Odyssey">1.6/Mods/AlphaBiomesOdyssey</li>
-    <li IfModActive="WildPlants_Base">1.6/Mods/LandmarksExpanded</li>
+    <li IfModActive="vanillaexpanded.vexploratione">1.6/Mods/LandmarksExpanded</li>
     <li IfModActive="regrowth.botr.core">1.6/Mods/Regrowth</li>
     <li IfModActive="regrowth.botr.core">1.6/Mods/WMBPRegrowth</li>
     <li IfModActive="zal.wmbp">WMBPRegrowth</li>

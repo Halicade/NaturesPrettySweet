@@ -3,12 +3,7 @@
     <Operation Class="PatchOperationAdd">
         <xpath>Defs/ThingDef[defName="JRWBernicia"]/comps</xpath>
         <value>
-            <li Class="TKKN_NPS.CompProperties_DeadlySalt">
-                <deadlyTerrain>
-                    <li>TKKN_SaltField</li>
-                    <li>TKKN_Salted_Earth</li>
-                </deadlyTerrain>
-            </li>
+            <li Class="TKKN_NPS.CompProperties_DeadlySalt"/>
         </value>
     </Operation>
 </Patch>

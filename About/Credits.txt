@@ -1,0 +1,4 @@
+This document will contain credits for all textures or other resources I (Halicade) used in the process of updating this mod.
+Bradsons Patch Operation Collection
+https://github.com/bbradson/Patch-Operation-Collection
+Uses the postInheritance patch

@@ -168,7 +168,7 @@ public class cellData : IExposable
             baseTerrain = thisTerrain;
         }
 
-        if (TerrainTagUtil.TerrainHasModExtension.Contains(baseTerrain)) {
+        if (!TerrainTagUtil.TerrainHasModExtension.Contains(baseTerrain)) {
             return;
         }
 

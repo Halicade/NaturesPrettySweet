@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/ThingDef[defName="GraniteSlug"]/comps</xpath>
+        <value>
+            <li Class="TKKN_NPS.CompProperties_DeadlySalt"/>
+        </value>
+    </Operation>
+</Patch>

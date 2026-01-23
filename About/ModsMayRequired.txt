@@ -1,4 +1,5 @@
-﻿Mods that have MayRequires somewhere in this mod.
+﻿Mods that have been MayRequired somewhere in this mod.
+
 Animal mods:
 ABF: Synstruct Biomimetics killathon.artificialbeings.syncore.biomimetics https://steamcommunity.com/sharedfiles/filedetails/?id=3288479776
 Alpha Animals sarg.alphaanimals https://steamcommunity.com/sharedfiles/filedetails/?id=1541721856
@@ -6,10 +7,12 @@ Animal Collab Project Vanilla-Style acpteam.acpvanillastyle https://steamcommuni
 BIRD UP! Continued dizzy.birdup.allinone https://steamcommunity.com/sharedfiles/filedetails/?id=3529627105
 BIRD UP!+ tyrannidae.birdupplus https://steamcommunity.com/sharedfiles/filedetails/?id=3529981601
 Biomes! Polluted Lands biomesteam.biomespollutedlands https://steamcommunity.com/sharedfiles/filedetails/?id=3390196656
+Biomes! Prehistoric biomesteam.biomesprehistoric https://steamcommunity.com/sharedfiles/filedetails/?id=2860715703
 Birds Beyond (Continued) mlie.birdsbeyond https://steamcommunity.com/sharedfiles/filedetails/?id=3263608515
 Birds of the World! tyrannidae.birdsoftheworld https://steamcommunity.com/sharedfiles/filedetails/?id=3245417989
 Creatures of the Vael ellenot.vaelkorrcreatures https://steamcommunity.com/sharedfiles/filedetails/?id=3568419088
 Dark Ages : Beasts and Monsters van.beasts https://steamcommunity.com/sharedfiles/filedetails/?id=3472275628
+Dragons Descent onyxae.dragonsdescent https://steamcommunity.com/sharedfiles/filedetails/?id=2026992161
 Erin's Azaphrae - Biotech Ver. erin.azaphraebiotech https://steamcommunity.com/sharedfiles/filedetails/?id=3035240271
 Erin's Fluffy Fauna erin.fluffyfauna https://steamcommunity.com/sharedfiles/filedetails/?id=3521909777
 Erin's Fox Squirrel erin.foxsquirrel https://steamcommunity.com/sharedfiles/filedetails/?id=2092951979
@@ -29,6 +32,10 @@ Little Critters tyrannidae.littlecritters https://steamcommunity.com/sharedfiles
 Medieval Overhaul dankpyon.medieval.overhaul https://steamcommunity.com/sharedfiles/filedetails/?id=3219596926
 Megafauna spino.megafauna https://steamcommunity.com/sharedfiles/filedetails/?id=1055485938
 Monster Mash (Continued) zal.monstermash https://steamcommunity.com/sharedfiles/filedetails/?id=3175345611
+More Birds - Conures 11bullets.conures https://steamcommunity.com/sharedfiles/filedetails/?id=3552132388
+More Birds - Doves 11bullets.dovesandpigeons https://steamcommunity.com/sharedfiles/filedetails/?id=3557967460
+More Birds - Songbirds 11bullets.songbirds https://steamcommunity.com/sharedfiles/filedetails/?id=3555975161
+Multilopes Expanded dtf.multilopesexpanded https://steamcommunity.com/sharedfiles/filedetails/?id=3513469833
 Mythic Ages: Megafauna Bestiary veterano.mythicages.megafaunabestiary https://steamcommunity.com/sharedfiles/filedetails/?id=3537788184
 Pygmy muffalo dismarzero.vgp.pygmymuffalo https://steamcommunity.com/sharedfiles/filedetails/?id=1885527800
 Rare Animals Expanded : The BrainRot Animals febvre.thebrianrotanimals.core https://steamcommunity.com/sharedfiles/filedetails/?id=3538484053
@@ -37,29 +44,36 @@ ReGrowth: Extinct Animals (Continued) mlie.regrowthextinctanimals https://steamc
 RimBeast (Continued) mlie.rimbeast https://steamcommunity.com/sharedfiles/filedetails/?id=2114991205
 Rimcraft Reborn Beta rimcraftreborn.betatest https://steamcommunity.com/sharedfiles/filedetails/?id=3599879749
 Rimtroid: Universal rt.universal https://steamcommunity.com/sharedfiles/filedetails/?id=3618242371
+Star Wars Animal Collection (Continued) mlie.starwarsanimalcollection https://steamcommunity.com/sharedfiles/filedetails/?id=3497316713
 Synthetic Animals (Continued) zal.syntheticanimals https://steamcommunity.com/sharedfiles/filedetails/?id=3171141566
 Terror Avis (Continued) zal.terroravis https://steamcommunity.com/sharedfiles/filedetails/?id=3627086683
 The Profaned botchjob.profaned https://steamcommunity.com/sharedfiles/filedetails/?id=3202008037
 Vanilla Animals Expanded vanillaexpanded.vanillaanimalsexpanded https://steamcommunity.com/sharedfiles/filedetails/?id=2871933948
 Vanilla Animals Expanded — Waste Animals vanillaexpanded.vaewaste https://steamcommunity.com/sharedfiles/filedetails/?id=2962126499
 [Ry]Rimcraft Animals (Continued) zal.rimcraftanimals https://steamcommunity.com/sharedfiles/filedetails/?id=3599363187
-Dragons Descent onyxae.dragonsdescent https://steamcommunity.com/sharedfiles/filedetails/?id=2026992161
 
 
 Plants:
 Biomes! Polluted Lands biomesteam.biomespollutedlands https://steamcommunity.com/sharedfiles/filedetails/?id=3390196656
 Flowers (Continued) mlie.flowers https://steamcommunity.com/sharedfiles/filedetails/?id=2025555200
 VGP Xtra Trees and Flowers dismarzero.vgp.xtratreesandflowers https://steamcommunity.com/sharedfiles/filedetails/?id=2007064094
+Biomes! Prehistoric biomesteam.biomesprehistoric https://steamcommunity.com/sharedfiles/filedetails/?id=2860715703
 
 Misc mods:
 // Tile mutators
 Alpha Biomes sarg.alphabiomes https://steamcommunity.com/sharedfiles/filedetails/?id=1841354677
-// Fireflies
+
 FirefliesTwo scurvyez.firefliestwo https://steamcommunity.com/sharedfiles/filedetails/?id=3347026598
+
 // Prevent Oasis on oasis biome
 Geological Landforms m00nl1ght.GeologicalLandforms https://steamcommunity.com/sharedfiles/filedetails/?id=2773943594
+
 // Tile mutators
 Vanilla Landmarks Expanded vanillaexpanded.vexploratione
+
 // Boulders and map beautification
-World Map Beautification Project (Continued) zal.wmbp https://steamcommunity.com/sharedfiles/filedetails/?id=3266720501
 ReGrowth 2 regrowth.botr.core https://steamcommunity.com/sharedfiles/filedetails/?id=2260097569
+World Map Beautification Project (Continued) zal.wmbp https://steamcommunity.com/sharedfiles/filedetails/?id=3266720501
+
+// Odyssey fishing 
+Aqued Subnautica Fishes aqued.fishes https://steamcommunity.com/sharedfiles/filedetails/?id=3551489303

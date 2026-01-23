@@ -103,6 +103,8 @@
             <Plant_Berry>0.1</Plant_Berry>
             <TKKN_PlantCatTails>2.3</TKKN_PlantCatTails>
             <TKKN_PlantLilypad>2.2</TKKN_PlantLilypad>
+            <BMT_Horsetail MayRequire="biomesteam.biomesprehistoric">1.8</BMT_Horsetail>
+            <BMT_Clubmoss MayRequire="biomesteam.biomesprehistoric">0.3</BMT_Clubmoss>
 
             <!-- Pollution plants -->
             <Plant_GrayGrass MayRequire="Ludeon.RimWorld.Biotech">9</Plant_GrayGrass>
@@ -227,6 +229,67 @@
             <Silver_Dragon MayRequire="onyxae.dragonsdescent">0.001</Silver_Dragon>
             <Jade_Dragon MayRequire="onyxae.dragonsdescent">0.001</Jade_Dragon>
             <True_Dragon MayRequire="onyxae.dragonsdescent">0.001</True_Dragon>
+            <BlackCappedConure MayRequire="11bullets.conures">0.1</BlackCappedConure>
+            <CrimsonBelliedConure MayRequire="11bullets.conures">0.1</CrimsonBelliedConure>
+            <GoldenConure MayRequire="11bullets.conures">0.1</GoldenConure>
+            <NandayConure MayRequire="11bullets.conures">0.1</NandayConure>
+            <PineappleConure MayRequire="11bullets.conures">0.1</PineappleConure>
+            <SunConure MayRequire="11bullets.conures">0.1</SunConure>
+            <TurquoiseConure MayRequire="11bullets.conures">0.1</TurquoiseConure>
+            <DiamondDove MayRequire="11bullets.dovesandpigeons">0.35</DiamondDove>
+            <MourningDove MayRequire="11bullets.dovesandpigeons">0.3</MourningDove>
+            <RingneckDove MayRequire="11bullets.dovesandpigeons">0.6</RingneckDove>
+            <TurtleDove MayRequire="11bullets.dovesandpigeons">0.6</TurtleDove>
+            <BlueJay MayRequire="11bullets.songbirds">0.3</BlueJay>
+            <Cardinal MayRequire="11bullets.songbirds">0.3</Cardinal>
+            <Goldfinch MayRequire="11bullets.songbirds">0.5</Goldfinch>
+            <HouseFinch MayRequire="11bullets.songbirds">0.5</HouseFinch>
+            <Oriole MayRequire="11bullets.songbirds">0.3</Oriole>
+            <ZebraFinch MayRequire="11bullets.songbirds">0.7</ZebraFinch>
+            <MastiffPhalone MayRequire="mlie.starwarsanimalcollection">0.6</MastiffPhalone>
+            <Corinathoth MayRequire="mlie.starwarsanimalcollection">0.04</Corinathoth>
+            <Dactillion MayRequire="mlie.starwarsanimalcollection">0.2</Dactillion>
+            <Jamel MayRequire="mlie.starwarsanimalcollection">0.3</Jamel>
+            <Skalder MayRequire="mlie.starwarsanimalcollection">0.03</Skalder>
+            <Varactyl MayRequire="mlie.starwarsanimalcollection">0.04</Varactyl>
+            <Veermok MayRequire="mlie.starwarsanimalcollection">0.3</Veermok>
+            <Boarwolf MayRequire="mlie.starwarsanimalcollection">0.1</Boarwolf>
+            <Blurrg MayRequire="mlie.starwarsanimalcollection">0.12</Blurrg>
+            <Bordok MayRequire="mlie.starwarsanimalcollection">0.3</Bordok>
+            <dtf_Ambrolope MayRequire="dtf.multilopesexpanded">0.1</dtf_Ambrolope>
+            <dtf_Chocolope MayRequire="dtf.multilopesexpanded">0.2</dtf_Chocolope>
+            <dtf_Goldilope MayRequire="dtf.multilopesexpanded">0.2</dtf_Goldilope>
+            <dtf_Hyperlope MayRequire="dtf.multilopesexpanded">0.2</dtf_Hyperlope>
+            <dtf_Jadalope MayRequire="dtf.multilopesexpanded">0.2</dtf_Jadalope>
+            <dtf_Luciferilope MayRequire="dtf.multilopesexpanded">0.1</dtf_Luciferilope>
+            <dtf_Neutrolope MayRequire="dtf.multilopesexpanded">0.2</dtf_Neutrolope>
+            <dtf_Plasteelope MayRequire="dtf.multilopesexpanded">0.2</dtf_Plasteelope>
+            <dtf_Steelope MayRequire="dtf.multilopesexpanded">0.3</dtf_Steelope>
+            <dtf_Uranilope MayRequire="dtf.multilopesexpanded">0.2</dtf_Uranilope>
+            <dtf_Woodalope MayRequire="dtf.multilopesexpanded">0.3</dtf_Woodalope>
+            <dtf_vresanguophage_AnimalHemolope MayRequire="dtf.multilopesexpanded,vanillaracesexpanded.sanguophage">0.2</dtf_vresanguophage_AnimalHemolope>
+            <dtf_vresanguophage_CorpseHemolope MayRequire="dtf.multilopesexpanded,vanillaracesexpanded.sanguophage">0.2</dtf_vresanguophage_CorpseHemolope>
+            <dtf_vresanguophage_Sanguolope MayRequire="dtf.multilopesexpanded,vanillaracesexpanded.sanguophage">0.2</dtf_vresanguophage_Sanguolope>
+            <BMT_Allosaurus MayRequire="biomesteam.biomesprehistoric">0.6</BMT_Allosaurus>
+            <BMT_Apatosaurus MayRequire="biomesteam.biomesprehistoric">0.02</BMT_Apatosaurus>
+            <BMT_Arthropleura MayRequire="biomesteam.biomesprehistoric">0.2</BMT_Arthropleura>
+            <BMT_Borealopelta MayRequire="biomesteam.biomesprehistoric">0.5</BMT_Borealopelta>
+            <BMT_Brachiosaurus MayRequire="biomesteam.biomesprehistoric">0.02</BMT_Brachiosaurus>
+            <BMT_Carnotaurus MayRequire="biomesteam.biomesprehistoric">0.05</BMT_Carnotaurus>
+            <BMT_Chungkingosaurus MayRequire="biomesteam.biomesprehistoric">0.2</BMT_Chungkingosaurus>
+            <BMT_Dilophosaurus MayRequire="biomesteam.biomesprehistoric">0.03</BMT_Dilophosaurus>
+            <BMT_Dryosaurus MayRequire="biomesteam.biomesprehistoric">0.02</BMT_Dryosaurus>
+            <BMT_Inostrancevia MayRequire="biomesteam.biomesprehistoric">0.01</BMT_Inostrancevia>
+            <BMT_Lystrosaur MayRequire="biomesteam.biomesprehistoric">0.9</BMT_Lystrosaur>
+            <BMT_Meganeura MayRequire="biomesteam.biomesprehistoric">0.5</BMT_Meganeura>
+            <BMT_Ouranosaurus MayRequire="biomesteam.biomesprehistoric">0.6</BMT_Ouranosaurus>
+            <BMT_Oviraptor MayRequire="biomesteam.biomesprehistoric">0.2</BMT_Oviraptor>
+            <BMT_Parasaur MayRequire="biomesteam.biomesprehistoric">0.4</BMT_Parasaur>
+            <BMT_Polacanthus MayRequire="biomesteam.biomesprehistoric">0.4</BMT_Polacanthus>
+            <BMT_Styracosaurus MayRequire="biomesteam.biomesprehistoric">0.4</BMT_Styracosaurus>
+            <BMT_TRex MayRequire="biomesteam.biomesprehistoric">0.3</BMT_TRex>
+            <BMT_Utahraptor MayRequire="biomesteam.biomesprehistoric">0.4</BMT_Utahraptor>
+            <BMT_Velociraptor MayRequire="biomesteam.biomesprehistoric">0.4</BMT_Velociraptor>
         </wildAnimals>
         <pollutionWildAnimals>
             <Rat>1.0</Rat>

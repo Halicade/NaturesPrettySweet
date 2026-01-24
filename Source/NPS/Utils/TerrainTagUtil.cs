@@ -72,7 +72,6 @@ public static class TerrainTagUtil
                 }
 
                 if (weatherExtension.isSalty) {
-                    Log.Message("Adding terrain "+terrain);
                     SaltTerrains.Add(terrain);
                 }
             }

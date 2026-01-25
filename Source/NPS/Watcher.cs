@@ -17,8 +17,9 @@ public class Watcher(Map map) : MapComponent(map)
     private const int HowManyTideSteps = 13;
     private readonly int halfTideSteps = (int)Math.Round((HowManyTideSteps - 1M) / 2);
     private const int MaxTideSteps = HowManyTideSteps - 1;
+    private const int TideIntervalCheck = 1250;
 
-    private const int MaxPuddles = 50;
+    private const int MaxPuddles = 1000;
 
     //used to save data about active springs.
     public Dictionary<int, springData> activeSprings = new();
@@ -49,6 +50,7 @@ public class Watcher(Map map) : MapComponent(map)
     //rebuild every save to keep file size down
     private List<List<IntVec3>> tideCellsList = [];
     private int tideLevel; // 0 - 13
+    private int previousTideLevel;
     private int totalPuddles;
 
     private float wetPlantsValue;
@@ -62,6 +64,9 @@ public class Watcher(Map map) : MapComponent(map)
     private float currentSnowRate;
     private int mapArea; //Default area 62500
     private bool isRaining;
+    private Rot4 coastRotation;
+    private TerrainDef oceanTerrain;
+    private TerrainDef beachTerrain;
 
     /* STANDARD STUFF */
 
@@ -81,6 +86,16 @@ public class Watcher(Map map) : MapComponent(map)
 
         mapArea = map.Area;
         doCoast = map.Tile.Tile.IsCoastal;
+        oceanTerrain = MapGenUtility.ShallowOceanWaterTerrainAt(new IntVec3(1, 0, 1), map);
+        beachTerrain = MapGenUtility.BeachTerrainAt(new IntVec3(1, 0, 1), map);
+        if (doCoast) {
+            coastRotation = Find.World.CoastDirectionAt(map.Tile);
+            if (!coastRotation.IsValid) {
+                Log.Error("Tried to generate a coast but could not find foast rotation");
+                doCoast = false;
+            }
+        }
+        Log.Message("Do coast? "+doCoast+" Direction? "+coastRotation);
         biomeSettings = map.Biome.GetModExtension<BiomeSeasonalSettings>();
         frostGridComponent = map.GetComponent<FrostGrid>();
         location = Find.WorldGrid.LongLatOf(map.Tile);
@@ -187,7 +202,6 @@ public class Watcher(Map map) : MapComponent(map)
         */
 
         if (regenCellLists) {
-            Rot4 rot = Find.World.CoastDirectionAt(map.Tile);
 
             IEnumerable<IntVec3>
                 tmpTerrain = map.AllCells.InRandomOrder(); //random so we can spawn plants and stuff in this step.
@@ -218,11 +232,13 @@ public class Watcher(Map map) : MapComponent(map)
 
                 cell.frostNoise = frostVal;
 
-                if (rot.IsValid && terrain == RimWorld.TerrainDefOf.Sand ||
+                if (terrain == RimWorld.TerrainDefOf.Sand ||
                     terrain == TerrainDefOf.TKKN_SandBeachWetSalt) {
                     //get all the sand pieces that are touching water.
                     for (var j = 0; j < HowManyTideSteps; j++) {
-                        var waterCheck = AdjustForRotation(rot, c, j);
+                        // Checks to see if water is in the direction of the cell
+                        // checks every cell up to HowManyTideSteps and will change the cell to TKKN_SandBeachWetSalt if this is true
+                        var waterCheck = AdjustForRotation(c, j);
                         if (!waterCheck.InBounds(map) ||
                             waterCheck.GetTerrain(map) != RimWorld.TerrainDefOf.WaterOceanShallow) {
                             continue;
@@ -338,20 +354,25 @@ public class Watcher(Map map) : MapComponent(map)
         GenSpawn.Spawn(barnaclePlant, c, map);
     }
 
-
-    private static IntVec3 AdjustForRotation(Rot4 rot, IntVec3 cell, int j) {
+    /// <summary>
+    /// Takes the current cell and moves moveCount cells into coastRotations direction
+    /// </summary>
+    /// <param name="cell">Current location</param>
+    /// <param name="moveCount">cells to move</param>
+    /// <returns>new cell location</returns>
+    private IntVec3 AdjustForRotation(IntVec3 cell, int moveCount) {
         var newDirection = new IntVec3(cell.x, cell.y, cell.z);
-        if (rot == Rot4.North) {
-            newDirection.z += j + 1;
+        if (coastRotation == Rot4.North) {
+            newDirection.z += moveCount + 1;
         }
-        else if (rot == Rot4.South) {
-            newDirection.z -= j - 1;
+        else if (coastRotation == Rot4.South) {
+            newDirection.z -= moveCount + 1;
         }
-        else if (rot == Rot4.East) {
-            newDirection.x += j + 1;
+        else if (coastRotation == Rot4.East) {
+            newDirection.x += moveCount + 1;
         }
-        else if (rot == Rot4.West) {
-            newDirection.x -= j - 1;
+        else if (coastRotation == Rot4.West) {
+            newDirection.x -= moveCount + 1;
         }
 
         return newDirection;
@@ -361,6 +382,7 @@ public class Watcher(Map map) : MapComponent(map)
         //set up tides and river banks for the first time:
         if (doCoast) {
             //set up for low tide
+            previousTideLevel = 0;
             tideLevel = 0;
 
             for (var i = 0; i < HowManyTideSteps; i++) {
@@ -394,6 +416,7 @@ public class Watcher(Map map) : MapComponent(map)
                 }
             }
 
+            previousTideLevel = Math.Max(0,max - 1);
             tideLevel = max;
         }
 
@@ -689,20 +712,21 @@ public class Watcher(Map map) : MapComponent(map)
 
     private void DoTides() {
         //notes to future me: use this.howManyTideSteps - 1, so we always have a little bit of wet sand, or else it looks stupid.
-        if (!doCoast || !Settings.doTides || ticks % 100 != 0) {
+        if (!doCoast || !Settings.doTides || ticks % TideIntervalCheck != 0) {
             return;
         }
 
         var tideType = GetTideLevel();
 
-        switch (tideType) {
-            case FloodType.Normal when tideLevel == halfTideSteps:
-            case FloodType.High when tideLevel == MaxTideSteps:
-            case FloodType.Low when tideLevel == 0:
-                return;
-            case FloodType.Normal when tideLevel == MaxTideSteps:
-                tideLevel--;
-                return;
+        if ((tideType == FloodType.Normal && tideLevel == halfTideSteps) ||
+            (tideType == FloodType.High && tideLevel == MaxTideSteps) ||
+            (tideType == FloodType.Low && tideLevel == 0))
+            return;
+
+        if (tideType == FloodType.Normal && tideLevel == MaxTideSteps) {
+            previousTideLevel = tideLevel;
+            tideLevel--;
+            return;
         }
 
         List<IntVec3> cellsToChange = tideCellsList[tideLevel];
@@ -711,21 +735,61 @@ public class Watcher(Map map) : MapComponent(map)
                 continue;
             }
 
+            var waterCheck = AdjustForRotation(c, 0);
+            if (!waterCheck.InBounds(map)) {
+                continue;
+            }
+
+            if (waterCheck.GetTerrain(map) != oceanTerrain) {
+                //Log.Error("Looking at tile " + c + " something not shallow water found at " + waterCheck);
+                if (c.GetTerrain(map) == oceanTerrain) {
+                    //cell.terrainOverride = TerrainType.Dry;
+                    cell.changeTide(TerrainType.Dry, oceanTerrain, beachTerrain);
+                    //cell.decreaseTide(beachTerrain);
+                    //Log.Message("Removing tide at " + c);
+                }
+                continue;
+            }
+
             switch (tideType) {
                 case FloodType.High:
-                    cell.terrainOverride = TerrainType.Wet;
+                    //cell.terrainOverride = TerrainType.Wet;
+                    cell.changeTide(TerrainType.Wet, oceanTerrain, beachTerrain);
+                    cell.increaseTide(oceanTerrain);
                     break;
                 case FloodType.Low:
-                    cell.terrainOverride = TerrainType.Dry;
+                    //cell.terrainOverride = TerrainType.Dry;
+                    cell.changeTide(TerrainType.Dry, oceanTerrain, beachTerrain);
+                    break;
+                case FloodType.Normal:
+                    if (tideLevel < halfTideSteps) {
+                        cell.changeTide(TerrainType.Wet, oceanTerrain, beachTerrain);
+                    }else if (tideLevel > halfTideSteps) {
+                        cell.changeTide(TerrainType.Dry, oceanTerrain, beachTerrain);
+                    }
+                    else if(previousTideLevel<tideLevel) {
+                        cell.changeTide(TerrainType.Wet, oceanTerrain, beachTerrain);
+                    }
+                    else if(previousTideLevel>tideLevel){
+                        cell.changeTide(TerrainType.Dry, oceanTerrain, beachTerrain);
+                    }
+                    else {
+                        cell.changeTide(null, oceanTerrain, beachTerrain);
+                    }
+                    break;
+                default:
+                    cell.changeTide(null, oceanTerrain, beachTerrain);
                     break;
             }
 
-            cell.setTerrain(TerrainType.Tide);
+            
+            //cell.setTerrain(TerrainType.Tide);
         }
 
         switch (tideType) {
             case FloodType.High: {
                 if (tideLevel < MaxTideSteps) {
+                    previousTideLevel = tideLevel;
                     tideLevel++;
                 }
 
@@ -733,16 +797,19 @@ public class Watcher(Map map) : MapComponent(map)
             }
             case FloodType.Low: {
                 if (tideLevel > 0) {
+                    previousTideLevel = tideLevel;
                     tideLevel--;
                 }
 
                 break;
             }
             case FloodType.Normal when tideLevel > halfTideSteps:
+                previousTideLevel = tideLevel;
                 tideLevel--;
                 break;
             case FloodType.Normal: {
                 if (tideLevel < halfTideSteps) {
+                    previousTideLevel = tideLevel;
                     tideLevel++;
                 }
 

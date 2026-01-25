@@ -227,7 +227,35 @@ public class cellData : IExposable
         }
     }
 
-    private void setTidesTerrain() {
+    public void changeTide(TerrainType? tideType, TerrainDef tidalTerrain, TerrainDef beachTerrain) {
+        if (tideType == TerrainType.Dry) {
+            //Log.Message("Making beach terrain "+beachTerrain+" at "+location);
+            map.terrainGrid.SetTerrain(location, beachTerrain);
+        }else if (tideType == TerrainType.Wet) {
+            //Log.Message("Making tidal terrain "+tidalTerrain+" at "+location);
+            map.terrainGrid.SetTerrain(location, tidalTerrain);
+        }
+        else {
+            if (currentTerrain == tidalTerrain) {
+                //Log.Message("Making beach terrain "+beachTerrain+" at "+location);
+                map.terrainGrid.SetTerrain(location, beachTerrain);
+            }
+            else {
+                //Log.Message("Making tidal terrain "+tidalTerrain+" at "+location);
+                map.terrainGrid.SetTerrain(location, tidalTerrain);
+            }
+        }
+    }
+    
+    public void increaseTide(TerrainDef beachTerrain) {
+        map.terrainGrid.SetTerrain(location, beachTerrain);
+    }
+
+    public void decreaseTide(TerrainDef beachTerrain) {
+        map.terrainGrid.SetTerrain(location, beachTerrain);
+    }
+    
+    public void setTidesTerrain() {
         if (!Settings.doTides) {
             return;
         }

@@ -59,6 +59,7 @@
         <freezeTerrain>
           <terrain>TKKN_MuddyIce</terrain>
         </freezeTerrain>
+        <tideTerrain>WaterOceanShallow</tideTerrain>
         <wetAt>1</wetAt>
         <holdFrost>True</holdFrost>
       </li>

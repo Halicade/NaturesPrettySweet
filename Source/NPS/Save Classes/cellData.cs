@@ -91,10 +91,11 @@ public class cellData : IExposable
         }
 
         var thisTerrain = currentTerrain;
+/*
         //if terrain is temporary we don't want to affect it
         if (thisTerrain.temporary) {
             return;
-        }
+        }*/
 
         if (!TerrainTagUtil.TerrainWetAt.TryGetValue(thisTerrain, out var wetAt))
             return;
@@ -172,15 +173,8 @@ public class cellData : IExposable
             return;
         }
 
-        switch (type) {
-            //change the terrain
-            case TerrainType.Flooded:
-                setFloodedTerrain();
-                break;
-            case TerrainType.Tide:
-                setTidesTerrain();
-                break;
-        }
+        if (type == TerrainType.Flooded)
+            setFloodedTerrain();
 
         terrainOverride = null;
     }
@@ -233,7 +227,8 @@ public class cellData : IExposable
             map.terrainGrid.SetTerrain(location, beachTerrain);
         }else if (tideType == TerrainType.Wet) {
             //Log.Message("Making tidal terrain "+tidalTerrain+" at "+location);
-            map.terrainGrid.SetTerrain(location, tidalTerrain);
+            if(location.GetEdifice(map)==null)
+                map.terrainGrid.SetTerrain(location, tidalTerrain);
         }
         else {
             if (currentTerrain == tidalTerrain) {
@@ -242,48 +237,20 @@ public class cellData : IExposable
             }
             else {
                 //Log.Message("Making tidal terrain "+tidalTerrain+" at "+location);
-                map.terrainGrid.SetTerrain(location, tidalTerrain);
+                if(location.GetEdifice(map)==null)
+                    map.terrainGrid.SetTerrain(location, tidalTerrain);
             }
         }
     }
     
     public void increaseTide(TerrainDef beachTerrain) {
-        map.terrainGrid.SetTerrain(location, beachTerrain);
+        if(location.GetEdifice(map)==null)
+            map.terrainGrid.SetTerrain(location, beachTerrain);
     }
 
-    public void decreaseTide(TerrainDef beachTerrain) {
-        map.terrainGrid.SetTerrain(location, beachTerrain);
-    }
-    
-    public void setTidesTerrain() {
-        if (!Settings.doTides) {
-            return;
-        }
-
-        var thisTerrain = currentTerrain;
-        switch (terrainOverride) {
-            case TerrainType.Dry:
-                changeTerrain(baseTerrain);
-                break;
-            case TerrainType.Wet:
-                changeTerrain(Weather.tideTerrain);
-                break;
-            default: {
-                changeTerrain(thisTerrain != baseTerrain ? baseTerrain : Weather.tideTerrain);
-                break;
-            }
-        }
-
-        if (Weather.tideTerrain == null) {
-            return;
-        }
-
-        if (TerrainTagUtil.TKKN_Wet.Contains(thisTerrain)) {
-            clearLoot();
-        }
-        else {
-            leaveLoot();
-        }
+    public void decreaseTide() {
+        map.terrainGrid.RemoveTempTerrain(location);
+        //map.terrainGrid.SetTerrain(location, beachTerrain);
     }
 
     public void Unpack() {

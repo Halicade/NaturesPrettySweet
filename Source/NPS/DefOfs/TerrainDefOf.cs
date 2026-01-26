@@ -28,6 +28,7 @@ public static class TerrainDefOf
 
     //tides
     public static TerrainDef TKKN_SandBeachWetSalt;
+    public static TerrainDef NPS_WaterOceanTide;
 
     //flooding
     public static TerrainDef TKKN_RiverDeposit;

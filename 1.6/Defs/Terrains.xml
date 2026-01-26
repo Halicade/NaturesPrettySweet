@@ -302,11 +302,14 @@
       <li>WetRain</li>
       <li>Salt</li>
     </tags>
+    <affordances>
+      <li>Light</li>
+      <li>Diggable</li>
+    </affordances>
     <generatedFilth>Filth_Sand</generatedFilth>
     <filthAcceptanceMask />
     <fertility>.1</fertility>
     <takeFootprints>True</takeFootprints>
-    <avoidWander>True</avoidWander>
     <driesTo>Sand</driesTo>
   </TerrainDef>
   <TerrainDef>
@@ -348,6 +351,24 @@
     <takeFootprints>False</takeFootprints>
     <tags>
       <li>Frozen</li>
+    </tags>
+  </TerrainDef>
+  <TerrainDef ParentName="WaterShallowBase">
+    <defName>NPS_WaterOceanTide</defName>
+    <label>tidal water</label>
+    <texturePath>Terrain/Surfaces/WaterShallowRamp</texturePath>
+    <pollutedTexturePath>Terrain/Surfaces/WaterShallowRampPolluted</pollutedTexturePath>
+    <waterDepthShader>Map/WaterDepth</waterDepthShader>
+    <renderPrecedence>396</renderPrecedence>
+    <driesTo/>
+    <canFreeze>false</canFreeze>
+    <waterBodyType>Saltwater</waterBodyType>
+    <temporary>true</temporary>
+    <tempTerrain>
+      <replaceableByBridge>true</replaceableByBridge>
+    </tempTerrain>
+    <tags>
+      <li>Ocean</li>
     </tags>
   </TerrainDef>
   <TerrainDef ParentName="NaturalTerrainBase">

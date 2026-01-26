@@ -24,7 +24,6 @@ public class cellData : IExposable
     public bool isWet;
     public IntVec3 location;
     public Map map;
-    public TerrainDef originalTerrain;
     private TerrainDef driedTerrain;
 
     public TerrainType? terrainOverride;
@@ -49,12 +48,10 @@ public class cellData : IExposable
         Scribe_Values.Look(ref isWet, "isWet", isWet, true);
         Scribe_Values.Look(ref isFlooded, "isFlooded", isFlooded, true);
         Scribe_Values.Look(ref terrainOverride, "overrideType", terrainOverride, true);
-
         Scribe_Values.Look(ref location, "location", location, true);
         Scribe_Values.Look(ref temperature, "temperature", -999, true);
         Scribe_Defs.Look(ref baseTerrain, "baseTerrain");
         Scribe_Defs.Look(ref driedTerrain, "driedTerrain");
-        Scribe_Defs.Look(ref originalTerrain, "originalTerrain");
     }
 
     public void setTerrainWet() {

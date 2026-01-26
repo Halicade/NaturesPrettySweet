@@ -235,10 +235,6 @@ public class Watcher(Map map) : MapComponent(map)
 
                 var cell = new cellData { location = c, baseTerrain = terrain, howWetPlants = 70 };
 
-                if (cell.originalTerrain != null) {
-                    cell.originalTerrain = terrain;
-                }
-
                 var frostVal = frostNoise.GetValue(c) + 1;
                 frostVal += 1f;
                 frostVal *= 0.5f;

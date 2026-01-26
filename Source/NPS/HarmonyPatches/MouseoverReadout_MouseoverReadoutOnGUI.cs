@@ -93,10 +93,6 @@ internal class MouseoverReadout_MouseoverReadoutOnGUI
                 }
             }
 
-            if (cell.originalTerrain != null) {
-                label5 += $" | Orig Terrain {cell.originalTerrain}";
-            }
-
             Widgets.Label(rect, label5);
         }
 

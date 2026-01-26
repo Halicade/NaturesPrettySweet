@@ -321,7 +321,8 @@ public class cellData : IExposable
                 GenSpawn.Spawn(ThingMaker.MakeThing(ThingDefOf.TKKN_LavaRock), location, map);
             }
             else if (baseTerrain == TerrainDefOf.TKKN_SandBeachWetSalt) {
-                GenSpawn.Spawn(ThingMaker.MakeThing(ThingDefOf.TKKN_crab), location, map);
+                var crab=PawnGenerator.GeneratePawn(PawnDefOf.TKKN_crab);
+                GenSpawn.Spawn(crab, location, map);
             }
             else {
                 if (TerrainTagUtil.TKKN_Wet.Contains(currentTerrain)) {

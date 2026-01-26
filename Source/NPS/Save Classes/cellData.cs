@@ -126,10 +126,9 @@ public class cellData : IExposable
             return;
         if (!Rand.Chance(0.05f))
             return;
-        
+
         map.terrainGrid.SetTerrain(location, frozenTerrain.terrain);
         isFrozen = true;
-        
     }
 
     public void TrySetTerrainThawed() {
@@ -179,12 +178,6 @@ public class cellData : IExposable
         terrainOverride = null;
     }
 
-    public void DoCellSteadyEffects() {
-        if (howWetPlants < 0) {
-            howWetPlants = 0;
-        }
-    }
-
 
     private void setFloodedTerrain() {
         if (!Settings.showRain || !Settings.doTides) {
@@ -221,30 +214,25 @@ public class cellData : IExposable
         }
     }
 
-    public void changeTide(TerrainType? tideType, TerrainDef tidalTerrain, TerrainDef beachTerrain) {
-        if (tideType == TerrainType.Dry) {
+    public void changeTide(TerrainDef tidalTerrain) {
+        if (currentTerrain == tidalTerrain) {
             //Log.Message("Making beach terrain "+beachTerrain+" at "+location);
-            map.terrainGrid.SetTerrain(location, beachTerrain);
-        }else if (tideType == TerrainType.Wet) {
-            //Log.Message("Making tidal terrain "+tidalTerrain+" at "+location);
-            if(location.GetEdifice(map)==null)
-                map.terrainGrid.SetTerrain(location, tidalTerrain);
+            decreaseTide();
         }
         else {
-            if (currentTerrain == tidalTerrain) {
-                //Log.Message("Making beach terrain "+beachTerrain+" at "+location);
-                map.terrainGrid.SetTerrain(location, beachTerrain);
-            }
-            else {
-                //Log.Message("Making tidal terrain "+tidalTerrain+" at "+location);
-                if(location.GetEdifice(map)==null)
-                    map.terrainGrid.SetTerrain(location, tidalTerrain);
-            }
+            //Log.Message("Making tidal terrain "+tidalTerrain+" at "+location);
+            if (isFrozen)
+                return;
+            increaseTide(tidalTerrain);
         }
     }
-    
+
     public void increaseTide(TerrainDef beachTerrain) {
-        if(location.GetEdifice(map)==null)
+        if (isFrozen) {
+            return;
+        }
+
+        if (location.GetEdifice(map) == null)
             map.terrainGrid.SetTerrain(location, beachTerrain);
     }
 
@@ -262,7 +250,7 @@ public class cellData : IExposable
         if (howPacked <= 0) {
             return;
         }
-        
+
         howPacked--;
         if (howPacked <= unpack) {
             if (currentTerrain == TerrainDefOf.TKKN_DirtPath) {
@@ -272,7 +260,6 @@ public class cellData : IExposable
                 changeTerrain(RimWorld.TerrainDefOf.Sand);
             }
         }
-        
     }
 
     /// <summary>
@@ -321,7 +308,7 @@ public class cellData : IExposable
                 GenSpawn.Spawn(ThingMaker.MakeThing(ThingDefOf.TKKN_LavaRock), location, map);
             }
             else if (baseTerrain == TerrainDefOf.TKKN_SandBeachWetSalt) {
-                var crab=PawnGenerator.GeneratePawn(PawnDefOf.TKKN_crab);
+                var crab = PawnGenerator.GeneratePawn(PawnDefOf.TKKN_crab);
                 GenSpawn.Spawn(crab, location, map);
             }
             else {

@@ -353,6 +353,7 @@
       <li>Frozen</li>
     </tags>
   </TerrainDef>
+  
   <TerrainDef ParentName="WaterShallowBase">
     <defName>NPS_WaterOceanTide</defName>
     <label>tidal water</label>
@@ -371,6 +372,26 @@
       <li>Ocean</li>
     </tags>
   </TerrainDef>
+  
+  <TerrainDef ParentName="WaterShallowBase">
+    <defName>NPS_WaterRiverFlood</defName>
+    <label>tidal water</label>
+    <texturePath>Terrain/Surfaces/WaterShallowRamp</texturePath>
+    <pollutedTexturePath>Terrain/Surfaces/WaterShallowRampPolluted</pollutedTexturePath>
+    <waterDepthShader>Map/WaterDepth</waterDepthShader>
+    <renderPrecedence>396</renderPrecedence>
+    <driesTo/>
+    <canFreeze>false</canFreeze>
+    <waterBodyType>Other</waterBodyType>
+    <temporary>true</temporary>
+    <tempTerrain>
+      <replaceableByBridge>true</replaceableByBridge>
+    </tempTerrain>
+    <tags>
+      
+    </tags>
+  </TerrainDef>
+  
   <TerrainDef ParentName="NaturalTerrainBase">
     <defName>TKKN_WetMossyTerrain</defName>
     <label>wet lichen-covered dirt</label>

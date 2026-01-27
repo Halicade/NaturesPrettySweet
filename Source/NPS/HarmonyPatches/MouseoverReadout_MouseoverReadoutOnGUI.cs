@@ -65,6 +65,11 @@ internal class MouseoverReadout_MouseoverReadoutOnGUI
             var label2 = $"Temperature: {cell.temperature}";
             Widgets.Label(rect, label2);
             num += 19f;
+            
+            rect = new Rect(botLeft.x, UI.screenHeight - botLeft.y - num, 999f, 999f);
+            var labelFloodLevel = $"Current Flood height: {watcher.GetRiverLevel().ToString()} | Flood level: {cell.riverLevel} | River focus: {cell.riverFocus}";
+            Widgets.Label(rect, labelFloodLevel);
+            num += 19f;
 
             rect = new Rect(botLeft.x, UI.screenHeight - botLeft.y - num, 999f, 999f);
             var label4 =

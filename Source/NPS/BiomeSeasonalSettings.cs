@@ -10,8 +10,6 @@ public class BiomeSeasonalSettings : DefModExtension
     //incident settings
     public List<ThingDef> bloomPlants;
     public bool diseaseCacheUpdated;
-    public Season lastChanged;
-    public Quadrum lastChangedQ = Quadrum.Undefined;
 
     //spring settings
     public int maxSprings;

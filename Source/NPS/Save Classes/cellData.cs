@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using RimWorld;
 using UnityEngine;
@@ -12,7 +13,8 @@ public class cellData : IExposable
     private const int packAtSmooth = packAt * 10;
     private const int unpack = packAt / 2;
     public TerrainDef baseTerrain;
-    public HashSet<int> floodLevel = [];
+    public int riverLevel = 999;
+    public IntVec3 riverFocus = IntVec3.Invalid;
     public float frostLevel;
     public float frostNoise;
 
@@ -39,7 +41,9 @@ public class cellData : IExposable
 
     public void ExposeData() {
         Scribe_Values.Look(ref tideLevel, "tideLevel", tideLevel, true);
-        Scribe_Collections.Look(ref floodLevel, "floodLevel", LookMode.Value);
+        Scribe_Values.Look(ref riverLevel, "riverLevel", riverLevel, true);
+        Scribe_Values.Look(ref riverFocus, "riverFocus", riverFocus, true);
+        //Scribe_Collections.Look(ref floodLevel, "floodLevel", LookMode.Value);
         Scribe_Values.Look(ref howPacked, "howPacked", howPacked, true);
         Scribe_Values.Look(ref howWet, "howWet", howWet, true);
         Scribe_Values.Look(ref howWetPlants, "howWetPlants", howWetPlants, true);
@@ -139,8 +143,8 @@ public class cellData : IExposable
 
         map.terrainGrid.RemoveTempTerrain(location, doLeavings: false, preventDestroyEffects: true);
         howWet = 4;
-        setTerrainWet();
         isFrozen = false;
+        setTerrainWet();
     }
 
 
@@ -151,64 +155,6 @@ public class cellData : IExposable
         }
 
         map.terrainGrid.RemoveTempTerrain(location, doLeavings: false, preventDestroyEffects: true);
-    }
-
-
-    public void setTerrain(TerrainType type) {
-        var thisTerrain = currentTerrain;
-        //Make sure it hasn't been made a floor or a floor hasn't been removed.
-
-        if (!TerrainTagUtil.TerrainHasModExtension.Contains(thisTerrain)) {
-            baseTerrain = thisTerrain;
-        }
-        else if (baseTerrain != thisTerrain && !TerrainTagUtil.TerrainHasModExtension.Contains(baseTerrain)) {
-            baseTerrain = thisTerrain;
-        }
-
-        if (!TerrainTagUtil.TerrainHasModExtension.Contains(baseTerrain)) {
-            return;
-        }
-
-        if (type == TerrainType.Flooded)
-            setFloodedTerrain();
-
-        terrainOverride = null;
-    }
-
-
-    private void setFloodedTerrain() {
-        if (!Settings.showRain || !Settings.doTides) {
-            return;
-        }
-
-        var thisTerrain = currentTerrain;
-        if (!TerrainTagUtil.FloodTerrain.TryGetValue(baseTerrain, out TerrainDef floodTerrain)) {
-            return;
-        }
-
-        if (isFrozen) {
-            if (TerrainTagUtil.FreezeTerrain.TryGetValue(thisTerrain, out var freezeTerrain)) {
-                changeTerrain(freezeTerrain.terrain);
-            }
-        }
-        else if (terrainOverride == TerrainType.Dry) {
-            howWetPlants = 100;
-            floodTerrain = baseTerrain;
-            changeTerrain(floodTerrain);
-        }
-        else if (floodTerrain != null && thisTerrain != floodTerrain) {
-            changeTerrain(floodTerrain);
-
-            isFlooded = true;
-            if (!floodTerrain.IsWater) {
-                isFlooded = false;
-                howWetPlants = 100;
-                leaveLoot();
-            }
-            else {
-                clearLoot();
-            }
-        }
     }
 
     public void changeTide(TerrainDef tidalTerrain) {
@@ -229,13 +175,42 @@ public class cellData : IExposable
             return;
         }
 
-        if (location.GetEdifice(map) == null)
+        if (location.GetEdifice(map) == null) {
             map.terrainGrid.SetTerrain(location, beachTerrain);
+            clearLoot();
+        }
     }
 
     public void decreaseTide() {
         map.terrainGrid.RemoveTempTerrain(location);
-        //map.terrainGrid.SetTerrain(location, beachTerrain);
+        leaveLoot();
+    }
+
+    /// <summary>
+    /// Verifies the current tile does not have anything on it.
+    /// Then verifies that the tile it's focusing on doesn't have anything on it and is a water tile.
+    /// If true set terrain to riverTerrain
+    /// </summary>
+    /// <param name="riverTerrain"></param>
+    public void increaseRiver(TerrainDef riverTerrain) {
+        if (isFrozen) {
+            return;
+        }
+        // Verify the current tile does not have anything on it.
+        // Then verify
+        if (location.GetEdifice(map) != null) 
+            return;
+        if (riverFocus.GetEdifice(map) != null) 
+            return;
+        if (!riverFocus.GetTerrain(map).IsWater) 
+            return;
+        map.terrainGrid.SetTempTerrain(location, riverTerrain);
+    }
+
+    public void decreaseRiver() {
+        map.terrainGrid.RemoveTempTerrain(location);
+        howWet = 4;
+        setTerrainWet();
     }
 
     public void Unpack() {
@@ -370,10 +345,6 @@ public class cellData : IExposable
     }
 
     private void clearLoot() {
-        if (!location.IsValid) {
-            return;
-        }
-
         List<Thing> things = location.GetThingList(map);
 
         for (var i = things.Count - 1; i >= 0; i--) {

@@ -130,6 +130,13 @@ public class BiomeSeasonalSettings : DefModExtension
             return;
         }
 
+        if (springDiseases.NullOrEmpty() ||
+            summerDiseases.NullOrEmpty() ||
+            fallDiseases.NullOrEmpty() ||
+            winterDiseases.NullOrEmpty()) {
+            return;
+        }
+
         List<BiomeDiseaseRecord> seasonalDiseases;
         switch (season) {
             case Season.Spring when springDiseases != null:
@@ -182,6 +189,16 @@ public class BiomeSeasonalSettings : DefModExtension
     }
 
     public void setIncidentsBySeason(Map map, Season season, Quadrum quadrum) {
+        if (!EffectSettings.seasonalIncidents) {
+            return;
+        }
+        if (springEvents.NullOrEmpty() ||
+            summerEvents.NullOrEmpty() ||
+            fallEvents.NullOrEmpty() ||
+            winterEvents.NullOrEmpty()) {
+            return;
+        }
+        
         List<TKKN_IncidentCommonalityRecord> seasonalIncidents;
         switch (season) {
             case Season.Spring when springEvents != null:

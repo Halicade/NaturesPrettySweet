@@ -9,10 +9,10 @@ namespace TKKN_NPS;
 
 public class cellData : IExposable
 {
-    private const int packAt = 750;
-    private const int packAtSmooth = packAt * 10;
-    private const int unpack = packAt / 2;
-    public TerrainDef baseTerrain;
+    private const int PackAt = 750;
+    private const int PackAtSmooth = PackAt * 10;
+    private const int UnpackAt = PackAt / 2;
+    //public TerrainDef baseTerrain;
     public int riverLevel = 999;
     public IntVec3 riverFocus = IntVec3.Invalid;
     public float frostLevel;
@@ -28,33 +28,28 @@ public class cellData : IExposable
     public Map map;
     private TerrainDef driedTerrain;
 
-    public TerrainType? terrainOverride;
     public float temperature = -9999;
 
     public int tideLevel = -1;
 
 
-    public TerrainWeatherReactions Weather => baseTerrain.GetModExtension<TerrainWeatherReactions>();
+    public TerrainWeatherReactions Weather => currentTerrain.GetModExtension<TerrainWeatherReactions>();
 
-    public TerrainDef currentTerrain => location.GetTerrain(map);
+    public TerrainDef currentTerrain;
 
 
     public void ExposeData() {
-        Scribe_Values.Look(ref tideLevel, "tideLevel", tideLevel, true);
-        Scribe_Values.Look(ref riverLevel, "riverLevel", riverLevel, true);
-        Scribe_Values.Look(ref riverFocus, "riverFocus", riverFocus, true);
-        //Scribe_Collections.Look(ref floodLevel, "floodLevel", LookMode.Value);
-        Scribe_Values.Look(ref howPacked, "howPacked", howPacked, true);
-        Scribe_Values.Look(ref howWet, "howWet", howWet, true);
-        Scribe_Values.Look(ref howWetPlants, "howWetPlants", howWetPlants, true);
-        Scribe_Values.Look(ref frostLevel, "frostLevel", frostLevel, true);
-        Scribe_Values.Look(ref frostNoise, "frostNoise", frostNoise, true);
-        Scribe_Values.Look(ref isWet, "isWet", isWet, true);
-        Scribe_Values.Look(ref isFlooded, "isFlooded", isFlooded, true);
-        Scribe_Values.Look(ref terrainOverride, "overrideType", terrainOverride, true);
-        Scribe_Values.Look(ref location, "location", location, true);
-        Scribe_Values.Look(ref temperature, "temperature", -999, true);
-        Scribe_Defs.Look(ref baseTerrain, "baseTerrain");
+        Scribe_Values.Look(ref tideLevel, "tideLevel", -1, false);
+        Scribe_Values.Look(ref riverLevel, "riverLevel", 999, false);
+        Scribe_Values.Look(ref riverFocus, "riverFocus", IntVec3.Invalid, false);
+        Scribe_Values.Look(ref howPacked, "howPacked", 0, false);
+        Scribe_Values.Look(ref howWet, "howWet", 0, false);
+        Scribe_Values.Look(ref howWetPlants, "howWetPlants", 60, false);
+        Scribe_Values.Look(ref frostLevel, "frostLevel", 0, false);
+        Scribe_Values.Look(ref frostNoise, "frostNoise", 0, false);
+        Scribe_Values.Look(ref isWet, "isWet", false, false);
+        Scribe_Values.Look(ref isFlooded, "isFlooded", false, false);
+        Scribe_Values.Look(ref location, "location", forceSave:true);
         Scribe_Defs.Look(ref driedTerrain, "driedTerrain");
     }
 
@@ -177,6 +172,7 @@ public class cellData : IExposable
 
         if (location.GetEdifice(map) == null) {
             map.terrainGrid.SetTerrain(location, beachTerrain);
+            currentTerrain = beachTerrain;
             clearLoot();
         }
     }
@@ -209,8 +205,11 @@ public class cellData : IExposable
 
     public void decreaseRiver() {
         map.terrainGrid.RemoveTempTerrain(location);
-        howWet = 4;
-        setTerrainWet();
+        if (EffectSettings.showRain) {
+            howWet = 4;
+            currentTerrain = location.GetTerrain(map);
+            setTerrainWet();
+        }
     }
 
     public void Unpack() {
@@ -224,7 +223,7 @@ public class cellData : IExposable
         }
 
         howPacked--;
-        if (howPacked <= unpack) {
+        if (howPacked <= UnpackAt) {
             if (currentTerrain == TerrainDefOf.TKKN_DirtPath) {
                 changeTerrain(RimWorld.TerrainDefOf.Soil);
             }
@@ -252,7 +251,7 @@ public class cellData : IExposable
         }
 
         howPacked++;
-        if (howPacked <= packAt) {
+        if (howPacked <= PackAt) {
             return;
         }
 
@@ -262,13 +261,13 @@ public class cellData : IExposable
         else if (terrain == RimWorld.TerrainDefOf.Sand) {
             changeTerrain(TerrainDefOf.TKKN_SandPath);
         }
-        else if (terrain.smoothedTerrain != null && howPacked > packAtSmooth) {
+        else if (terrain.smoothedTerrain != null && howPacked > PackAtSmooth) {
             changeTerrain(terrain.smoothedTerrain);
         }
     }
 
     private void changeTerrain(TerrainDef terrain) {
-        if (terrain != null && terrain != currentTerrain) {
+        if (terrain != null && terrain != location.GetTerrain(map)) {
             map.terrainGrid.SetTerrain(location, terrain);
         }
     }
@@ -276,10 +275,10 @@ public class cellData : IExposable
     private void rainSpawns() {
         //spawn special things when it rains.
         if (Rand.Value < .009) {
-            if (baseTerrain == TerrainDefOf.TKKN_Lava) {
+            if (currentTerrain == TerrainDefOf.TKKN_Lava) {
                 GenSpawn.Spawn(ThingMaker.MakeThing(ThingDefOf.TKKN_LavaRock), location, map);
             }
-            else if (baseTerrain == TerrainDefOf.TKKN_SandBeachWetSalt) {
+            else if (currentTerrain == TerrainDefOf.TKKN_SandBeachWetSalt) {
                 var crab = PawnGenerator.GeneratePawn(PawnDefOf.TKKN_crab);
                 GenSpawn.Spawn(crab, location, map);
             }
@@ -295,50 +294,37 @@ public class cellData : IExposable
     }
 
     private void leaveLoot() {
-        if (!Settings.leaveStuff) {
+        if (!EffectSettings.leaveStuff) {
             return;
         }
 
         var leaveSomething = Rand.Value;
-        switch (leaveSomething) {
-            case < 0.001f: {
-                List<Thing> allowed = ThingSetMakerDefOf.TKKN_TidalLoot.root.Generate();
+        if (leaveSomething < 0.001f) {
+            List<Thing> allowed = ThingSetMakerDefOf.TKKN_TidalLoot.root.Generate();
 
-                if (allowed == null) {
-                    return;
-                }
-
-                for (int i = 0; i < allowed.Count; i++) {
-                    GenSpawn.Spawn(allowed[i], location, map);
-                }
-
-                break;
+            if (allowed == null) {
+                return;
             }
+
+            for (int i = 0; i < allowed.Count; i++) {
+                GenSpawn.Spawn(allowed[i], location, map);
+            }
+        }
+        else if (leaveSomething < 0.002f && (location.GetPlant(map) == null && location.GetCover(map) == null)) {
             //grow water and shore plants:
-            case < 0.002f when location.GetPlant(map) == null && location.GetCover(map) == null: {
-                List<ThingDef> plants = map.Biome.AllWildPlants;
-                for (var i = plants.Count - 1; i >= 0; i--) {
-                    //spawn some water plants:
-                    var plantDef = plants[i];
-                    if (!PlantReactionUtil.AllowedTerrains.TryGetValue(plantDef,
-                            out List<TerrainDef> allowedTerrains)) {
-                        continue;
-                    }
-
-                    if (!allowedTerrains.Contains<TerrainDef>(currentTerrain)) {
-                        continue;
-                    }
-
-                    var plant = (Plant)ThingMaker.MakeThing(plantDef);
-                    plant.Growth = Rand.Range(0.07f, 1f);
-                    if (plant.def.plant.LimitedLifespan) {
-                        plant.Age = Rand.Range(0, Mathf.Max(plant.def.plant.LifespanTicks - 50, 0));
-                    }
-
-                    GenSpawn.Spawn(plant, location, map);
-                    break;
+            List<ThingDef> plants = map.Biome.AllWildPlants;
+            for (var i = plants.Count - 1; i >= 0; i--) {
+                //spawn some water plants:
+                var plantDef = plants[i];
+                if (!plantDef.CanEverPlantAt(location, map, checkMapTemperature: false))
+                    continue;
+                var plant = (Plant)ThingMaker.MakeThing(plantDef);
+                plant.Growth = Rand.Range(0.07f, 1f);
+                if (plant.def.plant.LimitedLifespan) {
+                    plant.Age = Rand.Range(0, Mathf.Max(plant.def.plant.LifespanTicks - 50, 0));
                 }
 
+                GenSpawn.Spawn(plant, location, map);
                 break;
             }
         }
@@ -348,26 +334,7 @@ public class cellData : IExposable
         List<Thing> things = location.GetThingList(map);
 
         for (var i = things.Count - 1; i >= 0; i--) {
-            if (things[i].def.category == ThingCategory.Item) {
-                things[i].Destroy();
-                continue;
-            }
-
-            //remove any plants that might've grown:
-
-            if (things[i] is not Plant) {
-                continue;
-            }
-
-            if (PlantReactionUtil.AllowedTerrains.TryGetValue(things[i].def, out var thingWeather)) {
-                if (thingWeather.Contains(currentTerrain)) {
-                    continue;
-                }
-
-                Log.Warning($"Destroying {things[i].def.defName} at {location} on {currentTerrain.defName}");
-                things[i].Destroy();
-            }
-            else {
+            if (things[i].def.category == ThingCategory.Item || things[i].def.category ==  ThingCategory.Plant) {
                 things[i].Destroy();
             }
         }

@@ -21,8 +21,7 @@ public static class Plant_Graphic
         if (cachedMap != __instance.Map) {
             cachedMap = __instance.Map;
             watcher = cachedMap.GetComponent<Watcher>();
-            var location = Find.WorldGrid.LongLatOf(__instance.MapHeld.Tile);
-            season = GenDate.Season(Find.TickManager.TicksAbs, location);
+            season = watcher.season;
         }
 
         if (watcher?.dontRunAnything != false) {
@@ -36,8 +35,7 @@ public static class Plant_Graphic
 
         if (Find.TickManager.TicksAbs % 60000 == 0) {
             //Check every day for if the season changed
-            var location = Find.WorldGrid.LongLatOf(__instance.MapHeld.Tile);
-            season = GenDate.Season(Find.TickManager.TicksAbs, location);
+            season = watcher.season;
         }
 
 
@@ -67,13 +65,7 @@ public static class Plant_Graphic
             return;
         }
 
-        if (!Settings.showCold) return;
-
-        //get snow graphic
-        if (graphics.snowGraphicPath != null && cachedMap.snowGrid.GetDepth(__instance.Position) >= 0.5f) {
-            __result = graphics.snowGraphic;
-            return;
-        }
+        if (!EffectSettings.showFrostGrid) return;
 
         if (graphics.frostGraphicPath != null && watcher.frostGridComponent.GetDepth(__instance.Position) >= 0.6f) {
             __result = graphics.frostGraphic;

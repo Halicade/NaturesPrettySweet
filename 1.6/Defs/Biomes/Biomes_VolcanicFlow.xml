@@ -80,7 +80,7 @@
                     </li>
                     <li>
                         <terrain>TKKN_Lava</terrain>
-                        <min>.6</min>
+                        <min>0.6</min>
                         <max>0.7</max>
                     </li>
                     <li>

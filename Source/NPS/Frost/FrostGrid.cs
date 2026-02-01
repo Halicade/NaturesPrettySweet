@@ -6,9 +6,7 @@ namespace TKKN_NPS;
 
 public class FrostGrid : MapComponent
 {
-    public const float MaxDepth = 1f;
-
-    private double totalDepth;
+    private const float MaxDepth = 1f;
 
 
     public FrostGrid(Map map) : base(map) {
@@ -26,9 +24,6 @@ public class FrostGrid : MapComponent
 
     public void AddDepth(cellData cell, float depthToAdd) {
         var c = cell.location;
-        if (!c.InBounds(map)) {
-            return;
-        }
 
         var num = map.cellIndices.CellToIndex(c);
         var num2 = DepthGridDirect_Unsafe[num];
@@ -39,16 +34,15 @@ public class FrostGrid : MapComponent
         if (num2 >= 0.999f && depthToAdd > MaxDepth) {
             return;
         }
-
+/*
         if (!canHaveFrost(num)) {
             DepthGridDirect_Unsafe[num] = 0f;
             return;
         }
-
+*/
         var num3 = num2 + depthToAdd;
         num3 = Mathf.Clamp(num3, 0f, MaxDepth);
         var num4 = num3 - num2;
-        totalDepth += num4;
         if (!(Mathf.Abs(num4) > 0.0001f)) {
             return;
         }
@@ -58,9 +52,6 @@ public class FrostGrid : MapComponent
     }
 
     public void SetDepth(IntVec3 c, float newDepth) {
-        if (!c.InBounds(map)) {
-            return;
-        }
 
         var num = map.cellIndices.CellToIndex(c);
         if (!canHaveFrost(num)) {
@@ -71,18 +62,17 @@ public class FrostGrid : MapComponent
         newDepth = Mathf.Clamp(newDepth, 0f, 1f);
         var num2 = DepthGridDirect_Unsafe[num];
         DepthGridDirect_Unsafe[num] = newDepth;
-        var num3 = newDepth - num2;
-        totalDepth += num3;
         //checkVisualOrPathCostChange(c, num2, newDepth);
     }
 
     private void checkVisualOrPathCostChange(cellData cell, float oldDepth, float newDepth) {
         cell.frostLevel = newDepth;
         if (Mathf.Approximately(oldDepth, newDepth)) {
+            //Checked in case values didn't change/were 0
             return;
         }
 
-        if (Mathf.Abs(oldDepth - newDepth) > 0.15f || newDepth == 0f || Rand.Value < 0.0012f) {
+        if (newDepth == 0f || Mathf.Abs(oldDepth - newDepth) > 0.12f || Rand.Value < 0.0025f) {
             map.mapDrawer.MapMeshDirty(cell.location, MapMeshFlagDefOf.Snow, true, false);
         }
     }

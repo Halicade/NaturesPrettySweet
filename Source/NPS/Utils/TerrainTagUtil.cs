@@ -13,7 +13,6 @@ public static class TerrainTagUtil
     public static readonly HashSet<TerrainDef> CanBePacked = [];
     public static readonly HashSet<TerrainDef> SaltTerrains = [];
     public static readonly Dictionary<TerrainDef, float> AmbientTempReaction = [];
-    public static readonly Dictionary<TerrainDef, TerrainDef> DryTerrain = [];
     public static readonly Dictionary<TerrainDef, TerrainDef> WetTerrain = [];
     public static readonly Dictionary<TerrainDef, int> TerrainWetAt = [];
     public static readonly Dictionary<TerrainDef, freezeTerrain> FreezeTerrain = [];
@@ -43,7 +42,7 @@ public static class TerrainTagUtil
             if (terrain.smoothedTerrain != null) {
                 CanBePacked.Add(terrain);
             }
-            TerrainWetAt.SetOrAdd(terrain, 0);
+            TerrainWetAt.SetOrAdd(terrain, -5);
             
 
             var weatherExtension = terrain.GetModExtension<TerrainWeatherReactions>();
@@ -60,11 +59,18 @@ public static class TerrainTagUtil
 
                 if (weatherExtension.wetTerrain != null) {
                     WetTerrain.Add(terrain, weatherExtension.wetTerrain);
-                    TerrainWetAt.SetOrAdd(terrain, weatherExtension.wetAt);
                 }
 
+                TerrainWetAt.SetOrAdd(terrain, weatherExtension.wetAt);
+
                 if (weatherExtension.freezeTerrain?.terrain != null) {
-                    FreezeTerrain.Add(terrain, weatherExtension.freezeTerrain);
+                    if (weatherExtension.freezeTerrain.terrain.temporary) {
+                        FreezeTerrain.Add(terrain, weatherExtension.freezeTerrain);
+                    }
+                    else {
+                        Log.Error(
+                            $"NPS: Terrain {terrain} has an extension indacting {weatherExtension.freezeTerrain} is a freeze terrain. But it is not temporary. ");
+                    }
                 }
 
                 if (weatherExtension.floodTerrain != null) {

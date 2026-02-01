@@ -5,7 +5,7 @@ namespace TKKN_NPS;
 
 public class IncidentWorker_Bloom : IncidentWorker_TKKN_Weather
 {
-    private bool relevantSetting = Settings.allowPlantEffects;
+    private bool relevantSetting = EffectSettings.allowPlantEffects;
 
     protected override bool TryExecuteWorker(IncidentParms parms)
     {

@@ -6,7 +6,7 @@ namespace TKKN_NPS;
 public class NPS_BiomeWorker_Savanna : BiomeWorker
 {
     public override float GetScore(BiomeDef biome, Tile tile, PlanetTile planetTile) {
-        if (!Settings.allowSavanna) {
+        if (!BiomeSettings.allowSavanna) {
             return -100f;
         }
 

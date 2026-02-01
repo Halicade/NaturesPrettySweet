@@ -15,7 +15,7 @@ internal class SectionLayer_Frost : SectionLayer
         relevantChangeTypes = MapMeshFlagDefOf.Snow;
     }
 
-    public override bool Visible => Settings.showCold;
+    public override bool Visible => EffectSettings.showFrostGrid;
 
     private FrostGrid FrostGrid => Map.GetComponent<FrostGrid>();
 

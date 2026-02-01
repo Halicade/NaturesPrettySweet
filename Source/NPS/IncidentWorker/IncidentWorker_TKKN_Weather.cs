@@ -5,7 +5,7 @@ namespace TKKN_NPS;
 
 public class IncidentWorker_TKKN_Weather : IncidentWorker
 {
-    private readonly bool relevantSetting = Settings.doWeather;
+    private readonly bool relevantSetting = EffectSettings.doWeather;
     public string label;
     public string text;
     public ThingDef thingDef;

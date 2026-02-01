@@ -7,7 +7,7 @@ namespace TKKN_NPS;
 public class NPS_BiomeWorker_LavaFields : BiomeWorker_TropicalRainforest
 {
     public override float GetScore(BiomeDef biome, Tile tile, PlanetTile planetTile) {
-        if (!Settings.allowVolcanicFields) {
+        if (!BiomeSettings.allowVolcanicFields) {
             return -100f;
         }
 

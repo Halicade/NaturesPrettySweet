@@ -13,12 +13,12 @@ public class IncidentWorker_LavaFlow : IncidentWorker
         var map = (Map)parms.target;
         var intVec = CellFinder.RandomNotEdgeCell(15, map);
 
-        if (!Settings.allowLavaEruption)
+        if (!EffectSettings.allowLavaEruption)
         {
             return false;
         }
 
-        if (Settings.spawnLavaOnlyInBiome && map.Biome != BiomeDefOf.TKKN_VolcanicFlow)
+        if (EffectSettings.spawnLavaOnlyInBiome && map.Biome != BiomeDefOf.TKKN_VolcanicFlow)
         {
             return false;
         }

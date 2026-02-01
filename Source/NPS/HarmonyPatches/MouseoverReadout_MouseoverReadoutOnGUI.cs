@@ -12,7 +12,7 @@ internal class MouseoverReadout_MouseoverReadoutOnGUI
     private static Watcher watcher;
 
     public static void Postfix() {
-        if (!Settings.showDevReadout || Event.current.type != EventType.Repaint || Find.MainTabsRoot.OpenTab != null) {
+        if (!EffectSettings.showDevReadout || Event.current.type != EventType.Repaint || Find.MainTabsRoot.OpenTab != null) {
             return;
         }
 
@@ -73,8 +73,13 @@ internal class MouseoverReadout_MouseoverReadoutOnGUI
 
             rect = new Rect(botLeft.x, UI.screenHeight - botLeft.y - num, 999f, 999f);
             var label4 =
-                $"Cell Info: Base Terrain {cell.baseTerrain.defName} Current Terrain {currentTerrain.defName} | Wet {cell.isWet} | Flooded {cell.isFlooded} | Frozen {cell.isFrozen}";
+                $"Cell Info: Current Terrain: {c.GetTerrain(map)} | Current Terrain cached {currentTerrain}";
             Widgets.Label(rect, label4);
+            num += 19f;
+
+            rect = new Rect(botLeft.x, UI.screenHeight - botLeft.y - num, 999f, 999f);
+            var cellStatus = $"Wet {cell.isWet} | Flooded {cell.isFlooded} | Frozen {cell.isFrozen}";
+            Widgets.Label(rect, cellStatus);
             num += 19f;
 
             rect = new Rect(botLeft.x, UI.screenHeight - botLeft.y - num, 999f, 999f);

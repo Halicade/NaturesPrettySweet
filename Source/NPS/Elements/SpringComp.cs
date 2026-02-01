@@ -405,7 +405,7 @@ public class SpringComp : SpringCompAbstract
 
         if (parent.Map.GetComponent<Watcher>().cellWeatherAffects.TryGetValue(c, out var affect))
         {
-            affect.baseTerrain = c.GetTerrain(parent.Map);
+            affect.currentTerrain = c.GetTerrain(parent.Map);
         }
 
         terrainType = null;

@@ -1,0 +1,82 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+    <!-- @formatter:off -->
+    <NPS_WeatherEffects>NPS: Weather Effects</NPS_WeatherEffects>
+
+    <!--General text-->
+    <TKKN_NPS_LavaHasEruptedNearby>Lava Eruption!</TKKN_NPS_LavaHasEruptedNearby>
+    <TKKN_NPS_LavaHasEruptedNearbyTxt>Lava is bubbling to the surface! Move your stuff away from the lava before it's damaged.</TKKN_NPS_LavaHasEruptedNearbyTxt>
+    <TKKN_NPS_DroughtLbl>Drought</TKKN_NPS_DroughtLbl>
+    <TKKN_NPS_DroughtTxt>There's no rain in the forecast for a very long time.</TKKN_NPS_DroughtTxt>
+    <TKKN_NPS_WildFlowerBloomLbl>Wildflowers are blooming!</TKKN_NPS_WildFlowerBloomLbl>
+    <TKKN_NPS_WildFlowerBloomTxt>An unusual amount of wildflowers are blooming! Make sure you go outside to see it. Watch out for allergies!</TKKN_NPS_WildFlowerBloomTxt>
+    <TKKN_NPS_SuperbloomLbl>Superbloom!</TKKN_NPS_SuperbloomLbl>
+    <TKKN_NPS_SuperbloomTxt>A record setting amount of wildflowers are blooming! Make sure you go outside to see it. Watch out for allergies!</TKKN_NPS_SuperbloomTxt>
+    <TKKN_NPS_DrowningText>Someone is drowning!</TKKN_NPS_DrowningText>
+    
+    
+
+    <!--Settings-->
+
+    <TKKN_doWeather_title>Show weather effects (master)</TKKN_doWeather_title>
+    <TKKN_doWeather_text>If unchecked, none of the below will happen. If checked, only the ones checked below will happen.</TKKN_doWeather_text>
+    
+    <NPS_DoColdBreath_title>Show cold breath</NPS_DoColdBreath_title>
+    <NPS_DoColdBreath_text>When it gets cold, pawns will occasionally emit cold breath effects. This is more noticeable than base game cold breath.</NPS_DoColdBreath_text>
+    <NPS_ShowFrostGrid_title>Show frost grid</NPS_ShowFrostGrid_title>
+    <NPS_FrostGrid_text>When it gets cold, frost can appear on the map.</NPS_FrostGrid_text>
+    <NPS_weatherCellUpdateSpeed_title>Cell scan speed: {0}</NPS_weatherCellUpdateSpeed_title>
+    <NPS_weatherCellUpdateSpeed_text>How many cells to scan per tick. Lower numbers for higher performance but slower update speed.</NPS_weatherCellUpdateSpeed_text>
+    <TKKN_doTides_title>Do Tides</TKKN_doTides_title>
+    <TKKN_doTides_text>Oceans will rise and fall</TKKN_doTides_text>
+    <TKKN_doFloods_title>Do Floods</TKKN_doFloods_title>
+    <TKKN_doFloods_text>Rivers will rise and fall</TKKN_doFloods_text>
+    <TKKN_doIce_title>Ground / water freezes</TKKN_doIce_title>
+    <TKKN_doIce_text>Terrain will freeze at cold temperatures</TKKN_doIce_text>
+    <TKKN_leaveStuff_title>Washup things</TKKN_leaveStuff_title>
+    <TKKN_leaveStuff_text>After floods, items can washup on land</TKKN_leaveStuff_text>
+    <TKKN_doDirtPath_title>Generate paths</TKKN_doDirtPath_title>
+    <TKKN_doDirtPath_text>Pawns will create natural paths when walking</TKKN_doDirtPath_text>
+
+    <TKKN_allowPlantEffects_title>Allow plant effects</TKKN_allowPlantEffects_title>
+    <TKKN_allowPlantEffects_text>Plants will have graphical effects applied during different seasons.</TKKN_allowPlantEffects_text>
+    <TKKN_spawnLavaOnlyInBiome_title>Lava eruptions outside of volcanic fields</TKKN_spawnLavaOnlyInBiome_title>
+    <TKKN_spawnLavaOnlyInBiome_text>Allow lava to erupt in almost every biome. Uncheck to make it so lava is only in the Volcanic Fields biome</TKKN_spawnLavaOnlyInBiome_text>
+    <TKKN_allowPawnsToGetWet_title>Allow pawns to get wet</TKKN_allowPawnsToGetWet_title>
+    <TKKN_allowPawnsToGetWet_text>Pawns will get wet when swimming or in the rain, it will affect their temperature and mood</TKKN_allowPawnsToGetWet_text>
+    <TKKN_allowPawnsSwim_title>Allow pawns to "swim"</TKKN_allowPawnsSwim_title>
+    <TKKN_allowPawnsToSwim_text>Pawns will have their lower body disappear when in the water.</TKKN_allowPawnsToSwim_text>
+    <TKKN_allowLavaEruption_title>Lava can erupt</TKKN_allowLavaEruption_title>
+    <TKKN_allowLavaEruption_text>Allow lava to erupt. Uncheck to remove the random eruption incidents</TKKN_allowLavaEruption_text>
+    <TKKN_showRain_title>Show rain effects</TKKN_showRain_title>
+    <TKKN_showRain_text>When it rains, the ground will get wet. This increases soil fertility.</TKKN_showRain_text>
+    <NPS_makePuddles_title>Make puddles</NPS_makePuddles_title>
+    <NPS_makePuddles_text>Puddles will appear when it rains or when snow melts.</NPS_makePuddles_text>
+    <NPS_useMapTemperature_title>Use map-wide temperature</NPS_useMapTemperature_title>
+    <NPS_useMapTemperature_text>Use the maps outdoor temperature instead of querying each cell. This applies for ice freezing and frost grid generation</NPS_useMapTemperature_text>
+    <NPS_seasonalDiseases_title>Seasonal diseases</NPS_seasonalDiseases_title>
+    <NPS_seasonalDiseases_text>Possible diseases can change each month/season.\nRequires restart to reset</NPS_seasonalDiseases_text>
+    <NPS_seasonalIncidents_title>Seasonal incidents</NPS_seasonalIncidents_title>
+    <NPS_seasonalIncidents_text>Possible incidents can change each month/season.\nRequires restart to reset</NPS_seasonalIncidents_text>
+    <NPS_seasonalWeather_title>Seasonal weather</NPS_seasonalWeather_title>
+    <NPS_seasonalWeather_text>Possible weather can change each month/season.\nRequires restart to reset</NPS_seasonalWeather_text>
+    
+    <NPS_DoColdEffects_title>Do cold effects</NPS_DoColdEffects_title>
+    <NPS_DoColdEffects_text>Effects that occur when it is cold.</NPS_DoColdEffects_text>
+    <NPS_allowPawnEffects_title>Allow pawn effects</NPS_allowPawnEffects_title>
+    <NPS_allowPawnEffects_text>Specific effects can be applied to pawns.</NPS_allowPawnEffects_text>
+    <NPS_pawnEffectsOnlyColonists_title>Only affect colonists</NPS_pawnEffectsOnlyColonists_title>
+    <NPS_pawnEffectsOnlyColonists_text>Only colonists will be affected by these effects. Can take up to 1 in game day to take effect.</NPS_pawnEffectsOnlyColonists_text>
+    <NPS_doWalkThroughSnow_title>Create snow paths</NPS_doWalkThroughSnow_title>
+    <NPS_doWalkThroughSnow_text>When pawns through snow it will remove some snow underneath the pawn.</NPS_doWalkThroughSnow_text>
+    <NPS_allowPawnsToDrown_title>Allow pawns to drown</NPS_allowPawnsToDrown_title>
+    <NPS_allowPawnsToDrown_text>If a pawn is downed in the water, they might drown</NPS_allowPawnsToDrown_text>
+    <!-- Patches -->
+    <NPS_doAmbientTemperature_title>Apply ambient temperature patch</NPS_doAmbientTemperature_title>
+    <NPS_doAmbientTemperature_text>Temperature of a pawn can be affected by the terrain they are standing on. Note that this can be performance heavy with multiple pawns</NPS_doAmbientTemperature_text>
+    
+    <TKKN_showTempReadout_title>Show temperature readout</TKKN_showTempReadout_title>
+    <TKKN_showTempReadout_text>Show temperature readout in the bottom left</TKKN_showTempReadout_text>
+
+    <!-- @formatter:on -->
+</LanguageData>

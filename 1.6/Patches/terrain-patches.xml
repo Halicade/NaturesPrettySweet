@@ -14,6 +14,7 @@
     <value>
       <li Class="TKKN_NPS.TerrainWeatherReactions">
         <holdFrost>True</holdFrost>
+        <wetAt>0</wetAt>
       </li>
     </value>
   </Operation>
@@ -22,6 +23,7 @@
     <value>
       <li Class="TKKN_NPS.TerrainWeatherReactions">
         <holdFrost>True</holdFrost>
+        <wetAt>0</wetAt>
       </li>
     </value>
   </Operation>

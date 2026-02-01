@@ -63,7 +63,7 @@ public static class PawnChecks
 
     private static void drowningCheck(Pawn pawn, TerrainDef terrain, bool drowningCheck) {
         //drowning == immobile and in water
-        if (!Settings.allowPawnsDrowning && !drowningCheck) return;
+        if (!EffectSettings.allowPawnsDrowning && !drowningCheck) return;
 
         if (pawn.health.Downed && TerrainTagUtil.TKKN_Wet.Contains(terrain)) {
             var damage = .0005f;
@@ -105,7 +105,7 @@ public static class PawnChecks
     }
 
     private static void makeWet(Pawn pawn, TerrainDef currentTerrain, bool isRaining, Map map) {
-        if (!Settings.allowPawnsToGetWet) {
+        if (!EffectSettings.allowPawnsToGetWet) {
             return;
         }
 
@@ -136,7 +136,7 @@ public static class PawnChecks
             return;
         }
 
-        if (HarmonyMain.RimBrellasActive && HarmonyMain.HasUmbrella(pawn)) {
+        if (HarmonyWeatherEffects.RimBrellasActive && HarmonyWeatherEffects.HasUmbrella(pawn)) {
             return;
         }
 
@@ -147,7 +147,7 @@ public static class PawnChecks
 
 
     private static void makePaths(Pawn pawn, Watcher watcher, Map map) {
-        if (!Settings.doDirtPath) {
+        if (!EffectSettings.doDirtPath) {
             return;
         }
 
@@ -158,7 +158,7 @@ public static class PawnChecks
         if (!watcher.cellWeatherAffects.TryGetValue(pawn.Position, out var cell))
             return;
 
-        if (Settings.showCold && watcher.outdoorTemp < 3) {
+        if (EffectSettings.doWalkThroughSnow && watcher.outdoorTemp < 3) {
             watcher.frostGridComponent.AddDepth(cell, -.005f);
             map.snowGrid.AddDepth(pawn.Position, -.005f);
         }
@@ -172,7 +172,7 @@ public static class PawnChecks
     private static readonly Vector3 BreathOffset = new(0f, 0f, -0.04f);
 
     private static void makeBreath(Pawn pawn, Map map, bool doBreathCheck) {
-        if (!doBreathCheck || !Settings.showCold)
+        if (!doBreathCheck || !EffectSettings.doColdBreath)
             return;
         if (pawn.Position.GetTemperature(map) >= 3f ||
             (ModsConfig.OdysseyActive &&

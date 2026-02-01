@@ -45,6 +45,10 @@ public class BiomeSeasonalSettings : DefModExtension
 
 
     public void setWeatherBySeason(Map map, Season season, Quadrum quadrum) {
+        if (!EffectSettings.seasonalWeather) {
+            return;
+        }
+
         if (springWeathers.NullOrEmpty() ||
             summerWeathers.NullOrEmpty() ||
             fallWeathers.NullOrEmpty() ||
@@ -86,9 +90,10 @@ public class BiomeSeasonalSettings : DefModExtension
                         break;
                     case Quadrum.Undefined:
                     default:
-                        Log.ErrorOnce("Could not find an appropriate weather settings for biome " + map.Biome,
+                        Log.ErrorOnce(
+                            $"NPS: Could not find an appropriate weather settings for biome: {map.Biome} from mod: {map.Biome.modContentPack?.Name} Season: {season} Quadrum: {quadrum}",
                             map.Biome.GetHashCode());
-                        break;
+                        return;
                 }
 
                 break;
@@ -120,8 +125,12 @@ public class BiomeSeasonalSettings : DefModExtension
         }
     }
 
-    public void setDiseaseBySeason(Season season, Quadrum quadrum) {
-        var seasonalDiseases = new List<BiomeDiseaseRecord>();
+    public void setDiseaseBySeason(Map map, Season season, Quadrum quadrum) {
+        if (!EffectSettings.seasonalDiseases) {
+            return;
+        }
+
+        List<BiomeDiseaseRecord> seasonalDiseases;
         switch (season) {
             case Season.Spring when springDiseases != null:
                 seasonalDiseases = springDiseases;
@@ -135,6 +144,9 @@ public class BiomeSeasonalSettings : DefModExtension
             case Season.Winter when winterDiseases != null:
                 seasonalDiseases = winterDiseases;
                 break;
+            case Season.Undefined:
+            case Season.PermanentSummer:
+            case Season.PermanentWinter:
             default: {
                 switch (quadrum) {
                     case Quadrum.Aprimay when springDiseases != null:
@@ -149,6 +161,12 @@ public class BiomeSeasonalSettings : DefModExtension
                     case Quadrum.Septober when fallDiseases != null:
                         seasonalDiseases = fallDiseases;
                         break;
+                    case Quadrum.Undefined:
+                    default:
+                        Log.ErrorOnce(
+                            $"NPS: Could not find an appropriate weather settings for biome: {map.Biome} from mod: {map.Biome.modContentPack?.Name} Season: {season} Quadrum: {quadrum}",
+                            map.Biome.GetHashCode());
+                        return;
                 }
 
                 break;
@@ -163,8 +181,8 @@ public class BiomeSeasonalSettings : DefModExtension
         diseaseCacheUpdated = false;
     }
 
-    public void setIncidentsBySeason(Season season, Quadrum quadrum) {
-        var seasonalIncidents = new List<TKKN_IncidentCommonalityRecord>();
+    public void setIncidentsBySeason(Map map, Season season, Quadrum quadrum) {
+        List<TKKN_IncidentCommonalityRecord> seasonalIncidents;
         switch (season) {
             case Season.Spring when springEvents != null:
                 seasonalIncidents = springEvents;
@@ -178,6 +196,9 @@ public class BiomeSeasonalSettings : DefModExtension
             case Season.Winter when winterEvents != null:
                 seasonalIncidents = winterEvents;
                 break;
+            case Season.Undefined:
+            case Season.PermanentSummer:
+            case Season.PermanentWinter:
             default: {
                 switch (quadrum) {
                     case Quadrum.Aprimay when springEvents != null:
@@ -192,6 +213,12 @@ public class BiomeSeasonalSettings : DefModExtension
                     case Quadrum.Septober when fallEvents != null:
                         seasonalIncidents = fallEvents;
                         break;
+                    case Quadrum.Undefined:
+                    default:
+                        Log.ErrorOnce(
+                            $"NPS: Could not find an appropriate weather settings for biome: {map.Biome} from mod: {map.Biome.modContentPack?.Name} Season: {season} Quadrum: {quadrum}",
+                            map.Biome.GetHashCode());
+                        return;
                 }
 
                 break;

@@ -7,7 +7,7 @@ using Verse.AI;
 namespace TKKN_NPS;
 
 [StaticConstructorOnStartup]
-internal class HarmonyMain
+public class HarmonyWeatherEffects
 {
     public static readonly bool RimBrellasActive;
     public static readonly bool DesirePathsActive;
@@ -18,7 +18,7 @@ internal class HarmonyMain
     
     
 
-    static HarmonyMain() {
+    static HarmonyWeatherEffects() {
         TerrainTagUtil.IntializeTerrainTags();
         ThingUtil.InitializeThingUtil();
         PlantReactionUtil.InitializePlantGraphics();
@@ -28,18 +28,18 @@ internal class HarmonyMain
         RimBrellasActive = ModLister.GetActiveModWithIdentifier("battlemage64.Rimbrellas", true) != null;
 
         if (ModsConfig.OdysseyActive) {
-            Settings.doIce = false;
-            Settings.doFloods = false;
-            Settings.leaveStuff = false;
-            Settings.allowPawnsSwim = false;
+            EffectSettings.doIce = false;
+            EffectSettings.doFloods = false;
+            EffectSettings.leaveStuff = false;
+            EffectSettings.allowPawnsSwim = false;
         }
 
         if (DesirePathsActive) {
-            Settings.doDirtPath = false;
+            EffectSettings.doDirtPath = false;
         }
 
 
-        var harmony = new Harmony("com.github.tkkntkkn.Natures-Pretty-Sweet");
+        var harmony = new Harmony("Hali.NPS_WeatherEffects");
 
         harmony.Patch(AccessTools.Method(typeof(BiomeDef), nameof(BiomeDef.CommonalityOfDisease)),
             prefix: new HarmonyMethod(typeof(BiomeDef_CommonalityOfDisease),
@@ -93,46 +93,26 @@ internal class HarmonyMain
             postfix: new HarmonyMethod(typeof(JobGiver_SeekSafeTemperature_TryGiveJob),
                 nameof(JobGiver_SeekSafeTemperature_TryGiveJob.Postfix)));
 
-        if (Settings.allowPawnsSwim && !ModsConfig.OdysseyActive) {
+        if (EffectSettings.allowPawnsSwim && !ModsConfig.OdysseyActive) {
             harmony.Patch(
                 AccessTools.Method(typeof(PawnRenderNodeWorker_Body), nameof(PawnRenderNodeWorker_Body.CanDrawNow)),
                 postfix: new HarmonyMethod(typeof(PawnRenderNodeWorker_Body_CanDrawNow),
                     nameof(PawnRenderNodeWorker_Body_CanDrawNow.Postfix)));
         }
-        /*
-        if (Settings.allowPawnsToGetWet) {
-            harmony.Patch(
-                AccessTools.Method(typeof(GenTemperature), nameof(GenTemperature.ComfortableTemperatureRange),
-                    [typeof(Pawn)]),
-                postfix: new HarmonyMethod(typeof(GenTemperature_ComfortableTemperatureRange),
-                    nameof(GenTemperature_ComfortableTemperatureRange.Postfix)));
-        }*/
 
-        if (Settings.allowPlantEffects) {
+        if (EffectSettings.allowPlantEffects) {
             harmony.Patch(AccessTools.PropertyGetter(typeof(Plant), nameof(Plant.Graphic)),
                 postfix: new HarmonyMethod(typeof(Plant_Graphic),
                     nameof(Plant_Graphic.Postfix)));
         }
 
-        if (Settings.terrainAffectTemperature) {
+        if (EffectSettings.terrainAffectTemperature) {
             harmony.Patch(AccessTools.PropertyGetter(typeof(Thing), nameof(Thing.AmbientTemperature)),
                 postfix: new HarmonyMethod(typeof(Thing_AmbientTemperature),
                     nameof(Thing_AmbientTemperature.Postfix)));
         }
 
-        if (Settings.modifyAridShrubland) {
-            harmony.Patch(
-                AccessTools.Method(typeof(BiomeWorker_AridShrubland), nameof(BiomeWorker_AridShrubland.GetScore)),
-                postfix: new HarmonyMethod(typeof(BiomeWorker_AridShrubland_GetScore),
-                    nameof(BiomeWorker_AridShrubland_GetScore.Postfix)));
-        }
 
-        if (Settings.modifyTemperateForest) {
-            harmony.Patch(
-                AccessTools.Method(typeof(BiomeWorker_TemperateForest), nameof(BiomeWorker_TemperateForest.GetScore)),
-                postfix: new HarmonyMethod(typeof(BiomeWorker_TemperateForest_GetScore),
-                    nameof(BiomeWorker_TemperateForest_GetScore.Postfix)));
-        }
 
         if (RimBrellasActive) {
             HasUmbrella = AccessTools.MethodDelegate<HasUmbrellaDelegate>(

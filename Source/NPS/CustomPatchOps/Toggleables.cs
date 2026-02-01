@@ -12,7 +12,7 @@ public class Toggleables : PatchOperation
     
     protected override bool ApplyWorker(XmlDocument xml)
     {
-        if (Settings.GetActiveSettings.Contains(setting)) {
+        if (BiomeSettings.GetActiveSettings(setting)) {
             return patchOp.Apply(xml);
         }
 

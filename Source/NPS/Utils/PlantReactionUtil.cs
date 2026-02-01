@@ -5,7 +5,6 @@ namespace TKKN_NPS;
 
 public static class PlantReactionUtil
 {
-    public static readonly Dictionary<ThingDef, List<TerrainDef>> AllowedTerrains = [];
 
     //public static readonly Dictionary<ThingDef, ThingWeatherReaction> HasGraphic = [];
 

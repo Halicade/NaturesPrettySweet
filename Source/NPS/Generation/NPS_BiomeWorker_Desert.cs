@@ -7,7 +7,7 @@ namespace TKKN_NPS;
 public class NPS_BiomeWorker_Desert : BiomeWorker_Desert
 {
     public override float GetScore(BiomeDef biome, Tile tile, PlanetTile planetTile) {
-        if (!Settings.allowDesertSaltFlats) {
+        if (!BiomeSettings.allowDesertSaltFlats) {
             return -100f;
         }
 

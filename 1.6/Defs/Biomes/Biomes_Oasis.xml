@@ -152,7 +152,6 @@
             <SyntheticRhinoceros MayRequire="zal.syntheticanimals">0.004</SyntheticRhinoceros>
             <SyntheticFox MayRequire="zal.syntheticanimals">0.004</SyntheticFox>
             <ACPChipmunk MayRequire="acpteam.acpvanillastyle">0.1</ACPChipmunk>
-            <ACPBlackbear MayRequire="acpteam.acpvanillastyle">0.04</ACPBlackbear>
             <ACPBlackRhinoceros MayRequire="acpteam.acpvanillastyle">0.08</ACPBlackRhinoceros>
             <ACPLion MayRequire="acpteam.acpvanillastyle">0.04</ACPLion>
             <ACPCheetah MayRequire="acpteam.acpvanillastyle">0.08</ACPCheetah>
@@ -304,6 +303,8 @@
             <BMT_Inostrancevia MayRequire="biomesteam.biomesprehistoric">0.01</BMT_Inostrancevia>
             <BMT_Utahraptor MayRequire="biomesteam.biomesprehistoric">0.3</BMT_Utahraptor>
             <BMT_Velociraptor MayRequire="biomesteam.biomesprehistoric">0.5</BMT_Velociraptor>
+            <SpottedHyena MayRequire="zal.hyena">0.08</SpottedHyena>
+            <StripedHyena MayRequire="zal.hyena">0.08</StripedHyena>
         </wildAnimals>
         <pollutionWildAnimals>
             <Boomalope>0.1</Boomalope>

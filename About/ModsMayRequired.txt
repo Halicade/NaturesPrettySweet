@@ -1,6 +1,7 @@
 ﻿Mods that have been MayRequired somewhere in this mod.
 
 Animal mods:
+AA Vampire Squirrels armoredampharos.vampiresquirrels https://steamcommunity.com/sharedfiles/filedetails/?id=3137738811
 ABF: Synstruct Biomimetics killathon.artificialbeings.syncore.biomimetics https://steamcommunity.com/sharedfiles/filedetails/?id=3288479776
 Alpha Animals sarg.alphaanimals https://steamcommunity.com/sharedfiles/filedetails/?id=1541721856
 Animal Collab Project Vanilla-Style acpteam.acpvanillastyle https://steamcommunity.com/sharedfiles/filedetails/?id=2208467668
@@ -19,13 +20,16 @@ Erin's Fox Squirrel erin.foxsquirrel https://steamcommunity.com/sharedfiles/file
 Erin's Shisune erin.shisune https://steamcommunity.com/sharedfiles/filedetails/?id=2974138931
 FEB's Biopunk Livestock feb.biopunklivestock https://steamcommunity.com/sharedfiles/filedetails/?id=3556058978
 Fabled Cervidae scurvyez.fabledcervidae https://steamcommunity.com/sharedfiles/filedetails/?id=3400548142
+Ferocious Bear frcs.bear https://steamcommunity.com/sharedfiles/filedetails/?id=3567431133
 Flommel tigerblut.flommel https://steamcommunity.com/sharedfiles/filedetails/?id=1541255350
 Fox Expansion (Continued) zal.fox https://steamcommunity.com/sharedfiles/filedetails/?id=2818483526
 GREG tyrannidae.gregnfriends https://steamcommunity.com/sharedfiles/filedetails/?id=3228302152
 Giant Toads (Continued) zal.gianttoads https://steamcommunity.com/sharedfiles/filedetails/?id=3365223736
 HC Animal Continued hc.animal.continued https://steamcommunity.com/sharedfiles/filedetails/?id=3238206164
+Hamster plaxen.hamster https://steamcommunity.com/sharedfiles/filedetails/?id=2848286000
 Hilda's Creatures - Deerfox (Continued) zal.deerfox https://steamcommunity.com/sharedfiles/filedetails/?id=2818484342
 Hybrid Animals zylle.hybridanimals https://steamcommunity.com/sharedfiles/filedetails/?id=2531718666
+Hyena (Continued) zal.hyena https://steamcommunity.com/sharedfiles/filedetails/?id=2778544400
 Jurassic Rimworld (Continued) Mlie.JurassicRimworld https://steamcommunity.com/sharedfiles/filedetails/?id=3541468886
 Jurassic Rimworld - Dinosaurs Only (Continued) mlie.jurassicrimworlddinosaursonly https://steamcommunity.com/sharedfiles/filedetails/?id=3541510004
 Little Critters tyrannidae.littlecritters https://steamcommunity.com/sharedfiles/filedetails/?id=3331281387
@@ -51,7 +55,7 @@ The Profaned botchjob.profaned https://steamcommunity.com/sharedfiles/filedetail
 Vanilla Animals Expanded vanillaexpanded.vanillaanimalsexpanded https://steamcommunity.com/sharedfiles/filedetails/?id=2871933948
 Vanilla Animals Expanded — Waste Animals vanillaexpanded.vaewaste https://steamcommunity.com/sharedfiles/filedetails/?id=2962126499
 [Ry]Rimcraft Animals (Continued) zal.rimcraftanimals https://steamcommunity.com/sharedfiles/filedetails/?id=3599363187
-
+Rim of Evil: Northern Frontier jtc.nordberg https://steamcommunity.com/sharedfiles/filedetails/?id=3657594516
 
 Plants:
 Biomes! Polluted Lands biomesteam.biomespollutedlands https://steamcommunity.com/sharedfiles/filedetails/?id=3390196656

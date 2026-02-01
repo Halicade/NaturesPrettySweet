@@ -217,6 +217,8 @@
             <BMT_Quetzal MayRequire="biomesteam.biomesprehistoric">0.1</BMT_Quetzal>
             <BMT_Utahraptor MayRequire="biomesteam.biomesprehistoric">0.1</BMT_Utahraptor>
             <BMT_Styracosaurus MayRequire="biomesteam.biomesprehistoric">0.01</BMT_Styracosaurus>
+            <SpottedHyena MayRequire="zal.hyena">0.07</SpottedHyena>
+            <StripedHyena MayRequire="zal.hyena">0.07</StripedHyena>
         </wildAnimals>
         <pollutionWildAnimals>
             <Boomalope>0.1</Boomalope>

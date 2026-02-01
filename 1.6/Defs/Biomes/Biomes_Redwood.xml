@@ -417,6 +417,13 @@
             <BMT_Wuerhosaurus MayRequire="biomesteam.biomesprehistoric">0.15</BMT_Wuerhosaurus>
             <BMT_Yinlong MayRequire="biomesteam.biomesprehistoric">0.2</BMT_Yinlong>
             <BMT_Yutyrannus MayRequire="biomesteam.biomesprehistoric">0.3</BMT_Yutyrannus>
+            <TuftedSquirrel MayRequire="armoredampharos.vampiresquirrels">0.012</TuftedSquirrel>
+            <VampireSquirrel MayRequire="armoredampharos.vampiresquirrels">0.009</VampireSquirrel>
+            <Bear_Ferocious MayRequire="frcs.bear">0.012</Bear_Ferocious>
+            <Nordberg_ROE_Snowhare MayRequire="jtc.nordberg">0.2</Nordberg_ROE_Snowhare>
+            <Wolf_ROE_Nordberg MayRequire="jtc.nordberg">0.02</Wolf_ROE_Nordberg>
+            <Wolf_ROE_NordbergAlpha MayRequire="jtc.nordberg">0.01</Wolf_ROE_NordbergAlpha>
+            <Nordberg_Yeti MayRequire="jtc.nordberg">0.015</Nordberg_Yeti>
         </wildAnimals>
         <pollutionWildAnimals>
             <Boomalope>0.1</Boomalope>

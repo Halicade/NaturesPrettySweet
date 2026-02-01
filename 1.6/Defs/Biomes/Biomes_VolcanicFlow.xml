@@ -273,6 +273,7 @@
             <dtf_vresanguophage_AnimalHemolope MayRequire="dtf.multilopesexpanded,vanillaracesexpanded.sanguophage">0.2</dtf_vresanguophage_AnimalHemolope>
             <dtf_vresanguophage_CorpseHemolope MayRequire="dtf.multilopesexpanded,vanillaracesexpanded.sanguophage">0.2</dtf_vresanguophage_CorpseHemolope>
             <dtf_vresanguophage_Sanguolope MayRequire="dtf.multilopesexpanded,vanillaracesexpanded.sanguophage">0.2</dtf_vresanguophage_Sanguolope>
+            <Bear_Ferocious MayRequire="frcs.bear">0.012</Bear_Ferocious>
         </wildAnimals>
         <pollutionWildAnimals>
             <Rat>0.8</Rat>

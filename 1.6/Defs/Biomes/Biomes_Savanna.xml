@@ -290,6 +290,8 @@
             <BMT_TRex MayRequire="biomesteam.biomesprehistoric">0.3</BMT_TRex>
             <BMT_Utahraptor MayRequire="biomesteam.biomesprehistoric">0.4</BMT_Utahraptor>
             <BMT_Velociraptor MayRequire="biomesteam.biomesprehistoric">0.4</BMT_Velociraptor>
+            <SpottedHyena MayRequire="zal.hyena">0.08</SpottedHyena>
+            <StripedHyena MayRequire="zal.hyena">0.08</StripedHyena>
         </wildAnimals>
         <pollutionWildAnimals>
             <Rat>1.0</Rat>
@@ -302,6 +304,8 @@
             <VAEWaste_Toxlion MayRequire="vanillaexpanded.vaewaste">0.2</VAEWaste_Toxlion>
             <VAEWaste_Toxafox MayRequire="vanillaexpanded.vaewaste">0.2</VAEWaste_Toxafox>
             <VAEWaste_Toxscorpion MayRequire="vanillaexpanded.vaewaste">0.4</VAEWaste_Toxscorpion>
+            <TuftedSquirrel MayRequire="armoredampharos.vampiresquirrels">0.012</TuftedSquirrel>
+            <VampireSquirrel MayRequire="armoredampharos.vampiresquirrels">0.009</VampireSquirrel>
         </pollutionWildAnimals>
         <allowedPackAnimals>
             <li>Muffalo</li>

@@ -376,6 +376,10 @@
             <BMT_Utahraptor MayRequire="biomesteam.biomesprehistoric">0.4</BMT_Utahraptor>
             <BMT_Velociraptor MayRequire="biomesteam.biomesprehistoric">0.5</BMT_Velociraptor>
             <BMT_Yinlong MayRequire="biomesteam.biomesprehistoric">0.5</BMT_Yinlong>
+            <PearlHamster MayRequire="plaxen.hamster">0.07</PearlHamster>
+            <AgoutiHamster MayRequire="plaxen.hamster">0.07</AgoutiHamster>
+            <SapphirerHamster MayRequire="plaxen.hamster">0.07</SapphirerHamster>
+            <PuddingHamster MayRequire="plaxen.hamster">0.07</PuddingHamster>
         </wildAnimals>
         <pollutionWildAnimals>
             <Boomalope>0.4</Boomalope>

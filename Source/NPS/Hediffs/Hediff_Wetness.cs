@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using RimWorld;
+﻿using RimWorld;
 using Verse;
 
 namespace TKKN_NPS;
@@ -10,11 +9,9 @@ public class Hediff_Wetness : HediffWithComps
 
     private IntVec3 position;
     private int timeDrying;
-    private float wetnessLevel;
 
-    public override void ExposeData() {
+    public override void ExposeData() {  
         base.ExposeData();
-        Scribe_Values.Look(ref wetnessLevel, "wetnessLevel");
         Scribe_Values.Look(ref timeDrying, "timeDrying");
     }
 
@@ -24,10 +21,10 @@ public class Hediff_Wetness : HediffWithComps
     }
 
     public override void Tick() {
-        base.Tick();
         position = pawn.Position;
 
         if (!position.IsValid) {
+            Severity = 0;
             return;
         }
 
@@ -39,10 +36,6 @@ public class Hediff_Wetness : HediffWithComps
         var wetness = wetnessRate();
         if (wetness > 0) {
             Severity += wetness / 1000;
-            wetnessLevel += wetness;
-            if (wetnessLevel < 0) {
-                wetnessLevel = 0;
-            }
 
             if (!(Severity > .62) || ageTicks % 1000 != 0) {
                 return;

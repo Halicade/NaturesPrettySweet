@@ -4,7 +4,7 @@ using RimWorld;
 using Verse;
 
 namespace TKKN_NPS;
-
+/*
 //[HarmonyPatch(typeof(GenTemperature), nameof(GenTemperature.ComfortableTemperatureRange), typeof(Pawn))]
 internal class GenTemperature_ComfortableTemperatureRange
 {
@@ -63,3 +63,4 @@ internal class GenTemperature_ComfortableTemperatureRange
         return setTo;
     }
 }
+*/

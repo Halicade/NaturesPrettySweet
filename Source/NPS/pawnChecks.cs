@@ -65,43 +65,25 @@ public static class PawnChecks
         //drowning == immobile and in water
         if (!EffectSettings.allowPawnsDrowning && !drowningCheck) return;
 
-        if (pawn.health.Downed && TerrainTagUtil.TKKN_Wet.Contains(terrain)) {
-            var damage = .0005f;
-            //if they're awake, take less damage
-            if (!pawn.health.capacities.CanBeAwake) {
-                if (TerrainTagUtil.TKKN_Swim.Contains(terrain)) {
-                    damage = .0001f;
-                }
-                else {
-                    return;
-                }
-            }
-
-            //heavier clothing hurts them more
-            var apparel = pawn.apparel.WornApparel;
-            var weight = 0f;
-            foreach (var apparel1 in apparel) {
-                weight += (float)apparel1.HitPoints / 10000;
-            }
-
-            damage += weight / 5000;
-            HealthUtility.AdjustSeverity(pawn, HediffDefOf.TKKN_Drowning, damage);
-
-            var hediffDef = HediffDefOf.TKKN_Drowning;
-            if (pawn.Faction is not { IsPlayer: true } ||
-                pawn.health.hediffSet.GetFirstHediffOfDef(hediffDef) != null) {
-                return;
-            }
-
-            string text = "TKKN_NPS_DrowningText".Translate();
-            Messages.Message(text, MessageTypeDefOf.NeutralEvent);
+        if (!TerrainTagUtil.TKKN_Wet.Contains(terrain) || !pawn.health.Downed) {
             return;
         }
 
-        var drowning = pawn.health.hediffSet.GetFirstHediffOfDef(HediffDefOf.TKKN_Drowning);
-        if (drowning != null) {
-            pawn.health.RemoveHediff(drowning);
-        }
+        //ignore if they're mostly vacuum resistant
+        if (ModsConfig.OdysseyActive &&
+            pawn.GetStatValue(StatDefOf.VacuumResistance, cacheStaleAfterTicks: 60) > 0.95)
+            return;
+
+        if (pawn.health.hediffSet.GetFirstHediffOfDef(HediffDefOf.TKKN_Drowning) != null)
+            return;
+            
+        var hediff = HediffMaker.MakeHediff(HediffDefOf.TKKN_Drowning, pawn);
+        hediff.Severity = 0.001f;
+        pawn.health.AddHediff(hediff);
+            
+            
+        string text = "TKKN_NPS_DrowningText".Translate();
+        Messages.Message(text, MessageTypeDefOf.NegativeHealthEvent);
     }
 
     private static void makeWet(Pawn pawn, TerrainDef currentTerrain, bool isRaining, Map map) {

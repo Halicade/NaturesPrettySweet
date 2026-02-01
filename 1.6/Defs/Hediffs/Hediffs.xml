@@ -50,7 +50,7 @@
     <defName>TKKN_Drowning</defName>
     <label>drowning</label>
     <lethalSeverity>1</lethalSeverity>
-    <scenarioCanAdd>true</scenarioCanAdd>
+    <hediffClass>TKKN_NPS.Hediff_Drowning</hediffClass>
     <description>Too much liquid!</description>
     <stages>
       <li>

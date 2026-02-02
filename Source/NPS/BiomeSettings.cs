@@ -21,6 +21,8 @@ public class BiomeSettings : ModSettings
     private static bool wildVegetables = true;
     private static bool grassTexture = true;
     
+    public static bool MedievalOverhaulActive;
+    
     public static bool GetActiveSettings(string settingName) {
         switch (settingName) {
             case "Dandelions":

@@ -11,6 +11,8 @@ public class BiomesController : Mod
     public BiomesController(ModContentPack content)
         : base(content) {
         GetSettings<BiomeSettings>();
+        BiomeSettings.MedievalOverhaulActive= ModLister.GetActiveModWithIdentifier("dankpyon.medieval.overhaul") != null;
+        
         LongEventHandler.QueueLongEvent(action: HarmonyPatches,
             textKey: null,
             doAsynchronously: true,

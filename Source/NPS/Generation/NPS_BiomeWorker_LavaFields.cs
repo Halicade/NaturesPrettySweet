@@ -15,7 +15,7 @@ public class NPS_BiomeWorker_LavaFields : BiomeWorker_TropicalRainforest
             return 0f;
         }
 
-        if (Rand.ValueSeeded(tile.tile.tileId) > .009) {
+        if (Rand.ValueSeeded(planetTile.tileId) > .009) {
             return 0f;
         }
 

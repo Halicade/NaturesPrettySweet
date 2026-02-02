@@ -15,7 +15,7 @@ public class NPS_BiomeWorker_Oasis : BiomeWorker_ExtremeDesert
             return 0f;
         }
 
-        if (Rand.ValueSeeded(tile.tile.tileId * 3) > .006) {
+        if (Rand.ValueSeeded(planetTile.tileId * 3) > .006) {
             return 0f;
         }
 

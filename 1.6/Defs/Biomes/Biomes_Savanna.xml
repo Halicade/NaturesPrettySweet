@@ -293,6 +293,29 @@
             <BMT_Velociraptor MayRequire="biomesteam.biomesprehistoric">0.4</BMT_Velociraptor>
             <SpottedHyena MayRequire="zal.hyena">0.08</SpottedHyena>
             <StripedHyena MayRequire="zal.hyena">0.08</StripedHyena>
+            <RW_Devirossy MayRequire="rw.furossy">0.08</RW_Devirossy>
+            <RW_Furossy MayRequire="rw.furossy">0.08</RW_Furossy>
+            <Jeeta MayRequire="nexomon.x">0.08</Jeeta>
+            <Boltusk MayRequire="nexomon.x">0.08</Boltusk>
+            <Raamu MayRequire="nexomon.x">0.08</Raamu>
+            <Arctivore MayRequire="nexomon.x">0.08</Arctivore>
+            <Abaddog MayRequire="nexomon.x">0.08</Abaddog>
+            <Carnagrius MayRequire="nexomon.x">0.08</Carnagrius>
+            <Voltaic MayRequire="nexomon.x">0.08</Voltaic>
+            <Mystogen MayRequire="nexomon.x">0.02</Mystogen>
+            <Draclone MayRequire="nexomon.x">0.08</Draclone>
+            <Fuzztino MayRequire="nexomon.x">0.08</Fuzztino>
+            <Addax MayRequire="zal.antelopes">0.8</Addax>
+            <Gemsbok MayRequire="zal.antelopes">0.6</Gemsbok>
+            <Tyrant MayRequire="zal.borderlands">0.1</Tyrant>
+            <Ratch MayRequire="zal.borderlands">0.3</Ratch>
+            <Skag MayRequire="zal.borderlands">0.4</Skag>
+            <Spiderant MayRequire="zal.borderlands">0.4</Spiderant>
+            <Rakk MayRequire="zal.borderlands">0.5</Rakk>
+            <Bullymong MayRequire="zal.borderlands">0.2</Bullymong>
+            <Rat_Large MayRequire="mal.rodentsofunusualsize">0.07</Rat_Large>
+            <RFanimal_Breashark MayRequire="ricofox233.sunx1983.brea">0.04</RFanimal_Breashark>
+            <RFanimal_Cockbrea MayRequire="ricofox233.sunx1983.brea">0.1</RFanimal_Cockbrea>
         </wildAnimals>
         <pollutionWildAnimals>
             <Rat>1.0</Rat>
@@ -311,6 +334,13 @@
         <allowedPackAnimals>
             <li>Muffalo</li>
             <li>Elephant</li>
+            <li MayRequire="nexomon.x">Muffalo</li>
+            <li MayRequire="nexomon.x">Elephant</li>
+            <li MayRequire="nexomon.x">Raamu</li>
+            <li MayRequire="nexomon.x">Draclone</li>
+            <li MayRequire="nexomon.x">Boltusk</li>
+            <li MayRequire="nexomon.x">Abaddog</li>
+            <li MayRequire="nexomon.x">Voltaic</li>
         </allowedPackAnimals>
 
         <modExtensions>

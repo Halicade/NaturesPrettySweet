@@ -219,6 +219,19 @@
             <BMT_Styracosaurus MayRequire="biomesteam.biomesprehistoric">0.01</BMT_Styracosaurus>
             <SpottedHyena MayRequire="zal.hyena">0.07</SpottedHyena>
             <StripedHyena MayRequire="zal.hyena">0.07</StripedHyena>
+            <RW_Devirossy MayRequire="rw.furossy">0.08</RW_Devirossy>
+            <RW_Furossy MayRequire="rw.furossy">0.08</RW_Furossy>
+            <Draclone MayRequire="nexomon.x">0.03</Draclone>
+            <Abaddog MayRequire="nexomon.x">0.03</Abaddog>
+            <Carnagrius MayRequire="nexomon.x">0.03</Carnagrius>
+            <Voltaic MayRequire="nexomon.x">0.03</Voltaic>
+            <Mystogen MayRequire="nexomon.x">0.01</Mystogen>
+            <Tyrant MayRequire="zal.borderlands">0.1</Tyrant>
+            <Ratch MayRequire="zal.borderlands">0.3</Ratch>
+            <Skag MayRequire="zal.borderlands">0.4</Skag>
+            <Spiderant MayRequire="zal.borderlands">0.4</Spiderant>
+            <Rakk MayRequire="zal.borderlands">0.5</Rakk>
+            <Bullymong MayRequire="zal.borderlands">0.2</Bullymong>
         </wildAnimals>
         <pollutionWildAnimals>
             <Boomalope>0.1</Boomalope>
@@ -260,6 +273,11 @@
         <allowedPackAnimals>
             <li>Muffalo</li>
             <li>Dromedary</li>
+            <li MayRequire="nexomon.x">Raamu</li>
+            <li MayRequire="nexomon.x">Draclone</li>
+            <li MayRequire="nexomon.x">Boltusk</li>
+            <li MayRequire="nexomon.x">Abaddog</li>
+            <li MayRequire="nexomon.x">Voltaic</li>
         </allowedPackAnimals>
 
         <modExtensions>

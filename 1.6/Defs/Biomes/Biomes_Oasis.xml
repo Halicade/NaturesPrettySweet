@@ -305,6 +305,25 @@
             <BMT_Velociraptor MayRequire="biomesteam.biomesprehistoric">0.5</BMT_Velociraptor>
             <SpottedHyena MayRequire="zal.hyena">0.08</SpottedHyena>
             <StripedHyena MayRequire="zal.hyena">0.08</StripedHyena>
+            <RW_Devirossy MayRequire="rw.furossy">0.08</RW_Devirossy>
+            <RW_Furossy MayRequire="rw.furossy">0.08</RW_Furossy>
+            <Jeeta MayRequire="nexomon.x">0.05</Jeeta>
+            <Boltusk MayRequire="nexomon.x">0.08</Boltusk>
+            <Raamu MayRequire="nexomon.x">0.08</Raamu>
+            <Draclone MayRequire="nexomon.x">0.05</Draclone>
+            <Arctivore MayRequire="nexomon.x">0.04</Arctivore>
+            <Abaddog MayRequire="nexomon.x">0.05</Abaddog>
+            <Voltaic MayRequire="nexomon.x">0.04</Voltaic>
+            <Mystogen MayRequire="nexomon.x">0.01</Mystogen>
+            <Addax MayRequire="zal.antelopes">0.2</Addax>
+            <Tyrant MayRequire="zal.borderlands">0.1</Tyrant>
+            <Ratch MayRequire="zal.borderlands">0.3</Ratch>
+            <Skag MayRequire="zal.borderlands">0.4</Skag>
+            <Spiderant MayRequire="zal.borderlands">0.4</Spiderant>
+            <Rakk MayRequire="zal.borderlands">0.5</Rakk>
+            <Bullymong MayRequire="zal.borderlands">0.2</Bullymong>
+            <Rat_Large MayRequire="mal.rodentsofunusualsize">0.05</Rat_Large>
+            <RFanimal_Cockbrea MayRequire="ricofox233.sunx1983.brea">0.07</RFanimal_Cockbrea>
         </wildAnimals>
         <pollutionWildAnimals>
             <Boomalope>0.1</Boomalope>
@@ -319,6 +338,11 @@
         <allowedPackAnimals>
             <li>Muffalo</li>
             <li>Dromedary</li>
+            <li MayRequire="nexomon.x">Raamu</li>
+            <li MayRequire="nexomon.x">Draclone</li>
+            <li MayRequire="nexomon.x">Boltusk</li>
+            <li MayRequire="nexomon.x">Abaddog</li>
+            <li MayRequire="nexomon.x">Voltaic</li>
         </allowedPackAnimals>
         <modExtensions>
             <li Class="FirefliesTwoO.NightlySpawningExtension" MayRequire="scurvyez.firefliestwo">

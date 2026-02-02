@@ -101,11 +101,11 @@ public class EffectSettings : ModSettings
                 "TKKN_doFloods_title".Translate(),
                 ref doFloods,
                 "TKKN_doFloods_text".Translate());
-            list.CheckboxLabeled(
-                "TKKN_leaveStuff_title".Translate(),
-                ref leaveStuff,
-                "TKKN_leaveStuff_text".Translate());
         }
+        list.CheckboxLabeled(
+            "TKKN_leaveStuff_title".Translate(),
+            ref leaveStuff,
+            "TKKN_leaveStuff_text".Translate());
 
         list.Gap();
         if (!HarmonyWeatherEffects.DesirePathsActive && allowPawnEffects) {

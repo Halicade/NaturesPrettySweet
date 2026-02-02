@@ -14,6 +14,7 @@
         <foragedFood>RawBerries</foragedFood>
         <settlementSelectionWeight>1</settlementSelectionWeight>
         <texture>TKKN_NPS/World/Biomes/Redwoods</texture>
+        <riverbankSizeRange>5~9</riverbankSizeRange>
         <soundsAmbient>
             <li>AmbientNightInsects_Standard</li>
         </soundsAmbient>

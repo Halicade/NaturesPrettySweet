@@ -3,7 +3,7 @@
 <Defs>
     <BiomeDef>
         <defName>TKKN_Savanna</defName>
-        <label>Savanna</label>
+        <label>savanna</label>
         <description>Extensive grasslands with scattered trees.  It has the most trees of the grasslands. The soil is rich but there is little protection from the elements. Seasonal droughts, wildfires and animal migrations occur.</description>
         <workerClass>TKKN_NPS.NPS_BiomeWorker_Savanna</workerClass>
         <animalDensity>1.8</animalDensity>
@@ -13,6 +13,7 @@
         <foragedFood>RawBerries</foragedFood>
         <settlementSelectionWeight>0.95</settlementSelectionWeight>
         <texture>TKKN_NPS/World/Biomes/Savanna</texture>
+        <riverbankSizeRange>3~7</riverbankSizeRange>
         <soundsAmbient>
             <li>AmbientNightInsects_Standard</li>
         </soundsAmbient>

@@ -3,7 +3,7 @@
 <Defs>
     <BiomeDef>
         <defName>TKKN_Grasslands</defName>
-        <label>Tallgrass Prairie</label>
+        <label>tallgrass prairie</label>
         <description>Extensive grasslands, high winds and bright sun. The soil is incredibly fertile but there is little protection from the elements. Seasonal droughts, fires, and storms are punishing.</description>
         <workerClass>TKKN_NPS.NPS_BiomeWorker_Prairie</workerClass>
         <animalDensity>1.3</animalDensity>

@@ -14,6 +14,7 @@
         <geyserCountFactor>1.5</geyserCountFactor>
         <settlementSelectionWeight>.6</settlementSelectionWeight>
         <texture>TKKN_NPS/World/Biomes/Lavatropical</texture>
+        <riverbankSizeRange>6~9</riverbankSizeRange>
         <soundsAmbient>
             <li>AmbientNightInsects_Standard</li>
         </soundsAmbient>
@@ -72,6 +73,7 @@
         <terrainPatchMakers>
             <li>
                 <perlinFrequency>0.04</perlinFrequency>
+                <isPond>true</isPond>
                 <thresholds>
                     <li>
                         <terrain>TKKN_LavaRock_RoughHewn</terrain>

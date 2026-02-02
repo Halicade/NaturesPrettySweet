@@ -81,3 +81,6 @@ World Map Beautification Project (Continued) zal.wmbp https://steamcommunity.com
 
 // Odyssey fishing 
 Aqued Subnautica Fishes aqued.fishes https://steamcommunity.com/sharedfiles/filedetails/?id=3551489303
+
+// Dark forest and redwood forest are sharing the same biome spawn location
+Medieval Overhaul dankpyon.medieval.overhaul https://steamcommunity.com/sharedfiles/filedetails/?id=3219596926

@@ -43,9 +43,6 @@ public class GenStep_SpringTerrain : GenStep
         }
         
         soilTerrain = MapGenUtility.RiverbankTerrainAt(center,map);
-
-        Log.Message("Spawning spring at " + springPoint);
-        Log.Message("Riverbank terrain is "+soilTerrain);
         center = springPoint;
 
         //center = CellFinderLoose.TryFindCentralCell(map, 10, 15, x => !x.Roofed(map));

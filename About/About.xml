@@ -2,8 +2,8 @@
 
 <ModMetaData>
     <name>Nature's Pretty Sweet (Rework)</name>
-    <packageId>Mlie.NaturesPrettySweet</packageId>
-    <author>tkkntkkn</author>
+    <packageId>Hali.NaturesPrettySweet</packageId>
+    <author>tkkntkkn, mlie, halicade</author>
     <url>https://github.com/emipa606/NaturesPrettySweet</url>
     <supportedVersions>
         <li>1.6</li>

@@ -8,7 +8,7 @@
         <categories>
             <li>Lake</li>
         </categories>
-        <chanceOnNonLandmarkTile>1</chanceOnNonLandmarkTile>
+        <chanceOnNonLandmarkTile>0.01</chanceOnNonLandmarkTile>
         <extraGenSteps>
             <li>NPS_HotSpring</li>
             <li>NPS_PostSpringPlants</li>
@@ -32,7 +32,7 @@
         <categories>
             <li>Lake</li>
         </categories>
-        <chanceOnNonLandmarkTile>1</chanceOnNonLandmarkTile>
+        <chanceOnNonLandmarkTile>0.01</chanceOnNonLandmarkTile>
         <extraGenSteps>
             <li>NPS_ColdSpring</li>
             <li>NPS_PostSpringPlants</li>

@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<Patch>
+
+    
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/IncidentDef[defName = "Ambush"]/mtbDaysByBiome</xpath>
+        <value>
+            <TKKN_Grasslands>20</TKKN_Grasslands>
+            <TKKN_RedwoodForest>20</TKKN_RedwoodForest>
+            <TKKN_Oasis>30</TKKN_Oasis>
+            <TKKN_Desert>35</TKKN_Desert>
+            <TKKN_Savanna>20</TKKN_Savanna>
+            <TKKN_VolcanicFlow>25</TKKN_VolcanicFlow>
+        </value>
+    </Operation>
+
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/IncidentDef[defName = "ManhunterAmbush"]/mtbDaysByBiome</xpath>
+        <value>
+            <TKKN_Grasslands>20</TKKN_Grasslands>
+            <TKKN_RedwoodForest>20</TKKN_RedwoodForest>
+            <TKKN_Oasis>30</TKKN_Oasis>
+            <TKKN_Desert>35</TKKN_Desert>
+            <TKKN_Savanna>20</TKKN_Savanna>
+            <TKKN_VolcanicFlow>20</TKKN_VolcanicFlow>
+        </value>
+    </Operation>
+
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/IncidentDef[defName = "CaravanMeeting"]/mtbDaysByBiome</xpath>
+        <value>
+            <TKKN_Grasslands>10</TKKN_Grasslands>
+            <TKKN_RedwoodForest>10</TKKN_RedwoodForest>
+            <TKKN_Oasis>12</TKKN_Oasis>
+            <TKKN_Desert>25</TKKN_Desert>
+            <TKKN_Savanna>10</TKKN_Savanna>
+            <TKKN_VolcanicFlow>15</TKKN_VolcanicFlow>
+        </value>
+    </Operation>
+
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/IncidentDef[defName = "CaravanDemand"]/mtbDaysByBiome</xpath>
+        <value>
+            <TKKN_Grasslands>20</TKKN_Grasslands>
+            <TKKN_RedwoodForest>20</TKKN_RedwoodForest>
+            <TKKN_Oasis>25</TKKN_Oasis>
+            <TKKN_Desert>35</TKKN_Desert>
+            <TKKN_Savanna>20</TKKN_Savanna>
+            <TKKN_VolcanicFlow>20</TKKN_VolcanicFlow>
+        </value>
+    </Operation>
+    
+</Patch>

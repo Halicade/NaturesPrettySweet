@@ -146,7 +146,7 @@
             <TrickleFlommel MayRequire="tigerblut.flommel">0.2</TrickleFlommel>
             <VKC_Baharis MayRequire="ellenot.vaelkorrcreatures">0.03</VKC_Baharis>
             <VKC_FenHowler MayRequire="ellenot.vaelkorrcreatures">0.025</VKC_FenHowler>
-            <FEB_Apotheca MayRequire="feb.biopunklivestock">0.7</FEB_Apotheca>
+            <FEB_Apotheca MayRequire="feb.biopunklivestock">0.4</FEB_Apotheca>
             <Antis MayRequire="mlie.rimbeast">0.01</Antis>
             <Gnawler MayRequire="mlie.rimbeast">0.01</Gnawler>
             <MA_Direhorse MayRequire="veterano.mythicages.megafaunabestiary">0.2</MA_Direhorse>
@@ -205,7 +205,6 @@
             <Vapaad MayRequire="mlie.starwarsanimalcollection">0.01</Vapaad>
             <Varactyl MayRequire="mlie.starwarsanimalcollection">0.02</Varactyl>
             <WompRat MayRequire="mlie.starwarsanimalcollection">0.3</WompRat>
-            <Worrt MayRequire="mlie.starwarsanimalcollection">0.1</Worrt>
             <Wraid MayRequire="mlie.starwarsanimalcollection">0.4</Wraid>
             <BMT_Allosaurus MayRequire="biomesteam.biomesprehistoric">0.1</BMT_Allosaurus>
             <BMT_Anhanguera MayRequire="biomesteam.biomesprehistoric">0.05</BMT_Anhanguera>
@@ -232,6 +231,20 @@
             <Spiderant MayRequire="zal.borderlands">0.4</Spiderant>
             <Rakk MayRequire="zal.borderlands">0.5</Rakk>
             <Bullymong MayRequire="zal.borderlands">0.2</Bullymong>
+            <AEXP_Zebra MayRequire="vanillaexpanded.vanillaanimalsexpanded">0.25</AEXP_Zebra>
+            <AEXP_Wildebeest MayRequire="vanillaexpanded.vanillaanimalsexpanded">0.1</AEXP_Wildebeest>
+            <AEXP_Boombat MayRequire="vanillaexpanded.vanillaanimalsexpanded">0.3</AEXP_Boombat>
+            <AEXP_Hyena MayRequire="vanillaexpanded.vanillaanimalsexpanded">0.45</AEXP_Hyena>
+            <AEXP_Lion MayRequire="vanillaexpanded.vanillaanimalsexpanded">0.37</AEXP_Lion>
+            <AEXP_GilaMonster MayRequire="vanillaexpanded.vanillaanimalsexpanded">0.65</AEXP_GilaMonster>
+            <AEXP_Camel MayRequire="vanillaexpanded.vanillaanimalsexpanded">0.3</AEXP_Camel>
+            <AEXP_Rattlesnake MayRequire="vanillaexpanded.vanillaanimalsexpanded">0.7</AEXP_Rattlesnake>
+            <AEXP_Megascorpion MayRequire="vanillaexpanded.vanillaanimalsexpanded">0.35</AEXP_Megascorpion>
+            <ZEle_AsianElephant MayRequire="zylle.elephants">0.03</ZEle_AsianElephant>
+            <ZEle_BorneoPygmy MayRequire="zylle.elephants">0.008</ZEle_BorneoPygmy>
+            <ZEle_Kallana MayRequire="zylle.elephants">0.01</ZEle_Kallana>
+            <ZEle_Appo MayRequire="zylle.elephants">0.08</ZEle_Appo>
+            <ZTT_SandshellTurtle MayRequire="zylle.turtles">0.2</ZTT_SandshellTurtle>
         </wildAnimals>
         <pollutionWildAnimals>
             <Boomalope>0.1</Boomalope>

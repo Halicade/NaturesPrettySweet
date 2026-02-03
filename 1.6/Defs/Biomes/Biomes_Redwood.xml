@@ -255,7 +255,7 @@
             <FoxSquirrel MayRequire="erin.foxsquirrel">0.07</FoxSquirrel>
             <VKC_Baharis MayRequire="ellenot.vaelkorrcreatures">0.1</VKC_Baharis>
             <VKC_FenHowler MayRequire="ellenot.vaelkorrcreatures">0.1</VKC_FenHowler>
-            <FEB_Apotheca MayRequire="feb.biopunklivestock">0.4</FEB_Apotheca>
+            <FEB_Apotheca MayRequire="feb.biopunklivestock">0.3</FEB_Apotheca>
             <FEB_Cottonfoot MayRequire="feb.biopunklivestock">0.04</FEB_Cottonfoot>
             <FEB_CryoToad MayRequire="feb.biopunklivestock">0.1</FEB_CryoToad>
             <FEB_Ferrohorn MayRequire="feb.biopunklivestock">0.2</FEB_Ferrohorn>
@@ -424,7 +424,7 @@
             <Nordberg_ROE_Snowhare MayRequire="jtc.nordberg">0.2</Nordberg_ROE_Snowhare>
             <Wolf_ROE_Nordberg MayRequire="jtc.nordberg">0.02</Wolf_ROE_Nordberg>
             <Wolf_ROE_NordbergAlpha MayRequire="jtc.nordberg">0.01</Wolf_ROE_NordbergAlpha>
-            <Nordberg_Yeti MayRequire="jtc.nordberg">0.015</Nordberg_Yeti>
+            <Nordberg_ROE_Yeti MayRequire="jtc.nordberg">0.015</Nordberg_ROE_Yeti>
             <RW_Devirossy MayRequire="rw.furossy">0.05</RW_Devirossy>
             <RW_Furossy MayRequire="rw.furossy">0.05</RW_Furossy>
             <Jeeta MayRequire="nexomon.x">0.06</Jeeta>
@@ -438,10 +438,10 @@
             <Voltaic MayRequire="nexomon.x">0.07</Voltaic>
             <Mystogen MayRequire="nexomon.x">0.02</Mystogen>
             <Mamuffalo MayRequire="dismarzero.vgp.mamuffalo">0.1</Mamuffalo>
-            <Ratch MayRequire="zal.borderlands">0.3</Ratch>
-            <Skag MayRequire="zal.borderlands">0.4</Skag>
-            <Spiderant MayRequire="zal.borderlands">0.4</Spiderant>
-            <Rakk MayRequire="zal.borderlands">0.5</Rakk>
+            <Ratch MayRequire="zal.borderlands">0.25</Ratch>
+            <Skag MayRequire="zal.borderlands">0.3</Skag>
+            <Spiderant MayRequire="zal.borderlands">0.24</Spiderant>
+            <Rakk MayRequire="zal.borderlands">0.3</Rakk>
             <Bullymong MayRequire="zal.borderlands">0.2</Bullymong>
             <Rat_Large MayRequire="mal.rodentsofunusualsize">0.25</Rat_Large>
             <RFanimal_Breapig MayRequire="ricofox233.sunx1983.brea">0.3</RFanimal_Breapig>
@@ -450,6 +450,32 @@
             <RFanimal_BreaMaid MayRequire="ricofox233.sunx1983.brea">0.01</RFanimal_BreaMaid>
             <RFanimal_Alpacabrea MayRequire="ricofox233.sunx1983.brea">0.1</RFanimal_Alpacabrea>
             <RFanimal_Breauffalo MayRequire="ricofox233.sunx1983.brea">0.15</RFanimal_Breauffalo>
+            <AEXP_Coyote MayRequire="vanillaexpanded.vanillaanimalsexpanded">0.03</AEXP_Coyote>
+            <AEXP_Platypus MayRequire="vanillaexpanded.vanillaanimalsexpanded">0.4</AEXP_Platypus>
+            <AEXP_ArcticCoyote MayRequire="vanillaexpanded.vanillaanimalsexpanded">0.02</AEXP_ArcticCoyote>
+            <AEXP_BlackBear MayRequire="vanillaexpanded.vanillaanimalsexpanded">0.4</AEXP_BlackBear>
+            <AEXP_Beaver MayRequire="vanillaexpanded.vanillaanimalsexpanded">0.05</AEXP_Beaver>
+            <AEXP_MegaWolverine MayRequire="vanillaexpanded.vanillaanimalsexpanded">0.08</AEXP_MegaWolverine>
+            <L24_Animal_Woolyboe MayRequire="eltwofour.woolyboebugs">0.3</L24_Animal_Woolyboe>
+            <ZDuck_ArcticRazorbill MayRequire="zylle.ducks">0.03</ZDuck_ArcticRazorbill>
+            <ZDuck_Bufflehead MayRequire="zylle.ducks">0.45</ZDuck_Bufflehead>
+            <ZDuck_Cayuga MayRequire="zylle.ducks">0.25</ZDuck_Cayuga>
+            <ZDuck_Ducky MayRequire="zylle.ducks">0.75</ZDuck_Ducky>
+            <ZDuck_GreaterMallard MayRequire="zylle.ducks">0.45</ZDuck_GreaterMallard>
+            <ZDuck_EiderPintail MayRequire="zylle.ducks">0.15</ZDuck_EiderPintail>
+            <ZEle_Skelephant MayRequire="zylle.elephants">0.0001</ZEle_Skelephant>
+            <ZPT_RingneckedParakeet MayRequire="zylle.parrots">0.08</ZPT_RingneckedParakeet>
+            <ZPT_Kea MayRequire="zylle.parrots">0.07</ZPT_Kea>
+            <ZPT_LilacMegakeet MayRequire="zylle.parrots">0.09</ZPT_LilacMegakeet>
+            <ZSL_JadeSlime MayRequire="zylle.slimes">0.01</ZSL_JadeSlime>
+            <ZSL_WoodSlime MayRequire="zylle.slimes">0.03</ZSL_WoodSlime>
+            <ZSL_GoldenSlime MayRequire="zylle.slimes">0.005</ZSL_GoldenSlime>
+            <ZSL_RainbowSlime MayRequire="zylle.slimes">0.001</ZSL_RainbowSlime>
+            <ZSL_WaterSlime MayRequire="zylle.slimes">0.01</ZSL_WaterSlime>
+            <ZTT_PaintedSnapvine MayRequire="zylle.turtles">0.2</ZTT_PaintedSnapvine>
+            <ZTT_Plasturtle MayRequire="zylle.turtles">0.05</ZTT_Plasturtle>
+            <ZTT_Toughback MayRequire="zylle.turtles">0.05</ZTT_Toughback>
+            <ZTT_Steelshell MayRequire="zylle.turtles">0.03</ZTT_Steelshell>
         </wildAnimals>
         <pollutionWildAnimals>
             <Boomalope>0.1</Boomalope>

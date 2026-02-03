@@ -136,6 +136,7 @@
             <WildBoar>0.6</WildBoar>
             <PrairieDog MayRequire="Ludeon.Rimworld.Odyssey">0.3</PrairieDog>
             <ERN_Ferret MayRequire="erin.fluffyfauna">0.3</ERN_Ferret>
+            <ERN_Hedgehog MayRequire="erin.fluffyfauna">0.3</ERN_Hedgehog>
             <AEXP_Tapir MayRequire="vanillaexpanded.vanillaanimalsexpanded">0.4</AEXP_Tapir>
             <HC_Pangolin MayRequire="hc.animal.continued">0.6</HC_Pangolin>
             <HC_Serval MayRequire="hc.animal.continued">0.3</HC_Serval>
@@ -208,7 +209,7 @@
             <FEB_Apotheca MayRequire="feb.biopunklivestock">0.12</FEB_Apotheca>
             <FEB_Cottonfoot MayRequire="feb.biopunklivestock">0.08</FEB_Cottonfoot>
             <FEB_Ferrohorn MayRequire="feb.biopunklivestock">0.4</FEB_Ferrohorn>
-            <FEB_Leadbelly MayRequire="feb.biopunklivestock">0.03</FEB_Leadbelly>
+            <FEB_Leadbelly MayRequire="feb.biopunklivestock,Ludeon.RimWorld.Biotech">0.03</FEB_Leadbelly>
             <MA_Duskhorn MayRequire="veterano.mythicages.megafaunabestiary">0.45</MA_Duskhorn>
             <MA_Scarodon MayRequire="veterano.mythicages.megafaunabestiary">0.15</MA_Scarodon>
             <MA_Simbakub MayRequire="veterano.mythicages.megafaunabestiary">0.45</MA_Simbakub>
@@ -316,6 +317,34 @@
             <Rat_Large MayRequire="mal.rodentsofunusualsize">0.07</Rat_Large>
             <RFanimal_Breashark MayRequire="ricofox233.sunx1983.brea">0.04</RFanimal_Breashark>
             <RFanimal_Cockbrea MayRequire="ricofox233.sunx1983.brea">0.1</RFanimal_Cockbrea>
+            <AEXP_Giraffe MayRequire="vanillaexpanded.vanillaanimalsexpanded">0.1</AEXP_Giraffe>
+            <AEXP_Zebra MayRequire="vanillaexpanded.vanillaanimalsexpanded">0.3</AEXP_Zebra>
+            <AEXP_Wildebeest MayRequire="vanillaexpanded.vanillaanimalsexpanded">0.2</AEXP_Wildebeest>
+            <AEXP_Cheetah MayRequire="vanillaexpanded.vanillaanimalsexpanded">0.25</AEXP_Cheetah>
+            <AEXP_Boombat MayRequire="vanillaexpanded.vanillaanimalsexpanded">0.7</AEXP_Boombat>
+            <AEXP_Kangaroo MayRequire="vanillaexpanded.vanillaanimalsexpanded">0.3</AEXP_Kangaroo>
+            <AEXP_Hyena MayRequire="vanillaexpanded.vanillaanimalsexpanded">0.5</AEXP_Hyena>
+            <AEXP_Lion MayRequire="vanillaexpanded.vanillaanimalsexpanded">0.6</AEXP_Lion>
+            <AEXP_Rattlesnake MayRequire="vanillaexpanded.vanillaanimalsexpanded">0.6</AEXP_Rattlesnake>
+            <AEXP_Hedgehog MayRequire="vanillaexpanded.vanillaanimalsexpanded">0.6</AEXP_Hedgehog>
+            <AEXP_Jaguar MayRequire="vanillaexpanded.vanillaanimalsexpanded">0.1</AEXP_Jaguar>
+            <ZDuck_Bufflehead MayRequire="zylle.ducks">0.2</ZDuck_Bufflehead>
+            <ZDuck_DesertRazorbill MayRequire="zylle.ducks">0.03</ZDuck_DesertRazorbill>
+            <ZDuck_GreaterMallard MayRequire="zylle.ducks">0.2</ZDuck_GreaterMallard>
+            <ZDuck_RudderDuck MayRequire="zylle.ducks">0.02</ZDuck_RudderDuck>
+            <ZEle_AsianElephant MayRequire="zylle.elephants">0.01</ZEle_AsianElephant>
+            <ZEle_BorneoPygmy MayRequire="zylle.elephants">0.02</ZEle_BorneoPygmy>
+            <ZEle_Appo MayRequire="zylle.elephants">0.15</ZEle_Appo>
+            <ZPT_RingneckedParakeet MayRequire="zylle.parrots">0.03</ZPT_RingneckedParakeet>
+            <ZPT_Eclectus MayRequire="zylle.parrots">0.01</ZPT_Eclectus>
+            <ZPT_SunConure MayRequire="zylle.parrots">0.18</ZPT_SunConure>
+            <ZPT_QuakerParrot MayRequire="zylle.parrots">0.08</ZPT_QuakerParrot>
+            <ZSL_RainbowSlime MayRequire="zylle.slimes">0.001</ZSL_RainbowSlime>
+            <ZSL_SteelSlime MayRequire="zylle.slimes">0.02</ZSL_SteelSlime>
+            <ZSL_FireSlime MayRequire="zylle.slimes">0.005</ZSL_FireSlime>
+            <ZSL_WaterSlime MayRequire="zylle.slimes">0.01</ZSL_WaterSlime>
+            <ZTT_SandshellTurtle MayRequire="zylle.turtles">0.3</ZTT_SandshellTurtle>
+            <ZTT_Toughback MayRequire="zylle.turtles">0.03</ZTT_Toughback>
         </wildAnimals>
         <pollutionWildAnimals>
             <Rat>1.0</Rat>

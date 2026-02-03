@@ -11,9 +11,13 @@ Biomes! Polluted Lands biomesteam.biomespollutedlands https://steamcommunity.com
 Biomes! Prehistoric biomesteam.biomesprehistoric https://steamcommunity.com/sharedfiles/filedetails/?id=2860715703
 Birds Beyond (Continued) mlie.birdsbeyond https://steamcommunity.com/sharedfiles/filedetails/?id=3263608515
 Birds of the World! tyrannidae.birdsoftheworld https://steamcommunity.com/sharedfiles/filedetails/?id=3245417989
+Borderlands: The Rim (Continued) zal.borderlands https://steamcommunity.com/sharedfiles/filedetails/?id=3337102401
+Clothpet Animal rw.furossy https://steamcommunity.com/sharedfiles/filedetails/?id=3596332576
 Creatures of the Vael ellenot.vaelkorrcreatures https://steamcommunity.com/sharedfiles/filedetails/?id=3568419088
 Dark Ages : Beasts and Monsters van.beasts https://steamcommunity.com/sharedfiles/filedetails/?id=3472275628
 Dragons Descent onyxae.dragonsdescent https://steamcommunity.com/sharedfiles/filedetails/?id=2026992161
+Ducks zylle.ducks https://steamcommunity.com/sharedfiles/filedetails/?id=2377069366
+Elephants zylle.elephants https://steamcommunity.com/sharedfiles/filedetails/?id=2389095025
 Erin's Azaphrae - Biotech Ver. erin.azaphraebiotech https://steamcommunity.com/sharedfiles/filedetails/?id=3035240271
 Erin's Fluffy Fauna erin.fluffyfauna https://steamcommunity.com/sharedfiles/filedetails/?id=3521909777
 Erin's Fox Squirrel erin.foxsquirrel https://steamcommunity.com/sharedfiles/filedetails/?id=2092951979
@@ -33,6 +37,7 @@ Hyena (Continued) zal.hyena https://steamcommunity.com/sharedfiles/filedetails/?
 Jurassic Rimworld (Continued) Mlie.JurassicRimworld https://steamcommunity.com/sharedfiles/filedetails/?id=3541468886
 Jurassic Rimworld - Dinosaurs Only (Continued) mlie.jurassicrimworlddinosaursonly https://steamcommunity.com/sharedfiles/filedetails/?id=3541510004
 Little Critters tyrannidae.littlecritters https://steamcommunity.com/sharedfiles/filedetails/?id=3331281387
+Mamuffalo dismarzero.vgp.mamuffalo https://steamcommunity.com/sharedfiles/filedetails/?id=2053120429
 Medieval Overhaul dankpyon.medieval.overhaul https://steamcommunity.com/sharedfiles/filedetails/?id=3219596926
 Megafauna spino.megafauna https://steamcommunity.com/sharedfiles/filedetails/?id=1055485938
 Monster Mash (Continued) zal.monstermash https://steamcommunity.com/sharedfiles/filedetails/?id=3175345611
@@ -41,34 +46,38 @@ More Birds - Doves 11bullets.dovesandpigeons https://steamcommunity.com/sharedfi
 More Birds - Songbirds 11bullets.songbirds https://steamcommunity.com/sharedfiles/filedetails/?id=3555975161
 Multilopes Expanded dtf.multilopesexpanded https://steamcommunity.com/sharedfiles/filedetails/?id=3513469833
 Mythic Ages: Megafauna Bestiary veterano.mythicages.megafaunabestiary https://steamcommunity.com/sharedfiles/filedetails/?id=3537788184
+Nexomon nexomon.x https://steamcommunity.com/sharedfiles/filedetails/?id=2764736074
+Parrots zylle.parrots https://steamcommunity.com/sharedfiles/filedetails/?id=2537399407
 Pygmy muffalo dismarzero.vgp.pygmymuffalo https://steamcommunity.com/sharedfiles/filedetails/?id=1885527800
 Rare Animals Expanded : The BrainRot Animals febvre.thebrianrotanimals.core https://steamcommunity.com/sharedfiles/filedetails/?id=3538484053
 Rats With Gats shunthewitch.armedrats https://steamcommunity.com/sharedfiles/filedetails/?id=3484091653
 ReGrowth: Extinct Animals (Continued) mlie.regrowthextinctanimals https://steamcommunity.com/sharedfiles/filedetails/?id=3602926791
+Rim of Evil: Northern Frontier jtc.nordberg https://steamcommunity.com/sharedfiles/filedetails/?id=3657594516
 RimBeast (Continued) mlie.rimbeast https://steamcommunity.com/sharedfiles/filedetails/?id=2114991205
 Rimcraft Reborn Beta rimcraftreborn.betatest https://steamcommunity.com/sharedfiles/filedetails/?id=3599879749
 Rimtroid: Universal rt.universal https://steamcommunity.com/sharedfiles/filedetails/?id=3618242371
+Rodents of Unusual Size mal.rodentsofunusualsize https://steamcommunity.com/sharedfiles/filedetails/?id=1682676087
+Slimes zylle.slimes https://steamcommunity.com/sharedfiles/filedetails/?id=2639634490
+Sowoboe Bugs eltwofour.sowoboebugs https://steamcommunity.com/sharedfiles/filedetails/?id=2886526206
 Star Wars Animal Collection (Continued) mlie.starwarsanimalcollection https://steamcommunity.com/sharedfiles/filedetails/?id=3497316713
+Sweepwoboe Bugs Expansion eltwofour.sweepwoboebugs https://steamcommunity.com/sharedfiles/filedetails/?id=3373031797
 Synthetic Animals (Continued) zal.syntheticanimals https://steamcommunity.com/sharedfiles/filedetails/?id=3171141566
 Terror Avis (Continued) zal.terroravis https://steamcommunity.com/sharedfiles/filedetails/?id=3627086683
 The Profaned botchjob.profaned https://steamcommunity.com/sharedfiles/filedetails/?id=3202008037
+Turtles zylle.turtles https://steamcommunity.com/sharedfiles/filedetails/?id=2832804475
+Unique Antelopes (Continued) zal.antelopes https://steamcommunity.com/sharedfiles/filedetails/?id=2826313713
 Vanilla Animals Expanded vanillaexpanded.vanillaanimalsexpanded https://steamcommunity.com/sharedfiles/filedetails/?id=2871933948
 Vanilla Animals Expanded — Waste Animals vanillaexpanded.vaewaste https://steamcommunity.com/sharedfiles/filedetails/?id=2962126499
-[Ry]Rimcraft Animals (Continued) zal.rimcraftanimals https://steamcommunity.com/sharedfiles/filedetails/?id=3599363187
-Rim of Evil: Northern Frontier jtc.nordberg https://steamcommunity.com/sharedfiles/filedetails/?id=3657594516
-Clothpet Animal rw.furossy https://steamcommunity.com/sharedfiles/filedetails/?id=3596332576
-Nexomon nexomon.x https://steamcommunity.com/sharedfiles/filedetails/?id=2764736074
-Unique Antelopes (Continued) zal.antelopes https://steamcommunity.com/sharedfiles/filedetails/?id=2826313713
-Mamuffalo dismarzero.vgp.mamuffalo https://steamcommunity.com/sharedfiles/filedetails/?id=2053120429
-Borderlands: The Rim (Continued) zal.borderlands https://steamcommunity.com/sharedfiles/filedetails/?id=3337102401
-Rodents of Unusual Size mal.rodentsofunusualsize https://steamcommunity.com/sharedfiles/filedetails/?id=1682676087
+Woolyboe Bugs Expansion eltwofour.woolyboebugs https://steamcommunity.com/sharedfiles/filedetails/?id=3227401279
 [RF]Brea animals - 鲃动物 ricofox233.sunx1983.brea https://steamcommunity.com/sharedfiles/filedetails/?id=2219147939
+[Ry]Rimcraft Animals (Continued) zal.rimcraftanimals https://steamcommunity.com/sharedfiles/filedetails/?id=3599363187
+
 
 Plants:
 Biomes! Polluted Lands biomesteam.biomespollutedlands https://steamcommunity.com/sharedfiles/filedetails/?id=3390196656
+Biomes! Prehistoric biomesteam.biomesprehistoric https://steamcommunity.com/sharedfiles/filedetails/?id=2860715703
 Flowers (Continued) mlie.flowers https://steamcommunity.com/sharedfiles/filedetails/?id=2025555200
 VGP Xtra Trees and Flowers dismarzero.vgp.xtratreesandflowers https://steamcommunity.com/sharedfiles/filedetails/?id=2007064094
-Biomes! Prehistoric biomesteam.biomesprehistoric https://steamcommunity.com/sharedfiles/filedetails/?id=2860715703
 
 Misc mods:
 // Tile mutators

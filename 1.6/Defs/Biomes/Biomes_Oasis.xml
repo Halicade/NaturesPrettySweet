@@ -190,8 +190,8 @@
             <TrickleFlommel MayRequire="tigerblut.flommel">0.2</TrickleFlommel>
             <VKC_Baharis MayRequire="ellenot.vaelkorrcreatures">0.03</VKC_Baharis>
             <VKC_FenHowler MayRequire="ellenot.vaelkorrcreatures">0.025</VKC_FenHowler>
-            <FEB_Apotheca MayRequire="feb.biopunklivestock">0.7</FEB_Apotheca>
-            <FEB_Leadbelly MayRequire="feb.biopunklivestock">0.01</FEB_Leadbelly>
+            <FEB_Apotheca MayRequire="feb.biopunklivestock">0.5</FEB_Apotheca>
+            <FEB_Leadbelly MayRequire="feb.biopunklivestock,Ludeon.RimWorld.Biotech">0.01</FEB_Leadbelly>
             <Antis MayRequire="mlie.rimbeast">0.01</Antis>
             <Gnawler MayRequire="mlie.rimbeast">0.01</Gnawler>
             <MA_Direhorse MayRequire="veterano.mythicages.megafaunabestiary">0.2</MA_Direhorse>
@@ -324,6 +324,40 @@
             <Bullymong MayRequire="zal.borderlands">0.2</Bullymong>
             <Rat_Large MayRequire="mal.rodentsofunusualsize">0.05</Rat_Large>
             <RFanimal_Cockbrea MayRequire="ricofox233.sunx1983.brea">0.07</RFanimal_Cockbrea>
+            <AEXP_Zebra MayRequire="vanillaexpanded.vanillaanimalsexpanded">0.3</AEXP_Zebra>
+            <AEXP_Wildebeest MayRequire="vanillaexpanded.vanillaanimalsexpanded">0.2</AEXP_Wildebeest>
+            <AEXP_Boombat MayRequire="vanillaexpanded.vanillaanimalsexpanded">0.5</AEXP_Boombat>
+            <AEXP_Hyena MayRequire="vanillaexpanded.vanillaanimalsexpanded">0.65</AEXP_Hyena>
+            <AEXP_DesertTortoise MayRequire="vanillaexpanded.vanillaanimalsexpanded">0.75</AEXP_DesertTortoise>
+            <AEXP_Lion MayRequire="vanillaexpanded.vanillaanimalsexpanded">0.5</AEXP_Lion>
+            <AEXP_GilaMonster MayRequire="vanillaexpanded.vanillaanimalsexpanded">0.7</AEXP_GilaMonster>
+            <AEXP_Camel MayRequire="vanillaexpanded.vanillaanimalsexpanded">0.4</AEXP_Camel>
+            <AEXP_Rattlesnake MayRequire="vanillaexpanded.vanillaanimalsexpanded">0.7</AEXP_Rattlesnake>
+            <AEXP_Megascorpion MayRequire="vanillaexpanded.vanillaanimalsexpanded">0.3</AEXP_Megascorpion>
+            <L24_Animal_SowoboeBug MayRequire="eltwofour.sowoboebugs">0.02</L24_Animal_SowoboeBug>
+            <L24_Animal_Sweepwoboe MayRequire="eltwofour.sweepwoboebugs">0.02</L24_Animal_Sweepwoboe>
+            <ZDuck_Bufflehead MayRequire="zylle.ducks">0.3</ZDuck_Bufflehead>
+            <ZDuck_Cayuga MayRequire="zylle.ducks">0.1</ZDuck_Cayuga>
+            <ZDuck_DesertRazorbill MayRequire="zylle.ducks">0.1</ZDuck_DesertRazorbill>
+            <ZEle_AsianElephant MayRequire="zylle.elephants">0.05</ZEle_AsianElephant>
+            <ZEle_BorneoPygmy MayRequire="zylle.elephants">0.01</ZEle_BorneoPygmy>
+            <ZEle_Kallana MayRequire="zylle.elephants">0.015</ZEle_Kallana>
+            <ZEle_Appo MayRequire="zylle.elephants">0.10</ZEle_Appo>
+            <ZPT_Hyacinth MayRequire="zylle.parrots">0.07</ZPT_Hyacinth>
+            <ZPT_RingneckedParakeet MayRequire="zylle.parrots">0.07</ZPT_RingneckedParakeet>
+            <ZPT_Eclectus MayRequire="zylle.parrots">0.15</ZPT_Eclectus>
+            <ZPT_SunConure MayRequire="zylle.parrots">0.2</ZPT_SunConure>
+            <ZPT_RubyMegakeet MayRequire="zylle.parrots">0.2</ZPT_RubyMegakeet>
+            <ZPT_QuakerParrot MayRequire="zylle.parrots">0.2</ZPT_QuakerParrot>
+            <ZSL_RainbowSlime MayRequire="zylle.slimes">0.001</ZSL_RainbowSlime>
+            <ZSL_SteelSlime MayRequire="zylle.slimes">0.01</ZSL_SteelSlime>
+            <ZSL_JadeSlime MayRequire="zylle.slimes">0.008</ZSL_JadeSlime>
+            <ZSL_WaterSlime MayRequire="zylle.slimes">0.01</ZSL_WaterSlime>
+            <ZTT_PaintedSnapvine MayRequire="zylle.turtles">0.4</ZTT_PaintedSnapvine>
+            <ZTT_WiggleneckTurtle MayRequire="zylle.turtles">0.1</ZTT_WiggleneckTurtle>
+            <ZTT_Plasturtle MayRequire="zylle.turtles">0.01</ZTT_Plasturtle>
+            <ZTT_Toughback MayRequire="zylle.turtles">0.15</ZTT_Toughback>
+            <ZTT_Steelshell MayRequire="zylle.turtles">0.02</ZTT_Steelshell>
         </wildAnimals>
         <pollutionWildAnimals>
             <Boomalope>0.1</Boomalope>

@@ -119,8 +119,6 @@ public class Watcher(Map map) : MapComponent(map)
 
         shallowRiverTerrain = TerrainDefOf.NPS_WaterRiverFlood;
 
-        Log.Message("Do coast? " + doCoast + " Direction? " + coastRotation);
-        Log.Message("Beach terrain: " + beachTerrain + " Ocean terrain " + oceanTerrain);
         biomeSettings = map.Biome.GetModExtension<BiomeSeasonalSettings>();
         frostGridComponent = map.GetComponent<FrostGrid>();
         location = Find.WorldGrid.LongLatOf(map.Tile);

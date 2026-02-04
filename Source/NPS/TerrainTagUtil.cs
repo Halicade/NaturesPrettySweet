@@ -18,13 +18,14 @@ public static class TerrainTagUtil
         canBePacked.Add(RimWorld.TerrainDefOf.Sand);
         canBePacked.Add(TerrainDefOf.TKKN_DirtPath);
         canBePacked.Add(TerrainDefOf.TKKN_SandPath);
-        
+
         foreach (var terrain in allTerrains)
         {
-            if (terrain.smoothedTerrain != null) {
+            if (terrain.smoothedTerrain != null)
+            {
                 canBePacked.Add(terrain);
             }
-            
+
             if (terrain.HasTag("TKKN_Wet"))
             {
                 TKKN_Wet.Add(terrain);

@@ -11,7 +11,9 @@ public sealed class FrostGrid : MapComponent
 
     private double totalDepth;
 
+#pragma warning disable IDE0290
     public FrostGrid(Map map) : base(map)
+#pragma warning restore IDE0290
     {
         DepthGridDirect_Unsafe = new float[map.cellIndices.NumGridCells];
     }

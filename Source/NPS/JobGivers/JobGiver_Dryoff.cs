@@ -17,8 +17,7 @@ public class JobGiver_Dryoff : ThinkNode_JobGiver
 
         var hediffDef = HediffDefOf.TKKN_Wetness;
 
-        if (pawn.health.hediffSet.GetFirstHediffOfDef(hediffDef) is Hediff_Wetness wetness &&
-            wetness.CurStageIndex == 4)
+        if (pawn.health.hediffSet.GetFirstHediffOfDef(hediffDef) is Hediff_Wetness { CurStageIndex: 4 })
         {
             return null;
         }

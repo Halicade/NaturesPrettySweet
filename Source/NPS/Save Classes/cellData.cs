@@ -303,52 +303,67 @@ public class cellData : IExposable
     }
 
 
-    public void unpack() {
+    public void unpack()
+    {
         // Need to limit packing so it doesn't go too high.
         // 7505 because stone gets smoothed at 7500
-        if (howPacked > 7505) {
+        if (howPacked > 7505)
+        {
             howPacked = 7505;
             return;
         }
 
-        if (howPacked <= 0) {
+        if (howPacked <= 0)
+        {
             return;
         }
 
         howPacked--;
-        if (howPacked <= unpackAt) {
-            if (currentTerrain == TerrainDefOf.TKKN_DirtPath) {
-                changeTerrain(RimWorld.TerrainDefOf.Soil);
-            }
-            else if (currentTerrain == TerrainDefOf.TKKN_SandPath) {
-                changeTerrain(RimWorld.TerrainDefOf.Sand);
-            }
+        if (howPacked > unpackAt)
+        {
+            return;
+        }
+
+        if (currentTerrain == TerrainDefOf.TKKN_DirtPath)
+        {
+            changeTerrain(RimWorld.TerrainDefOf.Soil);
+        }
+        else if (currentTerrain == TerrainDefOf.TKKN_SandPath)
+        {
+            changeTerrain(RimWorld.TerrainDefOf.Sand);
         }
     }
 
-    public void doPack() {
+    public void doPack()
+    {
         var terrain = currentTerrain;
-        if (!TerrainTagUtil.canBePacked.Contains(terrain)) {
+        if (!TerrainTagUtil.canBePacked.Contains(terrain))
+        {
             return;
         }
 
         //don't pack if there's a growing zone.
-        if (map.zoneManager.ZoneAt(location) is Zone_Growing) {
+        if (map.zoneManager.ZoneAt(location) is Zone_Growing)
+        {
             return;
         }
 
         howPacked++;
-        if (howPacked <= packAt) {
+        if (howPacked <= packAt)
+        {
             return;
         }
 
-        if (terrain == RimWorld.TerrainDefOf.Soil) {
+        if (terrain == RimWorld.TerrainDefOf.Soil)
+        {
             changeTerrain(TerrainDefOf.TKKN_DirtPath);
         }
-        else if (terrain == RimWorld.TerrainDefOf.Sand) {
+        else if (terrain == RimWorld.TerrainDefOf.Sand)
+        {
             changeTerrain(TerrainDefOf.TKKN_SandPath);
         }
-        else if (terrain.smoothedTerrain != null && howPacked > packAtSmooth) {
+        else if (terrain.smoothedTerrain != null && howPacked > packAtSmooth)
+        {
             changeTerrain(terrain.smoothedTerrain);
             // packed/unpacked no longer matters when it's smoothed
             howPacked = 0;

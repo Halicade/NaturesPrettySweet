@@ -1,5 +1,8 @@
 # Changelog for NaturesPrettySweet
 
+1.6.9 - Natural paths should no longer be made in gravships, thanks Halicade!
+
+
 1.6.8 - Pawns do not get wet in snow, only rain
 
 

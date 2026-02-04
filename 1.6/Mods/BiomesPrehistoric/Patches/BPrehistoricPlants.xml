@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<Patch>
+
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/BiomeDef[defName = "TKKN_Grasslands"]/wildPlants</xpath>
+        <value>
+            <BMT_Horsetail>0.5</BMT_Horsetail>
+            <BMT_Clubmoss>0.3</BMT_Clubmoss>
+        </value>
+    </Operation>
+
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/BiomeDef[defName = "TKKN_Savanna"]/wildPlants</xpath>
+        <value>
+            <BMT_Horsetail>1.8</BMT_Horsetail>
+            <BMT_Clubmoss>0.3</BMT_Clubmoss>
+        </value>
+    </Operation>
+
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/BiomeDef[defName = "TKKN_Oasis"]/wildPlants</xpath>
+        <value>
+            <BMT_JungleGrass>2.5</BMT_JungleGrass>
+            <BMT_Davallia>1.5</BMT_Davallia>
+            <BMT_Ephedra>0.1</BMT_Ephedra>
+            <BMT_Angiopteris>0.7</BMT_Angiopteris>
+            <BMT_Archaeanthus>0.3</BMT_Archaeanthus>
+            <BMT_NypaFruticans>0.5</BMT_NypaFruticans>
+            <BMT_ThicketBamboo>0.2</BMT_ThicketBamboo>
+            <BMT_Cercidiphyllum>0.3</BMT_Cercidiphyllum>
+            <BMT_Berberis>0.05</BMT_Berberis>
+            <BMT_Sagaria>0.2</BMT_Sagaria>
+            <BMT_MayoaPortugallica>0.15</BMT_MayoaPortugallica>
+            <BMT_Nymphaeaceae>0.3</BMT_Nymphaeaceae>
+        </value>
+    </Operation>
+
+
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/BiomeDef[defName = "TKKN_Oasis"]/wildPlants</xpath>
+        <value>
+            <BMT_Dicroidium>0.7</BMT_Dicroidium>
+            <BMT_Polytrichaceae>0.5</BMT_Polytrichaceae>
+            <BMT_RedSphagnum>0.2</BMT_RedSphagnum>
+            <BMT_Gnetum>0.1</BMT_Gnetum>
+            <BMT_HealrootFern>0.05</BMT_HealrootFern>
+            <BMT_Horsetail>0.7</BMT_Horsetail>
+            <BMT_SwimmingBioMass>0.2</BMT_SwimmingBioMass>
+            <BMT_LeopoldaeBetula>0.2</BMT_LeopoldaeBetula>
+        </value>
+    </Operation>
+
+</Patch>

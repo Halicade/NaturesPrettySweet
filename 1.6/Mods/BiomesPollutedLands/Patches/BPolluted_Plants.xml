@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<Patch>
+
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/BiomeDef[defName = "TKKN_Grasslands"]/wildPlants</xpath>
+        <value>
+            <BMT_Plant_CryingWolfberryBush>0.05</BMT_Plant_CryingWolfberryBush>
+            <BMT_Plant_EclipsusFlower>0.3</BMT_Plant_EclipsusFlower>
+            <BMT_Plant_PaganThorns>0.2</BMT_Plant_PaganThorns>
+            <BMT_Plant_SewerReed>0.3</BMT_Plant_SewerReed>
+            <BMT_Plant_Snaketails>0.3</BMT_Plant_Snaketails>
+            <BMT_Plant_TreeWormoak>0.02</BMT_Plant_TreeWormoak>
+            <BMT_Plant_TwistedDandelion>0.2</BMT_Plant_TwistedDandelion>
+        </value>
+    </Operation>
+
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/BiomeDef[defName = "TKKN_RedwoodForest"]/wildPlants</xpath>
+        <value>
+            <BMT_Plant_Rashroot>0.02</BMT_Plant_Rashroot>
+            <BMT_Plant_ToxicIvy>0.1</BMT_Plant_ToxicIvy>
+            <BMT_Plant_TreeWormoak>0.2</BMT_Plant_TreeWormoak>
+            <BMT_Plant_GreyFern>3</BMT_Plant_GreyFern>
+        </value>
+    </Operation>
+
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/BiomeDef[defName = "TKKN_Oasis"]/wildPlants</xpath>
+        <value>
+            <BMT_Plant_ScorchedStars>1</BMT_Plant_ScorchedStars>
+            <BMT_Plant_Snaketails>0.3</BMT_Plant_Snaketails>
+            <BMT_Plant_TwistedDandelion>0.2</BMT_Plant_TwistedDandelion>
+        </value>
+    </Operation>
+
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/BiomeDef[defName = "TKKN_Desert"]/wildPlants</xpath>
+        <value>
+            <BMT_Plant_ScorchedStars>1</BMT_Plant_ScorchedStars>
+            <BMT_Plant_TwistedDandelion>0.2</BMT_Plant_TwistedDandelion>
+        </value>
+    </Operation>
+
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/BiomeDef[defName = "TKKN_Savanna"]/wildPlants</xpath>
+        <value>
+            <BMT_Plant_CryingWolfberryBush>0.035</BMT_Plant_CryingWolfberryBush>
+            <BMT_Plant_EclipsusFlower>0.2</BMT_Plant_EclipsusFlower>
+            <BMT_Plant_PaganThorns>0.2</BMT_Plant_PaganThorns>
+            <BMT_Plant_SewerReed>0.2</BMT_Plant_SewerReed>
+            <BMT_Plant_Snaketails>1.3</BMT_Plant_Snaketails>
+            <BMT_Plant_TwistedDandelion>0.2</BMT_Plant_TwistedDandelion>
+            <BMT_Plant_TwistingThorngrass>1.5</BMT_Plant_TwistingThorngrass>
+
+        </value>
+    </Operation>
+
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/BiomeDef[defName = "TKKN_VolcanicFlow"]/wildPlants</xpath>
+        <value>
+            <BMT_Plant_GreyFern>3</BMT_Plant_GreyFern>
+            <BMT_Plant_BloomingCorpse>0.0008</BMT_Plant_BloomingCorpse>
+        </value>
+    </Operation>
+
+</Patch>

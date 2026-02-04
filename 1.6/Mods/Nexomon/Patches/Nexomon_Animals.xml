@@ -1,0 +1,94 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<Patch>
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/BiomeDef[defName = "TKKN_Grasslands"]/wildAnimals</xpath>
+        <value>
+            <Jeeta>0.08</Jeeta>
+            <Boltusk>0.08</Boltusk>
+            <Raamu>0.08</Raamu>
+            <Arctivore>0.08</Arctivore>
+            <Abaddog>0.08</Abaddog>
+            <Carnagrius>0.08</Carnagrius>
+            <Voltaic>0.08</Voltaic>
+            <Mystogen>0.02</Mystogen>
+            <Draclone>0.08</Draclone>
+            <Fuzztino>0.08</Fuzztino>
+        </value>
+    </Operation>
+
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/BiomeDef[defName = "TKKN_RedwoodForest"]/wildAnimals</xpath>
+        <value>
+            <Jeeta>0.06</Jeeta>
+            <Boltusk>0.07</Boltusk>
+            <Fuzztino>0.05</Fuzztino>
+            <Draclone>0.05</Draclone>
+            <Raamu>0.07</Raamu>
+            <Arctivore>0.05</Arctivore>
+            <Abaddog>0.05</Abaddog>
+            <Carnagrius>0.05</Carnagrius>
+            <Voltaic>0.07</Voltaic>
+            <Mystogen>0.02</Mystogen>
+        </value>
+    </Operation>
+
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/BiomeDef[defName = "TKKN_Oasis"]/wildAnimals</xpath>
+        <value>
+            <Jeeta>0.05</Jeeta>
+            <Boltusk>0.08</Boltusk>
+            <Raamu>0.08</Raamu>
+            <Draclone>0.05</Draclone>
+            <Arctivore>0.04</Arctivore>
+            <Abaddog>0.05</Abaddog>
+            <Voltaic>0.04</Voltaic>
+            <Mystogen>0.01</Mystogen>
+        </value>
+    </Operation>
+
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/BiomeDef[defName = "TKKN_Desert"]/wildAnimals</xpath>
+        <value>
+            <Draclone>0.03</Draclone>
+            <Abaddog>0.03</Abaddog>
+            <Carnagrius>0.03</Carnagrius>
+            <Voltaic>0.03</Voltaic>
+            <Mystogen>0.01</Mystogen>
+        </value>
+    </Operation>
+
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/BiomeDef[defName = "TKKN_Savanna"]/wildAnimals</xpath>
+        <value>
+            <Jeeta>0.08</Jeeta>
+            <Boltusk>0.08</Boltusk>
+            <Raamu>0.08</Raamu>
+            <Arctivore>0.08</Arctivore>
+            <Abaddog>0.08</Abaddog>
+            <Carnagrius>0.08</Carnagrius>
+            <Voltaic>0.08</Voltaic>
+            <Mystogen>0.02</Mystogen>
+            <Draclone>0.08</Draclone>
+            <Fuzztino>0.08</Fuzztino>            
+        </value>
+    </Operation>
+
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/BiomeDef[defName = "TKKN_VolcanicFlow"]/wildAnimals</xpath>
+        <value>
+            <Jeeta>0.07</Jeeta>
+            <Boltusk>0.09</Boltusk>
+            <Fuzztino>0.09</Fuzztino>
+            <Draclone>0.09</Draclone>
+            <Raamu>0.09</Raamu>
+            <Arctivore>0.06</Arctivore>
+            <Abaddog>0.07</Abaddog>
+            <Carnagrius>0.07</Carnagrius>
+            <Voltaic>0.08</Voltaic>
+            <Mystogen>0.02</Mystogen>
+        </value>
+    </Operation>
+
+
+</Patch>

@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<Patch>
+    
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/BiomeDef[defName = "TKKN_VolcanicFlow"]/wildAnimals</xpath>
+        <value>
+            <JRWAbrictosaurus>0.5</JRWAbrictosaurus>
+            <JRWAcrocanthosaurus>0.5</JRWAcrocanthosaurus>
+            <JRWAdalia>0.5</JRWAdalia>
+            <JRWAgilisaurus>0.5</JRWAgilisaurus>
+            <JRWAlbertosaurus>0.05</JRWAlbertosaurus>
+            <JRWAllosaurus>0.05</JRWAllosaurus>
+            <JRWAnkylosaurus>0.05</JRWAnkylosaurus>
+            <JRWApatosaurus>0.07</JRWApatosaurus>
+            <JRWArchaeopteryx>0.03</JRWArchaeopteryx>
+            <JRWArgentinosaurus>0.07</JRWArgentinosaurus>
+            <JRWArthropleura>0.07</JRWArthropleura>
+            <JRWBagaceratops>0.05</JRWBagaceratops>
+            <JRWBecklespinax>0.05</JRWBecklespinax>
+            <JRWBeelzebufo>0.05</JRWBeelzebufo>
+            <JRWBernicia>0.05</JRWBernicia>
+            <JRWBrachiosaurus>0.05</JRWBrachiosaurus>
+        </value>
+    </Operation>
+
+
+
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/BiomeDef[defName = "TKKN_Savanna"]/wildAnimals</xpath>
+        <value>
+            <JRWAlbertosaurus>0.05</JRWAlbertosaurus>
+            <JRWApatosaurus>0.07</JRWApatosaurus>
+            <JRWBrachiosaurus>0.04</JRWBrachiosaurus>
+        </value>
+    </Operation>
+    
+
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/BiomeDef[defName = "TKKN_RedwoodForest"]/wildAnimals</xpath>
+        <value>
+            <JRWAntarctopelta>0.07</JRWAntarctopelta>
+            <JRWArthropleura>0.07</JRWArthropleura>
+            <JRWBagaceratops>0.05</JRWBagaceratops>
+        </value>
+    </Operation>
+    
+</Patch>

@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/BiomeDef[defName = "TKKN_RedwoodForest"]/pollutionWildAnimals</xpath>
+        <value>
+            <Behemoth>0.15</Behemoth>
+            <Grank>0.01</Grank>
+            <Scavrat>0.15</Scavrat>
+            <Warbird>0.08</Warbird>
+            <Borcatu>0.01</Borcatu>
+            <Cannok>0.01</Cannok>
+            <GraniteSlug>0.15</GraniteSlug>
+            <Gundark>0.01</Gundark>
+            <Krykna>0.08</Krykna>
+            <Mynock>0.15</Mynock>
+            <Rancor>0.01</Rancor>
+            <TeeMuss>0.15</TeeMuss>
+            <Vulptex>0.04</Vulptex>
+        </value>
+    </Operation>
+
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/BiomeDef[defName = "TKKN_Desert"]/pollutionWildAnimals</xpath>
+        <value>
+            <EnergySpider>0.01</EnergySpider>
+            <Gutkurr>0.02</Gutkurr>
+            <Insectomorph>0.04</Insectomorph>
+            <Lylek>0.08</Lylek>
+            <Roggwart>0.01</Roggwart>
+            <Scavrat>0.15</Scavrat>
+            <Tukata>0.08</Tukata>
+            <Borcatu>0.8</Borcatu>
+            <Gorg>0.02</Gorg>
+            <GraniteSlug>0.15</GraniteSlug>
+            <Hawkbat>0.01</Hawkbat>
+            <Kinrath>0.01</Kinrath>
+            <Kreetle>0.15</Kreetle>
+            <Krykna>0.01</Krykna>
+            <LavaFlea>0.08</LavaFlea>
+            <Mynock>0.15</Mynock>
+            <PaintedSpat>0.01</PaintedSpat>
+            <Rancor>0.01</Rancor>
+            <Scurrier>0.15</Scurrier>
+            <Shyrack>0.15</Shyrack>
+            <Silooth>0.01</Silooth>
+            <Skalder>0.04</Skalder>
+            <Taozin>0.01</Taozin>
+            <Vapaad>0.01</Vapaad>
+            <Vulptex>0.03</Vulptex>
+            <WompRat>0.04</WompRat>
+        </value>
+    </Operation>
+    
+</Patch>

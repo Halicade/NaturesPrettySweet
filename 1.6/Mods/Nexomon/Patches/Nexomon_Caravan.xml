@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<Patch>
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/BiomeDef[defName = "TKKN_Grasslands"]/allowedPackAnimals</xpath>
+        <value>
+            <li>Raamu</li>
+            <li>Draclone</li>
+            <li>Boltusk</li>
+            <li>Abaddog</li>
+            <li>Voltaic</li>
+        </value>
+    </Operation>
+
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/BiomeDef[defName = "TKKN_RedwoodForest"]/allowedPackAnimals</xpath>
+        <value>
+            <li>Raamu</li>
+            <li>Draclone</li>
+            <li>Boltusk</li>
+            <li>Abaddog</li>
+            <li>Voltaic</li>
+        </value>
+    </Operation>
+
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/BiomeDef[defName = "TKKN_Oasis"]/allowedPackAnimals</xpath>
+        <value>
+            <li>Raamu</li>
+            <li>Draclone</li>
+            <li>Boltusk</li>
+            <li>Abaddog</li>
+            <li>Voltaic</li>
+        </value>
+    </Operation>
+
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/BiomeDef[defName = "TKKN_Desert"]/allowedPackAnimals</xpath>
+        <value>
+            <li>Raamu</li>
+            <li>Draclone</li>
+            <li>Boltusk</li>
+            <li>Abaddog</li>
+            <li>Voltaic</li>
+        </value>
+    </Operation>
+
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/BiomeDef[defName = "TKKN_Savanna"]/allowedPackAnimals</xpath>
+        <value>
+            <li>Raamu</li>
+            <li>Draclone</li>
+            <li>Boltusk</li>
+            <li>Abaddog</li>
+            <li>Voltaic</li>
+        </value>
+    </Operation>
+
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/BiomeDef[defName = "TKKN_VolcanicFlow"]/allowedPackAnimals</xpath>
+        <value>
+            <li>Raamu</li>
+            <li>Draclone</li>
+            <li>Boltusk</li>
+            <li>Abaddog</li>
+            <li>Voltaic</li>
+        </value>
+    </Operation>
+
+
+</Patch>

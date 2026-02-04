@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<Patch>
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/BiomeDef[defName = "TKKN_Grasslands"]/pollutionWildAnimals</xpath>
+        <value>
+            <BMT_SmogMoth>0.05</BMT_SmogMoth>
+        </value>
+    </Operation>
+
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/BiomeDef[defName = "TKKN_RedwoodForest"]/pollutionWildAnimals</xpath>
+        <value>
+            <BMT_FenridStoat>0.07</BMT_FenridStoat>
+        </value>
+    </Operation>
+
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/BiomeDef[defName = "TKKN_Oasis"]/pollutionWildAnimals</xpath>
+        <value>
+            <BMT_SludgeCrawler>0.03</BMT_SludgeCrawler>
+        </value>
+    </Operation>
+
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/BiomeDef[defName = "TKKN_Savanna"]/pollutionWildAnimals</xpath>
+        <value>
+            <BMT_Megaroach>0.3</BMT_Megaroach>
+        </value>
+    </Operation>
+
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/BiomeDef[defName = "TKKN_VolcanicFlow"]/pollutionWildAnimals</xpath>
+        <value>
+            <BMT_ToxSheep>0.5</BMT_ToxSheep>
+        </value>
+    </Operation>
+
+
+</Patch>

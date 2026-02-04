@@ -5,16 +5,25 @@
     <li>1.6</li>
     <!--Temporary method so I can use Assets instead of AssetBundles-->
     <li>Source/Assets</li>
+    
+    <!--DLC-->
     <li IfModActive="Ludeon.Rimworld.Odyssey">1.6/DLC/Odyssey</li>
-    <li IfModActive="acpteam.acpvanillastyle" IfModNotActive="Ludeon.Rimworld.Odyssey">1.6/Mods/AnimalCollabProjectNoOdyssey</li>
+    
+    <!--Mods-->
     <li IfModActive="sarg.alphaanimals">1.6/Mods/AlphaAnimals</li>
-    <li IfModActive="mlie.jurassicrimworlddinosaursonly,Mlie.JurassicRimworld">1.6/Mods/JurassicRimworld</li>
-    <li IfModActive="mlie.starwarsanimalcollection">1.6/Mods/StarWarsAnimals</li>
-    <li IfModActive="BiomesTeam.BiomesPollutedLands">1.6/Mods/BiomesPollutedLands</li>
     <li IfModActiveAll="sarg.alphabiomes,Ludeon.Rimworld.Odyssey">1.6/Mods/AlphaBiomesOdyssey</li>
+    <li IfModActive="acpteam.acpvanillastyle" IfModNotActive="Ludeon.Rimworld.Odyssey">1.6/Mods/AnimalCollabProjectNoOdyssey</li>
+    <li IfModActive="BiomesTeam.BiomesPollutedLands">1.6/Mods/BiomesPollutedLands</li>
+    <li IfModActive="biomesteam.biomesprehistoric">1.6/Mods/BiomesPrehistoric</li>
+    <li IfModActive="mlie.jurassicrimworlddinosaursonly,Mlie.JurassicRimworld">1.6/Mods/JurassicRimworld</li>
     <li IfModActive="vanillaexpanded.vexploratione">1.6/Mods/LandmarksExpanded</li>
+    <li IfModActive="dtf.multilopesexpanded">1.6/Mods/Multilopes</li>
+    <li IfModActive="nexomon.x">1.6/Mods/Nexomon</li>
     <li IfModActive="regrowth.botr.core">1.6/Mods/Regrowth</li>
-    <li IfModActive="regrowth.botr.core">1.6/Mods/WMBPRegrowth</li>
-    <li IfModActive="zal.wmbp">WMBPRegrowth</li>
+    <li IfModActive="mlie.starwarsanimalcollection">1.6/Mods/StarWarsAnimals</li>
+    <li IfModActive="vanillaexpanded.vanillaanimalsexpanded">1.6/Mods/VEAnimals</li>
+    
+    <!--Version independent-->
+    <li IfModActive="zal.wmbp,regrowth.botr.core">WMBPRegrowth</li>
   </v1.6>
 </loadFolders>

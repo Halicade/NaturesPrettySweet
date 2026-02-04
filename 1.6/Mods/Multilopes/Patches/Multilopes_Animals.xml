@@ -1,0 +1,86 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<Patch>
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/BiomeDef[defName = "TKKN_Grasslands"]/wildAnimals</xpath>
+        <value>
+            <dtf_Ambrolope>0.1</dtf_Ambrolope>
+            <dtf_Chocolope>0.2</dtf_Chocolope>
+            <dtf_Goldilope>0.2</dtf_Goldilope>
+            <dtf_Hyperlope>0.2</dtf_Hyperlope>
+            <dtf_Jadalope>0.2</dtf_Jadalope>
+            <dtf_Luciferilope>0.1</dtf_Luciferilope>
+            <dtf_Neutrolope>0.2</dtf_Neutrolope>
+            <dtf_Plasteelope>0.2</dtf_Plasteelope>
+            <dtf_Steelope>0.3</dtf_Steelope>
+            <dtf_Uranilope>0.2</dtf_Uranilope>
+            <dtf_Woodalope>0.3</dtf_Woodalope>
+            <dtf_vresanguophage_AnimalHemolope MayRequire="vanillaracesexpanded.sanguophage">0.2</dtf_vresanguophage_AnimalHemolope>
+            <dtf_vresanguophage_CorpseHemolope MayRequire="vanillaracesexpanded.sanguophage">0.2</dtf_vresanguophage_CorpseHemolope>
+            <dtf_vresanguophage_Sanguolope MayRequire="vanillaracesexpanded.sanguophage">0.2</dtf_vresanguophage_Sanguolope>
+        </value>
+    </Operation>
+
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/BiomeDef[defName = "TKKN_RedwoodForest"]/wildAnimals</xpath>
+        <value>
+
+        </value>
+    </Operation>
+
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/BiomeDef[defName = "TKKN_Oasis"]/wildAnimals</xpath>
+        <value>
+
+        </value>
+    </Operation>
+
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/BiomeDef[defName = "TKKN_Desert"]/wildAnimals</xpath>
+        <value>
+
+        </value>
+    </Operation>
+
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/BiomeDef[defName = "TKKN_Savanna"]/wildAnimals</xpath>
+        <value>
+            <dtf_Ambrolope>0.1</dtf_Ambrolope>
+            <dtf_Chocolope>0.2</dtf_Chocolope>
+            <dtf_Goldilope>0.2</dtf_Goldilope>
+            <dtf_Hyperlope>0.2</dtf_Hyperlope>
+            <dtf_Jadalope>0.2</dtf_Jadalope>
+            <dtf_Luciferilope>0.1</dtf_Luciferilope>
+            <dtf_Neutrolope>0.2</dtf_Neutrolope>
+            <dtf_Plasteelope>0.2</dtf_Plasteelope>
+            <dtf_Steelope>0.3</dtf_Steelope>
+            <dtf_Uranilope>0.2</dtf_Uranilope>
+            <dtf_Woodalope>0.3</dtf_Woodalope>
+            <dtf_vresanguophage_AnimalHemolope MayRequire="vanillaracesexpanded.sanguophage">0.2</dtf_vresanguophage_AnimalHemolope>
+            <dtf_vresanguophage_CorpseHemolope MayRequire="vanillaracesexpanded.sanguophage">0.2</dtf_vresanguophage_CorpseHemolope>
+            <dtf_vresanguophage_Sanguolope MayRequire="vanillaracesexpanded.sanguophage">0.2</dtf_vresanguophage_Sanguolope>
+        </value>
+    </Operation>
+
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/BiomeDef[defName = "TKKN_VolcanicFlow"]/wildAnimals</xpath>
+        <value>
+            <dtf_Ambrolope>0.1</dtf_Ambrolope>
+            <dtf_Chocolope>0.2</dtf_Chocolope>
+            <dtf_Goldilope>0.2</dtf_Goldilope>
+            <dtf_Hyperlope>0.2</dtf_Hyperlope>
+            <dtf_Jadalope>0.2</dtf_Jadalope>
+            <dtf_Luciferilope>0.1</dtf_Luciferilope>
+            <dtf_Neutrolope>0.2</dtf_Neutrolope>
+            <dtf_Plasteelope>0.2</dtf_Plasteelope>
+            <dtf_Steelope>0.3</dtf_Steelope>
+            <dtf_Uranilope>0.2</dtf_Uranilope>
+            <dtf_Woodalope>0.3</dtf_Woodalope>
+            <dtf_vresanguophage_AnimalHemolope MayRequire="vanillaracesexpanded.sanguophage">0.2</dtf_vresanguophage_AnimalHemolope>
+            <dtf_vresanguophage_CorpseHemolope MayRequire="vanillaracesexpanded.sanguophage">0.2</dtf_vresanguophage_CorpseHemolope>
+            <dtf_vresanguophage_Sanguolope MayRequire="vanillaracesexpanded.sanguophage">0.2</dtf_vresanguophage_Sanguolope>
+        </value>
+    </Operation>
+
+
+</Patch>

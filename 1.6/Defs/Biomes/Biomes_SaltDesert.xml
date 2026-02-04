@@ -84,8 +84,6 @@
             <!-- Pollution plants -->
             <Plant_GrayGrass MayRequire="Ludeon.RimWorld.Biotech">3</Plant_GrayGrass>
             <Plant_PebbleCactus MayRequire="Ludeon.RimWorld.Biotech">1</Plant_PebbleCactus>
-            <BMT_Plant_ScorchedStars MayRequire="biomesteam.biomespollutedlands">1</BMT_Plant_ScorchedStars>
-            <BMT_Plant_TwistedDandelion MayRequire="biomesteam.biomespollutedlands">0.2</BMT_Plant_TwistedDandelion>
         </wildPlants>
         <wildAnimals>
             <Boomalope>0.2</Boomalope>
@@ -98,7 +96,6 @@
             <Megascarab>1</Megascarab>
             <Ostrich>0.2</Ostrich>
             <Rat>0.30</Rat>
-            <AA_DesertAve MayRequire="sarg.alphaanimals">0.2</AA_DesertAve>
             <ZHY_Birdoa MayRequire="zylle.hybridanimals">0.3</ZHY_Birdoa>
             <TYR_KangarooRat MayRequire="tyrannidae.littlecritters">0.25</TYR_KangarooRat>
             <BU_Vulture MayRequire="dizzy.birdup.allinone">0.8</BU_Vulture>
@@ -112,32 +109,7 @@
             <SyntheticFox MayRequire="zal.syntheticanimals">0.004</SyntheticFox>
             <ACPThornyDevil MayRequire="acpteam.acpvanillastyle">0.04</ACPThornyDevil>
             <ACPWildDog MayRequire="acpteam.acpvanillastyle">0.04</ACPWildDog>
-            <AA_Aerofleet MayRequire="sarg.alphaanimals">0.05</AA_Aerofleet>
-            <AA_Barbslinger MayRequire="sarg.alphaanimals">0.1</AA_Barbslinger>
-            <AA_BloodShrimp MayRequire="sarg.alphaanimals">0.01</AA_BloodShrimp>
-            <AA_BoulderMit MayRequire="sarg.alphaanimals">0.07</AA_BoulderMit>
-            <AA_Bumbledrone MayRequire="sarg.alphaanimals">0.07</AA_Bumbledrone>
-            <AA_Cactipine MayRequire="sarg.alphaanimals">0.07</AA_Cactipine>
-            <AA_Dunealisk MayRequire="sarg.alphaanimals">0.07</AA_Dunealisk>
-            <AA_FissionMouse MayRequire="sarg.alphaanimals">0.01</AA_FissionMouse>
-            <AA_GreatDevourer MayRequire="sarg.alphaanimals">0.01</AA_GreatDevourer>
-            <AA_MammothWorm MayRequire="sarg.alphaanimals">0.03</AA_MammothWorm>
-            <AA_MeadowAve MayRequire="sarg.alphaanimals">0.01</AA_MeadowAve>
-            <AA_MegaLouse MayRequire="sarg.alphaanimals">0.03</AA_MegaLouse>
-            <AA_Needlepost MayRequire="sarg.alphaanimals">0.1</AA_Needlepost>
-            <AA_Needleroll MayRequire="sarg.alphaanimals">1</AA_Needleroll>
-            <AA_Nightling MayRequire="sarg.alphaanimals">0.03</AA_Nightling>
-            <AA_PebbleMit MayRequire="sarg.alphaanimals">0.07</AA_PebbleMit>
-            <AA_SandSquid MayRequire="sarg.alphaanimals">0.05</AA_SandSquid>
-            <AA_Slurrypede MayRequire="sarg.alphaanimals">0.01</AA_Slurrypede>
-            <AA_Swarmling MayRequire="sarg.alphaanimals">0.01</AA_Swarmling>
-            <AA_TetraSlug MayRequire="sarg.alphaanimals">0.001</AA_TetraSlug>
-            <AA_Thermadon MayRequire="sarg.alphaanimals">0.01</AA_Thermadon>
-            <AA_Thunderox MayRequire="sarg.alphaanimals">0.03</AA_Thunderox>
-            <AA_MatureFleshbeast MayRequire="sarg.alphaanmimals">0.01</AA_MatureFleshbeast>
-            <AA_SandProwler MayRequire="sarg.alphaanimals">0.1</AA_SandProwler>
-            <AA_Erin MayRequire="sarg.alphaanimals">0.015</AA_Erin>
-            <AA_Murkling MayRequire="sarg.alphaanimals">0.1</AA_Murkling>
+           
             <GlowFlommel MayRequire="tigerblut.flommel">0.03</GlowFlommel>
             <LizardFlommel MayRequire="tigerblut.flommel">0.12</LizardFlommel>
             <MapleFlommel MayRequire="tigerblut.flommel">0.12</MapleFlommel>
@@ -167,79 +139,17 @@
             <Red_Dragon MayRequire="onyxae.dragonsdescent">0.001</Red_Dragon>
             <Yellow_Dragon MayRequire="onyxae.dragonsdescent">0.001</Yellow_Dragon>
             <Gold_Dragon MayRequire="onyxae.dragonsdescent">0.001</Gold_Dragon>
-            <KraytDragon MayRequire="mlie.starwarsanimalcollection">0.15</KraytDragon>
-            <Gizka MayRequire="mlie.starwarsanimalcollection">0.01</Gizka>
-            <Vulptex MayRequire="mlie.starwarsanimalcollection">0.08</Vulptex>
-            <Anooba MayRequire="mlie.starwarsanimalcollection">0.01</Anooba>
-            <Beldon MayRequire="mlie.starwarsanimalcollection">0.01</Beldon>
-            <Brezak MayRequire="mlie.starwarsanimalcollection">0.01</Brezak>
-            <Dactillion MayRequire="mlie.starwarsanimalcollection">0.02</Dactillion>
-            <Drexl MayRequire="mlie.starwarsanimalcollection">0.01</Drexl>
-            <EnergySpider MayRequire="mlie.starwarsanimalcollection">0.01</EnergySpider>
-            <Eopie MayRequire="mlie.starwarsanimalcollection">0.04</Eopie>
-            <Gorg MayRequire="mlie.starwarsanimalcollection">0.2</Gorg>
-            <GraniteSlug MayRequire="mlie.starwarsanimalcollection">0.1</GraniteSlug>
-            <Gutkurr MayRequire="mlie.starwarsanimalcollection">0.04</Gutkurr>
-            <IridonianReek MayRequire="mlie.starwarsanimalcollection">0.01</IridonianReek>
-            <Iriaz MayRequire="mlie.starwarsanimalcollection">0.01</Iriaz>
-            <Jamel MayRequire="mlie.starwarsanimalcollection">0.08</Jamel>
-            <Kinrath MayRequire="mlie.starwarsanimalcollection">0.01</Kinrath>
-            <Krykna MayRequire="mlie.starwarsanimalcollection">0.01</Krykna>
-            <Kreetle MayRequire="mlie.starwarsanimalcollection">0.2</Kreetle>
-            <LavaFlea MayRequire="mlie.starwarsanimalcollection">0.8</LavaFlea>
-            <LongtailGorg MayRequire="mlie.starwarsanimalcollection">0.2</LongtailGorg>
-            <Lylek MayRequire="mlie.starwarsanimalcollection">0.8</Lylek>
-            <Massiff MayRequire="mlie.starwarsanimalcollection">0.08</Massiff>
-            <Mynock MayRequire="mlie.starwarsanimalcollection">0.1</Mynock>
-            <Orray MayRequire="mlie.starwarsanimalcollection">0.04</Orray>
-            <PaintedSpat MayRequire="mlie.starwarsanimalcollection">0.02</PaintedSpat>
-            <Roggwart MayRequire="mlie.starwarsanimalcollection">0.01</Roggwart>
-            <Ronto MayRequire="mlie.starwarsanimalcollection">0.2</Ronto>
-            <Runyip MayRequire="mlie.starwarsanimalcollection">0</Runyip>
-            <Scavrat MayRequire="mlie.starwarsanimalcollection">0.3</Scavrat>
-            <Scurrier MayRequire="mlie.starwarsanimalcollection">0.6</Scurrier>
-            <Shyrack MayRequire="mlie.starwarsanimalcollection">0.8</Shyrack>
-            <Skalder MayRequire="mlie.starwarsanimalcollection">0.02</Skalder>
-            <Thranta MayRequire="mlie.starwarsanimalcollection">0.01</Thranta>
-            <Tukata MayRequire="mlie.starwarsanimalcollection">0.01</Tukata>
-            <Vapaad MayRequire="mlie.starwarsanimalcollection">0.01</Vapaad>
-            <Varactyl MayRequire="mlie.starwarsanimalcollection">0.02</Varactyl>
-            <WompRat MayRequire="mlie.starwarsanimalcollection">0.3</WompRat>
-            <Wraid MayRequire="mlie.starwarsanimalcollection">0.4</Wraid>
-            <BMT_Allosaurus MayRequire="biomesteam.biomesprehistoric">0.1</BMT_Allosaurus>
-            <BMT_Anhanguera MayRequire="biomesteam.biomesprehistoric">0.05</BMT_Anhanguera>
-            <BMT_Anteosaurus MayRequire="biomesteam.biomesprehistoric">0.1</BMT_Anteosaurus>
-            <BMT_Carcharodontosaurus MayRequire="biomesteam.biomesprehistoric">0.1</BMT_Carcharodontosaurus>
-            <BMT_Dilophosaurus MayRequire="biomesteam.biomesprehistoric">0.05</BMT_Dilophosaurus>
-            <BMT_Nanosaurus MayRequire="biomesteam.biomesprehistoric">0.15</BMT_Nanosaurus>
-            <BMT_Protoceratops MayRequire="biomesteam.biomesprehistoric">0.3</BMT_Protoceratops>
-            <BMT_Quetzal MayRequire="biomesteam.biomesprehistoric">0.1</BMT_Quetzal>
-            <BMT_Utahraptor MayRequire="biomesteam.biomesprehistoric">0.1</BMT_Utahraptor>
-            <BMT_Styracosaurus MayRequire="biomesteam.biomesprehistoric">0.01</BMT_Styracosaurus>
+         
             <SpottedHyena MayRequire="zal.hyena">0.07</SpottedHyena>
             <StripedHyena MayRequire="zal.hyena">0.07</StripedHyena>
             <RW_Devirossy MayRequire="rw.furossy">0.08</RW_Devirossy>
             <RW_Furossy MayRequire="rw.furossy">0.08</RW_Furossy>
-            <Draclone MayRequire="nexomon.x">0.03</Draclone>
-            <Abaddog MayRequire="nexomon.x">0.03</Abaddog>
-            <Carnagrius MayRequire="nexomon.x">0.03</Carnagrius>
-            <Voltaic MayRequire="nexomon.x">0.03</Voltaic>
-            <Mystogen MayRequire="nexomon.x">0.01</Mystogen>
             <Tyrant MayRequire="zal.borderlands">0.1</Tyrant>
             <Ratch MayRequire="zal.borderlands">0.3</Ratch>
             <Skag MayRequire="zal.borderlands">0.4</Skag>
             <Spiderant MayRequire="zal.borderlands">0.4</Spiderant>
             <Rakk MayRequire="zal.borderlands">0.5</Rakk>
             <Bullymong MayRequire="zal.borderlands">0.2</Bullymong>
-            <AEXP_Zebra MayRequire="vanillaexpanded.vanillaanimalsexpanded">0.25</AEXP_Zebra>
-            <AEXP_Wildebeest MayRequire="vanillaexpanded.vanillaanimalsexpanded">0.1</AEXP_Wildebeest>
-            <AEXP_Boombat MayRequire="vanillaexpanded.vanillaanimalsexpanded">0.3</AEXP_Boombat>
-            <AEXP_Hyena MayRequire="vanillaexpanded.vanillaanimalsexpanded">0.45</AEXP_Hyena>
-            <AEXP_Lion MayRequire="vanillaexpanded.vanillaanimalsexpanded">0.37</AEXP_Lion>
-            <AEXP_GilaMonster MayRequire="vanillaexpanded.vanillaanimalsexpanded">0.65</AEXP_GilaMonster>
-            <AEXP_Camel MayRequire="vanillaexpanded.vanillaanimalsexpanded">0.3</AEXP_Camel>
-            <AEXP_Rattlesnake MayRequire="vanillaexpanded.vanillaanimalsexpanded">0.7</AEXP_Rattlesnake>
-            <AEXP_Megascorpion MayRequire="vanillaexpanded.vanillaanimalsexpanded">0.35</AEXP_Megascorpion>
             <ZEle_AsianElephant MayRequire="zylle.elephants">0.03</ZEle_AsianElephant>
             <ZEle_BorneoPygmy MayRequire="zylle.elephants">0.008</ZEle_BorneoPygmy>
             <ZEle_Kallana MayRequire="zylle.elephants">0.01</ZEle_Kallana>
@@ -256,41 +166,10 @@
             <VAEWaste_Toxiguana MayRequire="vanillaexpanded.vaewaste">0.4</VAEWaste_Toxiguana>
             <VAEWaste_Toxscorpion MayRequire="vanillaexpanded.vaewaste">0.4</VAEWaste_Toxscorpion>
             <VAEWaste_Toxafox MayRequire="vanillaexpanded.vaewaste">0.03</VAEWaste_Toxafox>
-            <EnergySpider MayRequire="mlie.starwarsanimalcollection">0.01</EnergySpider>
-            <Gutkurr MayRequire="mlie.starwarsanimalcollection">0.02</Gutkurr>
-            <Insectomorph MayRequire="mlie.starwarsanimalcollection">0.04</Insectomorph>
-            <Lylek MayRequire="mlie.starwarsanimalcollection">0.08</Lylek>
-            <Roggwart MayRequire="mlie.starwarsanimalcollection">0.01</Roggwart>
-            <Scavrat MayRequire="mlie.starwarsanimalcollection">0.15</Scavrat>
-            <Tukata MayRequire="mlie.starwarsanimalcollection">0.08</Tukata>
-            <Borcatu MayRequire="mlie.starwarsanimalcollection">0.8</Borcatu>
-            <Gorg MayRequire="mlie.starwarsanimalcollection">0.02</Gorg>
-            <GraniteSlug MayRequire="mlie.starwarsanimalcollection">0.15</GraniteSlug>
-            <Hawkbat MayRequire="mlie.starwarsanimalcollection">0.01</Hawkbat>
-            <Kinrath MayRequire="mlie.starwarsanimalcollection">0.01</Kinrath>
-            <Kreetle MayRequire="mlie.starwarsanimalcollection">0.15</Kreetle>
-            <Krykna MayRequire="mlie.starwarsanimalcollection">0.01</Krykna>
-            <LavaFlea MayRequire="mlie.starwarsanimalcollection">0.08</LavaFlea>
-            <Mynock MayRequire="mlie.starwarsanimalcollection">0.15</Mynock>
-            <PaintedSpat MayRequire="mlie.starwarsanimalcollection">0.01</PaintedSpat>
-            <Rancor MayRequire="mlie.starwarsanimalcollection">0.01</Rancor>
-            <Scurrier MayRequire="mlie.starwarsanimalcollection">0.15</Scurrier>
-            <Shyrack MayRequire="mlie.starwarsanimalcollection">0.15</Shyrack>
-            <Silooth MayRequire="mlie.starwarsanimalcollection">0.01</Silooth>
-            <Skalder MayRequire="mlie.starwarsanimalcollection">0.04</Skalder>
-            <Taozin MayRequire="mlie.starwarsanimalcollection">0.01</Taozin>
-            <Vapaad MayRequire="mlie.starwarsanimalcollection">0.01</Vapaad>
-            <Vulptex MayRequire="mlie.starwarsanimalcollection">0.03</Vulptex>
-            <WompRat MayRequire="mlie.starwarsanimalcollection">0.04</WompRat>
         </pollutionWildAnimals>
         <allowedPackAnimals>
             <li>Muffalo</li>
             <li>Dromedary</li>
-            <li MayRequire="nexomon.x">Raamu</li>
-            <li MayRequire="nexomon.x">Draclone</li>
-            <li MayRequire="nexomon.x">Boltusk</li>
-            <li MayRequire="nexomon.x">Abaddog</li>
-            <li MayRequire="nexomon.x">Voltaic</li>
         </allowedPackAnimals>
 
         <modExtensions>

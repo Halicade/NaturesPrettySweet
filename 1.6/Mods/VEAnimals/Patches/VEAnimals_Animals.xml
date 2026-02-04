@@ -4,81 +4,81 @@
     <Operation Class="PatchOperationAdd">
         <xpath>Defs/BiomeDef[defName = "TKKN_Grasslands"]/wildAnimals</xpath>
         <value>
-            <AEXP_Coyote MayRequire="vanillaexpanded.vanillaanimalsexpanded">0.03</AEXP_Coyote>
-            <AEXP_Rattlesnake MayRequire="vanillaexpanded.vanillaanimalsexpanded">0.6</AEXP_Rattlesnake>
-            <AEXP_WildGoose MayRequire="vanillaexpanded.vanillaanimalsexpanded">0.3</AEXP_WildGoose>
-            <AEXP_Jaguar MayRequire="vanillaexpanded.vanillaanimalsexpanded">0.1</AEXP_Jaguar>
+            <AEXP_Coyote>0.03</AEXP_Coyote>
+            <AEXP_Rattlesnake>0.6</AEXP_Rattlesnake>
+            <AEXP_WildGoose>0.3</AEXP_WildGoose>
+            <AEXP_Jaguar>0.1</AEXP_Jaguar>
         </value>
     </Operation>
 
     <Operation Class="PatchOperationAdd">
         <xpath>Defs/BiomeDef[defName = "TKKN_RedwoodForest"]/wildAnimals</xpath>
         <value>
-            <AEXP_Coyote MayRequire="vanillaexpanded.vanillaanimalsexpanded">0.03</AEXP_Coyote>
-            <AEXP_Platypus MayRequire="vanillaexpanded.vanillaanimalsexpanded">0.4</AEXP_Platypus>
-            <AEXP_ArcticCoyote MayRequire="vanillaexpanded.vanillaanimalsexpanded">0.02</AEXP_ArcticCoyote>
-            <AEXP_BlackBear MayRequire="vanillaexpanded.vanillaanimalsexpanded">0.4</AEXP_BlackBear>
-            <AEXP_Beaver MayRequire="vanillaexpanded.vanillaanimalsexpanded">0.05</AEXP_Beaver>
-            <AEXP_MegaWolverine MayRequire="vanillaexpanded.vanillaanimalsexpanded">0.08</AEXP_MegaWolverine>
+            <AEXP_Coyote>0.03</AEXP_Coyote>
+            <AEXP_Platypus>0.4</AEXP_Platypus>
+            <AEXP_ArcticCoyote>0.02</AEXP_ArcticCoyote>
+            <AEXP_BlackBear>0.4</AEXP_BlackBear>
+            <AEXP_Beaver>0.05</AEXP_Beaver>
+            <AEXP_MegaWolverine>0.08</AEXP_MegaWolverine>
         </value>
     </Operation>
 
     <Operation Class="PatchOperationAdd">
         <xpath>Defs/BiomeDef[defName = "TKKN_Oasis"]/wildAnimals</xpath>
         <value>
-            <AEXP_Zebra MayRequire="vanillaexpanded.vanillaanimalsexpanded">0.3</AEXP_Zebra>
-            <AEXP_Wildebeest MayRequire="vanillaexpanded.vanillaanimalsexpanded">0.2</AEXP_Wildebeest>
-            <AEXP_Boombat MayRequire="vanillaexpanded.vanillaanimalsexpanded">0.5</AEXP_Boombat>
-            <AEXP_Hyena MayRequire="vanillaexpanded.vanillaanimalsexpanded">0.65</AEXP_Hyena>
-            <AEXP_DesertTortoise MayRequire="vanillaexpanded.vanillaanimalsexpanded">0.75</AEXP_DesertTortoise>
-            <AEXP_Lion MayRequire="vanillaexpanded.vanillaanimalsexpanded">0.5</AEXP_Lion>
-            <AEXP_GilaMonster MayRequire="vanillaexpanded.vanillaanimalsexpanded">0.7</AEXP_GilaMonster>
-            <AEXP_Camel MayRequire="vanillaexpanded.vanillaanimalsexpanded">0.4</AEXP_Camel>
-            <AEXP_Rattlesnake MayRequire="vanillaexpanded.vanillaanimalsexpanded">0.7</AEXP_Rattlesnake>
-            <AEXP_Megascorpion MayRequire="vanillaexpanded.vanillaanimalsexpanded">0.3</AEXP_Megascorpion>
+            <AEXP_Zebra>0.3</AEXP_Zebra>
+            <AEXP_Wildebeest>0.2</AEXP_Wildebeest>
+            <AEXP_Boombat>0.5</AEXP_Boombat>
+            <AEXP_Hyena>0.65</AEXP_Hyena>
+            <AEXP_DesertTortoise>0.75</AEXP_DesertTortoise>
+            <AEXP_Lion>0.5</AEXP_Lion>
+            <AEXP_GilaMonster>0.7</AEXP_GilaMonster>
+            <AEXP_Camel>0.4</AEXP_Camel>
+            <AEXP_Rattlesnake>0.7</AEXP_Rattlesnake>
+            <AEXP_Megascorpion>0.3</AEXP_Megascorpion>
         </value>
     </Operation>
 
     <Operation Class="PatchOperationAdd">
         <xpath>Defs/BiomeDef[defName = "TKKN_Desert"]/wildAnimals</xpath>
         <value>
-            <AEXP_Zebra MayRequire="vanillaexpanded.vanillaanimalsexpanded">0.25</AEXP_Zebra>
-            <AEXP_Wildebeest MayRequire="vanillaexpanded.vanillaanimalsexpanded">0.1</AEXP_Wildebeest>
-            <AEXP_Boombat MayRequire="vanillaexpanded.vanillaanimalsexpanded">0.3</AEXP_Boombat>
-            <AEXP_Hyena MayRequire="vanillaexpanded.vanillaanimalsexpanded">0.45</AEXP_Hyena>
-            <AEXP_Lion MayRequire="vanillaexpanded.vanillaanimalsexpanded">0.37</AEXP_Lion>
-            <AEXP_GilaMonster MayRequire="vanillaexpanded.vanillaanimalsexpanded">0.65</AEXP_GilaMonster>
-            <AEXP_Camel MayRequire="vanillaexpanded.vanillaanimalsexpanded">0.3</AEXP_Camel>
-            <AEXP_Rattlesnake MayRequire="vanillaexpanded.vanillaanimalsexpanded">0.7</AEXP_Rattlesnake>
-            <AEXP_Megascorpion MayRequire="vanillaexpanded.vanillaanimalsexpanded">0.35</AEXP_Megascorpion>
+            <AEXP_Zebra>0.25</AEXP_Zebra>
+            <AEXP_Wildebeest>0.1</AEXP_Wildebeest>
+            <AEXP_Boombat>0.3</AEXP_Boombat>
+            <AEXP_Hyena>0.45</AEXP_Hyena>
+            <AEXP_Lion>0.37</AEXP_Lion>
+            <AEXP_GilaMonster>0.65</AEXP_GilaMonster>
+            <AEXP_Camel>0.3</AEXP_Camel>
+            <AEXP_Rattlesnake>0.7</AEXP_Rattlesnake>
+            <AEXP_Megascorpion>0.35</AEXP_Megascorpion>
         </value>
     </Operation>
 
     <Operation Class="PatchOperationAdd">
         <xpath>Defs/BiomeDef[defName = "TKKN_Savanna"]/wildAnimals</xpath>
         <value>
-            <AEXP_Tapir MayRequire="vanillaexpanded.vanillaanimalsexpanded">0.4</AEXP_Tapir>
-            <AEXP_Giraffe MayRequire="vanillaexpanded.vanillaanimalsexpanded">0.1</AEXP_Giraffe>
-            <AEXP_Zebra MayRequire="vanillaexpanded.vanillaanimalsexpanded">0.3</AEXP_Zebra>
-            <AEXP_Wildebeest MayRequire="vanillaexpanded.vanillaanimalsexpanded">0.2</AEXP_Wildebeest>
-            <AEXP_Cheetah MayRequire="vanillaexpanded.vanillaanimalsexpanded">0.25</AEXP_Cheetah>
-            <AEXP_Boombat MayRequire="vanillaexpanded.vanillaanimalsexpanded">0.7</AEXP_Boombat>
-            <AEXP_Kangaroo MayRequire="vanillaexpanded.vanillaanimalsexpanded">0.3</AEXP_Kangaroo>
-            <AEXP_Hyena MayRequire="vanillaexpanded.vanillaanimalsexpanded">0.5</AEXP_Hyena>
-            <AEXP_Lion MayRequire="vanillaexpanded.vanillaanimalsexpanded">0.6</AEXP_Lion>
-            <AEXP_Rattlesnake MayRequire="vanillaexpanded.vanillaanimalsexpanded">0.6</AEXP_Rattlesnake>
-            <AEXP_Hedgehog MayRequire="vanillaexpanded.vanillaanimalsexpanded">0.6</AEXP_Hedgehog>
-            <AEXP_Jaguar MayRequire="vanillaexpanded.vanillaanimalsexpanded">0.1</AEXP_Jaguar>
+            <AEXP_Tapir>0.4</AEXP_Tapir>
+            <AEXP_Giraffe>0.1</AEXP_Giraffe>
+            <AEXP_Zebra>0.3</AEXP_Zebra>
+            <AEXP_Wildebeest>0.2</AEXP_Wildebeest>
+            <AEXP_Cheetah>0.25</AEXP_Cheetah>
+            <AEXP_Boombat>0.7</AEXP_Boombat>
+            <AEXP_Kangaroo>0.3</AEXP_Kangaroo>
+            <AEXP_Hyena>0.5</AEXP_Hyena>
+            <AEXP_Lion>0.6</AEXP_Lion>
+            <AEXP_Rattlesnake>0.6</AEXP_Rattlesnake>
+            <AEXP_Hedgehog>0.6</AEXP_Hedgehog>
+            <AEXP_Jaguar>0.1</AEXP_Jaguar>
         </value>
     </Operation>
 
     <Operation Class="PatchOperationAdd">
         <xpath>Defs/BiomeDef[defName = "TKKN_VolcanicFlow"]/wildAnimals</xpath>
         <value>
-            <AEXP_Coyote MayRequire="vanillaexpanded.vanillaanimalsexpanded">0.02</AEXP_Coyote>
-            <AEXP_Jaguar MayRequire="vanillaexpanded.vanillaanimalsexpanded">0.15</AEXP_Jaguar>
-            <AEXP_Lemur MayRequire="vanillaexpanded.vanillaanimalsexpanded">0.5</AEXP_Lemur>
-            <AEXP_Tapir MayRequire="vanillaexpanded.vanillaanimalsexpanded">0.35</AEXP_Tapir>
+            <AEXP_Coyote>0.02</AEXP_Coyote>
+            <AEXP_Jaguar>0.15</AEXP_Jaguar>
+            <AEXP_Lemur>0.5</AEXP_Lemur>
+            <AEXP_Tapir>0.35</AEXP_Tapir>
         </value>
     </Operation>
 

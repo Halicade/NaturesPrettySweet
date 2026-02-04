@@ -41,12 +41,8 @@ Winter: wet.
         <xpath>Defs/BiomeDef[defName = "Grasslands"]</xpath>
         <value>
             <li Class="TKKN_NPS.BiomeSeasonalSettings">
-                <!-- springSettings -->
                 <maxSprings>2</maxSprings>
                 <springSpawnChance>0.8</springSpawnChance>
-                <springsSurviveDrought>true</springsSurviveDrought>
-                <springsSurviveSummer>true</springsSurviveSummer>
-                <!-- /springSettings -->
                 <wetPlantStart>50</wetPlantStart>
                 <bloomPlants>
                     <li>Plant_Moss</li>

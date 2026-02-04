@@ -12,7 +12,8 @@ public class BiomeSeasonalSettings : DefModExtension
     public bool diseaseCacheUpdated;
 
     //spring settings
-    public int maxSprings;
+    public int maxSprings=1;
+    public float springSpawnChance=0;
 
     public List<PawnKindDef> specialHerds;
 
@@ -26,7 +27,6 @@ public class BiomeSeasonalSettings : DefModExtension
     public List<TKKN_IncidentCommonalityRecord> summerEvents;
     public List<TKKN_IncidentCommonalityRecord> fallEvents;
     public List<TKKN_IncidentCommonalityRecord> winterEvents;
-    public float springSpawnChance;
 
 
     //weather settings
@@ -36,11 +36,7 @@ public class BiomeSeasonalSettings : DefModExtension
     public List<WeatherCommonalityRecord> winterWeathers;
 
     //unused settings
-    public bool springsSurviveDrought;
-    public bool springsSurviveSummer;
     public int wetPlantStart = 50;
-    public bool plantCacheUpdated;
-    public bool plantsAdded;
     public List<BiomePlantRecord> specialPlants;
 
 

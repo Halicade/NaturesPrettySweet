@@ -34,20 +34,61 @@ public class GenStep_SpringTerrain : GenStep
         soilCells.Clear();
         cornerPoints.Clear();
         ValidOasisSoils.ValidSoils.Clear();
+
+        int springsToSpawn = 1;
+
+        var biomeExt = map.Biome.GetModExtension<BiomeSeasonalSettings>();
+        if (biomeExt != null) {
+
+            if (biomeExt.maxSprings > 1) {
+                for (int i = 1; i < biomeExt.maxSprings; i++) {
+                    if (Rand.Chance(biomeExt.springSpawnChance)) {
+                        springsToSpawn++;
+                    }
+                }
+            }
+        }
+
+        for (int i = 0; i < springsToSpawn; i++) {
+            generateSpringLocations(map);
+            cornerPoints.Clear();
+            soilLine.Clear();
+        }
         
         
+        foreach (var water in waterCells) {
+            if (!water.InBounds(map))
+                continue;
+            if (water.GetEdifice(map) != null)
+                continue;
+            map.terrainGrid.SetTerrain(water, waterTerrain);
+        }
+
+        foreach (var soil in soilCells) {
+            if (!soil.InBounds(map))
+                continue;
+            if (soil.GetEdifice(map) != null)
+                continue;
+            if (soil.GetTerrain(map).IsWater)
+                continue;
+            map.terrainGrid.SetTerrain(soil, soilTerrain);
+            ValidOasisSoils.ValidSoils.Add(soil);
+        }
+    }
+
+    private void generateSpringLocations(Map map) {
         if (!CellFinder.TryFindRandomCell(map,
                 x => !x.Roofed(map) && !x.GetTerrain(map).IsWater && x.DistanceToEdge(map) > 25, out var springPoint)) {
             Log.Warning("Unable to find a valid spring position");
             return;
         }
-        
-        soilTerrain = MapGenUtility.RiverbankTerrainAt(center,map);
+
+        soilTerrain = MapGenUtility.RiverbankTerrainAt(center, map);
         center = springPoint;
 
         //center = CellFinderLoose.TryFindCentralCell(map, 10, 15, x => !x.Roofed(map));
 
-        if (!center.IsValid || !center.InBounds(map)) 
+        if (!center.IsValid || !center.InBounds(map))
             return;
 
 
@@ -75,24 +116,6 @@ public class GenStep_SpringTerrain : GenStep
         encircleSoilCells();
 
 
-        foreach (var water in waterCells) {
-            if (!water.InBounds(map))
-                continue;
-            if (water.GetEdifice(map) != null)
-                continue;
-            map.terrainGrid.SetTerrain(water, waterTerrain);
-        }
-
-        foreach (var soil in soilCells) {
-            if (!soil.InBounds(map))
-                continue;
-            if (soil.GetEdifice(map) != null)
-                continue;
-            if (soil.GetTerrain(map).IsWater)
-                continue;
-            map.terrainGrid.SetTerrain(soil, soilTerrain);
-            ValidOasisSoils.ValidSoils.Add(soil);
-        }
     }
 
     private void encircleSoilCells() {

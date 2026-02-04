@@ -37,6 +37,7 @@
         <order>224</order>
         <genStep Class="TKKN_NPS.GenSteps.GenStep_SpringTerrain">
             <waterTerrain>TKKN_ColdSpringsWater</waterTerrain>
+            <soilTerrain>Riverbank</soilTerrain>
         </genStep>
     </GenStepDef>
 

@@ -41,10 +41,8 @@ Winter: wet.
         <xpath>Defs/BiomeDef[defName = "Scarlands"]</xpath>
         <value>
             <li Class="TKKN_NPS.BiomeSeasonalSettings">
-                <!-- springSettings -->
                 <maxSprings>0</maxSprings>
                 <springSpawnChance>0</springSpawnChance>
-                <!-- /springSettings -->
                 <wetPlantStart>40</wetPlantStart>
                 <bloomPlants>
                     <li>Plant_Dandelion</li>

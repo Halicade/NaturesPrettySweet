@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<Patch>
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/BiomeDef[defName = "TKKN_Grasslands"]/wildAnimals</xpath>
+        <value>
+            <Arthropleura>0.006</Arthropleura>
+            <Daeodon>0.008</Daeodon>
+            <Gigantopithecus>0.015</Gigantopithecus>
+            <Titanis>0.005</Titanis>
+            <Elasmotherium>0.004</Elasmotherium>
+            <Smilodon>0.006</Smilodon>
+            <Megalania>0.001</Megalania>
+            <ShortfacedBear>0.001</ShortfacedBear>
+        </value>
+    </Operation>
+
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/BiomeDef[defName = "TKKN_RedwoodForest"]/wildAnimals</xpath>
+        <value>
+            <Arthropleura>0.004</Arthropleura>
+            <Gigantopithecus>0.004</Gigantopithecus>
+            <WoollyMammoth>0.01</WoollyMammoth>
+            <Megaloceros>0.01</Megaloceros>
+            <ShortfacedBear>0.001</ShortfacedBear>
+            <Castoroides>0.001</Castoroides>
+        </value>
+    </Operation>
+
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/BiomeDef[defName = "TKKN_Oasis"]/wildAnimals</xpath>
+        <value>
+            <Doedicurus>0.01</Doedicurus>
+            <Paraceratherium>0.004</Paraceratherium>
+            <Dinocrocuta>0.007</Dinocrocuta>
+        </value>
+    </Operation>
+
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/BiomeDef[defName = "TKKN_Desert"]/wildAnimals</xpath>
+        <value>
+            <Doedicurus>0.02</Doedicurus>
+        </value>
+    </Operation>
+
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/BiomeDef[defName = "TKKN_Savanna"]/wildAnimals</xpath>
+        <value>
+            <Daeodon>0.004</Daeodon>
+            <Elasmotherium>0.003</Elasmotherium>
+            <Smilodon>0.006</Smilodon>
+            <Chalicotherium>0.008</Chalicotherium>
+            <ShortfacedBear>0.001</ShortfacedBear>
+            <Dinocrocuta>0.005</Dinocrocuta>
+            <Sivatherium>0.008</Sivatherium>
+        </value>
+    </Operation>
+
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/BiomeDef[defName = "TKKN_VolcanicFlow"]/wildAnimals</xpath>
+        <value>
+            <Gigantopithecus>0.004</Gigantopithecus>
+            <Megalania>0.001</Megalania>
+        </value>
+    </Operation>
+
+
+</Patch>

@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<Patch>
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/BiomeDef[defName = "TKKN_Grasslands"]/wildAnimals</xpath>
+        <value>
+            <MothFlommel>0.03</MothFlommel>
+            <RainbowFlommel>0.007</RainbowFlommel>
+            <SpikeFlommel>0.1</SpikeFlommel>
+            <StegoFlommel>0.1</StegoFlommel>
+        </value>
+    </Operation>
+
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/BiomeDef[defName = "TKKN_RedwoodForest"]/wildAnimals</xpath>
+        <value>
+            <CandyCottonFlommel>0.14</CandyCottonFlommel>
+            <FungusFlommel>0.15</FungusFlommel>
+            <PeltFlommel>0.1</PeltFlommel>
+            <PinkFlommel>0.05</PinkFlommel>
+            <RainbowFlommel>0.01</RainbowFlommel>
+            <StegoFlommel>0.15</StegoFlommel>
+            <WinterkissFlommel>0.2</WinterkissFlommel>
+            <WoollyFlommel>0.2</WoollyFlommel>
+        </value>
+    </Operation>
+
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/BiomeDef[defName = "TKKN_Oasis"]/wildAnimals</xpath>
+        <value>
+            <GlowFlommel>0.03</GlowFlommel>
+            <LizardFlommel>0.12</LizardFlommel>
+            <MapleFlommel>0.12</MapleFlommel>
+            <RainbowFlommel>0.05</RainbowFlommel>
+            <SpikeFlommel>0.25</SpikeFlommel>
+            <TrickleFlommel>0.2</TrickleFlommel>
+        </value>
+    </Operation>
+
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/BiomeDef[defName = "TKKN_Desert"]/wildAnimals</xpath>
+        <value>
+            <GlowFlommel>0.03</GlowFlommel>
+            <LizardFlommel>0.12</LizardFlommel>
+            <MapleFlommel>0.12</MapleFlommel>
+            <RainbowFlommel>0.05</RainbowFlommel>
+            <SpikeFlommel>0.25</SpikeFlommel>
+            <TrickleFlommel>0.2</TrickleFlommel>
+        </value>
+    </Operation>
+
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/BiomeDef[defName = "TKKN_Savanna"]/wildAnimals</xpath>
+        <value>
+            <MothFlommel>0.03</MothFlommel>
+            <PinkFlommel>0.05</PinkFlommel>
+            <RainbowFlommel>0.007</RainbowFlommel>
+            <SpikeFlommel>0.1</SpikeFlommel>
+            <StegoFlommel>0.1</StegoFlommel>
+        </value>
+    </Operation>
+
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/BiomeDef[defName = "TKKN_VolcanicFlow"]/wildAnimals</xpath>
+        <value>
+            <FruityFlommel>0.15</FruityFlommel>
+            <FungusFlommel>0.15</FungusFlommel>
+            <RainbowFlommel>0.005</RainbowFlommel>
+            <SpikeFlommel>0.15</SpikeFlommel>
+            <StegoFlommel>0.03</StegoFlommel>
+        </value>
+    </Operation>
+
+
+</Patch>

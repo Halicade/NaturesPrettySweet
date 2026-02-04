@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<Patch>
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/BiomeDef[defName = "TKKN_Grasslands"]/wildAnimals</xpath>
+        <value>
+            <SyntheticRat>0.004</SyntheticRat>
+            <SyntheticMuffalo>0.04</SyntheticMuffalo>
+            <SyntheticHare>0.04</SyntheticHare>
+            <SyntheticWildBoar>0.04</SyntheticWildBoar>
+            <SyntheticMegasloth>0.04</SyntheticMegasloth>
+            <SyntheticCougar>0.04</SyntheticCougar>
+        </value>
+    </Operation>
+
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/BiomeDef[defName = "TKKN_RedwoodForest"]/wildAnimals</xpath>
+        <value>
+            <SyntheticCougar>0.004</SyntheticCougar>
+            <SyntheticHare>0.04</SyntheticHare>
+            <SyntheticSquirrel>0.04</SyntheticSquirrel>
+            <SyntheticRat>0.04</SyntheticRat>
+            <SyntheticWildBoar>0.04</SyntheticWildBoar>
+            <SyntheticTurkey>0.04</SyntheticTurkey>
+            <SyntheticMuffalo>0.04</SyntheticMuffalo>
+            <SyntheticWolf>0.04</SyntheticWolf>
+            <SyntheticBear>0.04</SyntheticBear>
+            <SyntheticFox>0.04</SyntheticFox>
+        </value>
+    </Operation>
+
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/BiomeDef[defName = "TKKN_Oasis"]/wildAnimals</xpath>
+        <value>
+            <SyntheticIguana>0.004</SyntheticIguana>
+            <SyntheticRat>0.004</SyntheticRat>
+            <SyntheticCougar>0.004</SyntheticCougar>
+            <SyntheticRhinoceros>0.004</SyntheticRhinoceros>
+        </value>
+    </Operation>
+
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/BiomeDef[defName = "TKKN_Desert"]/wildAnimals</xpath>
+        <value>
+            <SyntheticIguana>0.004</SyntheticIguana>
+            <SyntheticRat>0.004</SyntheticRat>
+            <SyntheticCougar>0.004</SyntheticCougar>
+            <SyntheticRhinoceros>0.004</SyntheticRhinoceros>
+            <SyntheticFox>0.004</SyntheticFox>
+        </value>
+    </Operation>
+
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/BiomeDef[defName = "TKKN_Savanna"]/wildAnimals</xpath>
+        <value>
+            <SyntheticBuck>0.04</SyntheticBuck>
+            <SyntheticFox>0.04</SyntheticFox>
+            <SyntheticIguana>0.04</SyntheticIguana>
+            <SyntheticRat>0.04</SyntheticRat>
+            <SyntheticCougar>0.04</SyntheticCougar>
+            <SyntheticMegasloth>0.04</SyntheticMegasloth>
+            <SyntheticSquirrel>0.04</SyntheticSquirrel>
+            <SyntheticRhinoceros>0.04</SyntheticRhinoceros>
+        </value>
+    </Operation>
+
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/BiomeDef[defName = "TKKN_VolcanicFlow"]/wildAnimals</xpath>
+        <value>
+            <SyntheticCougar>0.004</SyntheticCougar>
+            <SyntheticRat>0.04</SyntheticRat>
+            <SyntheticLynx>0.04</SyntheticLynx>
+            <SyntheticMuffalo>0.04</SyntheticMuffalo>
+            <SyntheticWarg>0.04</SyntheticWarg>
+            <SyntheticBear>0.04</SyntheticBear>
+            <SyntheticWolf>0.04</SyntheticWolf>
+        </value>
+    </Operation>
+
+
+</Patch>

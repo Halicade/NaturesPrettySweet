@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<Patch>
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/BiomeDef[defName = "TKKN_Grasslands"]/wildAnimals</xpath>
+        <value>
+            <Tyrant>0.05</Tyrant>
+            <Ratch>0.25</Ratch>
+            <Skag>0.25</Skag>
+            <Spiderant>0.3</Spiderant>
+            <Rakk>0.3</Rakk>
+            <Bullymong>0.2</Bullymong>
+        </value>
+    </Operation>
+
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/BiomeDef[defName = "TKKN_RedwoodForest"]/wildAnimals</xpath>
+        <value>
+            <Ratch>0.25</Ratch>
+            <Skag>0.3</Skag>
+            <Spiderant>0.24</Spiderant>
+            <Rakk>0.3</Rakk>
+            <Bullymong>0.2</Bullymong>
+        </value>
+    </Operation>
+
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/BiomeDef[defName = "TKKN_Oasis"]/wildAnimals</xpath>
+        <value>
+            <Tyrant>0.1</Tyrant>
+            <Ratch>0.3</Ratch>
+            <Skag>0.4</Skag>
+            <Spiderant>0.4</Spiderant>
+            <Rakk>0.5</Rakk>
+            <Bullymong>0.2</Bullymong>
+            
+        </value>
+    </Operation>
+
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/BiomeDef[defName = "TKKN_Desert"]/wildAnimals</xpath>
+        <value>
+
+            <Tyrant>0.1</Tyrant>
+            <Ratch>0.3</Ratch>
+            <Skag>0.4</Skag>
+            <Spiderant>0.4</Spiderant>
+            <Rakk>0.5</Rakk>
+            <Bullymong>0.2</Bullymong>
+        </value>
+    </Operation>
+
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/BiomeDef[defName = "TKKN_Savanna"]/wildAnimals</xpath>
+        <value>
+            <Tyrant>0.1</Tyrant>
+            <Ratch>0.3</Ratch>
+            <Skag>0.4</Skag>
+            <Spiderant>0.4</Spiderant>
+            <Rakk>0.5</Rakk>
+            <Bullymong>0.2</Bullymong>            
+        </value>
+    </Operation>
+
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/BiomeDef[defName = "TKKN_VolcanicFlow"]/wildAnimals</xpath>
+        <value>
+            <Tyrant>0.07</Tyrant>
+            <Ratch>0.2</Ratch>
+            <Skag>0.25</Skag>
+            <Spiderant>0.3</Spiderant>
+            <Rakk>0.3</Rakk>
+            <Bullymong>0.2</Bullymong>
+        </value>
+    </Operation>
+
+
+</Patch>

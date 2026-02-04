@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<Patch>
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/BiomeDef[defName = "TKKN_Grasslands"]/wildAnimals</xpath>
+        <value>
+            <Blue_Dragon>0.001</Blue_Dragon>
+            <Black_Dragon>0.001</Black_Dragon>
+            <Green_Dragon>0.001</Green_Dragon>
+            <Purple_Dragon>0.001</Purple_Dragon>
+            <White_Dragon>0.001</White_Dragon>
+            <Silver_Dragon>0.001</Silver_Dragon>
+            <Jade_Dragon>0.001</Jade_Dragon>
+            <True_Dragon>0.001</True_Dragon>
+        </value>
+    </Operation>
+
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/BiomeDef[defName = "TKKN_RedwoodForest"]/wildAnimals</xpath>
+        <value>
+            <Blue_Dragon>0.002</Blue_Dragon>
+            <White_Dragon>0.002</White_Dragon>
+            <Jade_Dragon>0.001</Jade_Dragon>
+            <True_Dragon>0.001</True_Dragon>
+        </value>
+    </Operation>
+
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/BiomeDef[defName = "TKKN_Oasis"]/wildAnimals</xpath>
+        <value>
+            <Black_Dragon>0.001</Black_Dragon>
+            <Red_Dragon>0.001</Red_Dragon>
+            <Yellow_Dragon>0.001</Yellow_Dragon>
+            <Gold_Dragon>0.001</Gold_Dragon>
+        </value>
+    </Operation>
+
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/BiomeDef[defName = "TKKN_Desert"]/wildAnimals</xpath>
+        <value>
+            <Black_Dragon>0.001</Black_Dragon>
+            <Red_Dragon>0.001</Red_Dragon>
+            <Yellow_Dragon>0.001</Yellow_Dragon>
+            <Gold_Dragon>0.001</Gold_Dragon>
+        </value>
+    </Operation>
+
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/BiomeDef[defName = "TKKN_Savanna"]/wildAnimals</xpath>
+        <value>
+            <Blue_Dragon>0.001</Blue_Dragon>
+            <Black_Dragon>0.001</Black_Dragon>
+            <Green_Dragon>0.001</Green_Dragon>
+            <Purple_Dragon>0.001</Purple_Dragon>
+            <White_Dragon>0.001</White_Dragon>
+            <Silver_Dragon>0.001</Silver_Dragon>
+            <Jade_Dragon>0.001</Jade_Dragon>
+            <True_Dragon>0.001</True_Dragon>
+        </value>
+    </Operation>
+
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/BiomeDef[defName = "TKKN_VolcanicFlow"]/wildAnimals</xpath>
+        <value>
+            <Red_Dragon>0.001</Red_Dragon>
+            <Yellow_Dragon>0.001</Yellow_Dragon>
+            <Gold_Dragon>0.001</Gold_Dragon>
+        </value>
+    </Operation>
+
+
+</Patch>

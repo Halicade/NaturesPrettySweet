@@ -15,12 +15,18 @@
     <li IfModActive="acpteam.acpvanillastyle" IfModNotActive="Ludeon.Rimworld.Odyssey">1.6/Mods/AnimalCollabProjectNoOdyssey</li>
     <li IfModActive="BiomesTeam.BiomesPollutedLands">1.6/Mods/BiomesPollutedLands</li>
     <li IfModActive="biomesteam.biomesprehistoric">1.6/Mods/BiomesPrehistoric</li>
+    <li IfModActive="zal.borderlands">1.6/Mods/Borderlands</li>
+    <li IfModActive="onyxae.dragonsdescent">1.6/Mods/DragonsDescent</li>
+    <li IfModActive="tigerblut.flommel">1.6/Mods/Flommel</li>
     <li IfModActive="mlie.jurassicrimworlddinosaursonly,Mlie.JurassicRimworld">1.6/Mods/JurassicRimworld</li>
     <li IfModActive="vanillaexpanded.vexploratione">1.6/Mods/LandmarksExpanded</li>
+    <li IfModActive="spino.megafauna">1.6/Mods/MegaFauna</li>
     <li IfModActive="dtf.multilopesexpanded">1.6/Mods/Multilopes</li>
+    <li IfModActive="veterano.mythicages.megafaunabestiary">1.6/Mods/MythicAges</li>
     <li IfModActive="nexomon.x">1.6/Mods/Nexomon</li>
     <li IfModActive="regrowth.botr.core">1.6/Mods/Regrowth</li>
     <li IfModActive="mlie.starwarsanimalcollection">1.6/Mods/StarWarsAnimals</li>
+    <li IfModActive="zal.syntheticanimals">1.6/Mods/SyntheticAnimals</li>
     <li IfModActive="vanillaexpanded.vanillaanimalsexpanded">1.6/Mods/VEAnimals</li>
     
     <!--Version independent-->

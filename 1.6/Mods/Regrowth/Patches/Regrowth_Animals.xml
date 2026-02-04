@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<Patch>
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/BiomeDef[defName = "TKKN_Grasslands"]/wildAnimals</xpath>
+        <value>
+            <RG_Rabbit MayRequire="regrowth.botr.core">0.5</RG_Rabbit>
+            <RG_Neutrolope MayRequire="regrowth.botr.core">0.01</RG_Neutrolope>
+        </value>
+    </Operation>
+
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/BiomeDef[defName = "TKKN_RedwoodForest"]/wildAnimals</xpath>
+        <value>
+            <RG_Rabbit MayRequire="regrowth.botr.core">0.5</RG_Rabbit>
+            <RG_WoollyStegosaurus MayRequire="regrowth.botr.core">0.15</RG_WoollyStegosaurus>
+        </value>
+    </Operation>
+
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/BiomeDef[defName = "TKKN_Oasis"]/wildAnimals</xpath>
+        <value>
+            <RG_Neutrolope MayRequire="regrowth.botr.core">0.01</RG_Neutrolope>
+        </value>
+    </Operation>
+
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/BiomeDef[defName = "TKKN_VolcanicFlow"]/wildAnimals</xpath>
+        <value>
+            <RG_KiwiBird MayRequire="regrowth.botr.core">0.2</RG_KiwiBird>
+        </value>
+    </Operation>
+
+
+</Patch>

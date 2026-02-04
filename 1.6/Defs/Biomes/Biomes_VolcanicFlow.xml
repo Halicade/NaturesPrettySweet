@@ -138,7 +138,7 @@
             <!-- Pollution plants -->
             <Plant_GrayGrass MayRequire="Ludeon.RimWorld.Biotech">4</Plant_GrayGrass>
             <Plant_RatPalm MayRequire="Ludeon.RimWorld.Biotech">0.3</Plant_RatPalm>
-          
+
         </wildPlants>
         <wildAnimals>
             <Rat>0.8</Rat>
@@ -165,32 +165,14 @@
             <TYR_SlatyEgret MayRequire="tyrannidae.gregnfriends">1</TYR_SlatyEgret>
             <pphhyy_Vulaken MayRequire="zal.terroravis">0.1</pphhyy_Vulaken>
             <pphhyy_DesertSparaken MayRequire="zal.terroravis">0.03</pphhyy_DesertSparaken>
-            <RG_KiwiBird MayRequire="regrowth.botr.core">0.2</RG_KiwiBird>
-            <Gigantopithecus MayRequire="spino.megafauna">0.004</Gigantopithecus>
-            <Megalania MayRequire="spino.megafauna">0.001</Megalania>
-            <SyntheticCougar MayRequire="zal.syntheticanimals">0.004</SyntheticCougar>
-            <SyntheticRat MayRequire="zal.syntheticanimals">0.04</SyntheticRat>
-            <SyntheticLynx MayRequire="zal.syntheticanimals">0.04</SyntheticLynx>
-            <SyntheticMuffalo MayRequire="zal.syntheticanimals">0.04</SyntheticMuffalo>
-            <SyntheticWarg MayRequire="zal.syntheticanimals">0.04</SyntheticWarg>
-            <SyntheticBear MayRequire="zal.syntheticanimals">0.04</SyntheticBear>
-            <SyntheticWolf MayRequire="zal.syntheticanimals">0.04</SyntheticWolf>
             <ACPMajoreraGoat MayRequire="acpteam.acpvanillastyle">0.1</ACPMajoreraGoat>
             <ACPAcidAnt MayRequire="acpteam.acpvanillastyle">1</ACPAcidAnt>
-            <FruityFlommel MayRequire="tigerblut.flommel">0.15</FruityFlommel>
-            <FungusFlommel MayRequire="tigerblut.flommel">0.15</FungusFlommel>
-            <RainbowFlommel MayRequire="tigerblut.flommel">0.005</RainbowFlommel>
-            <SpikeFlommel MayRequire="tigerblut.flommel">0.15</SpikeFlommel>
-            <StegoFlommel MayRequire="tigerblut.flommel">0.03</StegoFlommel>
             <VKC_Baharis MayRequire="ellenot.vaelkorrcreatures">0.05</VKC_Baharis>
             <VKC_FenHowler MayRequire="ellenot.vaelkorrcreatures">0.05</VKC_FenHowler>
             <FortTurtle MayRequire="mlie.rimbeast">0.3</FortTurtle>
             <FRaptor MayRequire="mlie.rimbeast">0.09</FRaptor>
             <Antis MayRequire="mlie.rimbeast">0.09</Antis>
             <Gnawler MayRequire="mlie.rimbeast">0.09</Gnawler>
-            <MA_Harpeagle MayRequire="veterano.mythicages.megafaunabestiary">0.04</MA_Harpeagle>
-            <MA_Raptorkhan MayRequire="veterano.mythicages.megafaunabestiary">0.07</MA_Raptorkhan>
-            <MA_Sivatherium MayRequire="veterano.mythicages.megafaunabestiary">0.08</MA_Sivatherium>
             <CVN_GlockRat MayRequire="shunthewitch.armedrats">0.3</CVN_GlockRat>
             <PygmyMuffalo MayRequire="dismarzero.vgp.pygmymuffalo">0.1</PygmyMuffalo>
             <BR_CoCoCapybara MayRequire="febvre.thebrianrotanimals.core">0.07</BR_CoCoCapybara>
@@ -207,9 +189,6 @@
             <ABF_PawnKind_Synstruct_Convoystruct_Newboot MayRequire="killathon.artificialbeings.syncore.biomimetics">0.05</ABF_PawnKind_Synstruct_Convoystruct_Newboot>
             <ABF_PawnKind_Synstruct_Guardstruct_Newboot MayRequire="killathon.artificialbeings.syncore.biomimetics">0.02</ABF_PawnKind_Synstruct_Guardstruct_Newboot>
             <LandKraken MayRequire="zal.monstermash">0.02</LandKraken>
-            <Red_Dragon MayRequire="onyxae.dragonsdescent">0.001</Red_Dragon>
-            <Yellow_Dragon MayRequire="onyxae.dragonsdescent">0.001</Yellow_Dragon>
-            <Gold_Dragon MayRequire="onyxae.dragonsdescent">0.001</Gold_Dragon>
             <BlackCappedConure MayRequire="11bullets.conures">0.4</BlackCappedConure>
             <CrimsonBelliedConure MayRequire="11bullets.conures">0.4</CrimsonBelliedConure>
             <GoldenConure MayRequire="11bullets.conures">0.4</GoldenConure>
@@ -223,12 +202,6 @@
             <Bear_Ferocious MayRequire="frcs.bear">0.012</Bear_Ferocious>
             <RW_Devirossy MayRequire="rw.furossy">0.05</RW_Devirossy>
             <Bongo MayRequire="zal.antelopes">0.25</Bongo>
-            <Tyrant MayRequire="zal.borderlands">0.07</Tyrant>
-            <Ratch MayRequire="zal.borderlands">0.2</Ratch>
-            <Skag MayRequire="zal.borderlands">0.25</Skag>
-            <Spiderant MayRequire="zal.borderlands">0.3</Spiderant>
-            <Rakk MayRequire="zal.borderlands">0.3</Rakk>
-            <Bullymong MayRequire="zal.borderlands">0.2</Bullymong>
             <Rat_Large MayRequire="mal.rodentsofunusualsize">0.025</Rat_Large>
             <RFanimal_Thrumbrea MayRequire="ricofox233.sunx1983.brea">0.001</RFanimal_Thrumbrea>
             <RFanimal_Cockbrea MayRequire="ricofox233.sunx1983.brea">0.1</RFanimal_Cockbrea>
@@ -252,8 +225,6 @@
             <Toxalope MayRequire="Ludeon.RimWorld.Biotech">0.4</Toxalope>
             <WasteRat MayRequire="Ludeon.RimWorld.Biotech">0.2</WasteRat>
             <VAEWaste_Toxafox MayRequire="vanillaexpanded.vaewaste">0.03</VAEWaste_Toxafox>
-           
-         
         </pollutionWildAnimals>
         <allowedPackAnimals>
             <li>Muffalo</li>
@@ -267,7 +238,7 @@
                 <biomeAllowedTempRange>-100~100</biomeAllowedTempRange>
                 <biomeAllowInWinter>false</biomeAllowInWinter>
             </li>
-            
+
             <li Class="BiomesKit.BiomesKitControls" MayRequireAnyOf="zal.wmbp,regrowth.botr.core">
                 <forested>true</forested>
                 <uniqueHills>true</uniqueHills>

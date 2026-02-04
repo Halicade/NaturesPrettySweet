@@ -43,6 +43,22 @@
                 <diseaseInc>Disease_MuscleParasites</diseaseInc>
                 <commonality>60</commonality>
             </li>
+            <li>
+                <diseaseInc>TKKN_Disease_Common_Cold</diseaseInc>
+                <commonality>60</commonality>
+            </li>
+            <li>
+                <diseaseInc>TKKN_Disease_Animal_Common_Cold</diseaseInc>
+                <commonality>60</commonality>
+            </li>
+            <li>
+                <diseaseInc>TKKN_Disease_Allergies</diseaseInc>
+                <commonality>80</commonality>
+            </li>
+            <li>
+                <diseaseInc>TKKN_Disease_Animal_Allergies</diseaseInc>
+                <commonality>80</commonality>
+            </li>
         </diseases>
         <terrainsByFertility>
             <li>

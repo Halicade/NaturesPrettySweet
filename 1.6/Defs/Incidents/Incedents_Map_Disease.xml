@@ -5,24 +5,24 @@
     <defName>TKKN_Disease_Common_Cold</defName>
     <label>common cold</label>
     <diseaseIncident>TKKN_CommonCold</diseaseIncident>
-    <letterLabel>Disease (Common Cold)</letterLabel>
+    <letterLabel>Disease: Common cold</letterLabel>
   </IncidentDef>
   <IncidentDef ParentName="DiseaseAnimalIncident">
     <defName>TKKN_Disease_Animal_Common_Cold</defName>
     <label>common cold (animals)</label>
     <diseaseIncident>TKKN_Animal_Common_Cold</diseaseIncident>
-    <letterLabel>Animal disease (flu)</letterLabel>
+    <letterLabel>Animal disease: Common cold</letterLabel>
   </IncidentDef>
   <IncidentDef ParentName="DiseaseIncident">
     <defName>TKKN_Disease_Allergies</defName>
     <label>allergies</label>
     <diseaseIncident>TKKN_Allergies</diseaseIncident>
-    <letterLabel>Allergy Attack</letterLabel>
+    <letterLabel>Allergy attack</letterLabel>
   </IncidentDef>
   <IncidentDef ParentName="DiseaseAnimalIncident">
     <defName>TKKN_Disease_Animal_Allergies</defName>
     <label>allergies (animals)</label>
     <diseaseIncident>TKKN_Animal_Allergies</diseaseIncident>
-    <letterLabel>Animal Allergy Attack</letterLabel>
+    <letterLabel>Animal allergy attack</letterLabel>
   </IncidentDef>
 </Defs>

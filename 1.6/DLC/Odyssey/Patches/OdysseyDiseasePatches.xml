@@ -1,0 +1,98 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<Patch>
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/BiomeDef[defName = "GlacialPlain"]/diseases</xpath>
+        <value>
+            <li>
+                <diseaseInc>TKKN_Disease_Common_Cold</diseaseInc>
+                <commonality>100</commonality>
+            </li>
+            <li>
+                <diseaseInc>TKKN_Disease_Animal_Common_Cold</diseaseInc>
+                <commonality>100</commonality>
+            </li>
+        </value>
+    </Operation>
+
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/BiomeDef[defName = "Glowforest"]/diseases</xpath>
+        <value>
+            <li>
+                <diseaseInc>TKKN_Disease_Allergies</diseaseInc>
+                <commonality>80</commonality>
+            </li>
+            <li>
+                <diseaseInc>TKKN_Disease_Animal_Allergies</diseaseInc>
+                <commonality>80</commonality>
+            </li>
+        </value>
+    </Operation>
+
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/BiomeDef[defName = "Grasslands"]/diseases</xpath>
+        <value>
+            <li>
+                <diseaseInc>TKKN_Disease_Common_Cold</diseaseInc>
+                <commonality>80</commonality>
+            </li>
+            <li>
+                <diseaseInc>TKKN_Disease_Animal_Common_Cold</diseaseInc>
+                <commonality>80</commonality>
+            </li>
+            <li>
+                <diseaseInc>TKKN_Disease_Allergies</diseaseInc>
+                <commonality>120</commonality>
+            </li>
+            <li>
+                <diseaseInc>TKKN_Disease_Animal_Allergies</diseaseInc>
+                <commonality>120</commonality>
+            </li>
+        </value>
+    </Operation>
+
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/BiomeDef[defName = "LavaField"]/diseases</xpath>
+        <value>
+            <li>
+                <diseaseInc>TKKN_Disease_Common_Cold</diseaseInc>
+                <commonality>80</commonality>
+            </li>
+            <li>
+                <diseaseInc>TKKN_Disease_Animal_Common_Cold</diseaseInc>
+                <commonality>80</commonality>
+            </li>
+            <li>
+                <diseaseInc>TKKN_Disease_Allergies</diseaseInc>
+                <commonality>120</commonality>
+            </li>
+            <li>
+                <diseaseInc>TKKN_Disease_Animal_Allergies</diseaseInc>
+                <commonality>120</commonality>
+            </li>
+        </value>
+    </Operation>
+
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/BiomeDef[defName = "Scarlands"]/diseases</xpath>
+        <value>
+            <li>
+                <diseaseInc>TKKN_Disease_Common_Cold</diseaseInc>
+                <commonality>80</commonality>
+            </li>
+            <li>
+                <diseaseInc>TKKN_Disease_Animal_Common_Cold</diseaseInc>
+                <commonality>80</commonality>
+            </li>
+            <li>
+                <diseaseInc>TKKN_Disease_Allergies</diseaseInc>
+                <commonality>120</commonality>
+            </li>
+            <li>
+                <diseaseInc>TKKN_Disease_Animal_Allergies</diseaseInc>
+                <commonality>120</commonality>
+            </li>
+        </value>
+    </Operation>
+
+</Patch>

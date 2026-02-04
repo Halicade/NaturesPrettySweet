@@ -1,0 +1,227 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+
+<Patch>
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/BiomeDef[defName = "AridShrubland"]/diseases</xpath>
+        <value>
+            <li>
+                <diseaseInc>TKKN_Disease_Allergies</diseaseInc>
+                <commonality>60</commonality>
+            </li>
+            <li>
+                <diseaseInc>TKKN_Disease_Animal_Allergies</diseaseInc>
+                <commonality>60</commonality>
+            </li>
+        </value>
+    </Operation>
+
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/BiomeDef[defName = "TropicalRainforest"]/diseases</xpath>
+        <value>
+            <li>
+                <diseaseInc>TKKN_Disease_Common_Cold</diseaseInc>
+                <commonality>60</commonality>
+            </li>
+            <li>
+                <diseaseInc>TKKN_Disease_Animal_Common_Cold</diseaseInc>
+                <commonality>60</commonality>
+            </li>
+            <li>
+                <diseaseInc>TKKN_Disease_Allergies</diseaseInc>
+                <commonality>80</commonality>
+            </li>
+            <li>
+                <diseaseInc>TKKN_Disease_Animal_Allergies</diseaseInc>
+                <commonality>80</commonality>
+            </li>
+        </value>
+    </Operation>
+
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/BiomeDef[defName = "TropicalSwamp"]/diseases</xpath>
+        <value>
+            <li>
+                <diseaseInc>TKKN_Disease_Common_Cold</diseaseInc>
+                <commonality>60</commonality>
+            </li>
+            <li>
+                <diseaseInc>TKKN_Disease_Animal_Common_Cold</diseaseInc>
+                <commonality>60</commonality>
+            </li>
+            <li>
+                <diseaseInc>TKKN_Disease_Allergies</diseaseInc>
+                <commonality>80</commonality>
+            </li>
+            <li>
+                <diseaseInc>TKKN_Disease_Animal_Allergies</diseaseInc>
+                <commonality>80</commonality>
+            </li>
+        </value>
+    </Operation>
+
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/BiomeDef[defName = "TemperateForest"]/diseases</xpath>
+        <value>
+            <li>
+                <diseaseInc>TKKN_Disease_Common_Cold</diseaseInc>
+                <commonality>50</commonality>
+            </li>
+            <li>
+                <diseaseInc>TKKN_Disease_Animal_Common_Cold</diseaseInc>
+                <commonality>50</commonality>
+            </li>
+            <li>
+                <diseaseInc>TKKN_Disease_Allergies</diseaseInc>
+                <commonality>50</commonality>
+            </li>
+            <li>
+                <diseaseInc>TKKN_Disease_Animal_Allergies</diseaseInc>
+                <commonality>50</commonality>
+            </li>
+        </value>
+    </Operation>
+
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/BiomeDef[defName = "TemperateSwamp"]/diseases</xpath>
+        <value>
+            <li>
+                <diseaseInc>TKKN_Disease_Common_Cold</diseaseInc>
+                <commonality>50</commonality>
+            </li>
+            <li>
+                <diseaseInc>TKKN_Disease_Animal_Common_Cold</diseaseInc>
+                <commonality>50</commonality>
+            </li>
+            <li>
+                <diseaseInc>TKKN_Disease_Allergies</diseaseInc>
+                <commonality>50</commonality>
+            </li>
+            <li>
+                <diseaseInc>TKKN_Disease_Animal_Allergies</diseaseInc>
+                <commonality>50</commonality>
+            </li>
+        </value>
+    </Operation>
+
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/BiomeDef[defName = "BorealForest"]/diseases</xpath>
+        <value>
+            <li>
+                <diseaseInc>TKKN_Disease_Common_Cold</diseaseInc>
+                <commonality>80</commonality>
+            </li>
+            <li>
+                <diseaseInc>TKKN_Disease_Animal_Common_Cold</diseaseInc>
+                <commonality>80</commonality>
+            </li>
+            <li>
+                <diseaseInc>TKKN_Disease_Allergies</diseaseInc>
+                <commonality>120</commonality>
+            </li>
+            <li>
+                <diseaseInc>TKKN_Disease_Animal_Allergies</diseaseInc>
+                <commonality>120</commonality>
+            </li>
+        </value>
+    </Operation>
+
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/BiomeDef[defName = "Tundra"]/diseases</xpath>
+        <value>
+            <li>
+                <diseaseInc>TKKN_Disease_Common_Cold</diseaseInc>
+                <commonality>80</commonality>
+            </li>
+            <li>
+                <diseaseInc>TKKN_Disease_Animal_Common_Cold</diseaseInc>
+                <commonality>80</commonality>
+            </li>
+            <li>
+                <diseaseInc>TKKN_Disease_Allergies</diseaseInc>
+                <commonality>120</commonality>
+            </li>
+            <li>
+                <diseaseInc>TKKN_Disease_Animal_Allergies</diseaseInc>
+                <commonality>120</commonality>
+            </li>
+        </value>
+    </Operation>
+
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/BiomeDef[defName = "ColdBog"]/diseases</xpath>
+        <value>
+            <li>
+                <diseaseInc>TKKN_Disease_Common_Cold</diseaseInc>
+                <commonality>120</commonality>
+            </li>
+            <li>
+                <diseaseInc>TKKN_Disease_Animal_Common_Cold</diseaseInc>
+                <commonality>120</commonality>
+            </li>
+            <li>
+                <diseaseInc>TKKN_Disease_Allergies</diseaseInc>
+                <commonality>80</commonality>
+            </li>
+            <li>
+                <diseaseInc>TKKN_Disease_Animal_Allergies</diseaseInc>
+                <commonality>80</commonality>
+            </li>
+        </value>
+    </Operation>
+
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/BiomeDef[defName = "IceSheet"]/diseases</xpath>
+        <value>
+            <li>
+                <diseaseInc>TKKN_Disease_Common_Cold</diseaseInc>
+                <commonality>120</commonality>
+            </li>
+            <li>
+                <diseaseInc>TKKN_Disease_Animal_Common_Cold</diseaseInc>
+                <commonality>120</commonality>
+            </li>
+        </value>
+    </Operation>
+
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/BiomeDef[defName = "SeaIce"]/diseases</xpath>
+        <value>
+            <li>
+                <diseaseInc>TKKN_Disease_Common_Cold</diseaseInc>
+                <commonality>100</commonality>
+            </li>
+            <li>
+                <diseaseInc>TKKN_Disease_Animal_Common_Cold</diseaseInc>
+                <commonality>100</commonality>
+            </li>
+        </value>
+    </Operation>
+
+    <!--
+    Adds default values to any biome mods not listed above or patched from other loadFolders.
+    -->
+    <Operation Class="PostInheritanceOperation.Patch">
+        <operation Class="PatchOperationAdd">
+            <xpath>Defs/BiomeDef/diseases[not (li/diseaseInc[text() = "TKKN_Disease_Common_Cold" or text="TKKN_Disease_Allergies"]) ]</xpath>
+            <value>
+                <li>
+                    <diseaseInc>TKKN_Disease_Common_Cold</diseaseInc>
+                    <commonality>60</commonality>
+                </li>
+                <li>
+                    <diseaseInc>TKKN_Disease_Animal_Common_Cold</diseaseInc>
+                    <commonality>60</commonality>
+                </li>
+                <li>
+                    <diseaseInc>TKKN_Disease_Allergies</diseaseInc>
+                    <commonality>60</commonality>
+                </li>
+                <li>
+                    <diseaseInc>TKKN_Disease_Animal_Allergies</diseaseInc>
+                    <commonality>60</commonality>
+                </li>
+            </value>
+        </operation>
+    </Operation>
+
+</Patch>

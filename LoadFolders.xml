@@ -8,6 +8,7 @@
     
     <!--DLC-->
     <li IfModActive="Ludeon.Rimworld.Odyssey">1.6/DLC/Odyssey</li>
+    <li IfModActive="Ludeon.Rimworld.Biotech">1.6/DLC/Biotech</li>
     
     <!--Mods-->
     <li IfModActive="sarg.alphaanimals">1.6/Mods/AlphaAnimals</li>

@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<Patch>
+    
+    <!-- Adds immunity to Perfect immunity and genes from any other mods that add immunity to Flu.-->
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/GeneDef/makeImmuneTo[li/text()="Flu"]</xpath>
+        <value>
+            <li>TKKN_CommonCold</li>
+            <li>TKKN_Allergies</li>
+        </value>
+    </Operation>
+</Patch>

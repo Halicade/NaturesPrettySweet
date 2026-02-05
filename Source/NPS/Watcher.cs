@@ -107,7 +107,7 @@ public class Watcher(Map map) : MapComponent(map)
         if (doCoast) {
             coastRotation = Find.World.CoastDirectionAt(map.Tile);
             if (!coastRotation.IsValid) {
-                Log.Error("[NPS] Tried to generate a coast but could not find coast rotation. This was on the biome " +
+                Log.Error("NPS: Tried to generate a coast but could not find coast rotation. This was on the biome " +
                           map.Biome + " From " + map.Biome.modContentPack?.Name);
                 doCoast = false;
             }

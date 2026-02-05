@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<Patch>
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/HediffDef[defName = "PenoxycylineHigh"]/stages/li/makeImmuneTo</xpath>
+        <value>
+            <li>TKKN_CommonCold</li>
+            <li>TKKN_Allergies</li>
+        </value>
+    </Operation>
+</Patch>

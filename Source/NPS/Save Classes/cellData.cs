@@ -19,6 +19,7 @@ public class cellData : IExposable
     public float frostNoise;
 
     public int howPacked;
+    private bool packed = false;
     public int howWet;
     public float howWetPlants = 60;
     public bool isFlooded;
@@ -43,6 +44,7 @@ public class cellData : IExposable
         Scribe_Values.Look(ref riverLevel, "riverLevel", 999, false);
         Scribe_Values.Look(ref riverFocus, "riverFocus", IntVec3.Invalid, false);
         Scribe_Values.Look(ref howPacked, "howPacked", 0, false);
+        Scribe_Values.Look(ref packed, "packed");
         Scribe_Values.Look(ref howWet, "howWet", 0, false);
         Scribe_Values.Look(ref howWetPlants, "howWetPlants", 60, false);
         Scribe_Values.Look(ref frostLevel, "frostLevel", 0, false);
@@ -123,7 +125,7 @@ public class cellData : IExposable
         if (!Rand.Chance(0.05f))
             return;
 
-        map.terrainGrid.SetTerrain(location, frozenTerrain.terrain);
+        map.terrainGrid.SetTempTerrain(location, frozenTerrain.terrain);
         isFrozen = true;
     }
 
@@ -171,7 +173,7 @@ public class cellData : IExposable
         }
 
         if (location.GetEdifice(map) == null) {
-            map.terrainGrid.SetTerrain(location, beachTerrain);
+            map.terrainGrid.SetTempTerrain(location, beachTerrain);
             currentTerrain = beachTerrain;
             clearLoot();
         }
@@ -221,14 +223,19 @@ public class cellData : IExposable
         if (howPacked <= 0) {
             return;
         }
-
         howPacked--;
+        if (!packed) {
+            return;
+        }
+        
         if (howPacked <= UnpackAt) {
             if (currentTerrain == TerrainDefOf.TKKN_DirtPath) {
-                changeTerrain(RimWorld.TerrainDefOf.Soil);
+                map.terrainGrid.SetTerrain(location, RimWorld.TerrainDefOf.Soil);
+                packed = false;
             }
             else if (currentTerrain == TerrainDefOf.TKKN_SandPath) {
-                changeTerrain(RimWorld.TerrainDefOf.Sand);
+                map.terrainGrid.SetTerrain(location, RimWorld.TerrainDefOf.Sand);
+                packed = false;
             }
         }
     }
@@ -249,26 +256,26 @@ public class cellData : IExposable
         if (map.zoneManager.ZoneAt(location) is Zone_Growing) {
             return;
         }
-
         howPacked++;
+        if (packed) {
+            return;
+        }
+
         if (howPacked <= PackAt) {
             return;
         }
 
         if (terrain == RimWorld.TerrainDefOf.Soil) {
-            changeTerrain(TerrainDefOf.TKKN_DirtPath);
+            map.terrainGrid.SetTerrain(location, TerrainDefOf.TKKN_DirtPath);
+            packed = true;
         }
         else if (terrain == RimWorld.TerrainDefOf.Sand) {
-            changeTerrain(TerrainDefOf.TKKN_SandPath);
+            map.terrainGrid.SetTerrain(location, TerrainDefOf.TKKN_SandPath);
+            packed = true;
         }
         else if (terrain.smoothedTerrain != null && howPacked > PackAtSmooth) {
-            changeTerrain(terrain.smoothedTerrain);
-        }
-    }
-
-    private void changeTerrain(TerrainDef terrain) {
-        if (terrain != null && terrain != location.GetTerrain(map)) {
-            map.terrainGrid.SetTerrain(location, terrain);
+            map.terrainGrid.SetTerrain(location, terrain.smoothedTerrain);
+            packed = true;
         }
     }
 

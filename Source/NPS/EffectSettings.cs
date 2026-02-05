@@ -108,18 +108,6 @@ public class EffectSettings : ModSettings
             "TKKN_leaveStuff_text".Translate());
 
         list.Gap();
-        if (!HarmonyWeatherEffects.DesirePathsActive && allowPawnEffects) {
-            list.CheckboxLabeled(
-                "TKKN_doDirtPath_title".Translate(),
-                ref doDirtPath,
-                "TKKN_doDirtPath_text".Translate());
-            if (doDirtPath) {
-                list.CheckboxLabeled(
-                    "NPS_doWalkThroughSnow_title".Translate(),
-                    ref doWalkThroughSnow,
-                    "NPS_doWalkThroughSnow_text".Translate());
-            }
-        }
 
         list.CheckboxLabeled(
             "NPS_doAmbientTemperature_title".Translate(),
@@ -179,20 +167,32 @@ public class EffectSettings : ModSettings
                 "NPS_pawnEffectsOnlyColonists_title".Translate(),
                 ref pawnEffectsOnlyColonists,
                 "NPS_pawnEffectsOnlyColonists_text".Translate());
+            if (!HarmonyWeatherEffects.DesirePathsActive && allowPawnEffects) {
+                list.CheckboxLabeled(
+                    "TKKN_doDirtPath_title".Translate(),
+                    ref doDirtPath,
+                    "TKKN_doDirtPath_text".Translate());
+                if (doDirtPath) {
+                    list.CheckboxLabeled(
+                        "NPS_doWalkThroughSnow_title".Translate(),
+                        ref doWalkThroughSnow,
+                        "NPS_doWalkThroughSnow_text".Translate());
+                }
+            }
             list.CheckboxLabeled(
                 "TKKN_allowPawnsToGetWet_title".Translate(),
                 ref allowPawnsToGetWet,
                 "TKKN_allowPawnsToGetWet_text".Translate());
-            list.CheckboxLabeled(
-                "NPS_allowPawnsToDrown_title".Translate(),
-                ref allowPawnsDrowning,
-                "NPS_allowPawnsToDrown_text".Translate());
             if (!ModsConfig.OdysseyActive) {
                 list.CheckboxLabeled(
                     "TKKN_allowPawnsSwim_title".Translate(),
                     ref allowPawnsSwim,
                     "TKKN_allowPawnsToSwim_text".Translate());
             }
+            list.CheckboxLabeled(
+                "NPS_allowPawnsToDrown_title".Translate(),
+                ref allowPawnsDrowning,
+                "NPS_allowPawnsToDrown_text".Translate());
         }
 
 

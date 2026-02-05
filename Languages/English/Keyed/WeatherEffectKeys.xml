@@ -28,9 +28,9 @@
     <NPS_weatherCellUpdateSpeed_title>Cell scan speed: {0}</NPS_weatherCellUpdateSpeed_title>
     <NPS_weatherCellUpdateSpeed_text>How many cells to scan per tick. Lower numbers for higher performance but slower update speed.</NPS_weatherCellUpdateSpeed_text>
     <TKKN_doTides_title>Do Tides</TKKN_doTides_title>
-    <TKKN_doTides_text>Oceans will rise and fall</TKKN_doTides_text>
+    <TKKN_doTides_text>Oceans will rise and fall throughout the day.</TKKN_doTides_text>
     <TKKN_doFloods_title>Do Floods</TKKN_doFloods_title>
-    <TKKN_doFloods_text>Rivers will rise and fall</TKKN_doFloods_text>
+    <TKKN_doFloods_text>Rivers will rise and fall due to season or weather.</TKKN_doFloods_text>
     <TKKN_doIce_title>Ground / water freezes</TKKN_doIce_title>
     <TKKN_doIce_text>Terrain will freeze at cold temperatures</TKKN_doIce_text>
     <TKKN_leaveStuff_title>Washup things</TKKN_leaveStuff_title>
@@ -45,15 +45,15 @@
     <TKKN_allowPawnsToGetWet_title>Allow pawns to get wet</TKKN_allowPawnsToGetWet_title>
     <TKKN_allowPawnsToGetWet_text>Pawns will get wet when swimming or in the rain, it will affect their temperature and mood</TKKN_allowPawnsToGetWet_text>
     <TKKN_allowPawnsSwim_title>Allow pawns to "swim"</TKKN_allowPawnsSwim_title>
-    <TKKN_allowPawnsToSwim_text>Pawns will have their lower body disappear when in the water.</TKKN_allowPawnsToSwim_text>
+    <TKKN_allowPawnsToSwim_text>Pawns will have their lower body disappear when in the water. This is purely cosmetic.</TKKN_allowPawnsToSwim_text>
     <TKKN_allowLavaEruption_title>Lava can erupt</TKKN_allowLavaEruption_title>
     <TKKN_allowLavaEruption_text>Allow lava to erupt. Uncheck to remove the random eruption incidents</TKKN_allowLavaEruption_text>
     <TKKN_showRain_title>Show rain effects</TKKN_showRain_title>
     <TKKN_showRain_text>When it rains, the ground will get wet. This increases soil fertility.</TKKN_showRain_text>
     <NPS_makePuddles_title>Make puddles</NPS_makePuddles_title>
-    <NPS_makePuddles_text>Puddles will appear when it rains or when snow melts.</NPS_makePuddles_text>
+    <NPS_makePuddles_text>Puddles can appear when it rains or when snow melts.</NPS_makePuddles_text>
     <NPS_useMapTemperature_title>Use map-wide temperature</NPS_useMapTemperature_title>
-    <NPS_useMapTemperature_text>Use the maps outdoor temperature instead of querying each cell. This applies for ice freezing and frost grid generation</NPS_useMapTemperature_text>
+    <NPS_useMapTemperature_text>Use the maps outdoor temperature instead of querying each cell. This applies for ice freezing and frost grid generation.\nWill improve performance.</NPS_useMapTemperature_text>
     <NPS_seasonalDiseases_title>Seasonal diseases</NPS_seasonalDiseases_title>
     <NPS_seasonalDiseases_text>Possible diseases can change each month/season.\nRequires restart to reset</NPS_seasonalDiseases_text>
     <NPS_seasonalIncidents_title>Seasonal incidents</NPS_seasonalIncidents_title>

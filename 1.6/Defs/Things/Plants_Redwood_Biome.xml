@@ -28,12 +28,13 @@
       <wildClusterWeight>8</wildClusterWeight>
       <wildClusterRadius>10</wildClusterRadius>
       <visualSizeRange>8~12</visualSizeRange>
+      <snowOverlayGraphicPath>TKKN_NPS/Things/Plant/TreeRedwoods_Snowy</snowOverlayGraphicPath>
     </plant>
   </ThingDef>
   <ThingDef ParentName="TreeBase">
     <defName>TKKN_OldGrowth_PlantTreeOak</defName>
     <label>old growth oak tree</label>
-    <description>A strong hardwood tree. Slow-going, but its wood is very strong.</description>
+    <description>A strong hardwood tree. Slow-growing, but its wood is very strong.</description>
     <graphicData>
       <texPath>Things/Plant/TreeOak</texPath>
       <graphicClass>Graphic_Random</graphicClass>
@@ -46,6 +47,10 @@
       <fertilityMin>0.4</fertilityMin>
       <growDays>60</growDays>
       <leaflessGraphicPath>Things/Plant/TreeOak_Leafless</leaflessGraphicPath>
+      <immatureGraphicPath>Things/Plant/TreeOak_Immature</immatureGraphicPath>
+      <leaflessImmatureGraphicPath>Things/Plant/TreeOak_LeaflessImmature</leaflessImmatureGraphicPath>
+      <leaflessSnowOverlayGraphicPath>Things/Plant/TreeOak_LeaflessSnowy</leaflessSnowOverlayGraphicPath>
+      <immatureSnowOverlayGraphicPath>Things/Plant/TreeOak_LeaflessSnowyImmature</immatureSnowOverlayGraphicPath>
       <harvestWork>1000</harvestWork>
       <harvestYield>75</harvestYield>
       <wildClusterWeight>32</wildClusterWeight>
@@ -67,6 +72,8 @@
     <plant>
       <sowTags />
       <leaflessGraphicPath>TKKN_NPS/Things/Plant/VarientLeafless/TreeOldGrowthHazel_Leafless</leaflessGraphicPath>
+      <leaflessSnowOverlayGraphicPath>TKKN_NPS/Things/Plant/TreeOldGrowthHazel_LeaflessSnowy</leaflessSnowOverlayGraphicPath>
+      <snowOverlayGraphicPath>TKKN_NPS/Things/Plant/TreeOldGrowthHazel_Snowy</snowOverlayGraphicPath>
       <growDays>60</growDays>
       <harvestWork>1000</harvestWork>
       <harvestYield>75</harvestYield>
@@ -93,6 +100,7 @@
       <harvestYield>75</harvestYield>
       <wildClusterWeight>30</wildClusterWeight>
       <wildClusterRadius>5</wildClusterRadius>
+      <snowOverlayGraphicPath>TKKN_NPS/Things/Plant/TreeHazel_Snowy</snowOverlayGraphicPath>
     </plant>
   </ThingDef>
   <ThingDef ParentName="TreeBase">

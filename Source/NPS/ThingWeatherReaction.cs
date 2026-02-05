@@ -9,15 +9,11 @@ public class ThingWeatherReaction : DefModExtension
     public string floweringGraphicPath;
     public string frostGraphicPath;
     public string frostLeaflessGraphicPath;
-    public string snowGraphicPath;
-    public string snowLeaflessGraphicPath;
 
     public Graphic droughtGraphic;
     public Graphic floweringGraphic;
     public Graphic frostGraphic;
     public Graphic frostLeaflessGraphic;
-    public Graphic snowGraphic;
-    public Graphic snowLeaflessGraphic;
 
     public bool hasGraphic;
 
@@ -48,22 +44,6 @@ public class ThingWeatherReaction : DefModExtension
 
         if (!frostLeaflessGraphicPath.NullOrEmpty()) {
             frostLeaflessGraphic = GraphicDatabase.Get(plant.graphicData.graphicClass, frostLeaflessGraphicPath,
-                plant.graphic.Shader,
-                plant.graphicData.drawSize, plant.graphicData.color,
-                plant.graphicData.colorTwo);
-            hasGraphic = true;
-        }
-
-        if (!snowGraphicPath.NullOrEmpty()) {
-            snowGraphic = GraphicDatabase.Get(plant.graphicData.graphicClass, snowGraphicPath,
-                plant.graphic.Shader,
-                plant.graphicData.drawSize, plant.graphicData.color,
-                plant.graphicData.colorTwo);
-            hasGraphic = true;
-        }
-
-        if (!snowLeaflessGraphicPath.NullOrEmpty()) {
-            droughtGraphic = GraphicDatabase.Get(plant.graphicData.graphicClass, snowLeaflessGraphicPath,
                 plant.graphic.Shader,
                 plant.graphicData.drawSize, plant.graphicData.color,
                 plant.graphicData.colorTwo);

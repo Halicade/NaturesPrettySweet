@@ -221,6 +221,7 @@
       <visualSizeRange>0.8~1.5</visualSizeRange>
       <wildClusterWeight>30</wildClusterWeight>
       <topWindExposure>0.4</topWindExposure>
+      <snowOverlayGraphicPath>TKKN_NPS/Things/Plant/TreeOcotillo_Snowy</snowOverlayGraphicPath>
     </plant>
   </ThingDef>
 </Defs>

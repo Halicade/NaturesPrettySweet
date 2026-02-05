@@ -53,7 +53,7 @@
     <NPS_makePuddles_title>Make puddles</NPS_makePuddles_title>
     <NPS_makePuddles_text>Puddles can appear when it rains or when snow melts.</NPS_makePuddles_text>
     <NPS_useMapTemperature_title>Use map-wide temperature</NPS_useMapTemperature_title>
-    <NPS_useMapTemperature_text>Use the maps outdoor temperature instead of querying each cell. This applies for ice freezing and frost grid generation.\nWill improve performance.</NPS_useMapTemperature_text>
+    <NPS_useMapTemperature_text>Use the maps outdoor temperature instead of querying each cell. This applies for ice freezing and frost grid generation.\nWill improve performance but can lead to water or frost generating indoors.</NPS_useMapTemperature_text>
     <NPS_seasonalDiseases_title>Seasonal diseases</NPS_seasonalDiseases_title>
     <NPS_seasonalDiseases_text>Possible diseases can change each month/season.\nRequires restart to reset</NPS_seasonalDiseases_text>
     <NPS_seasonalIncidents_title>Seasonal incidents</NPS_seasonalIncidents_title>
@@ -75,8 +75,8 @@
     <NPS_doAmbientTemperature_title>Apply ambient temperature patch</NPS_doAmbientTemperature_title>
     <NPS_doAmbientTemperature_text>Temperature of a pawn can be affected by the terrain they are standing on. Note that this can be performance heavy with multiple pawns</NPS_doAmbientTemperature_text>
     
-    <TKKN_showTempReadout_title>Show temperature readout</TKKN_showTempReadout_title>
-    <TKKN_showTempReadout_text>Show temperature readout in the bottom left</TKKN_showTempReadout_text>
+    <NPS_showDevReadout_title>Show dev readout</NPS_showDevReadout_title>
+    <NPS_showDevReadout_text>Show dev in the bottom left</NPS_showDevReadout_text>
 
     <!-- @formatter:on -->
 </LanguageData>

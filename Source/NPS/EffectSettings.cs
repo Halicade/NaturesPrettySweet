@@ -200,9 +200,9 @@ public class EffectSettings : ModSettings
         list.Gap(30f);
 
         list.CheckboxLabeled(
-            "TKKN_showTempReadout_title".Translate(),
+            "NPS_showDevReadout_title".Translate(),
             ref showDevReadout,
-            "TKKN_showTempReadout_text".Translate());
+            "NPS_showDevReadout_text".Translate());
 
 
        

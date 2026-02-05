@@ -11,7 +11,7 @@ public class NPS_BiomeWorker_LavaFields : BiomeWorker_TropicalRainforest
             return -100f;
         }
 
-        if (!(base.GetScore(biome, tile, planetTile) > 0)) {
+        if (base.GetScore(biome, tile, planetTile) < 0) {
             return 0f;
         }
 

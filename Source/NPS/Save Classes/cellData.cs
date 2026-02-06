@@ -55,6 +55,15 @@ public class cellData : IExposable
         Scribe_Defs.Look(ref driedTerrain, "driedTerrain");
     }
 
+    public void wetCheck(bool gettingWet) {
+        if (gettingWet && howWet < 3) {
+            howWet += 2;
+        }
+        else if (!gettingWet && howWet > -1) {
+            howWet--;
+        }
+    }
+
     public void setTerrainWet() {
         var thisTerrain = currentTerrain;
         //if terrain is temporary we don't want to affect it

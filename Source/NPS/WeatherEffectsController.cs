@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using LudeonTK;
+using RimWorld;
+using UnityEngine;
 using Verse;
 
 namespace TKKN_NPS;
@@ -34,7 +36,13 @@ public class WeatherEffectsController : Mod
             EffectSettings.doDirtPath = false;
             EffectSettings.doWalkThroughSnow = false;
         }
-        
         base.WriteSettings();
+        
+        if (Current.ProgramState == ProgramState.Playing) {
+            foreach (var map in Find.Maps) {
+                var watcher= map.GetComponent<Watcher>();
+                watcher.validPawns.Clear();
+            }
+        }
     }
 }

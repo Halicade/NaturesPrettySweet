@@ -12,7 +12,7 @@
     <TKKN_NPS_WildFlowerBloomTxt>An unusual amount of wildflowers are blooming! Make sure you go outside to see it. Watch out for allergies!</TKKN_NPS_WildFlowerBloomTxt>
     <TKKN_NPS_SuperbloomLbl>Superbloom!</TKKN_NPS_SuperbloomLbl>
     <TKKN_NPS_SuperbloomTxt>A record setting amount of wildflowers are blooming! Make sure you go outside to see it. Watch out for allergies!</TKKN_NPS_SuperbloomTxt>
-    <TKKN_NPS_DrowningText>Someone is drowning!</TKKN_NPS_DrowningText>
+    <TKKN_NPS_DrowningText>{0} is drowning!</TKKN_NPS_DrowningText>
     
     
 
@@ -66,7 +66,7 @@
     <NPS_allowPawnEffects_title>Allow pawn effects</NPS_allowPawnEffects_title>
     <NPS_allowPawnEffects_text>Specific effects can be applied to pawns.</NPS_allowPawnEffects_text>
     <NPS_pawnEffectsOnlyColonists_title>Only affect colonists</NPS_pawnEffectsOnlyColonists_title>
-    <NPS_pawnEffectsOnlyColonists_text>Only colonists will be affected by these effects. Can take up to 1 in game day to take effect.</NPS_pawnEffectsOnlyColonists_text>
+    <NPS_pawnEffectsOnlyColonists_text>Only colonists will be affected by these effects.</NPS_pawnEffectsOnlyColonists_text>
     <NPS_doWalkThroughSnow_title>Create snow paths</NPS_doWalkThroughSnow_title>
     <NPS_doWalkThroughSnow_text>When pawns through snow it will remove some snow underneath the pawn.</NPS_doWalkThroughSnow_text>
     <NPS_allowPawnsToDrown_title>Allow pawns to drown</NPS_allowPawnsToDrown_title>

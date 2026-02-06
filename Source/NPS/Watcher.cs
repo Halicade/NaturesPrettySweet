@@ -64,7 +64,7 @@ public class Watcher(Map map) : MapComponent(map)
     private bool anyLavaTerrain;
     private bool doUnpacking;
     private bool noHurtPlants;
-    private readonly Dictionary<Pawn, bool> validPawns = [];
+    public readonly Dictionary<Pawn, bool> validPawns = [];
     private float currentRainRate;
     private float currentSnowRate;
     private int mapArea; //Default area 62500
@@ -529,6 +529,10 @@ public class Watcher(Map map) : MapComponent(map)
         biomeSettings.setDiseaseBySeason(map, season, quadrum);
         biomeSettings.setIncidentsBySeason(map, season, quadrum);
     }
+    
+    private bool gettingWet;
+    private bool roofed;
+    private TerrainDef currentTerrain;
 
 
     private void DoCellEnvironment(IntVec3 c) {
@@ -544,10 +548,10 @@ public class Watcher(Map map) : MapComponent(map)
             cell.Unpack();
         }
 
-        TerrainDef currentTerrain = c.GetTerrain(map);
+        currentTerrain = c.GetTerrain(map);
         cell.currentTerrain = currentTerrain;
-        bool roofed = doRoofChecks && map.roofGrid.Roofed(c);
-        bool gettingWet = false;
+        roofed = doRoofChecks && map.roofGrid.Roofed(c);
+        gettingWet = false;
 
         /*
         //check if the terrain has been floored
@@ -618,8 +622,7 @@ public class Watcher(Map map) : MapComponent(map)
                 cell.TrySetTerrainThawed();
                 if (EffectSettings.showFrostGrid) {
                     if (TerrainTagUtil.HoldsFrost.Contains(currentTerrain)) {
-                        var frosty = cell.temperature * -.025f;
-                        frostGridComponent.AddDepth(cell, frosty);
+                        frostGridComponent.AddDepth(cell, cell.temperature * -.025f);
                     }
                 }
             }
@@ -627,6 +630,7 @@ public class Watcher(Map map) : MapComponent(map)
 
 
         //HANDLE PLANT DAMAGES:
+        
         if (gettingWet) {
             //note - removed ismelt because the dirt shouldn't dry out in winter, and snow wets the ground then.
             if (cell.howWetPlants < 100) {
@@ -648,12 +652,8 @@ public class Watcher(Map map) : MapComponent(map)
         }
 
         if (EffectSettings.showRain) {
-            if (cell.howWet < 3 && gettingWet) {
-                cell.howWet += 2;
-            }
-            else if (cell.howWet > -1) {
-                cell.howWet--;
-            }
+            cell.wetCheck(gettingWet);
+            
         }
 
         if (EffectSettings.makePuddles) {

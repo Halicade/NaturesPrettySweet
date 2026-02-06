@@ -80,10 +80,12 @@ public static class PawnChecks
         var hediff = HediffMaker.MakeHediff(HediffDefOf.TKKN_Drowning, pawn);
         hediff.Severity = 0.001f;
         pawn.health.AddHediff(hediff);
-            
-            
-        string text = "TKKN_NPS_DrowningText".Translate();
-        Messages.Message(text, MessageTypeDefOf.NegativeHealthEvent);
+        if (pawn.IsColonist) {
+            Messages.Message("TKKN_NPS_DrowningText".Translate(pawn.NameShortColored),
+                new LookTargets(pawn),
+                MessageTypeDefOf.NegativeHealthEvent,
+                false);
+        }
     }
 
     private static void makeWet(Pawn pawn, TerrainDef currentTerrain, bool isRaining, Map map) {

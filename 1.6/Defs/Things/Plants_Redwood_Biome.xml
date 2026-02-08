@@ -133,37 +133,4 @@
       <topWindExposure>0.4</topWindExposure>
     </plant>
   </ThingDef>
-  <!--
-  <ThingDef ParentName="PlantBase">
-	<defName>TKKN_PlantMoss</defName>
-	<label>moss</label>
-	<description>Small, flowerless plants that grow in dense mats in shady and wet areas.</description>
-	 <statBases>
-      <MaxHitPoints>90</MaxHitPoints>
-    </statBases>
-    <pathCost>18</pathCost>
-    <graphicData>
-      <texPath>TKKN_NPS/Things/Plant/Moss</texPath>
-      <graphicClass>Graphic_Random</graphicClass>
-    </graphicData>
-    <hideAtSnowOrSandDepth>0.5</hideAtSnowOrSandDepth>
-    <ingestible>
-      <Nutrition>0.20</Nutrition>
-    </ingestible>
-    <plant>
-        <fertilityMin>0.5</fertilityMin>
-        <fertilitySensitivity>0.7</fertilitySensitivity>
-        <growDays>3</growDays>
-        <reproduceMtbDays>3</reproduceMtbDays>
-        <harvestWork>60</harvestWork>
-        <maxMeshCount>9</maxMeshCount>
-        <visualSizeRange>
-            <min>0.2</min>
-            <max>0.5</max>
-        </visualSizeRange>
-        <topWindExposure>0.4</topWindExposure>
-    </plant>
-  </ThingDef>
-  -->
-  <!-- ============== BASES ============ -->
 </Defs>

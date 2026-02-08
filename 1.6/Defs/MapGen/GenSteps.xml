@@ -66,5 +66,18 @@
         </genStep>
     </GenStepDef>
 
+    <GenStepDef>
+        <defName>NPS_SpawnDeadRedwoods</defName>
+        <order>751</order> <!-- after quarry (mutator final) -->
+        <genStep Class="GenStep_ScatterThings">
+            <terrainValidationRadius>1</terrainValidationRadius>
+            <countPer10kCellsRange>0~2</countPer10kCellsRange>
+            <thingDef>TKKN_RedwoodDead</thingDef>
+            <terrainValidationDisallowed>
+                <li>NaturalRock</li>
+            </terrainValidationDisallowed>
+        </genStep>
+    </GenStepDef>
+
 
 </Defs>

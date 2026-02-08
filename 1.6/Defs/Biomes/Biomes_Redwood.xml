@@ -18,6 +18,9 @@
         <soundsAmbient>
             <li>AmbientNightInsects_Standard</li>
         </soundsAmbient>
+        <extraGenSteps>
+            <li>NPS_SpawnDeadRedwoods</li>
+        </extraGenSteps>
         <diseaseMtbDays>45</diseaseMtbDays>
         <diseases>
             <li>

@@ -8,7 +8,7 @@
       <texPath>TKKN_NPS/Things/Plant/TreeRedwoods</texPath>
       <graphicClass>Graphic_Random</graphicClass>
       <shadowData>
-        <volume>(0.55, 0.2, 0.2)</volume>
+        <volume>(0.13, 0.2, 0.05)</volume>
         <offset>(0,0,-0.25)</offset>
       </shadowData>
     </graphicData>
@@ -38,6 +38,10 @@
     <graphicData>
       <texPath>Things/Plant/TreeOak</texPath>
       <graphicClass>Graphic_Random</graphicClass>
+      <shadowData>
+        <volume>(0.2, 0.35, 0.13)</volume>
+        <offset>(-0.03,0,-0.44)</offset>
+      </shadowData>
     </graphicData>
     <statBases>
       <Beauty>2</Beauty>
@@ -101,35 +105,6 @@
       <wildClusterWeight>30</wildClusterWeight>
       <wildClusterRadius>5</wildClusterRadius>
       <snowOverlayGraphicPath>TKKN_NPS/Things/Plant/TreeHazel_Snowy</snowOverlayGraphicPath>
-    </plant>
-  </ThingDef>
-  <ThingDef ParentName="TreeBase">
-    <defName>TKKN_PlantTreeRedwoodDead</defName>
-    <label>redwood</label>
-    <description>A huge, very slow growing tree. This one has toppled over due to its weight. \n\n Yields red wood, which is valuable and rare.</description>
-    <graphicData>
-      <texPath>TKKN_NPS/Things/Plant/TreeRedwoodDead</texPath>
-      <graphicClass>Graphic_Random</graphicClass>
-      <shadowData>
-        <volume>(0.55, 0.2, 0.2)</volume>
-        <offset>(0,0,-0.25)</offset>
-      </shadowData>
-    </graphicData>
-    <statBases>
-      <Beauty>15</Beauty>
-    </statBases>
-    <plant>
-      <sowTags />
-      <fertilityMin>0.7</fertilityMin>
-      <fertilitySensitivity>0.7</fertilitySensitivity>
-      <growDays>0</growDays>
-      <harvestedThingDef>RedWoodLog</harvestedThingDef>
-      <harvestWork>4000</harvestWork>
-      <harvestYield>250</harvestYield>
-      <wildClusterWeight>1</wildClusterWeight>
-      <wildClusterRadius>3</wildClusterRadius>
-      <visualSizeRange>0.7~0.9</visualSizeRange>
-      <topWindExposure>0</topWindExposure>
     </plant>
   </ThingDef>
   <ThingDef ParentName="PlantBase">

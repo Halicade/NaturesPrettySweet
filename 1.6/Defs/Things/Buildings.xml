@@ -41,15 +41,15 @@
   </ThingDef>
   <ThingDef ParentName="BuildingBase">
     <defName>TKKN_RedwoodDead</defName>
-    <label>redwood</label>
+    <label>fallen redwood</label>
     <description>A huge, dead tree. Its roots are shallow, and when it gets too large, it topples over. \n\n Yields red wood, which is valuable and rare.</description>
     <graphicData>
       <texPath>TKKN_NPS/Things/Plant/TreeRedwoodDead</texPath>
       <graphicClass>Graphic_Random</graphicClass>
       <drawRotated>false</drawRotated>
       <shadowData>
-        <volume>(0.55, 0.2, 0.2)</volume>
-        <offset>(0,0,-0.25)</offset>
+        <volume>(8.4, 1.4, 0.9)</volume>
+        <offset>(0,0,-1.2)</offset>
       </shadowData>
       <drawSize>(9,3)</drawSize>
     </graphicData>

@@ -23,7 +23,7 @@ public class IncidentWorker_LavaFlow : IncidentWorker
             return false;
         }
 
-        _ = (ThingWithComps)GenSpawn.Spawn(ThingMaker.MakeThing(ThingDefOf.TKKN_Lava_Spring), intVec, map);
+        //GenSpawn.Spawn(ThingMaker.MakeThing(ThingDefOf.TKKN_Lava_Spring), intVec, map);
 
 
         string label = "TKKN_NPS_LavaHasEruptedNearby".Translate();

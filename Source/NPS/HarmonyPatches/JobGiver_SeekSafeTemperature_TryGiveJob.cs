@@ -10,6 +10,7 @@ namespace TKKN_NPS;
 //[HarmonyPatch(typeof(JobGiver_SeekSafeTemperature), "TryGiveJob")]
 internal class JobGiver_SeekSafeTemperature_TryGiveJob
 {
+
     public static void Postfix(ref Job __result, Pawn pawn) {
         if (__result != null || pawn?.RaceProps?.CanPassFences == false) {
             return;
@@ -19,7 +20,10 @@ internal class JobGiver_SeekSafeTemperature_TryGiveJob
             return;
         }
 
-        if (Find.CurrentMap.GetComponent<Watcher>()?.activeSprings?.Count == 0) {
+        Map map = pawn.Map;
+
+        if (map.Biome != BiomeDefOf.TKKN_Oasis &&
+            !map.TileInfo.mutatorsNullable.Contains(TileMutatorDefOf.NPS_ColdSpringMutator)) {
             return;
         }
 
@@ -29,8 +33,7 @@ internal class JobGiver_SeekSafeTemperature_TryGiveJob
             return;
         }
 
-        var isHot = heatstroke.CurStageIndex == (int)TemperatureInjuryStage.Serious;
-        if (!isHot) {
+        if (heatstroke.CurStageIndex != (int)TemperatureInjuryStage.Serious) {
             return;
         }
 
@@ -39,14 +42,17 @@ internal class JobGiver_SeekSafeTemperature_TryGiveJob
             __result = new Job(RimWorld.JobDefOf.Wait_SafeTemperature, 500, true);
             return;
         }
-
-        IntVec3 pawnLocation = pawn.GetLord()?.CurLordToil?.FlagLoc ?? pawn.Position;
-        //send them to the closest spring to relax
-        var thing = GenClosest.ClosestThingReachable(pawnLocation, pawn.Map,
-            ThingRequest.ForDef(ThingDefOf.TKKN_ColdSpring), PathEndMode.Touch, TraverseParms.For(pawn), 50f,
-            ignoreEntirelyForbiddenRegions: true);
-        if (thing != null) {
-            __result = new Job(RimWorld.JobDefOf.GotoSafeTemperature, thing.Position);
+        
+        if (CellFinder.TryRandomClosewalkCellNear(
+                root: pawn.Position,
+                map: map,
+                radius: 80,
+                result: out var result,
+                extraValidator: vec3 => vec3.GetTerrain(map) == TerrainDefOf.TKKN_ColdSpringsWater )) {
+            __result = new Job(RimWorld.JobDefOf.GotoSafeTemperature, result);
         }
+
+        return;
     }
+
 }
